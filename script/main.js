@@ -1,3 +1,5 @@
+import TileGrid from './TileGrid';
+
 const config = {
     type: Phaser.AUTO,
     width: 800,
@@ -10,6 +12,7 @@ const config = {
 };
 
 const game = new Phaser.Game(config);
+const tileGrid = new TileGrid(10, 10, 50, 50);
 
 function preload()
 {
@@ -21,7 +24,7 @@ function preload()
 
 function create()
 {
-    this.add.image(400, 300, 'tile_01');
+    tileGrid.create(this);
 }
 
 function update() {
