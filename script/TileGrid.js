@@ -17,7 +17,7 @@ export default class {
             this.tileGrid[y] = [];
             for(let x = 0; x < tileWidth; x++)
             {
-                this.tileGrid[y][x] = new Tile(getRandomItem(TileType), this.offsetX + (50 * x), this.offsetY + (50 * y));
+                this.tileGrid[y][x] = new Tile(getRandomItem(TileType), this.offsetX + (50 * x), this.offsetY + (50 * y), this.onTileSelect);
             }
         }
     }
@@ -31,5 +31,10 @@ export default class {
                 this.tileGrid[y][x].create(context);            
             }
         }
+    }
+
+    onTileSelect(tile)
+    {
+        tile.activate();
     }
 }
