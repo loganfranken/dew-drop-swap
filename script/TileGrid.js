@@ -1,3 +1,7 @@
+import { getRandomItem } from './Utility';
+import Tile from './Tile';
+import TileType from './TileType';
+
 export default class {
 
     constructor(tileWidth, tileHeight, offsetX, offsetY)
@@ -13,7 +17,7 @@ export default class {
             this.tileGrid[y] = [];
             for(let x = 0; x < tileWidth; x++)
             {
-                this.tileGrid[y][x] = null;
+                this.tileGrid[y][x] = new Tile(getRandomItem(TileType), this.offsetX + (50 * x), this.offsetY + (50 * y));
             }
         }
     }
@@ -24,7 +28,7 @@ export default class {
         {
             for(let x = 0; x < this.tileWidth; x++)
             {
-                context.add.image(this.offsetX + (50 * x), this.offsetY + (50 * y), 'tile_01');
+                this.tileGrid[y][x].create(context);            
             }
         }
     }
