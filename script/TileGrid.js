@@ -4,13 +4,14 @@ import TileType from './TileType';
 
 export default class {
 
-    constructor(tileWidth, tileHeight, offsetX, offsetY)
+    constructor(tileWidth, tileHeight, offsetX, offsetY, onTileSelect)
     {
         this.offsetX = offsetX;
         this.offsetY = offsetY;
         this.tileHeight = tileHeight;
         this.tileWidth = tileWidth;
         this.tileGrid = [];
+        this.onTileSelect = onTileSelect;
 
         for(let y = 0; y < tileHeight; y++)
         {
@@ -33,8 +34,10 @@ export default class {
         }
     }
 
-    onTileSelect(tile)
+    swapTiles(firstTile, secondTile)
     {
-        tile.activate();
+        console.log('Swapping these two:')
+        console.log(firstTile);
+        console.log(secondTile);
     }
 }

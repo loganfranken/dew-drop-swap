@@ -20,4 +20,9 @@ export default class {
     {
         this.image.setTintFill(0xffffff);
     }
+
+    deactivate()
+    {
+        this.image.clearTint();
+    }
 }

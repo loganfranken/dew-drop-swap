@@ -12,7 +12,9 @@ const config = {
 };
 
 const game = new Phaser.Game(config);
-const tileGrid = new TileGrid(10, 10, 50, 50);
+const tileGrid = new TileGrid(10, 10, 50, 50, onTileSelect);
+
+let selectedTiles = [];
 
 function preload()
 {
@@ -27,5 +29,20 @@ function create()
     tileGrid.create(this);
 }
 
-function update() {
+function update()
+{
+}
+
+function onTileSelect(tile) {
+
+    tile.activate();
+    selectedTiles.push(tile);
+
+    if(selectedTiles.length === 2)
+    {
+        tileGrid.swapTiles(...selectedTiles);
+        selectedTiles.forEach((tile) => { tile.deactivate(); });
+        selectedTiles = [];
+    }
+
 }
