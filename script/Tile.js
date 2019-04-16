@@ -1,10 +1,12 @@
 export default class {
 
-    constructor(tileType, x, y, onTileSelect)
+    constructor(tileType, x, y, tileGridX, tileGridY, onTileSelect)
     {
         this.tileType = tileType;
         this.x = x;
         this.y = y;
+        this.tileGridX = tileGridX;
+        this.tileGridY = tileGridY;
         this.onTileSelect = onTileSelect;
         this.image = null;
     }
@@ -24,5 +26,16 @@ export default class {
     deactivate()
     {
         this.image.clearTint();
+    }
+
+    updatePosition(x, y, tileGridX, tileGridY)
+    {
+        this.x = x;
+        this.y = y;
+        this.tileGridX = tileGridX;
+        this.tileGridY = tileGridY;
+
+        this.image.x = x;
+        this.image.y = y;
     }
 }

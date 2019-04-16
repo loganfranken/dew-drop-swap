@@ -18,7 +18,7 @@ export default class {
             this.tileGrid[y] = [];
             for(let x = 0; x < tileWidth; x++)
             {
-                this.tileGrid[y][x] = new Tile(getRandomItem(TileType), this.offsetX + (50 * x), this.offsetY + (50 * y), this.onTileSelect);
+                this.tileGrid[y][x] = new Tile(getRandomItem(TileType), this.offsetX + (50 * x), this.offsetY + (50 * y), x, y, this.onTileSelect);
             }
         }
     }
@@ -36,8 +36,20 @@ export default class {
 
     swapTiles(firstTile, secondTile)
     {
-        console.log('Swapping these two:')
-        console.log(firstTile);
-        console.log(secondTile);
+        let firstTileX = firstTile.x;
+        let firstTileY = firstTile.y;
+        let firstTileGridX = firstTile.tileGridX;
+        let firstTileGridY = firstTile.tileGridY;
+
+        let secondTileX = secondTile.x;
+        let secondTileY = secondTile.y;
+        let secondTileGridX = secondTile.tileGridX;
+        let secondTileGridY = secondTile.tileGridY;
+
+        secondTile.updatePosition(firstTileX, firstTileY, firstTileGridX, firstTileGridY);
+        this.tileGrid[firstTileGridY][firstTileGridX] = secondTile;
+
+        firstTile.updatePosition(secondTileX, secondTileY, secondTileGridX, secondTileGridY);
+        this.tileGrid[secondTileGridY][secondTileGridX] = firstTile;
     }
 }
