@@ -49,13 +49,96 @@ export default class {
 
     getMatches()
     {
-        let matches = [];
+        const self = this;
+        const matchedTiles = [];
+        
+        self.forEachTile((tile, x, y) => {
 
-        this.forEachTile((tile, x, y) => {
+            const targetTileType = tile.tileType;
+            const matchedXTiles = [];
+            const matchedYTiles = [];
 
-            // Test...
+            // Check for matches to the right
+            let currX = (x + 1);
+            while(currX < self.tileWidth)
+            {
+                if(targetTileType === self.tileGrid[y][currX].tileType)
+                {
+                    matchedXTiles.push(self.tileGrid[y][currX]);
+                }
+                else
+                {
+                    break;
+                }
 
+                currX++;
+            }
+
+            // Check for matches to the left
+            currX = (x - 1);
+            while(currX > 0)
+            {
+                if(targetTileType === self.tileGrid[y][currX].tileType)
+                {
+                    matchedXTiles.push(self.tileGrid[y][currX]);
+                }
+                else
+                {
+                    break;
+                }
+
+                currX--;
+            }
+
+            // Check matches downwards
+            let currY = (y + 1);
+            while(currY < self.tileHeight)
+            {
+                if(targetTileType === self.tileGrid[currY][x].tileType)
+                {
+                    matchedYTiles.push(self.tileGrid[currY][x]);
+                }
+                else
+                {
+                    break;
+                }
+
+                currY++;
+            }
+
+            // Check matches upwards
+            currY = (y - 1);
+            while(currY > 0)
+            {
+                if(targetTileType === self.tileGrid[currY][x].tileType)
+                {
+                    matchedYTiles.push(self.tileGrid[currY][x]);
+                }
+                else
+                {
+                    break;
+                }
+
+                currY--;
+            }
+            
+            if(matchedYTiles.length > 1)
+            {
+                matchedTiles.push(...matchedYTiles);
+            }
+            
+            if(matchedXTiles.length > 1)
+            {
+                matchedTiles.push(...matchedXTiles);
+            }
+
+            if(matchedYTiles.length > 1 || matchedXTiles.length > 1)
+            {
+                matchedTiles.push(tile);
+            }
         });
+
+        return matchedTiles;
     }
 
     forEachTile(callback)

@@ -35,7 +35,6 @@ function update()
 
 function onTileSelect(tile) {
 
-    tile.activate();
     selectedTiles.push(tile);
 
     if(selectedTiles.length === 2)
@@ -43,6 +42,9 @@ function onTileSelect(tile) {
         tileGrid.swapTiles(...selectedTiles);
         selectedTiles.forEach((tile) => { tile.deactivate(); });
         selectedTiles = [];
+
+        const matchedTiles = tileGrid.getMatches();
+        matchedTiles.forEach(t => t.activate());
     }
 
 }
