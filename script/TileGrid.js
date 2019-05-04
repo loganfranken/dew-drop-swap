@@ -53,7 +53,7 @@ export default class {
 
         this.forEachTile((tile, x, y) => {
 
-            
+            // Test...
 
         });
     }
