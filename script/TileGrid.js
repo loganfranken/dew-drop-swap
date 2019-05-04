@@ -25,13 +25,7 @@ export default class {
 
     create(context)
     {
-        for(let y = 0; y < this.tileHeight; y++)
-        {
-            for(let x = 0; x < this.tileWidth; x++)
-            {
-                this.tileGrid[y][x].create(context);            
-            }
-        }
+        this.forEachTile(tile => tile.create(context));
     }
 
     swapTiles(firstTile, secondTile)
@@ -51,5 +45,27 @@ export default class {
 
         firstTile.updatePosition(secondTileX, secondTileY, secondTileGridX, secondTileGridY);
         this.tileGrid[secondTileGridY][secondTileGridX] = firstTile;
+    }
+
+    getMatches()
+    {
+        let matches = [];
+
+        this.forEachTile((tile, x, y) => {
+
+            
+
+        });
+    }
+
+    forEachTile(callback)
+    {
+        for(let y = 0; y < this.tileHeight; y++)
+        {
+            for(let x = 0; x < this.tileWidth; x++)
+            {
+                callback(this.tileGrid[y][x], x, y);
+            }
+        }
     }
 }
