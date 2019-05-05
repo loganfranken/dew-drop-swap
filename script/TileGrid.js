@@ -94,12 +94,25 @@ export default class {
         this.tileGrid[secondTileGridY][secondTileGridX] = firstTile;
     }
 
-    getMatches()
+    hasMatches(targetGridX, targetGridY)
+    {
+        return this.getMatches(targetGridX, targetGridY).length > 0;
+    }
+
+    getMatches(targetGridX, targetGridY)
     {
         const self = this;
         const matchedTiles = [];
 
         self.forEachTile((tile, x, y) => {
+
+            if(
+                (typeof targetGridX !== 'undefined' && x !== targetGridX) &&
+                (typeof targetGridY !== 'undefined' && y !== targetGridY)
+              )
+            {
+                return;
+            }
 
             const targetTileType = tile.tileType;
             const matchedXTiles = [];

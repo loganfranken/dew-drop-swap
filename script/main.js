@@ -53,6 +53,16 @@ function onTileSelect(tile) {
         {
             selectedTiles.push(tile);
             tileGrid.swapTiles(...selectedTiles);
+
+            // If there are no matches, swap the tiles back
+            if(
+                !tileGrid.hasMatches(selectedTiles[0].tileGridX, selectedTiles[0].tileGridY) &&
+                !tileGrid.hasMatches(selectedTiles[1].tileGridX, selectedTiles[1].tileGridY)
+              )
+            {
+                tileGrid.swapTiles(...selectedTiles);
+            }
+
             selectedTiles.forEach((tile) => { tile.deactivate(); });
             selectedTiles = [];
         }
