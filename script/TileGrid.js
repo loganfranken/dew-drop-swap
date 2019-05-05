@@ -51,7 +51,6 @@ export default class {
 
         });
 
-        /*
         // Push any tiles down
         self.forEachTile((tile, x, y) => {
 
@@ -63,14 +62,13 @@ export default class {
                 {
                     // If so, move the tile to that spot
                     self.tileGrid[y + 1][x] = tile;
-                    tile.updatePosition(x * self.tileWidth, (y + 1) * self.tileHeight, x, y);
+                    tile.updatePosition(self.offsetX + (50 * x), self.offsetY + (50 * (y + 1)), x, y + 1);
 
                     self.tileGrid[y][x] = null;
                 }
             }
 
         });
-        */
     }
 
     swapTiles(firstTile, secondTile)
@@ -107,9 +105,11 @@ export default class {
             let currX = (x + 1);
             while(currX < self.tileWidth)
             {
-                if(targetTileType === self.tileGrid[y][currX].tileType)
+                const currTile = self.tileGrid[y][currX];
+
+                if(currTile != null && targetTileType.name === currTile.tileType.name)
                 {
-                    matchedXTiles.push(self.tileGrid[y][currX]);
+                    matchedXTiles.push(currTile);
                 }
                 else
                 {
@@ -123,9 +123,11 @@ export default class {
             currX = (x - 1);
             while(currX > 0)
             {
-                if(targetTileType === self.tileGrid[y][currX].tileType)
+                const currTile = self.tileGrid[y][currX];
+
+                if(currTile != null && targetTileType.name === currTile.tileType.name)
                 {
-                    matchedXTiles.push(self.tileGrid[y][currX]);
+                    matchedXTiles.push(currTile);
                 }
                 else
                 {
@@ -139,9 +141,11 @@ export default class {
             let currY = (y + 1);
             while(currY < self.tileHeight)
             {
-                if(targetTileType === self.tileGrid[currY][x].tileType)
+                const currTile = self.tileGrid[currY][x];
+
+                if(currTile != null && targetTileType.name === currTile.tileType.name)
                 {
-                    matchedYTiles.push(self.tileGrid[currY][x]);
+                    matchedYTiles.push(currTile);
                 }
                 else
                 {
@@ -155,9 +159,11 @@ export default class {
             currY = (y - 1);
             while(currY > 0)
             {
-                if(targetTileType === self.tileGrid[currY][x].tileType)
+                const currTile = self.tileGrid[currY][x];
+
+                if(currTile != null && targetTileType === currTile.tileType)
                 {
-                    matchedYTiles.push(self.tileGrid[currY][x]);
+                    matchedYTiles.push(currTile);
                 }
                 else
                 {
