@@ -36,13 +36,26 @@ function update()
 
 function onTileSelect(tile) {
 
-    selectedTiles.push(tile);
-
-    if(selectedTiles.length === 2)
+    if(selectedTiles.length === 0)
     {
-        tileGrid.swapTiles(...selectedTiles);
-        selectedTiles.forEach((tile) => { tile.deactivate(); });
-        selectedTiles = [];
+        selectedTiles.push(tile);
+        tile.activate();
+        return;
+    }
+
+    if(selectedTiles.length === 1)
+    {
+        const selectedTile = selectedTiles[0];
+        const xDiff = Math.abs(selectedTile.tileGridX - tile.tileGridX);
+        const yDiff = Math.abs(selectedTile.tileGridY - tile.tileGridY);
+
+        if((xDiff === 1 && yDiff === 0) || (xDiff === 0 && yDiff === 1))
+        {
+            selectedTiles.push(tile);
+            tileGrid.swapTiles(...selectedTiles);
+            selectedTiles.forEach((tile) => { tile.deactivate(); });
+            selectedTiles = [];
+        }
     }
 
 }
