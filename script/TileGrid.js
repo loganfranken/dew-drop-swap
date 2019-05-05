@@ -41,6 +41,10 @@ export default class {
     {
         const self = this;
 
+        // Detect and destroy any matches
+        const matchedTiles = self.getMatches();
+        matchedTiles.forEach(t => t.destroy());
+
         // Remove any destroyed tiles
         self.forEachTile((tile, x, y) => {
 
