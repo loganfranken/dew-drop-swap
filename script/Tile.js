@@ -18,7 +18,7 @@ export default class {
     {
         this.image = context.add.image(this.x, this.y, this.tileType.imageKey);
         this.image.setInteractive();
-        this.image.on('pointerdown', () => { this.onTileSelect(this); });
+        this.image.on('pointerdown', () => { this.onTileSelect(context, this); });
     }
 
     activate()
@@ -31,15 +31,29 @@ export default class {
         this.image.clearTint();
     }
 
-    updatePosition(x, y, tileGridX, tileGridY)
+    updatePosition(context, x, y, tileGridX, tileGridY)
     {
         this.x = x;
         this.y = y;
         this.tileGridX = tileGridX;
         this.tileGridY = tileGridY;
 
-        this.image.x = x;
-        this.image.y = y;
+        //this.image.x = x;
+        //this.image.y = y;
+
+        context.tweens.add({
+            targets: this.image,
+            x: x,
+            y: y,
+            ease: 'Power1',
+            duration: 500
+            //yoyo: true,
+            //repeat: 1,
+            //onStart: function () { console.log('onStart'); console.log(arguments); },
+            //onComplete: function () { console.log('onComplete'); console.log(arguments); },
+            //onYoyo: function () { console.log('onYoyo'); console.log(arguments); },
+            //onRepeat: function () { console.log('onRepeat'); console.log(arguments); },
+        });
     }
 
     destroy()

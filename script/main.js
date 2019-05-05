@@ -31,10 +31,10 @@ function create()
 
 function update()
 {
-    tileGrid.update();
+    tileGrid.update(this);
 }
 
-function onTileSelect(tile) {
+function onTileSelect(context, tile) {
 
     if(selectedTiles.length === 0)
     {
@@ -52,7 +52,7 @@ function onTileSelect(tile) {
         if((xDiff === 1 && yDiff === 0) || (xDiff === 0 && yDiff === 1))
         {
             selectedTiles.push(tile);
-            tileGrid.swapTiles(...selectedTiles);
+            tileGrid.swapTiles(context, ...selectedTiles);
 
             // If there are no matches, swap the tiles back
             if(
@@ -60,7 +60,7 @@ function onTileSelect(tile) {
                 !tileGrid.hasMatches(selectedTiles[1].tileGridX, selectedTiles[1].tileGridY)
               )
             {
-                tileGrid.swapTiles(...selectedTiles);
+                tileGrid.swapTiles(context, ...selectedTiles);
             }
 
             selectedTiles.forEach((tile) => { tile.deactivate(); });

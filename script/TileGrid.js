@@ -37,7 +37,7 @@ export default class {
         this.forEachTile(tile => tile.create(context));
     }
 
-    update()
+    update(context)
     {
         const self = this;
 
@@ -66,7 +66,7 @@ export default class {
                 {
                     // If so, move the tile to that spot
                     self.tileGrid[y + 1][x] = tile;
-                    tile.updatePosition(self.offsetX + (50 * x), self.offsetY + (50 * (y + 1)), x, y + 1);
+                    tile.updatePosition(context, self.offsetX + (50 * x), self.offsetY + (50 * (y + 1)), x, y + 1);
 
                     self.tileGrid[y][x] = null;
                 }
@@ -75,7 +75,7 @@ export default class {
         });
     }
 
-    swapTiles(firstTile, secondTile)
+    swapTiles(context, firstTile, secondTile)
     {
         let firstTileX = firstTile.x;
         let firstTileY = firstTile.y;
@@ -87,10 +87,10 @@ export default class {
         let secondTileGridX = secondTile.tileGridX;
         let secondTileGridY = secondTile.tileGridY;
 
-        secondTile.updatePosition(firstTileX, firstTileY, firstTileGridX, firstTileGridY);
+        secondTile.updatePosition(context, firstTileX, firstTileY, firstTileGridX, firstTileGridY);
         this.tileGrid[firstTileGridY][firstTileGridX] = secondTile;
 
-        firstTile.updatePosition(secondTileX, secondTileY, secondTileGridX, secondTileGridY);
+        firstTile.updatePosition(context, secondTileX, secondTileY, secondTileGridX, secondTileGridY);
         this.tileGrid[secondTileGridY][secondTileGridX] = firstTile;
     }
 
