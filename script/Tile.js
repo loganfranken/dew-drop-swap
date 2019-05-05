@@ -1,3 +1,5 @@
+import TileState from './TileState';
+
 export default class {
 
     constructor(tileType, x, y, tileGridX, tileGridY, onTileSelect)
@@ -9,6 +11,7 @@ export default class {
         this.tileGridY = tileGridY;
         this.onTileSelect = onTileSelect;
         this.image = null;
+        this.state = TileState.Active;
     }
 
     create(context)
@@ -37,5 +40,11 @@ export default class {
 
         this.image.x = x;
         this.image.y = y;
+    }
+
+    destroy()
+    {
+        this.image.destroy();
+        this.state = TileState.Destroyed;
     }
 }

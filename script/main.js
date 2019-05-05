@@ -31,6 +31,7 @@ function create()
 
 function update()
 {
+    tileGrid.update();
 }
 
 function onTileSelect(tile) {
@@ -44,7 +45,7 @@ function onTileSelect(tile) {
         selectedTiles = [];
 
         const matchedTiles = tileGrid.getMatches();
-        matchedTiles.forEach(t => t.activate());
+        matchedTiles.forEach(t => t.destroy());
     }
 
 }
