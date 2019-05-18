@@ -52,6 +52,12 @@ function update()
 
 function onTileSelect(context, tile) {
 
+    // Are we currently executing a queued action?
+    if(queue.isActionRunning())
+    {
+        return;
+    }
+
     if(selectedTiles.length === 0)
     {
         selectedTiles.push(tile);
@@ -74,16 +80,20 @@ function onTileSelect(context, tile) {
 
             tileGrid.swapTiles(context, firstSelectedTile, secondSelectedTile);
 
-            /*
-            // If there are no matches, swap the tiles back
-            if(
-                !tileGrid.hasMatches(selectedTiles[0].tileGridX, selectedTiles[0].tileGridY) &&
-                !tileGrid.hasMatches(selectedTiles[1].tileGridX, selectedTiles[1].tileGridY)
-              )
-            {
-                queuedActions.push(() => { return tileGrid.swapTiles(context, firstSelectedTile, secondSelectedTile) });
-            }
-            */
+            queue.push(() => {
+
+                // If there are no matches, swap the tiles back
+                if(
+                    !tileGrid.hasMatches(firstSelectedTile.tileGridX, firstSelectedTile.tileGridY) &&
+                    !tileGrid.hasMatches(secondSelectedTile.tileGridX, secondSelectedTile.tileGridY)
+                )
+                {
+                    tileGrid.swapTiles(context, firstSelectedTile, secondSelectedTile);
+                }
+
+                return Promise.resolve();
+
+            });
 
             selectedTiles.forEach((tile) => { tile.deactivate(); });
             selectedTiles = [];
