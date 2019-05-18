@@ -41,22 +41,14 @@ export default class {
             self.y = y;
             self.tileGridX = tileGridX;
             self.tileGridY = tileGridY;
-    
-            //this.image.x = x;
-            //this.image.y = y;
-    
+            
             context.tweens.add({
                 targets: self.image,
                 x: x,
                 y: y,
                 ease: 'Power1',
-                duration: 5000,
-                //yoyo: true,
-                //repeat: 1,
-                //onStart: function () { console.log('onStart'); console.log(arguments); },
-                onComplete: () => { resolve() },
-                //onYoyo: function () { console.log('onYoyo'); console.log(arguments); },
-                //onRepeat: function () { console.log('onRepeat'); console.log(arguments); },
+                duration: 500,
+                onComplete: () => { resolve() }
             });
 
         });

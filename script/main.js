@@ -1,4 +1,5 @@
 import TileGrid from './TileGrid';
+import ActionQueue from './ActionQueue';
 
 const config = {
     type: Phaser.AUTO,
@@ -12,12 +13,10 @@ const config = {
 };
 
 const game = new Phaser.Game(config);
-
-const queuedActions = [];
-let currentAction = null;
+const queue = new ActionQueue();
 
 let selectedTiles = [];
-const tileGrid = new TileGrid(10, 10, 50, 50, onTileSelect);
+const tileGrid = new TileGrid(10, 10, 50, 50, onTileSelect, queue);
 
 function preload()
 {
@@ -35,19 +34,15 @@ function create()
 function update()
 {
     // Are we currently executing a queued action?
-    if(currentAction != null)
+    if(queue.isActionRunning())
     {
-        // If so, let it finish
-        console.log('Letting something finish...');
         return;
     }
 
     // Do we have any queued actions on the stack?
-    if(queuedActions.length > 0)
+    if(queue.hasActions())
     {
-        // If so, trigger the action
-        currentAction = queuedActions.shift();
-        currentAction().then(() => { currentAction = null; });
+        queue.next();
         return;
     }
 
@@ -77,7 +72,7 @@ function onTileSelect(context, tile) {
             let firstSelectedTile = selectedTiles[0];
             let secondSelectedTile = selectedTiles[1];
 
-            queuedActions.push(() => { return tileGrid.swapTiles(context, firstSelectedTile, secondSelectedTile) });
+            tileGrid.swapTiles(context, firstSelectedTile, secondSelectedTile);
 
             /*
             // If there are no matches, swap the tiles back

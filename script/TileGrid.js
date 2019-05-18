@@ -5,7 +5,7 @@ import TileState from './TileState';
 
 export default class {
 
-    constructor(tileWidth, tileHeight, offsetX, offsetY, onTileSelect)
+    constructor(tileWidth, tileHeight, offsetX, offsetY, onTileSelect, queue)
     {
         this.offsetX = offsetX;
         this.offsetY = offsetY;
@@ -13,6 +13,7 @@ export default class {
         this.tileWidth = tileWidth;
         this.tileGrid = [];
         this.onTileSelect = onTileSelect;
+        this.queue = queue;
 
         for(let y = 0; y < tileHeight; y++)
         {
@@ -45,7 +46,6 @@ export default class {
         const matchedTiles = self.getMatches();
 
         matchedTiles.forEach(t => t.destroy());
-        return;
 
         // Remove any destroyed tiles
         self.forEachTile((tile, x, y) => {
@@ -58,6 +58,8 @@ export default class {
         });
 
         // Push any tiles down
+        let drops = [];
+
         self.forEachTile((tile, x, y) => {
 
             if(y < (self.tileHeight - 1))
@@ -68,20 +70,25 @@ export default class {
                 {
                     // If so, move the tile to that spot
                     self.tileGrid[y + 1][x] = tile;
-                    tile.updatePosition(context, self.offsetX + (50 * x), self.offsetY + (50 * (y + 1)), x, y + 1);
+                    drops.push(tile.updatePosition(context, self.offsetX + (50 * x), self.offsetY + (50 * (y + 1)), x, y + 1));
 
                     self.tileGrid[y][x] = null;
                 }
             }
 
         });
+
+        if(drops.length > 0)
+        {
+            self.queue.push(() => { return Promise.all(drops); });
+        }
     }
 
     swapTiles(context, firstTile, secondTile)
     {
         let self = this;
 
-        return new Promise((resolve, reject) => {
+        self.queue.push(() => {
             
             let firstTileX = firstTile.x;
             let firstTileY = firstTile.y;
@@ -99,7 +106,7 @@ export default class {
             let secondSwap = firstTile.updatePosition(context, secondTileX, secondTileY, secondTileGridX, secondTileGridY);
             self.tileGrid[secondTileGridY][secondTileGridX] = firstTile;
 
-            Promise.all([firstSwap, secondSwap]).then(resolve);
+            return Promise.all([firstSwap, secondSwap]);
 
         });
     }
