@@ -43,7 +43,9 @@ export default class {
 
         // Detect and destroy any matches
         const matchedTiles = self.getMatches();
+
         matchedTiles.forEach(t => t.destroy());
+        return;
 
         // Remove any destroyed tiles
         self.forEachTile((tile, x, y) => {
@@ -77,21 +79,29 @@ export default class {
 
     swapTiles(context, firstTile, secondTile)
     {
-        let firstTileX = firstTile.x;
-        let firstTileY = firstTile.y;
-        let firstTileGridX = firstTile.tileGridX;
-        let firstTileGridY = firstTile.tileGridY;
+        let self = this;
 
-        let secondTileX = secondTile.x;
-        let secondTileY = secondTile.y;
-        let secondTileGridX = secondTile.tileGridX;
-        let secondTileGridY = secondTile.tileGridY;
+        return new Promise((resolve, reject) => {
+            
+            let firstTileX = firstTile.x;
+            let firstTileY = firstTile.y;
+            let firstTileGridX = firstTile.tileGridX;
+            let firstTileGridY = firstTile.tileGridY;
+    
+            let secondTileX = secondTile.x;
+            let secondTileY = secondTile.y;
+            let secondTileGridX = secondTile.tileGridX;
+            let secondTileGridY = secondTile.tileGridY;
+    
+            let firstSwap = secondTile.updatePosition(context, firstTileX, firstTileY, firstTileGridX, firstTileGridY);
+            self.tileGrid[firstTileGridY][firstTileGridX] = secondTile;
+    
+            let secondSwap = firstTile.updatePosition(context, secondTileX, secondTileY, secondTileGridX, secondTileGridY);
+            self.tileGrid[secondTileGridY][secondTileGridX] = firstTile;
 
-        secondTile.updatePosition(context, firstTileX, firstTileY, firstTileGridX, firstTileGridY);
-        this.tileGrid[firstTileGridY][firstTileGridX] = secondTile;
+            Promise.all([firstSwap, secondSwap]).then(resolve);
 
-        firstTile.updatePosition(context, secondTileX, secondTileY, secondTileGridX, secondTileGridY);
-        this.tileGrid[secondTileGridY][secondTileGridX] = firstTile;
+        });
     }
 
     hasMatches(targetGridX, targetGridY)

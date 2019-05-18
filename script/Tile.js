@@ -33,26 +33,32 @@ export default class {
 
     updatePosition(context, x, y, tileGridX, tileGridY)
     {
-        this.x = x;
-        this.y = y;
-        this.tileGridX = tileGridX;
-        this.tileGridY = tileGridY;
+        let self = this;
 
-        //this.image.x = x;
-        //this.image.y = y;
+        return new Promise((resolve, reject) => {
 
-        context.tweens.add({
-            targets: this.image,
-            x: x,
-            y: y,
-            ease: 'Power1',
-            duration: 500
-            //yoyo: true,
-            //repeat: 1,
-            //onStart: function () { console.log('onStart'); console.log(arguments); },
-            //onComplete: function () { console.log('onComplete'); console.log(arguments); },
-            //onYoyo: function () { console.log('onYoyo'); console.log(arguments); },
-            //onRepeat: function () { console.log('onRepeat'); console.log(arguments); },
+            self.x = x;
+            self.y = y;
+            self.tileGridX = tileGridX;
+            self.tileGridY = tileGridY;
+    
+            //this.image.x = x;
+            //this.image.y = y;
+    
+            context.tweens.add({
+                targets: self.image,
+                x: x,
+                y: y,
+                ease: 'Power1',
+                duration: 5000,
+                //yoyo: true,
+                //repeat: 1,
+                //onStart: function () { console.log('onStart'); console.log(arguments); },
+                onComplete: () => { resolve() },
+                //onYoyo: function () { console.log('onYoyo'); console.log(arguments); },
+                //onRepeat: function () { console.log('onRepeat'); console.log(arguments); },
+            });
+
         });
     }
 

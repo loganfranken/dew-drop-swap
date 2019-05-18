@@ -12,9 +12,12 @@ const config = {
 };
 
 const game = new Phaser.Game(config);
-const tileGrid = new TileGrid(10, 10, 50, 50, onTileSelect);
+
+const queuedActions = [];
+let currentAction = null;
 
 let selectedTiles = [];
+const tileGrid = new TileGrid(10, 10, 50, 50, onTileSelect);
 
 function preload()
 {
@@ -31,6 +34,24 @@ function create()
 
 function update()
 {
+    // Are we currently executing a queued action?
+    if(currentAction != null)
+    {
+        // If so, let it finish
+        console.log('Letting something finish...');
+        return;
+    }
+
+    // Do we have any queued actions on the stack?
+    if(queuedActions.length > 0)
+    {
+        // If so, trigger the action
+        currentAction = queuedActions.shift();
+        currentAction().then(() => { currentAction = null; });
+        return;
+    }
+
+    // If nothing's left in the queue, we can move the game's state forward
     tileGrid.update(this);
 }
 
@@ -52,16 +73,22 @@ function onTileSelect(context, tile) {
         if((xDiff === 1 && yDiff === 0) || (xDiff === 0 && yDiff === 1))
         {
             selectedTiles.push(tile);
-            tileGrid.swapTiles(context, ...selectedTiles);
 
+            let firstSelectedTile = selectedTiles[0];
+            let secondSelectedTile = selectedTiles[1];
+
+            queuedActions.push(() => { return tileGrid.swapTiles(context, firstSelectedTile, secondSelectedTile) });
+
+            /*
             // If there are no matches, swap the tiles back
             if(
                 !tileGrid.hasMatches(selectedTiles[0].tileGridX, selectedTiles[0].tileGridY) &&
                 !tileGrid.hasMatches(selectedTiles[1].tileGridX, selectedTiles[1].tileGridY)
               )
             {
-                tileGrid.swapTiles(context, ...selectedTiles);
+                queuedActions.push(() => { return tileGrid.swapTiles(context, firstSelectedTile, secondSelectedTile) });
             }
+            */
 
             selectedTiles.forEach((tile) => { tile.deactivate(); });
             selectedTiles = [];
