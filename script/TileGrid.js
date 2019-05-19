@@ -45,7 +45,13 @@ export default class {
         // Detect and destroy any matches
         const matchedTiles = self.getMatches();
 
-        matchedTiles.forEach(t => t.destroy());
+        let destroys = [];
+        matchedTiles.forEach(t => { destroys.push(t.destroy(context)); });
+
+        if(destroys.length > 0)
+        {
+            self.queue.push(() => { return Promise.all(destroys); });
+        }
 
         // Remove any destroyed tiles
         self.forEachTile((tile, x, y) => {

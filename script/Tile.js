@@ -41,7 +41,7 @@ export default class {
             self.y = y;
             self.tileGridX = tileGridX;
             self.tileGridY = tileGridY;
-            
+
             context.tweens.add({
                 targets: self.image,
                 x: x,
@@ -54,9 +54,26 @@ export default class {
         });
     }
 
-    destroy()
+    destroy(context)
     {
-        this.image.destroy();
-        this.state = TileState.Destroyed;
+        let self = this;
+
+        return new Promise((resolve, reject) => {
+
+            context.tweens.add({
+                targets: self.image,
+                alpha: 0,
+                ease: 'Power1',
+                duration: 500,
+                onComplete: () => {
+
+                    self.image.destroy();
+                    self.state = TileState.Destroyed;
+                    resolve();
+
+                }
+            });
+
+        });
     }
 }
