@@ -54,15 +54,81 @@ export default class {
         }
 
         // Remove any destroyed tiles
+        let bottomEmptyTiles = [];
         self.forEachTile((tile, x, y) => {
 
             if(self.tileGrid[y][x].state === TileState.Destroyed)
             {
                 self.tileGrid[y][x] = null;
+
+                // Cache the bottom-most empty tiles
+                let otherEmptyTile = bottomEmptyTiles.find(e => e.x === x);
+                if(typeof otherEmptyTile === "undefined")
+                {
+                    bottomEmptyTiles.push({ x, y });
+                }
+                else
+                {
+                    otherEmptyTile.y = y;
+                }
+
             }
 
         });
 
+        let drops = [];
+        bottomEmptyTiles.forEach(({x, y}) => {
+
+            // First, find the closest tile above this empty tile
+            let closestTile = null;
+            let closestTileY = y;
+
+            while(closestTileY > 0)
+            {
+                closestTile = self.tileGrid[closestTileY][x];
+
+                if(closestTile != null)
+                {
+                    break;
+                }
+
+                closestTileY--;
+            }
+
+            // Second, set up that tile and all of the tiles above it for dropping
+            if(closestTile != null)
+            {
+                let currY = y;
+                while(closestTileY >= 0)
+                {
+                    self.tileGrid[currY][x] = closestTile;
+                    drops.push(closestTile.updatePosition(context, self.offsetX + (50 * x), self.offsetY + (50 * currY), x, currY));
+
+                    currY--;
+                    closestTileY--;
+
+                    if(closestTileY >= 0)
+                    {
+                        closestTile = self.tileGrid[closestTileY][x];
+                    }
+                }
+            }
+
+        });
+
+        if(drops.length > 0)
+        {
+            self.queue.push(() => { return Promise.all(drops); });
+        }
+
+        return;
+
+
+
+
+
+
+        /*
         // Identify any tiles that need to drop
         let dropTiles = [];
 
@@ -106,6 +172,7 @@ export default class {
         {
             self.queue.push(() => { return Promise.all(drops); });
         }
+        */
     }
 
     swapTiles(context, firstTile, secondTile)
