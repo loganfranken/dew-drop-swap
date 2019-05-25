@@ -197,6 +197,11 @@ export default class {
                 return;
             }
 
+            if(!this.isPlayable(tile))
+            {
+                return;
+            }
+
             const targetTileType = tile.tileType;
             const matchedXTiles = [];
             const matchedYTiles = [];
@@ -330,6 +335,11 @@ export default class {
     }
 
     canSelect(tile)
+    {
+        return this.isPlayable(tile);
+    }
+
+    isPlayable(tile)
     {
         return (tile.tileGridY > (this.tileGridHeight - 1));
     }
