@@ -83,7 +83,7 @@ export default class {
             let closestTile = null;
             let closestTileY = y;
 
-            while(closestTileY > 0)
+            while(closestTileY >= 0)
             {
                 closestTile = self.tileGrid[closestTileY][x];
 
@@ -101,6 +101,14 @@ export default class {
                 let currY = y;
                 while(closestTileY >= 0)
                 {
+                    if(closestTile === null)
+                    {
+                        currY--;
+                        closestTileY--;
+                        continue;
+                    }
+
+                    self.tileGrid[closestTileY][x] = null;
                     self.tileGrid[currY][x] = closestTile;
                     drops.push(closestTile.updatePosition(context, self.offsetX + (50 * x), self.offsetY + (50 * currY), x, currY));
 
@@ -120,59 +128,6 @@ export default class {
         {
             self.queue.push(() => { return Promise.all(drops); });
         }
-
-        return;
-
-
-
-
-
-
-        /*
-        // Identify any tiles that need to drop
-        let dropTiles = [];
-
-        self.forEachTile((tile, x, y) => {
-
-            if(y < (self.tileHeight - 1))
-            {
-                // Is the tile below an empty spot?
-                const belowTile = self.tileGrid[y + 1][x];
-                if(belowTile === null && self.tileGrid[y][x] != null)
-                {
-                    dropTiles.push({ tile, x, y });
-                }
-            }
-
-        });
-
-        let drops = [];
-
-        // Now that we've identified all the tiles that need to drop,
-        // let's queue all of the tiles in those columns to drop
-        dropTiles.forEach(({tile, x, y}) => {
-
-            let currY = y;
-            while(currY >= 0)
-            {
-                let currTile = self.tileGrid[currY][x];
-            
-                if(currTile != null)
-                {
-                    self.tileGrid[currY + 1][x] = currTile;
-                    drops.push(currTile.updatePosition(context, self.offsetX + (50 * x), self.offsetY + (50 * (currY + 1)), x, currY + 1));
-                }
-
-                currY--;
-            }
-
-        });
-
-        if(drops.length > 0)
-        {
-            self.queue.push(() => { return Promise.all(drops); });
-        }
-        */
     }
 
     swapTiles(context, firstTile, secondTile)
