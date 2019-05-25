@@ -54,7 +54,7 @@ export default class {
         });
     }
 
-    destroy(context)
+    destroy(context, container)
     {
         let self = this;
 
@@ -67,6 +67,7 @@ export default class {
                 duration: 500,
                 onComplete: () => {
 
+                    container.remove(self.image);
                     self.image.destroy();
                     self.state = TileState.Destroyed;
                     resolve();

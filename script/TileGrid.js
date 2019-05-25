@@ -13,6 +13,7 @@ export default class {
         this.tileGridHeight = tileGridHeight;
         this.tileGridWidth = tileGridWidth;
         this.tileGrid = [];
+        this.tileImageContainer = null;
         this.playAreaOffset = (this.tileGridHeight * this.tileSize);
         this.onTileSelect = onTileSelect;
         this.queue = queue;
@@ -40,7 +41,20 @@ export default class {
 
     create(context)
     {
-        this.forEachTile(tile => tile.create(context));
+        this.tileImageContainer = context.add.container();
+
+        // Create all of the tiles
+        this.forEachTile(tile => {
+            tile.create(context);
+            this.tileImageContainer.add(tile.image);
+        });
+
+        // Create a mask to only show the play area
+        const maskShape = context.make.graphics();
+        maskShape.fillStyle(0xffffff, 1);
+        maskShape.fillRect(this.offsetX/2, this.offsetY/2, this.tileGridWidth * this.tileSize, this.tileGridHeight * this.tileSize);
+        
+        this.tileImageContainer.mask = new Phaser.Display.Masks.GeometryMask(context, maskShape);
     }
 
     update(context)
@@ -51,7 +65,7 @@ export default class {
         const matchedTiles = self.getMatches();
 
         let destroys = [];
-        matchedTiles.forEach(t => { destroys.push(t.destroy(context)); });
+        matchedTiles.forEach(t => { destroys.push(t.destroy(context, this.tileImageContainer)); });
 
         if(destroys.length > 0)
         {
