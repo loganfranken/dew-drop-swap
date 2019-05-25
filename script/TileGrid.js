@@ -2,6 +2,7 @@ import { getRandomItem } from './Utility';
 import Tile from './Tile';
 import TileType from './TileType';
 import TileState from './TileState';
+import { isBuffer } from 'util';
 
 export default class {
 
@@ -54,7 +55,7 @@ export default class {
         maskShape.fillStyle(0xffffff, 1);
         maskShape.fillRect(this.offsetX/2, this.offsetY/2, this.tileGridWidth * this.tileSize, this.tileGridHeight * this.tileSize);
         
-        this.tileImageContainer.mask = new Phaser.Display.Masks.GeometryMask(context, maskShape);
+        //this.tileImageContainer.mask = new Phaser.Display.Masks.GeometryMask(context, maskShape);
     }
 
     update(context)
@@ -324,6 +325,12 @@ export default class {
 
     getTileY(y)
     {
-        return this.offsetY + (this.tileSize * y) - this.playAreaOffset;
+        //return this.offsetY + (this.tileSize * y) - this.playAreaOffset;
+        return this.offsetY + (this.tileSize * y);
+    }
+
+    canSelect(tile)
+    {
+        return (tile.tileGridY > (this.tileGridHeight - 1));
     }
 }

@@ -4,7 +4,7 @@ import ActionQueue from './ActionQueue';
 const config = {
     type: Phaser.AUTO,
     width: 800,
-    height: 600,
+    height: 1200, // 600
     scene: {
         preload: preload,
         create: create,
@@ -54,6 +54,12 @@ function onTileSelect(context, tile) {
 
     // Are we currently executing a queued action?
     if(queue.isActionRunning())
+    {
+        return;
+    }
+
+    // Can we select this tile?
+    if(!tileGrid.canSelect(tile))
     {
         return;
     }
