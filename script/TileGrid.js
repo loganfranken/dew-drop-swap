@@ -5,20 +5,25 @@ import TileState from './TileState';
 
 export default class {
 
-    constructor(tileWidth, tileHeight, offsetX, offsetY, onTileSelect, queue)
+    constructor(tileGridWidth, tileGridHeight, tileSize, offsetX, offsetY, onTileSelect, queue)
     {
         this.offsetX = offsetX;
         this.offsetY = offsetY;
-        this.tileHeight = tileHeight;
-        this.tileWidth = tileWidth;
+        this.tileSize = tileSize;
+        this.tileGridHeight = tileGridHeight;
+        this.tileGridWidth = tileGridWidth;
         this.tileGrid = [];
+        this.playAreaOffset = (this.tileGridHeight * this.tileSize);
         this.onTileSelect = onTileSelect;
         this.queue = queue;
 
-        for(let y = 0; y < tileHeight; y++)
+        // We're going to generate a grid that's twice the height of
+        // the desired tile grid height since we'll use the hidden, upper
+        // region to stage the bricks that will fall into the play area
+        for(let y = 0; y < tileGridHeight * 2; y++)
         {
             this.tileGrid[y] = [];
-            for(let x = 0; x < tileWidth; x++)
+            for(let x = 0; x < tileGridWidth; x++)
             {
                 const aboveTile = (y < 1) ? null : this.tileGrid[y - 1][x];
                 const leftTile = (x < 1) ? null : this.tileGrid[y][x - 1];
@@ -28,7 +33,7 @@ export default class {
                     (leftTile === null || t.name !== leftTile.tileType.name)
                 ));
 
-                this.tileGrid[y][x] = new Tile(tileType, this.offsetX + (50 * x), this.offsetY + (50 * y), x, y, this.onTileSelect);
+                this.tileGrid[y][x] = this.createTile(tileType, x, y);
             }
         }
     }
@@ -110,7 +115,7 @@ export default class {
 
                     self.tileGrid[closestTileY][x] = null;
                     self.tileGrid[currY][x] = closestTile;
-                    drops.push(closestTile.updatePosition(context, self.offsetX + (50 * x), self.offsetY + (50 * currY), x, currY));
+                    drops.push(this.getTileDrop(context, closestTile, x, currY));
 
                     currY--;
                     closestTileY--;
@@ -183,7 +188,7 @@ export default class {
 
             // Check for matches to the right
             let currX = (x + 1);
-            while(currX < self.tileWidth)
+            while(currX < self.tileGridWidth)
             {
                 const currTile = self.tileGrid[y][currX];
 
@@ -219,7 +224,7 @@ export default class {
 
             // Check matches downwards
             let currY = (y + 1);
-            while(currY < self.tileHeight)
+            while(currY < self.tileGridHeight)
             {
                 const currTile = self.tileGrid[currY][x];
 
@@ -274,9 +279,9 @@ export default class {
 
     forEachTile(callback)
     {
-        for(let y = 0; y < this.tileHeight; y++)
+        for(let y = 0; y < this.tileGridHeight * 2; y++)
         {
-            for(let x = 0; x < this.tileWidth; x++)
+            for(let x = 0; x < this.tileGridWidth; x++)
             {
                 const currTile = this.tileGrid[y][x];
 
@@ -286,5 +291,25 @@ export default class {
                 }
             }
         }
+    }
+
+    createTile(tileType, x, y)
+    {
+        return new Tile(tileType, this.getTileX(x), this.getTileY(y), x, y, this.onTileSelect);
+    }
+
+    getTileDrop(context, tile, x, y)
+    {
+        return tile.updatePosition(context, this.getTileX(x), this.getTileY(y), x, y);
+    }
+
+    getTileX(x)
+    {
+        return this.offsetX + (this.tileSize * x);
+    }
+
+    getTileY(y)
+    {
+        return this.offsetY + (this.tileSize * y) - this.playAreaOffset;
     }
 }

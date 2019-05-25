@@ -16,7 +16,7 @@ const game = new Phaser.Game(config);
 const queue = new ActionQueue();
 
 let selectedTiles = [];
-const tileGrid = new TileGrid(10, 10, 50, 50, onTileSelect, queue);
+const tileGrid = new TileGrid(10, 10, 50, 50, 50, onTileSelect, queue);
 
 function preload()
 {
