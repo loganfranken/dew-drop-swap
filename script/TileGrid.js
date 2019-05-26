@@ -74,75 +74,45 @@ export default class {
         }
 
         // Remove any destroyed tiles
-        let bottomEmptyTiles = [];
         self.forEachTile((tile, x, y) => {
 
             if(self.tileGrid[y][x].state === TileState.Destroyed)
             {
                 self.tileGrid[y][x] = null;
-
-                // Cache the bottom-most empty tiles
-                let otherEmptyTile = bottomEmptyTiles.find(e => e.x === x);
-                if(typeof otherEmptyTile === "undefined")
-                {
-                    bottomEmptyTiles.push({ x, y });
-                }
-                else
-                {
-                    otherEmptyTile.y = y;
-                }
-
             }
 
         });
 
+        // Shift all of the tiles downward to fill empty spots
         let drops = [];
-        bottomEmptyTiles.forEach(({x, y}) => {
-
-            // First, find the closest tile above this empty tile
-            let closestTile = null;
-            let closestTileY = y;
-
-            while(closestTileY >= 0)
+        for(let x = 0; x < this.tileGridWidth; x++)
+        {
+            let y = (this.tileGridHeight * 2) - 1;
+            while(y >= 0)
             {
-                closestTile = self.tileGrid[closestTileY][x];
-
-                if(closestTile != null)
+                // If the tile is null...
+                if(self.tileGrid[y][x] === null)
                 {
-                    break;
-                }
-
-                closestTileY--;
-            }
-
-            // Second, set up that tile and all of the tiles above it for dropping
-            if(closestTile != null)
-            {
-                let currY = y;
-                while(closestTileY >= 0)
-                {
-                    if(closestTile === null)
+                    // ...find the closest tile that's not null...
+                    let closestY = y - 1;
+                    while(closestY >= 0)
                     {
-                        currY--;
-                        closestTileY--;
-                        continue;
-                    }
-
-                    self.tileGrid[closestTileY][x] = null;
-                    self.tileGrid[currY][x] = closestTile;
-                    drops.push(this.getTileDrop(context, closestTile, x, currY));
-
-                    currY--;
-                    closestTileY--;
-
-                    if(closestTileY >= 0)
-                    {
-                        closestTile = self.tileGrid[closestTileY][x];
+                        let closestTile = self.tileGrid[closestY][x];
+                        if(closestTile !== null)
+                        {
+                            // ...and shift it downward
+                            self.tileGrid[y][x] = closestTile;
+                            self.tileGrid[closestY][x] = null;
+                            drops.push(this.getTileDrop(context, closestTile, x, y));
+                            y--;
+                        }
+                        closestY--;
                     }
                 }
-            }
 
-        });
+                y--;
+            }
+        }
 
         if(drops.length > 0)
         {
