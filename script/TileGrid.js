@@ -27,15 +27,7 @@ export default class {
             this.tileGrid[y] = [];
             for(let x = 0; x < tileGridWidth; x++)
             {
-                const aboveTile = (y < 1) ? null : this.tileGrid[y - 1][x];
-                const leftTile = (x < 1) ? null : this.tileGrid[y][x - 1];
-
-                const tileType = getRandomItem(TileType.filter(t =>
-                    (aboveTile === null || t.name !== aboveTile.tileType.name) &&
-                    (leftTile === null || t.name !== leftTile.tileType.name)
-                ));
-
-                this.tileGrid[y][x] = this.createTile(tileType, x, y);
+                this.tileGrid[y][x] = this.createTile(this.getTileType(x, y), x, y);
             }
         }
     }
@@ -76,7 +68,7 @@ export default class {
         // Remove any destroyed tiles
         self.forEachTile((tile, x, y) => {
 
-            if(self.tileGrid[y][x].state === TileState.Destroyed)
+            if(tile.state === TileState.Destroyed)
             {
                 self.tileGrid[y][x] = null;
             }
@@ -113,6 +105,18 @@ export default class {
                 y--;
             }
         }
+
+        // Fill in all of the empty tiles
+        self.forEachTile((tile, x, y) => {
+            if(tile === null)
+            {
+                const tile = self.createTile(self.getTileType(x, y), x, y);
+                console.log(tile);
+                self.tileGrid[y][x] = tile;
+                tile.create(context);
+                self.tileImageContainer.add(tile.image);
+            }
+        });
 
         if(drops.length > 0)
         {
@@ -274,11 +278,7 @@ export default class {
             for(let x = 0; x < this.tileGridWidth; x++)
             {
                 const currTile = this.tileGrid[y][x];
-
-                if(currTile != null)
-                {
-                    callback(this.tileGrid[y][x], x, y);
-                }
+                callback(this.tileGrid[y][x], x, y);
             }
         }
     }
@@ -312,5 +312,16 @@ export default class {
     isPlayable(tile)
     {
         return (tile.tileGridY > (this.tileGridHeight - 1));
+    }
+
+    getTileType(x, y)
+    {
+        const aboveTile = (y < 1) ? null : this.tileGrid[y - 1][x];
+        const leftTile = (x < 1) ? null : this.tileGrid[y][x - 1];
+
+        return getRandomItem(TileType.filter(t =>
+            (aboveTile === null || t.name !== aboveTile.tileType.name) &&
+            (leftTile === null || t.name !== leftTile.tileType.name)
+        ));
     }
 }
