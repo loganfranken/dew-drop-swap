@@ -6,7 +6,7 @@ import { isBuffer } from 'util';
 
 export default class {
 
-    constructor(tileGridWidth, tileGridHeight, tileSize, offsetX, offsetY, onTileSelect, queue)
+    constructor(tileGridWidth, tileGridHeight, tileSize, offsetX, offsetY, onTileSelect, onTileMatch, queue)
     {
         this.offsetX = offsetX;
         this.offsetY = offsetY;
@@ -16,7 +16,10 @@ export default class {
         this.tileGrid = [];
         this.tileImageContainer = null;
         this.playAreaOffset = (this.tileGridHeight * this.tileSize);
+
         this.onTileSelect = onTileSelect;
+        this.onTileMatch = onTileMatch;
+
         this.queue = queue;
 
         // We're going to generate a grid that's twice the height of
@@ -56,6 +59,11 @@ export default class {
 
         // Detect and destroy any matches
         const matchedTiles = self.getMatches();
+
+        if(matchedTiles.length > 0)
+        {
+            self.onTileMatch(matchedTiles);
+        }
 
         let destroys = [];
         matchedTiles.forEach(t => { destroys.push(t.destroy(context, this.tileImageContainer)); });

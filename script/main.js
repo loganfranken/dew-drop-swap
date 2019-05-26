@@ -1,5 +1,6 @@
-import TileGrid from './TileGrid';
 import ActionQueue from './ActionQueue';
+import ScoreDisplay from './ScoreDisplay';
+import TileGrid from './TileGrid';
 
 const config = {
     type: Phaser.AUTO,
@@ -16,7 +17,8 @@ const game = new Phaser.Game(config);
 const queue = new ActionQueue();
 
 let selectedTiles = [];
-const tileGrid = new TileGrid(10, 10, 50, 50, 50, onTileSelect, queue);
+const tileGrid = new TileGrid(10, 10, 50, 50, 50, onTileSelect, onTileMatch, queue);
+const scoreDisplay = new ScoreDisplay(5, 5);
 
 function preload()
 {
@@ -29,6 +31,7 @@ function preload()
 function create()
 {
     tileGrid.create(this);
+    scoreDisplay.create(this);
 }
 
 function update()
@@ -106,4 +109,9 @@ function onTileSelect(context, tile) {
         }
     }
 
+}
+
+function onTileMatch(matchedTiles)
+{
+    console.log(matchedTiles);
 }
