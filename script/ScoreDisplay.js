@@ -12,4 +12,10 @@ export default class {
     {
         this.text = context.add.text(this.x, this.y, this.score);
     }
+
+    updateScore(score)
+    {
+        this.score = score;
+        this.text.setText(score);
+    }
 }

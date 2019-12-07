@@ -13,6 +13,8 @@ const config = {
     }
 };
 
+let score = 0;
+
 const game = new Phaser.Game(config);
 const queue = new ActionQueue();
 
@@ -113,5 +115,6 @@ function onTileSelect(context, tile) {
 
 function onTileMatch(matchedTiles)
 {
-    console.log(matchedTiles);
+    score += 10;
+    scoreDisplay.updateScore(score);
 }
