@@ -1,8 +1,8 @@
 import { getRandomItem } from './Utility';
 import Tile from './Tile';
-import TileType from './TileType';
+import TileGenerationBehavior from './TileGenerationBehavior';
 import TileState from './TileState';
-import { isBuffer } from 'util';
+import TileType from './TileType';
 
 export default class {
 
@@ -30,7 +30,7 @@ export default class {
             this.tileGrid[y] = [];
             for(let x = 0; x < tileGridWidth; x++)
             {
-                this.tileGrid[y][x] = this.createTile(this.getTileType(x, y), x, y);
+                this.tileGrid[y][x] = this.createTile(this.getTileType(x, y, TileGenerationBehavior.None), x, y);
             }
         }
     }
@@ -48,9 +48,9 @@ export default class {
         // Create a mask to only show the play area
         const maskShape = context.make.graphics();
         maskShape.fillStyle(0xffffff, 1);
-        maskShape.fillRect(this.offsetX/2, this.offsetY/2, this.tileGridWidth * this.tileSize, this.tileGridHeight * this.tileSize);
+        maskShape.fillRect(this.offsetX/2, this.offsetY/2 + (this.tileGridHeight * this.tileSize), this.tileGridWidth * this.tileSize, this.tileGridHeight * this.tileSize);
         
-        //this.tileImageContainer.mask = new Phaser.Display.Masks.GeometryMask(context, maskShape);
+        this.tileImageContainer.mask = new Phaser.Display.Masks.GeometryMask(context, maskShape);
     }
 
     update(context)
@@ -118,7 +118,7 @@ export default class {
         self.forEachTile((tile, x, y) => {
             if(tile === null)
             {
-                const tile = self.createTile(self.getTileType(x, y), x, y);
+                const tile = self.createTile(self.getTileType(x, y, TileGenerationBehavior.EasyWin), x, y);
                 self.tileGrid[y][x] = tile;
                 tile.create(context);
                 self.tileImageContainer.add(tile.image);
@@ -321,14 +321,21 @@ export default class {
         return (tile.tileGridY > (this.tileGridHeight - 1));
     }
 
-    getTileType(x, y)
+    getTileType(x, y, behavior)
     {
         const aboveTile = (y < 1) ? null : this.tileGrid[y - 1][x];
         const leftTile = (x < 1) ? null : this.tileGrid[y][x - 1];
 
-        return getRandomItem(TileType.filter(t =>
-            (aboveTile === null || t.name !== aboveTile.tileType.name) &&
-            (leftTile === null || t.name !== leftTile.tileType.name)
-        ));
+        if(behavior == TileGenerationBehavior.EasyWin && (aboveTile != null || leftTile != null))
+        {
+            return getRandomItem([aboveTile, leftTile].filter(t => t != null).map(t => t.tileType));
+        }
+        else
+        {
+            return getRandomItem(TileType.filter(t =>
+                (aboveTile === null || t.name !== aboveTile.tileType.name) &&
+                (leftTile === null || t.name !== leftTile.tileType.name)
+            ));
+        }
     }
 }
