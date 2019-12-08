@@ -119,7 +119,6 @@ export default class {
             if(tile === null)
             {
                 const tile = self.createTile(self.getTileType(x, y), x, y);
-                console.log(tile);
                 self.tileGrid[y][x] = tile;
                 tile.create(context);
                 self.tileImageContainer.add(tile.image);

@@ -9,12 +9,13 @@ export default class extends Phaser.Scene {
     {
         super('RoundScene');
 
-        this.score = 0;
+        this.score = null;
         this.queue = null;
         this.selectedTiles = null;
         this.tileGrid = null;
         this.scoreDisplay = null;
         this.timer = null;
+        this.comboCount = null;
     }
 
     preload()
@@ -28,9 +29,11 @@ export default class extends Phaser.Scene {
     create()
     {
         this.score = 0;
-        this.queue = new ActionQueue();
-        this.selectedTiles = [];
+        this.comboCount = 0;
 
+        this.queue = new ActionQueue();
+
+        this.selectedTiles = [];
         this.tileGrid = new TileGrid(10, 10, 50, 50, 50, this.onTileSelect, this.onTileMatch, this.queue);
         this.scoreDisplay = new ScoreDisplay(5, 5);
         this.timer = new Timer(500, 5, 30);
@@ -119,13 +122,17 @@ export default class extends Phaser.Scene {
     
                 context.selectedTiles.forEach((tile) => { tile.deactivate(); });
                 context.selectedTiles = [];
+                
+                context.comboCount = 0;
             }
         }
     }
 
     onTileMatch(context, matchedTiles)
     {
-        context.score += 10;
+        context.comboCount++;
+
+        context.score += (10 * context.comboCount);
         context.scoreDisplay.updateScore(context.score);
     }
     
