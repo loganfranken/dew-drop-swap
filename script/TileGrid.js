@@ -62,7 +62,7 @@ export default class {
 
         if(matchedTiles.length > 0)
         {
-            self.onTileMatch(matchedTiles);
+            self.onTileMatch(context, matchedTiles);
         }
 
         let destroys = [];
