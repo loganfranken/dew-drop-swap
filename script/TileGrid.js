@@ -129,17 +129,17 @@ export default class {
         }
 
         // Fill in all of the empty tiles
-        /*
-        self.forEachTile((tile, x, y) => {
+        self.forEachPlayableTile((tile, x, y) => {
             if(tile === null)
             {
-                const tile = self.createTile(self.getTileType(x, y, TileGenerationBehavior.EasyWin), x, y);
-                self.tileGrid[y][x] = tile;
+                const adjustedY = self.tileGridHeight - (y - self.tileGridHeight) - 1;
+
+                const tile = self.createTile(self.getTileType(x, y, TileGenerationBehavior.EasyWin), x, adjustedY);
+                self.tileGrid[adjustedY][x] = tile;
                 tile.create(context);
                 self.tileImageContainer.add(tile.image);
             }
         });
-        */
 
         if(drops.length > 0)
         {
@@ -300,7 +300,17 @@ export default class {
         {
             for(let x = 0; x < this.tileGridWidth; x++)
             {
-                const currTile = this.tileGrid[y][x];
+                callback(this.tileGrid[y][x], x, y);
+            }
+        }
+    }
+
+    forEachPlayableTile(callback)
+    {
+        for(let y = this.tileGridHeight; y < this.tileGridHeight * 2; y++)
+        {
+            for(let x = 0; x < this.tileGridWidth; x++)
+            {
                 callback(this.tileGrid[y][x], x, y);
             }
         }
