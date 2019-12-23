@@ -30,7 +30,9 @@ export default class {
             this.tileGrid[y] = [];
             for(let x = 0; x < tileGridWidth; x++)
             {
-                this.tileGrid[y][x] = this.createTile(this.getTileType(x, y, TileGenerationBehavior.None), x, y);
+                this.tileGrid[y][x] = (y < tileGridHeight)
+                    ? null
+                    : this.createTile(this.getTileType(x, y, TileGenerationBehavior.None), x, y);
             }
         }
     }
@@ -41,16 +43,23 @@ export default class {
 
         // Create all of the tiles
         this.forEachTile(tile => {
+
+            if(tile === null)
+            {
+                return;
+            }
+
             tile.create(context);
             this.tileImageContainer.add(tile.image);
+
         });
 
         // Create a mask to only show the play area
-        const maskShape = context.make.graphics();
-        maskShape.fillStyle(0xffffff, 1);
-        maskShape.fillRect(this.offsetX/2, this.offsetY/2 + (this.tileGridHeight * this.tileSize), this.tileGridWidth * this.tileSize, this.tileGridHeight * this.tileSize);
+        //const maskShape = context.make.graphics();
+        //maskShape.fillStyle(0xffffff, 1);
+        //maskShape.fillRect(this.offsetX/2, this.offsetY/2 + (this.tileGridHeight * this.tileSize), this.tileGridWidth * this.tileSize, this.tileGridHeight * this.tileSize);
         
-        this.tileImageContainer.mask = new Phaser.Display.Masks.GeometryMask(context, maskShape);
+        //this.tileImageContainer.mask = new Phaser.Display.Masks.GeometryMask(context, maskShape);
     }
 
     update(context)
@@ -75,6 +84,11 @@ export default class {
 
         // Remove any destroyed tiles
         self.forEachTile((tile, x, y) => {
+
+            if(tile === null)
+            {
+                return;
+            }
 
             if(tile.state === TileState.Destroyed)
             {
@@ -115,6 +129,7 @@ export default class {
         }
 
         // Fill in all of the empty tiles
+        /*
         self.forEachTile((tile, x, y) => {
             if(tile === null)
             {
@@ -124,6 +139,7 @@ export default class {
                 self.tileImageContainer.add(tile.image);
             }
         });
+        */
 
         if(drops.length > 0)
         {
@@ -318,7 +334,7 @@ export default class {
 
     isPlayable(tile)
     {
-        return (tile.tileGridY > (this.tileGridHeight - 1));
+        return (tile != null) && (tile.tileGridY > (this.tileGridHeight - 1));
     }
 
     getTileType(x, y, behavior)
