@@ -12,6 +12,7 @@ export default class {
         this.onTileSelect = onTileSelect;
         this.image = null;
         this.state = TileState.Active;
+        this.isActivated = false;
     }
 
     create(context)
@@ -23,11 +24,13 @@ export default class {
 
     activate()
     {
+        this.isActivated = true;
         this.image.setTintFill(0xffffff);
     }
 
     deactivate()
     {
+        this.isActivated = false;
         this.image.clearTint();
     }
 

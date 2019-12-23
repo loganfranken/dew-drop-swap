@@ -82,6 +82,14 @@ export default class extends Phaser.Scene {
         {
             return;
         }
+
+        // Is this tile already selected?
+        if(tile.isActivated)
+        {
+            context.selectedTiles = [];
+            tile.deactivate();
+            return;
+        }
     
         if(context.selectedTiles.length === 0)
         {
