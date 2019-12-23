@@ -7,8 +7,15 @@ export default class extends Phaser.Scene {
 
     create()
     {
+        const self = this;
+
+        // Title
         this.add.text(50, 50, 'Match Three!');
-        this.time.addEvent({ delay: 1000, callback: function() { this.scene.start('RoundScene') }, callbackScope: this })
+
+        // Button
+        const startBtn = this.add.text(50, 70, 'Start Game');
+        startBtn.setInteractive();
+        startBtn.on('pointerdown', () => { self.scene.start('RoundScene'); });
     }
     
 }
