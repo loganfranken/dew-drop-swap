@@ -132,7 +132,7 @@ export default class {
         self.forEachPlayableTile((tile, x, y) => {
             if(tile === null)
             {
-                const adjustedY = self.tileGridHeight - (y - self.tileGridHeight) - 1;
+                const adjustedY = y - self.tileGridHeight;
 
                 const tile = self.createTile(self.getTileType(x, y, TileGenerationBehavior.EasyWin), x, adjustedY);
                 self.tileGrid[adjustedY][x] = tile;
@@ -333,7 +333,6 @@ export default class {
 
     getTileY(y)
     {
-        //return this.offsetY + (this.tileSize * y) - this.playAreaOffset;
         return this.offsetY + (this.tileSize * y);
     }
 
@@ -350,11 +349,14 @@ export default class {
     getTileType(x, y, behavior)
     {
         const aboveTile = (y < 1) ? null : this.tileGrid[y - 1][x];
-        const leftTile = (x < 1) ? null : this.tileGrid[y][x - 1];
+        const belowTile = (y > self.tileGridHeight - 1 || !this.tileGrid[y + 1]) ? null : this.tileGrid[y + 1][x];
 
-        if(behavior == TileGenerationBehavior.EasyWin && (aboveTile != null || leftTile != null))
+        const leftTile = (x < 1) ? null : this.tileGrid[y][x - 1];
+        const rightTile = (x > self.tileGridWidth - 1) ? null : this.tileGrid[y][x + 1];
+
+        if(behavior == TileGenerationBehavior.EasyWin && (aboveTile != null || belowTile != null || leftTile != null || rightTile != null))
         {
-            return getRandomItem([aboveTile, leftTile].filter(t => t != null).map(t => t.tileType));
+            return getRandomItem([aboveTile, belowTile, leftTile, rightTile].filter(t => t != null).map(t => t.tileType));
         }
         else
         {
