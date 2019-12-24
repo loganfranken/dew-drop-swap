@@ -55,16 +55,21 @@ export default class {
         });
 
         // Create a mask to only show the play area
-        //const maskShape = context.make.graphics();
-        //maskShape.fillStyle(0xffffff, 1);
-        //maskShape.fillRect(this.offsetX/2, this.offsetY/2 + (this.tileGridHeight * this.tileSize), this.tileGridWidth * this.tileSize, this.tileGridHeight * this.tileSize);
+        const maskShape = context.make.graphics();
+        maskShape.fillStyle(0xffffff, 1);
+        maskShape.fillRect(this.offsetX/2, this.offsetY/2 + (this.tileGridHeight * this.tileSize), this.tileGridWidth * this.tileSize, this.tileGridHeight * this.tileSize);
         
-        //this.tileImageContainer.mask = new Phaser.Display.Masks.GeometryMask(context, maskShape);
+        this.tileImageContainer.mask = new Phaser.Display.Masks.GeometryMask(context, maskShape);
     }
 
     update(context)
     {
         const self = this;
+
+        if(self.queue.length > 0)
+        {
+            return;
+        }
 
         // Detect and destroy any matches
         const matchedTiles = self.getMatches();
