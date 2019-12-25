@@ -1,4 +1,5 @@
 import ActionQueue from '../ActionQueue';
+import Guide from '../Guide';
 import ScoreDisplay from '../ScoreDisplay';
 import TileGrid from '../TileGrid';
 import Timer from '../Timer';
@@ -16,6 +17,7 @@ export default class extends Phaser.Scene {
         this.scoreDisplay = null;
         this.timer = null;
         this.comboCount = null;
+        this.guide = null;
     }
 
     preload()
@@ -37,10 +39,12 @@ export default class extends Phaser.Scene {
         this.tileGrid = new TileGrid(6, 6, 50, 50, 50, this.onTileSelect, this.onTileMatch, this.queue);
         this.scoreDisplay = new ScoreDisplay(5, 5);
         this.timer = new Timer(500, 5, 300);
+        this.guide = new Guide(20, 20);
 
         this.tileGrid.create(this);
         this.scoreDisplay.create(this);
         this.timer.create(this);
+        this.guide.create(this);
     }
 
     update()
@@ -142,6 +146,15 @@ export default class extends Phaser.Scene {
 
         context.score += (10 * context.comboCount);
         context.scoreDisplay.updateScore(context.score);
+
+        if(context.comboCount > 1)
+        {
+            context.guide.updateMessage(`That's ${context.comboCount} combos!`);
+        }
+        else
+        {
+            context.guide.updateMessage('You got a match!');
+        }
     }
     
 }
