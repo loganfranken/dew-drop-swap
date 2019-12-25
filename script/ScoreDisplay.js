@@ -4,18 +4,25 @@ export default class {
     {
         this.x = x;
         this.y = y;
-        this.text = null;
+        this.scoreText = null;
+        this.comboText = null;
         this.score = 0;
     }
 
     create(context)
     {
-        this.text = context.add.text(this.x, this.y, this.score);
+        this.scoreText = context.add.text(this.x, this.y, this.score);
+        this.comboText = context.add.text(this.x, this.y + 20, '');
     }
 
     updateScore(score)
     {
         this.score = score;
-        this.text.setText(score);
+        this.scoreText.setText(score);
+    }
+
+    updateCombo(text)
+    {
+        this.comboText.setText(text);
     }
 }
