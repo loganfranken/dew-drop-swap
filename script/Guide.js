@@ -1,9 +1,10 @@
 export default class {
 
-    constructor(x, y)
+    constructor(x, y, script)
     {
         this.x = x;
         this.y = y;
+        this.script = script;
 
         this.messageTimer = null;
         this.currMessageIndex = 0;
@@ -43,55 +44,65 @@ export default class {
             characterWidth,
             characterHeight);
         characterGraphics.fillRectShape(character);
+
+        self.queueMessages(context, this.script.introMessages);
     }
 
     queueMessages(context, messages)
     {
-        const self = this;
-        
-        if(self.messageTimer != null)
+        if(!messages)
         {
-            return new Promise((resolve, reject) => { resolve(); });
+            return;
         }
 
-        this.queuedMessages = messages;
-        return new Promise((resolve, reject) => {
+        const self = this;
 
-            self.messageTimer = context.time.addEvent({
-                delay: 50,
-                callback: () => {
-                    if(self.queuedMessages.length === 0)
-                    {
-                        self.messageTimer.remove();
-                        self.messageTimer = null;
-                        resolve();
-                        return;
-                    }
-    
-                    self.currMessageIndex++;
+        if(self.queuedMessages === null)
+        {
+            self.queuedMessages = [];
+        }
 
-                    const currMessage = self.queuedMessages[0];
-    
-                    if(self.currMessageIndex > currMessage.length)
-                    {
-                        self.currMessageIndex = 0;
-                        self.queuedMessages.shift();
-                        self.messageTimer.paused = true;
-                        return;
-                    }
-    
-                    const message = currMessage.slice(0, self.currMessageIndex);
-                    self.speechBubbleText.setText(message);
-                },
-                callbackScope: this,
-                loop: true
-            });
+        self.queuedMessages.push(...messages);
 
+        if(self.messageTimer != null)
+        {
+            return;
+        }
+
+        self.messageTimer = context.time.addEvent({
+            delay: 50,
+            callback: () => {
+                if(self.queuedMessages.length === 0)
+                {
+                    self.messageTimer.remove();
+                    self.messageTimer = null;
+                    resolve();
+                    return;
+                }
+
+                self.currMessageIndex++;
+
+                const currMessage = self.queuedMessages[0];
+
+                if(self.currMessageIndex > currMessage.length)
+                {
+                    self.currMessageIndex = 0;
+                    self.queuedMessages.shift();
+                    self.messageTimer.paused = true;
+                    return;
+                }
+
+                const message = currMessage.slice(0, self.currMessageIndex);
+                self.speechBubbleText.setText(message);
+            },
+            callbackScope: this,
+            loop: true
         });
     }
 
-    updateMessage(text)
+    displayTileMatchMessage(context, data)
     {
-        this.speechBubbleText.setText(text);
+        const messages = this.script.getDisplayTileMatchMessages(data);
+        this.queueMessages(context, messages);
     }
 }
