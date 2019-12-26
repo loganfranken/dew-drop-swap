@@ -20,6 +20,8 @@ export default class {
         this.onTileSelect = onTileSelect;
         this.onTileMatch = onTileMatch;
 
+        this.tileGenerationBehavior = TileGenerationBehavior.None;
+
         this.queue = queue;
 
         // We're going to generate a grid that's twice the height of
@@ -32,7 +34,7 @@ export default class {
             {
                 this.tileGrid[y][x] = (y < tileGridHeight)
                     ? null
-                    : this.createTile(this.getTileType(x, y, TileGenerationBehavior.None), x, y);
+                    : this.createTile(this.getTileType(x, y, this.tileGenerationBehavior), x, y);
             }
         }
     }
@@ -139,7 +141,7 @@ export default class {
             {
                 const adjustedY = y - self.tileGridHeight;
 
-                const tile = self.createTile(self.getTileType(x, y, TileGenerationBehavior.EasyWin), x, adjustedY);
+                const tile = self.createTile(self.getTileType(x, y, self.tileGenerationBehavior), x, adjustedY);
                 self.tileGrid[adjustedY][x] = tile;
                 tile.create(context);
                 self.tileImageContainer.add(tile.image);

@@ -15,7 +15,7 @@ export default class extends Phaser.Scene {
         // "Start" Button
         const startBtn = this.add.text(50, 70, 'Start Game');
         startBtn.setInteractive();
-        startBtn.on('pointerdown', () => { self.scene.start('RoundScene'); });
+        startBtn.on('pointerdown', () => { self.scene.start('RoundScene', { level: 0 }); });
     }
     
 }

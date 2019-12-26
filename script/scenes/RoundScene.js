@@ -18,6 +18,7 @@ export default class extends Phaser.Scene {
         this.timer = null;
         this.comboCount = null;
         this.guide = null;
+        this.level = null;
     }
 
     preload()
@@ -26,6 +27,11 @@ export default class extends Phaser.Scene {
         this.load.image('tile_02', 'assets/tile_02.png');
         this.load.image('tile_03', 'assets/tile_03.png');
         this.load.image('tile_04', 'assets/tile_04.png');
+    }
+
+    init(data)
+    {
+        this.level = data.level;
     }
 
     create()
@@ -39,12 +45,24 @@ export default class extends Phaser.Scene {
         this.tileGrid = new TileGrid(6, 6, 50, 50, 50, this.onTileSelect, this.onTileMatch, this.queue);
         this.scoreDisplay = new ScoreDisplay(5, 5);
         this.timer = new Timer(500, 5, 300);
-        this.guide = new Guide(100, 100);
+        this.guide = new Guide(100, 100, this.level);
 
         this.tileGrid.create(this);
         this.scoreDisplay.create(this);
         this.timer.create(this);
         this.guide.create(this);
+
+        if(this.level === 0)
+        {
+            this.guide.queueMessages(this,
+                [
+                    "Oh, doozle, you made it! You're here!",
+                    "We need your help collecting dew drops!",
+                    "If you match three or more dew drops of the same color, we can collect them!",
+                    "To make a match, click on one or more dew drops to swap their places!"
+                ]
+            );
+        }
     }
 
     update()
