@@ -59,6 +59,9 @@ export default class extends Phaser.Scene {
         this.scoreDisplay.create(this);
         this.timer.create(this);
         this.guide.create(this);
+
+        const self = this;
+        this.input.on('pointerdown', () => { self.guide.progressDialogue(); });
     }
 
     update()

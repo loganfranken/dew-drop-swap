@@ -12,10 +12,10 @@ export default class {
             case 0:
 
                 script.introMessages = [
-                    "Oh, doozle, you made it! You're here!",
+                    "Oh, doozle, you made it! You're here! (Click or tap anywhere!)",
                     "We need your help collecting dew drops!",
                     "If you match three or more dew drops of the same color, we can collect them!",
-                    "To make a match, click on one or more dew drops to swap their places!"
+                    "To make a match, select two dew drops to swap their places!"
                 ];
 
                 script.getDisplayTileMatchMessages = (data) => {

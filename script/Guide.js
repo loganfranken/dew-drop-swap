@@ -27,13 +27,6 @@ export default class {
         const speechBubble = new Phaser.Geom.Rectangle(this.x, this.y, speechBubbleWidth, speechBubbleHeight);
         speechBubbleGraphics.fillRectShape(speechBubble);
 
-        context.input.on('pointerdown', (pointer) => {
-            if(speechBubble.contains(pointer.x, pointer.y))
-            {
-                self.messageTimer.paused = false;
-            }
-        });
-
         // Speech Bubble Text
         const speechBubbleTextStyle = { color: '#000', wordWrap: { width: speechBubbleWidth, useAdvancedWrap: true } };
         this.speechBubbleText = context.add.text(this.x + 5, this.y + 5, '', speechBubbleTextStyle);
@@ -107,5 +100,10 @@ export default class {
     {
         const messages = this.script.getDisplayTileMatchMessages(data);
         this.queueMessages(context, messages);
+    }
+
+    progressDialogue()
+    {
+        this.messageTimer.paused = false;
     }
 }
