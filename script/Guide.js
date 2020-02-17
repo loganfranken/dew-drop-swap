@@ -35,7 +35,8 @@ export default class {
         });
 
         // Speech Bubble Text
-        this.speechBubbleText = context.add.text(this.x + 5, this.y + 5, '', { color: '#000' });
+        const speechBubbleTextStyle = { color: '#000', wordWrap: { width: speechBubbleWidth, useAdvancedWrap: true } };
+        this.speechBubbleText = context.add.text(this.x + 5, this.y + 5, '', speechBubbleTextStyle);
 
         // Character
         const characterGraphics = context.add.graphics({ fillStyle: { color: 0xff0000 } });
