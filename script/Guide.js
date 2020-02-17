@@ -9,6 +9,7 @@ export default class {
         this.messageTimer = null;
         this.currMessageIndex = 0;
         this.queuedMessages = null;
+        this.isBlockingGameplay = false;
     }
 
     create(context)
@@ -69,26 +70,27 @@ export default class {
             return;
         }
 
+        self.isBlockingGameplay = true;
         self.messageTimer = context.time.addEvent({
             delay: 50,
             callback: () => {
-                if(self.queuedMessages.length === 0)
-                {
-                    self.messageTimer.remove();
-                    self.messageTimer = null;
-                    resolve();
-                    return;
-                }
-
                 self.currMessageIndex++;
 
                 const currMessage = self.queuedMessages[0];
-
                 if(self.currMessageIndex > currMessage.length)
                 {
                     self.currMessageIndex = 0;
                     self.queuedMessages.shift();
                     self.messageTimer.paused = true;
+
+                    if(self.queuedMessages.length === 0)
+                    {
+                        self.isBlockingGameplay = false;
+                        self.messageTimer.remove();
+                        self.messageTimer = null;
+                        return;
+                    }
+
                     return;
                 }
 

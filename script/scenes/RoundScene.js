@@ -94,6 +94,12 @@ export default class extends Phaser.Scene {
         {
             return;
         }
+
+        // Is the guide currently blocking gameplay?
+        if(context.guide.isBlockingGameplay)
+        {
+            return;
+        }
     
         // Can we select this tile?
         if(!context.tileGrid.canSelect(tile))
