@@ -12,8 +12,8 @@ export default class {
             case 0:
 
                 script.introMessages = [
-                    "Oh, doozle, you made it! You're here! (Click or tap anywhere!)",
-                    "We need your help collecting dew drops!",
+                    `<class="exclamation">Oh, doozle, you made it!</class><class="normal"> You're here! (Click or tap anywhere!)</class>`,
+                    `<class="normal">We need your help collecting dew drops!</class>`,
                     "If you match three or more dew drops of the same color, we can collect them!",
                     "To make a match, select two dew drops to swap their places!"
                 ];

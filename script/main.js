@@ -5,7 +5,7 @@ import GameOverScene from './scenes/GameOverScene';
 const config = {
     type: Phaser.AUTO,
     width: 800,
-    height: 1200, // 600
+    height: 1200,
     scene: [TitleScene, RoundScene, GameOverScene]
 };
 

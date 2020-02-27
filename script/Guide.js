@@ -1,3 +1,6 @@
+import TagText from 'phaser3-rex-plugins/plugins/tagtext.js';
+import TextTyping from 'phaser3-rex-plugins/plugins/texttyping.js';
+
 export default class {
 
     constructor(x, y, script)
@@ -6,9 +9,8 @@ export default class {
         this.y = y;
         this.script = script;
 
-        this.messageTimer = null;
-        this.currMessageIndex = 0;
         this.queuedMessages = null;
+        this.isPaused = false;
         this.isBlockingGameplay = false;
     }
 
@@ -28,8 +30,25 @@ export default class {
         speechBubbleGraphics.fillRectShape(speechBubble);
 
         // Speech Bubble Text
-        const speechBubbleTextStyle = { color: '#000', wordWrap: { width: speechBubbleWidth, useAdvancedWrap: true } };
-        this.speechBubbleText = context.add.text(this.x + 5, this.y + 5, '', speechBubbleTextStyle);
+        const speechBubbleTextStyle = {
+            color: '#000',
+            wrap: {
+                mode: 'word',
+                width: speechBubbleWidth
+            },
+            tags: {
+                exclamation: {
+                    fontStyle: 'bold'
+                }
+            }
+        };
+        
+        this.speechBubbleText = new TagText(context, this.x, this.y, '', speechBubbleTextStyle);
+        context.add.existing(this.speechBubbleText);
+
+        // Speech Bubble Text Typing
+        this.speechBubbleTextTyping = new TextTyping(this.speechBubbleText, { speed: 30 }); 
+        this.speechBubbleTextTyping.on('complete', () => { self.onMessageComplete.call(self) });
 
         // Character
         const characterGraphics = context.add.graphics({ fillStyle: { color: 0xff0000 } });
@@ -59,12 +78,24 @@ export default class {
 
         self.queuedMessages.push(...messages);
 
-        if(self.messageTimer != null)
+        if(self.speechBubbleTextTyping.isTyping)
         {
             return;
         }
 
         self.isBlockingGameplay = true;
+        self.progressDialogue();
+    }
+
+    onMessageComplete()
+    {
+        if(this.queuedMessages.length === 0)
+        {
+            this.isBlockingGameplay = false;
+            return;
+        }
+
+        /*
         self.messageTimer = context.time.addEvent({
             delay: 50,
             callback: () => {
@@ -94,6 +125,7 @@ export default class {
             callbackScope: this,
             loop: true
         });
+        */
     }
 
     displayTileMatchMessage(context, data)
@@ -104,6 +136,9 @@ export default class {
 
     progressDialogue()
     {
-        this.messageTimer.paused = false;
+        if(this.queuedMessages.length > 0)
+        {
+            this.speechBubbleTextTyping.start(this.queuedMessages.shift());
+        }
     }
 }
