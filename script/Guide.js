@@ -94,38 +94,6 @@ export default class {
             this.isBlockingGameplay = false;
             return;
         }
-
-        /*
-        self.messageTimer = context.time.addEvent({
-            delay: 50,
-            callback: () => {
-                self.currMessageIndex++;
-
-                const currMessage = self.queuedMessages[0];
-                if(self.currMessageIndex > currMessage.length)
-                {
-                    self.currMessageIndex = 0;
-                    self.queuedMessages.shift();
-                    self.messageTimer.paused = true;
-
-                    if(self.queuedMessages.length === 0)
-                    {
-                        self.isBlockingGameplay = false;
-                        self.messageTimer.remove();
-                        self.messageTimer = null;
-                        return;
-                    }
-
-                    return;
-                }
-
-                const message = currMessage.slice(0, self.currMessageIndex);
-                self.speechBubbleText.setText(message);
-            },
-            callbackScope: this,
-            loop: true
-        });
-        */
     }
 
     displayTileMatchMessage(context, data)
@@ -138,7 +106,74 @@ export default class {
     {
         if(this.queuedMessages.length > 0)
         {
-            this.speechBubbleTextTyping.start(this.queuedMessages.shift());
+            const message = this.convertDialogToTagText(this.queuedMessages.shift());
+            this.speechBubbleTextTyping.start(message);
         }
+    }
+
+    convertDialogToTagText(input)
+    {
+        const styles = [
+            { token: '*', className: 'exclamation' },
+            { token: '_', className: 'underline'}
+        ];    
+
+        let output = '';
+        let currClass = '';
+    
+        for(let i=0; i<input.length; i++)
+        {
+            const currChar = input[i];
+            const isStyleToken = styles.some(style => style.token === currChar);
+    
+            // If the first character isn't a style token, then
+            // we need to open a "normal" class tag
+            if(i === 0 && !isStyleToken)
+            {
+                output += '<class="normal">';
+                currClass = 'normal';
+            }
+    
+            // If the last character is a style token, we ignore it
+            // since we'll always end with a closing class tag anyway
+            if(i === input.length - 1 && isStyleToken)
+            {
+                continue;
+            }
+    
+            if(isStyleToken)
+            {
+                const targetStyle = styles.find(style => style.token === currChar);
+    
+                // If we've encountered a token of the class we already have open,
+                // that means we need to close the class
+                if(currClass === targetStyle.className)
+                {
+                    output += '</class>';
+                    output += '<class="normal">';
+                    currClass = 'normal';
+                }
+    
+                // Otherwise, we need to close the existing the class and
+                // open the new class
+                else
+                {
+                    if(i !== 0)
+                    {
+                        output += '</class>';
+                    }
+    
+                    output += `<class="${targetStyle.className}">`;
+                    currClass = targetStyle.className;
+                }
+            }
+            else
+            {
+                output += input[i];
+            }
+        }
+    
+        output += '</class>';
+        return output;
     }
 }
