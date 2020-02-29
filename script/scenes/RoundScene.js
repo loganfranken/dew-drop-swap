@@ -73,6 +73,13 @@ export default class extends Phaser.Scene {
             return;
         }
 
+        // Did we reach the end of the round?
+        if(this.score > 10)
+        {
+            this.scene.start('RoundTransitionScene', { nextLevel: (this.level + 1) });
+            return;
+        }
+
         // Are we currently executing a queued action?
         if(this.queue.isActionRunning())
         {
