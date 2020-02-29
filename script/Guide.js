@@ -12,6 +12,8 @@ export default class {
         this.queuedMessages = null;
         this.isPaused = false;
         this.isBlockingGameplay = false;
+
+        this.endDialogueMarkerGraphics = null;
     }
 
     create(context)
@@ -20,6 +22,8 @@ export default class {
 
         const speechBubbleWidth = 500;
         const speechBubbleHeight = 100;
+
+        const endDialogueMarkerRadius = 10;
         
         const characterWidth = 100;
         const characterHeight = 500;
@@ -28,6 +32,23 @@ export default class {
         const speechBubbleGraphics = context.add.graphics({ fillStyle: { color: 0xffffff } });
         const speechBubble = new Phaser.Geom.Rectangle(this.x, this.y, speechBubbleWidth, speechBubbleHeight);
         speechBubbleGraphics.fillRectShape(speechBubble);
+
+        // End Dialogue Marker
+        this.endDialogueMarkerGraphics = context.add.graphics({ fillStyle: { color: 0xcccccc } });
+        this.hideEndDialogueMarker();
+        const endDialogueMarker = new Phaser.Geom.Circle(
+            this.x + speechBubbleWidth - endDialogueMarkerRadius,
+            this.y + speechBubbleHeight - endDialogueMarkerRadius,
+            endDialogueMarkerRadius);
+        this.endDialogueMarkerGraphics.fillCircleShape(endDialogueMarker);
+
+        context.tweens.add({
+            targets: this.endDialogueMarkerGraphics,
+            alpha: 0,
+            duration: 500,
+            repeat: -1,
+            yoyo: true
+        });
 
         // Speech Bubble Text
         const speechBubbleTextStyle = {
@@ -89,6 +110,7 @@ export default class {
 
     onMessageComplete()
     {
+        this.showEndDialogueMarker();
         if(this.queuedMessages.length === 0)
         {
             this.isBlockingGameplay = false;
@@ -104,11 +126,22 @@ export default class {
 
     progressDialogue()
     {
+        this.hideEndDialogueMarker();
         if(this.queuedMessages.length > 0)
         {
             const message = this.convertDialogToTagText(this.queuedMessages.shift());
             this.speechBubbleTextTyping.start(message);
         }
+    }
+
+    showEndDialogueMarker()
+    {
+        this.endDialogueMarkerGraphics.setVisible(true);
+    }
+
+    hideEndDialogueMarker()
+    {
+        this.endDialogueMarkerGraphics.setVisible(false);
     }
 
     convertDialogToTagText(input)
