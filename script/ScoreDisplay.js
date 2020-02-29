@@ -12,13 +12,15 @@ export default class {
     create(context)
     {
         this.scoreText = context.add.text(this.x, this.y, this.score);
+        this.updateScore(this.score);
+
         this.comboText = context.add.text(this.x, this.y + 20, '');
     }
 
     updateScore(score)
     {
         this.score = score;
-        this.scoreText.setText(score);
+        this.scoreText.setText(score + ' dew drops');
     }
 
     updateCombo(text)

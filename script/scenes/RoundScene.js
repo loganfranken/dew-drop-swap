@@ -168,7 +168,7 @@ export default class extends Phaser.Scene {
         context.comboCount++;
         context.totalMatches++;
 
-        context.score += (10 * context.comboCount);
+        context.score += (matchedTiles.length * context.comboCount);
         context.scoreDisplay.updateScore(context.score);
 
         context.guide.displayTileMatchMessage(context, {
