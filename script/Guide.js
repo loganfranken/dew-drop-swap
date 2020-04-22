@@ -25,7 +25,7 @@ export default class {
 
         const endDialogueMarkerRadius = 10;
         
-        const characterWidth = 100;
+        const characterWidth = 250;
         const characterHeight = 500;
 
         // Speech Bubble
@@ -72,13 +72,7 @@ export default class {
         this.speechBubbleTextTyping.on('complete', () => { self.onMessageComplete.call(self) });
 
         // Character
-        const characterGraphics = context.add.graphics({ fillStyle: { color: 0xff0000 } });
-        const character = new Phaser.Geom.Rectangle(
-            this.x + speechBubbleWidth - characterWidth,
-            this.y + speechBubbleHeight + 20,
-            characterWidth,
-            characterHeight);
-        characterGraphics.fillRectShape(character);
+        context.add.image(this.x + (characterWidth/2), this.y + speechBubbleHeight + 200, 'guide_character');
 
         self.queueMessages(context, this.script.introMessages);
     }

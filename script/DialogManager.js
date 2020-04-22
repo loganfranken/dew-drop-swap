@@ -13,9 +13,11 @@ export default class {
 
                 script.introMessages = [
                     `*Oh, doozle, you made it!* You're here! (Click or tap anywhere!)`,
-                    `We need your help collecting dew drops!`,
+                    `The Dew Drop Kingdom is in trouble!`,
+                    `We lost all of our dew drops and now we'll starve!`,
+                    `But you can help us by collecting as many dew drops as you can!`,
                     "If you match three or more dew drops of the same color, we can collect them!",
-                    "To make a match, select two dew drops to swap their places!"
+                    "To make a match, select two dew drops and swap their places!"
                 ];
 
                 script.getDisplayTileMatchMessages = (data) => {
@@ -25,7 +27,7 @@ export default class {
                         return [
                             "You got it! That's it!",
                             "You collect extra dew drops when you chain together matches in a combo!",
-                            "See if you can collect X dew drops!"
+                            "See if you can collect 50 dew drops!"
                         ];
                     }
 

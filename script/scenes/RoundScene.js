@@ -27,10 +27,14 @@ export default class extends Phaser.Scene {
 
     preload()
     {
+        // Images: Tiles
         this.load.image('tile_01', 'assets/tile_01.png');
         this.load.image('tile_02', 'assets/tile_02.png');
         this.load.image('tile_03', 'assets/tile_03.png');
         this.load.image('tile_04', 'assets/tile_04.png');
+
+        // Images: Guide
+        this.load.image('guide_character', 'assets/guide.png');
     }
 
     init(data)
@@ -49,15 +53,15 @@ export default class extends Phaser.Scene {
         this.selectedTiles = [];
         this.tileGrid = new TileGrid(6, 6, 50, 50, 50, this.onTileSelect, this.onTileMatch, this.queue);
         this.scoreDisplay = new ScoreDisplay(5, 5);
-        this.timer = new Timer(500, 5, 300);
+        this.timer = (this.level > 0) ? new Timer(500, 5, 300) : null;
 
         const dialogManager = new DialogManager();
         const script = dialogManager.getScript(this.level);
-        this.guide = new Guide(100, 100, script);
+        this.guide = new Guide(20, 50, script);
 
         this.tileGrid.create(this);
         this.scoreDisplay.create(this);
-        this.timer.create(this);
+        this.timer && this.timer.create(this);
         this.guide.create(this);
 
         const self = this;
@@ -67,14 +71,14 @@ export default class extends Phaser.Scene {
     update()
     {
         // Have we run out of time?
-        if(this.timer.seconds <= 0)
+        if(this.timer != null && this.timer.seconds <= 0)
         {
             this.scene.start('GameOverScene', { score: this.score });
             return;
         }
 
         // Did we reach the end of the round?
-        if(this.score > 10)
+        if(this.score > 50)
         {
             this.scene.start('RoundTransitionScene', { nextLevel: (this.level + 1) });
             return;
