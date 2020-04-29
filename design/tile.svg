@@ -15,7 +15,10 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
-   sodipodi:docname="tile.svg">
+   sodipodi:docname="tile.svg"
+   inkscape:export-filename="F:\git\match-three\assets\tile_04.png"
+   inkscape:export-xdpi="25.4"
+   inkscape:export-ydpi="25.4">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -29,7 +32,7 @@
      inkscape:cx="-27.593666"
      inkscape:cy="635.83857"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer6"
+     inkscape:current-layer="svg8"
      showgrid="false"
      inkscape:window-width="1920"
      inkscape:window-height="1027"
@@ -51,7 +54,8 @@
   <g
      inkscape:groupmode="layer"
      id="layer15"
-     inkscape:label="Diamond">
+     inkscape:label="Diamond"
+     style="display:inline">
     <g
        inkscape:label="Diamond Base"
        inkscape:groupmode="layer"
@@ -75,9 +79,10 @@
       <path
          style="opacity:1;fill:#f3c01b;fill-opacity:1;stroke:#1fa71d;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          clip-path="none"
-         d="M 433.58789 479.28516 C 429.46171 479.31051 425.36549 480.91505 422.26367 484.0957 L 344.77148 563.55859 C 338.56784 569.91991 338.76001 580.09919 345.20312 586.38281 L 369.88477 610.45312 A 140.99866 99.190655 0 0 0 450.95117 628.55469 A 140.99866 99.190655 0 0 0 484.03711 625.67188 L 524.68945 583.98633 C 530.8931 577.62501 530.70093 567.44573 524.25781 561.16211 L 445.0918 483.95703 C 441.87024 480.81522 437.71407 479.25981 433.58789 479.28516 z "
+         d="m 433.58789,479.28516 c -4.12618,0.0254 -8.2224,1.62989 -11.32422,4.81054 l -77.49219,79.46289 c -6.20364,6.36132 -6.01147,16.5406 0.43164,22.82422 l 24.68165,24.07031 a 140.99866,99.190655 0 0 0 81.0664,18.10157 140.99866,99.190655 0 0 0 33.08594,-2.88281 l 40.65234,-41.68555 c 6.20365,-6.36132 6.01148,-16.5406 -0.43164,-22.82422 L 445.0918,483.95703 c -3.22156,-3.14181 -7.37773,-4.69722 -11.50391,-4.67187 z"
          transform="scale(0.26458333)"
-         id="rect1221" />
+         id="rect1221"
+         inkscape:connector-curvature="0" />
     </g>
     <g
        inkscape:groupmode="layer"
@@ -95,7 +100,7 @@
      inkscape:groupmode="layer"
      id="layer7"
      inkscape:label="Square"
-     style="display:inline">
+     style="display:none">
     <g
        id="g1208"
        inkscape:groupmode="layer"
@@ -139,7 +144,8 @@
   <g
      inkscape:groupmode="layer"
      id="layer8"
-     inkscape:label="Circle">
+     inkscape:label="Circle"
+     style="display:none">
     <g
        inkscape:groupmode="layer"
        id="layer9"
@@ -180,7 +186,8 @@
   <g
      inkscape:groupmode="layer"
      id="layer12"
-     inkscape:label="Triangle">
+     inkscape:label="Triangle"
+     style="display:none">
     <g
        inkscape:groupmode="layer"
        id="layer13"
@@ -210,9 +217,10 @@
        inkscape:groupmode="layer">
       <path
          style="opacity:1;fill:#ff2029;fill-opacity:1;stroke:#1fa71d;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="M 435.39062 260.23633 C 410.38532 260.48098 362.77821 339.94641 346.78906 393.93164 A 150.00766 115.15739 0 0 0 452.54883 427.53516 A 150.00766 115.15739 0 0 0 532.24805 409.87305 C 522.13254 358.03478 463.33181 259.96295 435.39062 260.23633 z "
+         d="m 435.39062,260.23633 c -25.0053,0.24465 -72.61241,79.71008 -88.60156,133.69531 a 150.00766,115.15739 0 0 0 105.75977,33.60352 150.00766,115.15739 0 0 0 79.69922,-17.66211 C 522.13254,358.03478 463.33181,259.96295 435.39062,260.23633 Z"
          transform="scale(0.26458333)"
-         id="path1172" />
+         id="path1172"
+         inkscape:connector-curvature="0" />
     </g>
     <g
        inkscape:label="Triangle Shine"
