@@ -59,7 +59,7 @@ export default class {
         // Create a mask to only show the play area
         const maskShape = context.make.graphics();
         maskShape.fillStyle(0xffffff, 1);
-        maskShape.fillRect(this.offsetX/2, this.offsetY/2 + (this.tileGridHeight * this.tileSize), this.tileGridWidth * this.tileSize, this.tileGridHeight * this.tileSize);
+        maskShape.fillRect(this.offsetX - (this.tileSize/2), this.offsetY + (this.tileGridHeight * this.tileSize) - (this.tileSize/2), this.tileGridWidth * this.tileSize, this.tileGridHeight * this.tileSize);
         
         this.tileImageContainer.mask = new Phaser.Display.Masks.GeometryMask(context, maskShape);
     }

@@ -17,11 +17,15 @@
    id="svg8"
    inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
    sodipodi:docname="guide.svg"
-   inkscape:export-filename="C:\Users\Logan\Desktop\guide.png"
+   inkscape:export-filename="F:\git\match-three\assets\guide.png"
    inkscape:export-xdpi="39.581867"
    inkscape:export-ydpi="39.581867">
   <defs
      id="defs2">
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect903"
+       is_visible="true" />
     <clipPath
        clipPathUnits="userSpaceOnUse"
        id="clipPath4603">
@@ -62,11 +66,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49497475"
-     inkscape:cx="35.960385"
-     inkscape:cy="616.6293"
+     inkscape:zoom="0.7"
+     inkscape:cx="84.115623"
+     inkscape:cy="677.63145"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer9"
      showgrid="false"
      inkscape:window-width="1920"
      inkscape:window-height="1027"
@@ -85,6 +89,41 @@
       </cc:Work>
     </rdf:RDF>
   </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer7"
+     inkscape:label="Past Expression">
+    <g
+       inkscape:groupmode="layer"
+       id="layer4"
+       inkscape:label="Smile">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 89.958333,109.14583 c 0,0 6.425594,15.11905 12.095237,10.96131 5.66964,-4.15773 6.04762,-12.47321 6.04762,-12.47321"
+         id="path3778"
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       inkscape:groupmode="layer"
+       id="layer5"
+       inkscape:label="Eye"
+       style="display:none">
+      <ellipse
+         id="path3783"
+         cx="87.833611"
+         cy="97.695847"
+         rx="1.4106953"
+         ry="2.0519204"
+         style="stroke-width:0.17954302" />
+      <ellipse
+         id="path3785"
+         cx="108.34946"
+         cy="97.050598"
+         rx="1.198779"
+         ry="1.997965"
+         style="stroke-width:0.13985755" />
+    </g>
+  </g>
   <g
      inkscape:label="Reference Picture"
      inkscape:groupmode="layer"
@@ -105,7 +144,7 @@
      inkscape:label="Branch"
      style="display:inline">
     <path
-       style="fill:#784421;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:#784421;stroke:#542f17;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
        d="m 101.67559,224.05059 c -2.755812,17.71027 4.61418,28.92534 9.44941,40.06548 l 13.60714,-3.77976 C 109.81268,245.22813 111.125,222.91666 111.125,222.91666 Z"
        id="path3760"
        inkscape:connector-curvature="0"
@@ -130,7 +169,7 @@
      inkscape:label="Leaf"
      style="display:inline;opacity:1">
     <path
-       style="fill:#1cb81a;fill-opacity:1;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#1cb81a;fill-opacity:1;stroke:#1cb81a;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="M 101.67559,224.05059 C 47.956831,225.61491 -8.5687653,141.68746 54.428572,166.97619 40.172042,148.66501 29.310233,84.389493 67.279762,121.99702 51.422989,59.24174 104.99099,17.637874 119.44047,51.693452 c 6.04762,17.386903 16.63096,100.919638 16.63096,100.919638 15.61175,-32.88167 36.85289,-34.22776 18.8988,12.09524 67.1589,-55.35076 4.7803,60.0835 -53.29464,59.34226 z"
        id="path3755"
        inkscape:connector-curvature="0"
@@ -163,31 +202,52 @@
   </g>
   <g
      inkscape:groupmode="layer"
-     id="layer4"
-     inkscape:label="Smile">
-    <path
-       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
-       d="m 89.202381,108.76785 c 0,0 6.425594,15.11905 12.095239,10.96131 5.66964,-4.15773 6.04762,-12.47321 6.04762,-12.47321"
-       id="path3778"
-       inkscape:connector-curvature="0" />
+     id="layer6"
+     inkscape:label="Eyes">
+    <ellipse
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#542f17;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path838"
+       cx="83.438248"
+       cy="98.940475"
+       rx="3.6852677"
+       ry="3.5907736" />
+    <ellipse
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#542f17;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path838-2"
+       cx="111.69196"
+       cy="97.050598"
+       rx="3.6852677"
+       ry="3.5907738" />
   </g>
   <g
      inkscape:groupmode="layer"
-     id="layer5"
-     inkscape:label="Eye">
+     id="layer8"
+     inkscape:label="Eye Shine">
     <ellipse
-       id="path3783"
-       cx="87.833611"
-       cy="97.695847"
-       rx="1.4106953"
-       ry="2.0519204"
-       style="stroke-width:0.17954302" />
-    <ellipse
-       id="path3785"
-       cx="108.34946"
-       cy="97.050598"
-       rx="1.198779"
-       ry="1.997965"
-       style="stroke-width:0.13985755" />
+       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#542f17;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path838-6"
+       cx="84.197701"
+       cy="97.812508"
+       rx="0.74999964"
+       ry="0.74999952" />
+    <circle
+       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#542f17;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path838-2-3"
+       cx="112.67819"
+       cy="95.582443"
+       r="0.74999958" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer9"
+     inkscape:label="Smile">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 80.886902,111.03571 c -0.673592,3.74021 0.324189,7.74984 2.672147,10.73815 2.347957,2.98831 6.007679,4.90641 9.801068,5.13685 2.35615,0.14313 4.74773,-0.34537 6.859023,-1.40101 2.11129,-1.05565 3.93703,-2.67581 5.23622,-4.64661"
+       id="path901"
+       inkscape:connector-curvature="0"
+       inkscape:path-effect="#path-effect903"
+       inkscape:original-d="m 80.886902,111.03571 c 4.283996,5.29141 8.315743,10.58307 12.473215,15.875 4.157475,5.29194 8.063753,-4.03201 12.095243,-6.04762"
+       transform="matrix(0.5971908,-0.28264218,0.25777356,0.65480459,13.031349,59.301188)" />
   </g>
 </svg>
