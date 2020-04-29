@@ -27,7 +27,7 @@ export default class {
                         return [
                             "You got it! That's it!",
                             "You collect extra dew drops when you chain together matches in a combo!",
-                            "See if you can collect 50 dew drops!"
+                            "See if you can collect 100 dew drops!"
                         ];
                     }
 
@@ -39,10 +39,10 @@ export default class {
             case 1:
 
                 script.introMessages = [
-                    "You're so good at this!",
-                    "We'll have to hurry this time!",
-                    "We only have one minute before the sun dries up all the dew drops!",
-                    "Collect at least X dew drops in one minute!"
+                    "*Oh, doozle!* You're so good at this!",
+                    "But, we'll have to hurry this time!",
+                    "We only have two minutes before the sun dries up all the dew drops!",
+                    "Collect at least 200 dew drops in two minutes!"
                 ];
 
                 break;

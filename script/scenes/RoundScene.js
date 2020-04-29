@@ -53,7 +53,7 @@ export default class extends Phaser.Scene {
         this.selectedTiles = [];
         this.tileGrid = new TileGrid(6, 6, 50, 325, -75, this.onTileSelect, this.onTileMatch, this.queue);
         this.scoreDisplay = new ScoreDisplay(5, 5);
-        this.timer = (this.level > 0) ? new Timer(500, 5, 300) : null;
+        this.timer = (this.level > 0) ? new Timer(500, 5, 120) : null;
 
         const dialogManager = new DialogManager();
         const script = dialogManager.getScript(this.level);
@@ -77,8 +77,7 @@ export default class extends Phaser.Scene {
             return;
         }
 
-        // Did we reach the end of the round?
-        if(this.score > 50)
+        if(this.isLevelComplete())
         {
             this.scene.start('RoundTransitionScene', { nextLevel: (this.level + 1) });
             return;
@@ -195,6 +194,21 @@ export default class extends Phaser.Scene {
         {
             context.scoreDisplay.updateCombo('');
         }
+    }
+
+    isLevelComplete()
+    {
+        if(this.level === 0 && this.score >= 100)
+        {
+            return true;
+        }
+
+        if(this.level === 1 && this.score >= 200)
+        {
+            return true;
+        }
+
+        return false;
     }
     
 }
