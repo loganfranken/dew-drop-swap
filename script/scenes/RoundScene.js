@@ -11,6 +11,8 @@ export default class extends Phaser.Scene {
     {
         super('RoundScene');
 
+        this.isAwaitingRoundTransition = false;
+
         this.score = null;
         this.queue = null;
         this.selectedTiles = null;
@@ -58,7 +60,9 @@ export default class extends Phaser.Scene {
         this.selectedTiles = [];
         this.tileGrid = new TileGrid(6, 6, 80, 325, -265, this.onTileSelect, this.onTileMatch, this.queue);
         this.scoreDisplay = new ScoreDisplay(100, 580);
-        this.timer = (this.level > 0) ? new Timer(5, 570, 120) : null;
+
+        const timerSeconds = this.getTimerSeconds(this.level);
+        this.timer = (timerSeconds > 0) ? new Timer(5, 570, timerSeconds) : null;
 
         const dialogManager = new DialogManager();
         const script = dialogManager.getScript(this.level);
@@ -75,10 +79,21 @@ export default class extends Phaser.Scene {
 
     update()
     {
+        if(this.isAwaitingRoundTransition)
+        {
+            if(!this.guide.isBlockingGameplay)
+            {
+                this.scene.start('RoundTransitionScene', { nextLevel: (this.level + 1) });
+            }
+
+            return;
+        }
+
         // Have we run out of time?
         if(this.timer != null && this.timer.seconds <= 0)
         {
-            this.scene.start('GameOverScene', { score: this.score });
+            this.guide.displayGameOverMessage();
+            this.isAwaitingRoundTransition = true;
             return;
         }
 
@@ -214,6 +229,21 @@ export default class extends Phaser.Scene {
         }
 
         return false;
+    }
+
+    getTimerSeconds(level)
+    {
+        switch(level)
+        {
+            case 1:
+                return 120;
+    
+            case 2:
+                return 30;
+
+            default:
+                return 0;
+        }
     }
     
 }

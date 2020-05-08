@@ -52,14 +52,18 @@ export default class {
 
                 script.introMessages = [
                     "Wow, we're so proud of you!",
-                    "This round you'll only have 30 seconds to collect at least X dew drops!"
+                    "This round you'll only have 30 seconds to collect at least 300 dew drops!"
                 ];
 
-                // "Wait, wait, sorry, hold on."
-                // "It's too early for the \"Lose in a Panic\" scenario."
-                // "So sorry about that."
-                // "You've been really great so far, honestly."
-                // "You know, what, let's just go to the next round and we'll take it from the top."
+                script.getGameOverMessages = () => {
+                    return [
+                        "Wait, wait, sorry, hold on.",
+                        "It's too early for the *\"Lose in a Panic\"* scenario.",
+                        "So sorry about that.",
+                        "You've been really great so far, honestly.",
+                        "You know, what, let's just go to the next round and we'll take it from the top."
+                    ];
+                };
 
                 break;
 

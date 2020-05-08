@@ -122,6 +122,12 @@ export default class {
         this.queueMessages(context, messages);
     }
 
+    displayGameOverMessage(context)
+    {
+        const messages = this.script.getGameOverMessages();
+        this.queueMessages(context, messages);
+    }
+
     progressDialogue()
     {
         this.hideEndDialogueMarker();
