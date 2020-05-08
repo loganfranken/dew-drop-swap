@@ -20,8 +20,8 @@ export default class {
     {
         const self = this;
 
-        const speechBubbleWidth = 500;
-        const speechBubbleHeight = 100;
+        const speechBubbleWidth = 760;
+        const speechBubbleHeight = 130;
 
         const endDialogueMarkerRadius = 10;
         
@@ -30,15 +30,19 @@ export default class {
 
         // Speech Bubble
         const speechBubbleGraphics = context.add.graphics({ fillStyle: { color: 0xffffff } });
-        const speechBubble = new Phaser.Geom.Rectangle(this.x, this.y, speechBubbleWidth, speechBubbleHeight);
-        speechBubbleGraphics.fillRectShape(speechBubble);
+        speechBubbleGraphics.fillRoundedRect(this.x, this.y, speechBubbleWidth, speechBubbleHeight, 10);
+        speechBubbleGraphics.fillTriangle(
+            this.x + 120, this.y + speechBubbleHeight + 20,
+            this.x + 105, this.y + speechBubbleHeight,
+            this.x + 135, this.y + speechBubbleHeight
+        );
 
         // End Dialogue Marker
         this.endDialogueMarkerGraphics = context.add.graphics({ fillStyle: { color: 0xcccccc } });
         this.hideEndDialogueMarker();
         const endDialogueMarker = new Phaser.Geom.Circle(
-            this.x + speechBubbleWidth - endDialogueMarkerRadius,
-            this.y + speechBubbleHeight - endDialogueMarkerRadius,
+            this.x + speechBubbleWidth - endDialogueMarkerRadius - 15,
+            this.y + speechBubbleHeight - endDialogueMarkerRadius - 15,
             endDialogueMarkerRadius);
         this.endDialogueMarkerGraphics.fillCircleShape(endDialogueMarker);
 
@@ -64,7 +68,7 @@ export default class {
             }
         };
         
-        this.speechBubbleText = new TagText(context, this.x, this.y, '', speechBubbleTextStyle);
+        this.speechBubbleText = new TagText(context, this.x + 15, this.y + 15, '', speechBubbleTextStyle);
         context.add.existing(this.speechBubbleText);
 
         // Speech Bubble Text Typing
@@ -72,7 +76,7 @@ export default class {
         this.speechBubbleTextTyping.on('complete', () => { self.onMessageComplete.call(self) });
 
         // Character
-        context.add.image(this.x + (characterWidth/2), this.y + speechBubbleHeight + 200, 'guide_character');
+        context.add.image(this.x + (characterWidth/2), this.y + speechBubbleHeight + 230, 'guide_character');
 
         self.queueMessages(context, this.script.introMessages);
     }

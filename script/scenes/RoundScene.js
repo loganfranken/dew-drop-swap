@@ -56,8 +56,8 @@ export default class extends Phaser.Scene {
         this.add.image(400, 400, 'background');
 
         this.selectedTiles = [];
-        this.tileGrid = new TileGrid(6, 6, 80, 325, -285, this.onTileSelect, this.onTileMatch, this.queue);
-        this.scoreDisplay = new ScoreDisplay(5, 520);
+        this.tileGrid = new TileGrid(6, 6, 80, 325, -265, this.onTileSelect, this.onTileMatch, this.queue);
+        this.scoreDisplay = new ScoreDisplay(100, 580);
         this.timer = (this.level > 0) ? new Timer(5, 570, 120) : null;
 
         const dialogManager = new DialogManager();
