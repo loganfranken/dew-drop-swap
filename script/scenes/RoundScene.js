@@ -35,6 +35,9 @@ export default class extends Phaser.Scene {
 
         // Images: Guide
         this.load.image('guide_character', 'assets/guide.png');
+
+        // Images: Background
+        this.load.image('background', 'assets/background.png');
     }
 
     init(data)
@@ -49,6 +52,8 @@ export default class extends Phaser.Scene {
         this.totalMatches = 0;
 
         this.queue = new ActionQueue();
+
+        this.add.image(400, 400, 'background');
 
         this.selectedTiles = [];
         this.tileGrid = new TileGrid(6, 6, 80, 325, -285, this.onTileSelect, this.onTileMatch, this.queue);
