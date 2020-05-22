@@ -6,7 +6,7 @@ import TileType from './TileType';
 
 export default class {
 
-    constructor(tileGridWidth, tileGridHeight, tileSize, offsetX, offsetY, onTileSelect, onTileMatch, queue)
+    constructor(tileGridWidth, tileGridHeight, tileSize, offsetX, offsetY, onTileSelect, onTileMatch, tileGenerationBehavior, queue)
     {
         this.offsetX = offsetX;
         this.offsetY = offsetY;
@@ -20,7 +20,7 @@ export default class {
         this.onTileSelect = onTileSelect;
         this.onTileMatch = onTileMatch;
 
-        this.tileGenerationBehavior = TileGenerationBehavior.None;
+        this.tileGenerationBehavior = tileGenerationBehavior;
 
         this.queue = queue;
 

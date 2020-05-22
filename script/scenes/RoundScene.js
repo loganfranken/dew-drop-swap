@@ -4,6 +4,7 @@ import Guide from '../Guide';
 import ScoreDisplay from '../ScoreDisplay';
 import TileGrid from '../TileGrid';
 import Timer from '../Timer';
+import TileGenerationBehavior from '../TileGenerationBehavior';
 
 export default class extends Phaser.Scene {
 
@@ -49,6 +50,8 @@ export default class extends Phaser.Scene {
 
     create()
     {
+        this.isAwaitingRoundTransition = false;
+
         this.score = 0;
         this.comboCount = 0;
         this.totalMatches = 0;
@@ -57,8 +60,10 @@ export default class extends Phaser.Scene {
 
         this.add.image(400, 400, 'background');
 
+        const tileGenerationBehavior = this.getTileGenerationBehavior(this.level);
+
         this.selectedTiles = [];
-        this.tileGrid = new TileGrid(6, 6, 80, 325, -265, this.onTileSelect, this.onTileMatch, this.queue);
+        this.tileGrid = new TileGrid(6, 6, 80, 325, -265, this.onTileSelect, this.onTileMatch, tileGenerationBehavior, this.queue);
         this.scoreDisplay = new ScoreDisplay(100, 580);
 
         const timerSeconds = this.getTimerSeconds(this.level);
@@ -218,17 +223,10 @@ export default class extends Phaser.Scene {
 
     isLevelComplete()
     {
-        if(this.level === 0 && this.score >= 100)
-        {
-            return true;
-        }
-
-        if(this.level === 1 && this.score >= 200)
-        {
-            return true;
-        }
-
-        return false;
+        return  (this.level === 0 && this.score >= 100) ||
+                (this.level === 1 && this.score >= 200) ||
+                (this.level === 2 && this.score >= 300) ||
+                (this.level === 3 && this.score >= 300);
     }
 
     getTimerSeconds(level)
@@ -241,8 +239,23 @@ export default class extends Phaser.Scene {
             case 2:
                 return 30;
 
+            case 3:
+                return 120;
+
             default:
                 return 0;
+        }
+    }
+
+    getTileGenerationBehavior(level)
+    {
+        switch(level)
+        {
+            case 3:
+                return TileGenerationBehavior.EasyWin;
+
+            default:
+                return TileGenerationBehavior.None;
         }
     }
     

@@ -73,11 +73,17 @@ export default class {
                 script.introMessages = [
                     "Alright, I think we've got everything figured out.",
                     "Okay, for this next round, let me set you up:",
-                    "Remember, you've been winnig the last few rounds and you're gaining confidence.",
+                    "Remember, you've been winning the last few rounds and you're gaining confidence.",
                     "In this round, it's going to be easy for you to get combos.",
-                    "So the idea here is that you're going to get a little too confident, right?",
+                    "So the idea here is that you're going to get a little *too* confident, right?",
                     "Like a little full of yourself, alright?",
-                    "Okay, great! Let's do this:"
+                    "Okay, great! Let's do this:",
+                    "...",
+                    "*Oh doozle woozle!*",
+                    "You're so amazing!",
+                    "You have two minutes again, but this time you'll have to collect 300 dew drops.",
+                    "Can you do it?",
+                    "Who am I kidding? Of course you can!"
                 ];
 
                 break;
