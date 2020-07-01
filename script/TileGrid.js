@@ -34,7 +34,11 @@ export default class {
             {
                 this.tileGrid[y][x] = (y < tileGridHeight)
                     ? null
-                    : this.createTile(this.getTileType(x, y, this.tileGenerationBehavior), x, y);
+                    : this.createTile(this.getTileType(x, y, TileGenerationBehavior.None), x, y);
+
+                // When we're generating the grid, we start with the default tile generation
+                // behavior since the "Easy Win" behavior will create a grid with identical
+                // tiles
             }
         }
     }
