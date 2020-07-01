@@ -93,6 +93,12 @@ export default class extends Phaser.Scene {
 
             return;
         }
+        
+        // Start the timer if the guide has stopped talking
+        if(!this.guide.isBlockingGameplay && this.timer && this.timer.isPaused)
+        {
+            this.timer.start();
+        }
 
         // Have we run out of time?
         if(this.timer != null && this.timer.seconds <= 0)

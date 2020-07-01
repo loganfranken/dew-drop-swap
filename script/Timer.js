@@ -6,6 +6,7 @@ export default class {
         this.y = y;
         this.text = null;
         this.seconds = seconds;
+        this.isPaused = true;
     }
 
     create(context)
@@ -18,7 +19,7 @@ export default class {
 
     tick()
     {
-        if(this.seconds <= 0)
+        if(this.seconds <= 0 || this.isPaused)
         {
             return;
         }
@@ -35,5 +36,10 @@ export default class {
         }
 
         this.text.setText(`${minutes}:${seconds}`);
+    }
+
+    start()
+    {
+        this.isPaused = false;
     }
 }
