@@ -1,4 +1,5 @@
 export default {
     None: 0,
-    EasyWin: 1
+    EasyWin: 1,
+    Hard: 2
 };

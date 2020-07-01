@@ -369,6 +369,14 @@ export default class {
         {
             return getRandomItem([aboveTile, belowTile, leftTile, rightTile].filter(t => t != null).map(t => t.tileType));
         }
+        else if(behavior == TileGenerationBehavior.Hard)
+        {
+            return getRandomItem(TileType.filter(t =>
+                (belowTile === null || t.name !== belowTile.tileType.name) &&
+                (rightTile === null || t.name !== rightTile.tileType.name) &&
+                (leftTile === null || t.name !== leftTile.tileType.name)
+            ));
+        }
         else
         {
             return getRandomItem(TileType.filter(t =>

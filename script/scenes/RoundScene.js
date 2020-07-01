@@ -257,6 +257,9 @@ export default class extends Phaser.Scene {
     {
         switch(level)
         {
+            case 2:
+                return TileGenerationBehavior.Hard;
+
             case 3:
                 return TileGenerationBehavior.EasyWin;
 
