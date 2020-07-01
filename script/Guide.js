@@ -125,6 +125,11 @@ export default class {
     displayGameOverMessage(context)
     {
         const messages = this.script.getGameOverMessages();
+
+        // Push in a placeholder message to force players to confirm the last
+        // message in the "Game Over" queue
+        messages.push(' ');
+
         this.queueMessages(context, messages);
     }
 
