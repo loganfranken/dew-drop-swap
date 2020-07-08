@@ -57,6 +57,8 @@ export default class {
         // Speech Bubble Text
         const speechBubbleTextStyle = {
             color: '#000',
+            fontFamily: '"Fredoka One"',
+            fontSize: '24px',
             wrap: {
                 mode: 'word',
                 width: speechBubbleWidth

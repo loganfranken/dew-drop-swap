@@ -95,7 +95,7 @@ export default class extends Phaser.Scene {
             return;
         }
 
-        handleSpecialLevelBehavior();
+        this.handleSpecialLevelBehavior();
         
         // Start the timer if the guide has stopped talking
         if(!this.guide.isBlockingGameplay && this.timer && this.timer.isPaused)
