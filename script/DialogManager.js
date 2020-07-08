@@ -97,7 +97,17 @@ export default class {
                     "And, when the round starts, things are still going your way.",
                     "But guess what?",
                     "Halfway through this round, things start getting a little harder.",
-                    "This is where we to start your chip away at your pride as the player."
+                    "So this is where we begin to chip away at your pride as the player.",
+                    "Alright, that's your set up: now let me get into the right headspace.",
+                    "...oh doozle woo-",
+                    "...no, no, it's doozy-woozy here...",
+                    "...yeah, doozy-woozy, you're our hero, blah, blah...",
+                    "Alright! Got it!",
+                    "...",
+                    "*Doozy-woozy!*",
+                    "You're our hero!",
+                    "You've done so much for us, but we still need your help!",
+                    "We need you to collect 500 dew drops in five minutes!" 
                 ];
 
                 break;

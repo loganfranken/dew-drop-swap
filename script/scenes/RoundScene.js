@@ -1,6 +1,7 @@
 import ActionQueue from '../ActionQueue';
 import DialogManager from '../DialogManager';
 import Guide from '../Guide';
+import LevelManifest from '../LevelManifest';
 import ScoreDisplay from '../ScoreDisplay';
 import TileGrid from '../TileGrid';
 import Timer from '../Timer';
@@ -60,13 +61,13 @@ export default class extends Phaser.Scene {
 
         this.add.image(400, 400, 'background');
 
-        const tileGenerationBehavior = this.getTileGenerationBehavior(this.level);
+        const tileGenerationBehavior = LevelManifest[this.level].behavior;
 
         this.selectedTiles = [];
         this.tileGrid = new TileGrid(6, 6, 80, 325, -265, this.onTileSelect, this.onTileMatch, tileGenerationBehavior, this.queue);
         this.scoreDisplay = new ScoreDisplay(100, 580);
 
-        const timerSeconds = this.getTimerSeconds(this.level);
+        const timerSeconds = LevelManifest[this.level].timer;
         this.timer = (timerSeconds > 0) ? new Timer(5, 570, timerSeconds) : null;
 
         const dialogManager = new DialogManager();
@@ -92,6 +93,15 @@ export default class extends Phaser.Scene {
             }
 
             return;
+        }
+
+        // Level 4: Tile generation behavior switches halfway through
+        if(this.level === 4
+                && this.tileGrid.TileGenerationBehavior !== TileGenerationBehavior.Hard
+                && this.score > (LevelManifest[this.level]/2))
+        {
+            console.log('Switched tile generation behavior!');
+            this.tileGrid.tileGenerationBehavior = TileGenerationBehavior.Hard;
         }
         
         // Start the timer if the guide has stopped talking
@@ -229,43 +239,7 @@ export default class extends Phaser.Scene {
 
     isLevelComplete()
     {
-        return  (this.level === 0 && this.score >= 100) ||
-                (this.level === 1 && this.score >= 200) ||
-                (this.level === 2 && this.score >= 300) ||
-                (this.level === 3 && this.score >= 300);
-    }
-
-    getTimerSeconds(level)
-    {
-        switch(level)
-        {
-            case 1:
-                return 120;
-    
-            case 2:
-                return 30;
-
-            case 3:
-                return 120;
-
-            default:
-                return 0;
-        }
-    }
-
-    getTileGenerationBehavior(level)
-    {
-        switch(level)
-        {
-            case 2:
-                return TileGenerationBehavior.Hard;
-
-            case 3:
-                return TileGenerationBehavior.EasyWin;
-
-            default:
-                return TileGenerationBehavior.None;
-        }
+        return this.score >= LevelManifest[this.level].score;
     }
     
 }

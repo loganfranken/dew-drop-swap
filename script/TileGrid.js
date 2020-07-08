@@ -365,11 +365,12 @@ export default class {
         const leftTile = (x < 1) ? null : this.tileGrid[y][x - 1];
         const rightTile = (x > self.tileGridWidth - 1) ? null : this.tileGrid[y][x + 1];
 
-        if(behavior == TileGenerationBehavior.EasyWin && (aboveTile != null || belowTile != null || leftTile != null || rightTile != null))
+        if(behavior === TileGenerationBehavior.EasyWin && (aboveTile != null || belowTile != null || leftTile != null || rightTile != null))
         {
             return getRandomItem([aboveTile, belowTile, leftTile, rightTile].filter(t => t != null).map(t => t.tileType));
         }
-        else if(behavior == TileGenerationBehavior.Hard)
+        
+        if(behavior === TileGenerationBehavior.Hard)
         {
             return getRandomItem(TileType.filter(t =>
                 (belowTile === null || t.name !== belowTile.tileType.name) &&
@@ -377,12 +378,10 @@ export default class {
                 (leftTile === null || t.name !== leftTile.tileType.name)
             ));
         }
-        else
-        {
-            return getRandomItem(TileType.filter(t =>
-                (aboveTile === null || t.name !== aboveTile.tileType.name) &&
-                (leftTile === null || t.name !== leftTile.tileType.name)
-            ));
-        }
+
+        return getRandomItem(TileType.filter(t =>
+            (aboveTile === null || t.name !== aboveTile.tileType.name) &&
+            (leftTile === null || t.name !== leftTile.tileType.name)
+        ));
     }
 }
