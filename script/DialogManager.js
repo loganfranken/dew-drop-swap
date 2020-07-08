@@ -116,11 +116,20 @@ export default class {
             case 5:
 
                 script.introMessages = [
-                    "Wow, really moving work. It feels so authentic.",
+                    "Wow, such moving work.",
+                    "It really feels so authentic.",
                     "It's been a joy working with you.",
                     "Okay, here we go, this is a pivotal scene:",
                     "This round will not go your way at all. At all.",
                     "This is your fall from grace.",
+                    "(Ahem)",
+                    "...",
+                    "*Doozle!*",
+                    "*Woozle!*",
+                    "I can't believe you did it!",
+                    "We've got a bigger challenge ahead, but I know you can do it!",
+                    "You can do anything!",
+                    "We need you to collect 1000 dew drops in five minutes!"
                 ];
 
                 break;
