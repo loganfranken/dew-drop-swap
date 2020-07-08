@@ -95,14 +95,7 @@ export default class extends Phaser.Scene {
             return;
         }
 
-        // Level 4: Tile generation behavior switches halfway through
-        if(this.level === 4
-                && this.tileGrid.TileGenerationBehavior !== TileGenerationBehavior.Hard
-                && this.score > (LevelManifest[this.level]/2))
-        {
-            console.log('Switched tile generation behavior!');
-            this.tileGrid.tileGenerationBehavior = TileGenerationBehavior.Hard;
-        }
+        handleSpecialLevelBehavior();
         
         // Start the timer if the guide has stopped talking
         if(!this.guide.isBlockingGameplay && this.timer && this.timer.isPaused)
@@ -222,11 +215,6 @@ export default class extends Phaser.Scene {
         context.score += (matchedTiles.length * context.comboCount);
         context.scoreDisplay.updateScore(context.score);
 
-        context.guide.displayTileMatchMessage(context, {
-            comboCount: context.comboCount,
-            totalMatches: context.totalMatches
-        });
-
         if(context.comboCount > 1)
         {
             context.scoreDisplay.updateCombo(`${context.comboCount}x multiplier!`);
@@ -240,6 +228,16 @@ export default class extends Phaser.Scene {
     isLevelComplete()
     {
         return this.score >= LevelManifest[this.level].score;
+    }
+
+    handleSpecialLevelBehavior()
+    {
+        const handler = LevelManifest[this.level].handler;
+        handler && handler({
+            tileGrid: this.tileGrid,
+            score: this.score,
+            level: this.level
+        });
     }
     
 }

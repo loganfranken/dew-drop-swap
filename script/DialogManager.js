@@ -141,8 +141,27 @@ export default class {
                     "Okay, let's move right into the next scene:",
                     "Here, you are wallowing, right?",
                     "You are in the pit of despair and you can't see a way out.",
-                    "This round won't be particularly hard, but you can't seem to find any matches."
+                    "This round won't be particularly hard, but you can't seem to find any matches.",
+                    "Got it?",
+                    "Alright, great: let me find my place here...",
+                    "Yes, okay, I believed in you, but now my faith is faltering...",
+                    "I'm keeping a brave face, but I'm really starting to lose confidence...",
+                    "Okay, I'm ready!",
+                    "...",
+                    "Oh no!",
+                    "*Whoopsie whoozle!*",
+                    "Don't worry, that was a tough one!",
+                    "Let's try again! I know you can do it!",
+                    "We need you to collect 1000 dew drops in five minutes!"
                 ];
+
+                script.getDisplayTileMatchMessages = (data) => {
+
+                    return [
+                        "(Oh, hey: remember, you're not going to find any matches this round)"
+                    ];
+
+                };
 
                 break;
 

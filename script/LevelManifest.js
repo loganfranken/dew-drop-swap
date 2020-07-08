@@ -1,4 +1,6 @@
+import LevelManifest from "./LevelManifest";
 import TileGenerationBehavior from "./TileGenerationBehavior";
+import Tile from "./Tile";
 
 export default [
 
@@ -34,7 +36,13 @@ export default [
     {
         score: 400,
         timer: 300,
-        behavior: TileGenerationBehavior.EasyWin
+        behavior: TileGenerationBehavior.EasyWin,
+        handler: (state) => {
+            if(state.tileGrid.TileGenerationBehavior !== TileGenerationBehavior.Hard && state.score > (LevelManifest[state.level]/2))
+            {
+                state.tileGrid.tileGenerationBehavior = TileGenerationBehavior.Hard;
+            }
+        }
     },
 
     // 5
@@ -43,4 +51,25 @@ export default [
         timer: 300,
         behavior: TileGenerationBehavior.Hard
     },
+
+    // 6
+    {
+        score: 1000,
+        timer: 300,
+        behavior: TileGenerationBehavior.Hard
+    },
+
+    // 7
+    {
+        score: 1000,
+        timer: 300,
+        behavior: TileGenerationBehavior.EasyWin
+    },
+
+    // 8
+    {
+        score: 1000,
+        timer: 300,
+        behavior: TileGenerationBehavior.None
+    }
 ];
