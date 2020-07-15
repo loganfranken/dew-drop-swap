@@ -13,6 +13,7 @@ export default class {
         this.image = null;
         this.state = TileState.Active;
         this.isActivated = false;
+        this.isDestroying = false;
     }
 
     create(context)
@@ -60,23 +61,93 @@ export default class {
     destroy(context, container)
     {
         let self = this;
+        
+        if(self.isDestroying)
+        {
+            return;
+        }
+
+        self.isDestroying = true;
+
+        // Create cover for fading the shape to white
+        const fadeOutCover = context.add.image(self.x, self.y, self.tileType.imageKey);
+        fadeOutCover.setTintFill(0xffffff);
+        fadeOutCover.alpha = 0;
+
+        // Create particles for "explosion" effect
+        const particleGraphics = [];
+        for(let i=0; i<4; i++)
+        {
+            const explodeParticleGraphics = context.add.graphics({ fillStyle: { color: 0xffffff }, alpha: 0 });
+            const explodeParticle = new Phaser.Geom.Circle(this.x, this.y, Phaser.Math.Between(0, 10));
+            explodeParticleGraphics.fillCircleShape(explodeParticle);
+            particleGraphics.push(explodeParticleGraphics);
+        }
 
         return new Promise((resolve, reject) => {
 
-            context.tweens.add({
-                targets: self.image,
-                alpha: 0,
-                ease: 'Power1',
-                duration: 500,
-                onComplete: () => {
+           context.tweens.add({
+               targets: fadeOutCover,
+               alpha: 1,
+               duration: 200,
+               onComplete: () => {
 
+                    // Remove the tile image
                     container.remove(self.image);
                     self.image.destroy();
                     self.state = TileState.Destroyed;
-                    resolve();
 
+                    // Remove the fade out cover
+                    container.remove(fadeOutCover);
+                    fadeOutCover.destroy();
+
+                    // Remove the particles
+                    particleGraphics.forEach((graphics) => {
+                        container.remove(graphics);
+                        graphics.destroy();
+                    });
+
+                    resolve();
+               }
+           });
+
+           particleGraphics.forEach((graphics, index) => {
+
+                let xSign = '';
+                let ySign = '';
+               
+                switch(index)
+                {
+                    case 1:
+                        xSign = '-';
+                        ySign = '-';
+                        break;
+
+                    case 2:
+                        xSign = '+';
+                        ySign = '+';
+                        break;
+
+                    case 3:
+                        xSign = '+';
+                        ySign = '-';
+                        break;
+
+                    case 4:
+                        xSign = '-';
+                        ySign = '+';
+                        break;
                 }
-            });
+
+                context.tweens.add({
+                    targets: graphics,
+                    x: xSign + '=35',
+                    y: ySign + '=35',
+                    alpha: 1,
+                    duration: 200,
+                    ease: 'Cubic.easeOut'
+                });
+           });
 
         });
     }
