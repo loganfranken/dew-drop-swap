@@ -24,6 +24,18 @@
   <defs
      id="defs2">
     <linearGradient
+       id="linearGradient1843"
+       inkscape:collect="always">
+      <stop
+         id="stop1839"
+         offset="0"
+         style="stop-color:#f8ff00;stop-opacity:1;" />
+      <stop
+         id="stop1841"
+         offset="1"
+         style="stop-color:#f0fff7;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient
        inkscape:collect="always"
        id="linearGradient852">
       <stop
@@ -37,14 +49,14 @@
     </linearGradient>
     <linearGradient
        inkscape:collect="always"
-       xlink:href="#linearGradient852"
+       xlink:href="#linearGradient1843"
        id="linearGradient854"
        x1="280.42776"
        y1="78.380569"
        x2="280.27069"
        y2="137.7144"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(2.6726953,6.9490077)" />
+       gradientTransform="matrix(1.0002564,0,0,1.0002564,-72.212184,43.797488)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient852"
@@ -75,6 +87,32 @@
            x="268.98074"
            sodipodi:role="line">SWAP</tspan></text>
     </mask>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter1593"
+       x="-0.044596632"
+       width="1.0891933"
+       y="-0.18675671"
+       height="1.3735134">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.3999179"
+         id="feGaussianBlur1595" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter1597"
+       x="-0.044596632"
+       width="1.0891933"
+       y="-0.18675671"
+       height="1.3735134">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.3999179"
+         id="feGaussianBlur1599" />
+    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -83,11 +121,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49497475"
-     inkscape:cx="258.75394"
-     inkscape:cy="576.21717"
+     inkscape:zoom="0.7"
+     inkscape:cx="1021.8307"
+     inkscape:cy="583.98056"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g1831"
      showgrid="false"
      inkscape:window-width="1920"
      inkscape:window-height="1027"
@@ -107,21 +145,89 @@
     </rdf:RDF>
   </metadata>
   <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Glow"
+     style="display:none">
+    <g
+       inkscape:label="Glow Layer 2"
+       inkscape:groupmode="layer"
+       id="g1568"
+       style="display:inline">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:10.58604908px;line-height:0.94999999;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:7.00179577;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill;filter:url(#filter1597)"
+         x="194.16422"
+         y="175.03394"
+         id="text1566"
+         inkscape:export-xdpi="40.093971"
+         inkscape:export-ydpi="40.093971"
+         inkscape:export-filename="F:\git\match-three\assets\start_glow.png"><tspan
+           sodipodi:role="line"
+           x="194.16422"
+           y="175.03394"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:57.87040329px;line-height:0.94999999;font-family:'Fredoka One';-inkscape-font-specification:'Fredoka One';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:7.00179577;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+           id="tspan1564">START</tspan></text>
+    </g>
+    <g
+       style="display:inline"
+       id="g1436"
+       inkscape:groupmode="layer"
+       inkscape:label="Glow Layer 1">
+      <text
+         inkscape:export-filename="F:\git\match-three\assets\start_glow.png"
+         inkscape:export-ydpi="40.093971"
+         inkscape:export-xdpi="40.093971"
+         id="text1434"
+         y="175.03394"
+         x="194.16422"
+         style="font-style:normal;font-weight:normal;font-size:10.58604908px;line-height:0.94999999;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:7.00179577;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill;filter:url(#filter1593)"
+         xml:space="preserve"><tspan
+           id="tspan1432"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:57.87040329px;line-height:0.94999999;font-family:'Fredoka One';-inkscape-font-specification:'Fredoka One';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:7.00179577;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+           y="175.03394"
+           x="194.16422"
+           sodipodi:role="line">START</tspan></text>
+    </g>
+  </g>
+  <g
      inkscape:label="Title"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     style="display:inline">
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0.94999999;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:url(#linearGradient854);fill-opacity:1;fill-rule:nonzero;stroke:#1f4e00;stroke-width:7;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
-       x="268.98077"
-       y="138.15176"
+       style="font-style:normal;font-weight:normal;font-size:10.58604908px;line-height:0.94999999;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:url(#linearGradient854);fill-opacity:1;fill-rule:nonzero;stroke:#1f4e00;stroke-width:7.00179577;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+       x="194.16422"
+       y="175.03394"
        id="text817"
-       inkscape:export-xdpi="26.562258"
-       inkscape:export-ydpi="26.562258"><tspan
+       inkscape:export-xdpi="40.093971"
+       inkscape:export-ydpi="40.093971"
+       inkscape:export-filename="F:\git\match-three\assets\start.png"><tspan
          sodipodi:role="line"
-         x="268.98077"
-         y="138.15176"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:57.85555649px;line-height:0.94999999;font-family:'Fredoka One';-inkscape-font-specification:'Fredoka One';text-align:center;text-anchor:middle;fill:url(#linearGradient854);fill-opacity:1;fill-rule:nonzero;stroke:#1f4e00;stroke-width:7;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+         x="194.16422"
+         y="175.03394"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:57.87040329px;line-height:0.94999999;font-family:'Fredoka One';-inkscape-font-specification:'Fredoka One';text-align:center;text-anchor:middle;fill:url(#linearGradient854);fill-opacity:1;fill-rule:nonzero;stroke:#1f4e00;stroke-width:7.00179577;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
          id="tspan819">START</tspan></text>
+  </g>
+  <g
+     style="display:inline"
+     id="g1831"
+     inkscape:groupmode="layer"
+     inkscape:label="Title (Active)">
+    <text
+       inkscape:export-filename="F:\git\match-three\assets\start_active.png"
+       inkscape:export-ydpi="40.093971"
+       inkscape:export-xdpi="40.093971"
+       id="text1829"
+       y="175.03394"
+       x="194.16422"
+       style="font-style:normal;font-weight:normal;font-size:10.58604908px;line-height:0.94999999;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:url(#linearGradient854);fill-opacity:1;fill-rule:nonzero;stroke:#1f4e00;stroke-width:7.00179577;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+       xml:space="preserve"><tspan
+         id="tspan1827"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:57.87040329px;line-height:0.94999999;font-family:'Fredoka One';-inkscape-font-specification:'Fredoka One';text-align:center;text-anchor:middle;fill:url(#linearGradient854);fill-opacity:1;fill-rule:nonzero;stroke:#1f4e00;stroke-width:7.00179577;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+         y="175.03394"
+         x="194.16422"
+         sodipodi:role="line">START</tspan></text>
   </g>
 </svg>
