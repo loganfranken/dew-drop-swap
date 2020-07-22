@@ -28,13 +28,15 @@ export default class {
         const characterWidth = 250;
         const characterHeight = 500;
 
+        const speechBubbleIntroOffset = 40;
+
         // Speech Bubble
-        const speechBubbleGraphics = context.add.graphics({ fillStyle: { color: 0xffffff } });
-        speechBubbleGraphics.fillRoundedRect(this.x, this.y, speechBubbleWidth, speechBubbleHeight, 10);
+        const speechBubbleGraphics = context.add.graphics({ fillStyle: { color: 0xffffff } }).setAlpha(0);
+        speechBubbleGraphics.fillRoundedRect(this.x, this.y - speechBubbleIntroOffset, speechBubbleWidth, speechBubbleHeight, 10);
         speechBubbleGraphics.fillTriangle(
-            this.x + 120, this.y + speechBubbleHeight + 20,
-            this.x + 105, this.y + speechBubbleHeight,
-            this.x + 135, this.y + speechBubbleHeight
+            this.x + 120, this.y + speechBubbleHeight + 20 - speechBubbleIntroOffset,
+            this.x + 105, this.y + speechBubbleHeight - speechBubbleIntroOffset,
+            this.x + 135, this.y + speechBubbleHeight - speechBubbleIntroOffset
         );
 
         // End Dialogue Marker
@@ -80,7 +82,18 @@ export default class {
         // Character
         context.add.image(this.x + (characterWidth/2), this.y + speechBubbleHeight + 230, 'guide_character');
 
-        self.queueMessages(context, this.script.introMessages);
+        // Speech Bubble Intro Animation
+        context.tweens.add({
+            targets: speechBubbleGraphics,
+            props: {
+                y: { value: `+=${speechBubbleIntroOffset}`, duration: 500, ease: 'Bounce.easeOut' },
+                alpha: { value: 1, duration: 300, ease: 'Linear' }
+            },
+            onComplete: () => {
+                self.queueMessages(context, this.script.introMessages);
+            }
+        });
+
     }
 
     queueMessages(context, messages)
