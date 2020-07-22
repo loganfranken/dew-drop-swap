@@ -5,7 +5,7 @@ import RoundTransitionScene from './scenes/RoundTransitionScene';
 const config = {
     type: Phaser.AUTO,
     width: 800,
-    height: 800,
+    height: 700,
     scene: [TitleScene, RoundScene, RoundTransitionScene]
 };
 

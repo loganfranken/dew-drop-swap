@@ -25,7 +25,7 @@ export default class extends Phaser.Scene {
         this.add.image(400, 200, 'title');
 
         // "Start" Button
-        const startBtnGlow = this.add.image(400, 600, 'start-glow');
+        const startBtnGlow = this.add.image(400, 550, 'start-glow');
         startBtnGlow.setAlpha(0);
 
         this.tweens.add({
@@ -37,10 +37,10 @@ export default class extends Phaser.Scene {
             ease: 'Sine.easeInOut'
         });
 
-        const startBtn = this.add.image(400, 600, 'start');
+        const startBtn = this.add.image(400, 550, 'start');
         startBtn.setInteractive({ cursor: 'pointer' });
 
-        const startBtnOverlay = this.add.image(400, 600, 'start-active');
+        const startBtnOverlay = this.add.image(400, 550, 'start-active');
         startBtnOverlay.setAlpha(0);
 
         startBtn.on('pointerover', () => {
