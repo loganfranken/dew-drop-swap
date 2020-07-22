@@ -22,7 +22,19 @@ export default class extends Phaser.Scene {
         this.add.image(400, 400, 'background');
 
         // Title
-        this.add.image(400, 200, 'title');
+        const title = this.add.image(400, 200, 'title');
+        title.setAlpha(0);
+        title.setScale(2, 2);
+
+        this.tweens.add({
+            delay: 200,
+            targets: title,
+            alpha: 1,
+            scaleX: 1,
+            scaleY: 1,
+            duration: 500,
+            ease: 'Quad.easeIn'
+        });
 
         // "Start" Button
         const startBtnGlow = this.add.image(400, 550, 'start-glow');
