@@ -21,36 +21,24 @@ export default class extends Phaser.Scene {
         // Background
         this.add.image(400, 400, 'background');
 
+        // Flash Backdrop
+        const flashBackdropGraphics = this.add.graphics({ fillStyle: { color: 0xffffff } });
+        flashBackdropGraphics.setAlpha(0);
+        const flashBackdrop = new Phaser.Geom.Rectangle(0, 0, 800, 700);
+        flashBackdropGraphics.fillRectShape(flashBackdrop);
+
         // Title
         const title = this.add.image(400, 200, 'title');
         title.setAlpha(0);
         title.setScale(2, 2);
 
-        this.tweens.add({
-            delay: 200,
-            targets: title,
-            alpha: 1,
-            scaleX: 1,
-            scaleY: 1,
-            duration: 500,
-            ease: 'Quad.easeIn'
-        });
-
         // "Start" Button
         const startBtnGlow = this.add.image(400, 550, 'start-glow');
         startBtnGlow.setAlpha(0);
 
-        this.tweens.add({
-            targets: startBtnGlow,
-            alpha: 1,
-            duration: 1000,
-            repeat: -1,
-            yoyo: true,
-            ease: 'Sine.easeInOut'
-        });
-
         const startBtn = this.add.image(400, 550, 'start');
         startBtn.setInteractive({ cursor: 'pointer' });
+        startBtn.setAlpha(0);
 
         const startBtnOverlay = this.add.image(400, 550, 'start-active');
         startBtnOverlay.setAlpha(0);
@@ -74,6 +62,49 @@ export default class extends Phaser.Scene {
         });
 
         startBtn.on('pointerdown', () => { self.scene.start('RoundScene', { level: 0 }); });
+
+        // Intro Timeline
+        const introTimeline = this.tweens.createTimeline();
+
+        introTimeline.add({
+            delay: 400,
+            targets: title,
+            alpha: 1,
+            scaleX: 1,
+            scaleY: 1,
+            duration: 500,
+            ease: 'Quad.easeIn'
+        });
+
+        introTimeline.add({
+            targets: flashBackdropGraphics,
+            alpha: 1,
+            duration: 30
+        });
+
+        introTimeline.add({
+            targets: flashBackdropGraphics,
+            alpha: 0,
+            duration: 700,
+            ease: 'Quad.easeIn'
+        });
+
+        introTimeline.add({
+            targets: startBtn,
+            alpha: 1,
+            duration: 100
+        });
+
+        introTimeline.add({
+            targets: startBtnGlow,
+            alpha: 1,
+            duration: 1000,
+            repeat: -1,
+            yoyo: true,
+            ease: 'Sine.easeInOut'
+        });
+
+        introTimeline.play();
     }
     
 }
