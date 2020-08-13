@@ -33,16 +33,21 @@ export default class extends Phaser.Scene {
         title.setScale(2, 2);
 
         // "Start" Button
-        const startBtnGlow = this.add.image(400, 550, 'start-glow');
-        startBtnGlow.setAlpha(0);
+        //const startBtnGlow = this.add.image(400, 550, 'start-glow');
+        //startBtnGlow.setAlpha(0);
 
         const startBtn = this.add.image(400, 550, 'start');
         startBtn.setInteractive({ cursor: 'pointer' });
         startBtn.setAlpha(0);
 
-        const startBtnOverlay = this.add.image(400, 550, 'start-active');
+        const startBtnOverlay = this.add.image(400, 550, 'start');
         startBtnOverlay.setAlpha(0);
+        startBtnOverlay.setTintFill(0xffffff);
 
+        //const startBtnOverlay = this.add.image(400, 550, 'start-active');
+        //startBtnOverlay.setAlpha(0);
+
+        /*
         startBtn.on('pointerover', () => {
             self.tweens.add({
                 targets: startBtnOverlay,
@@ -60,6 +65,7 @@ export default class extends Phaser.Scene {
                 ease: 'Sine.easeInOut'
             });
         });
+        */
 
         startBtn.on('pointerdown', () => { self.scene.start('RoundScene', { level: 0 }); });
 
@@ -90,11 +96,19 @@ export default class extends Phaser.Scene {
         });
 
         introTimeline.add({
-            targets: startBtn,
+            targets: [ startBtn, startBtnOverlay ],
             alpha: 1,
             duration: 100
         });
 
+        introTimeline.add({
+            targets: startBtnOverlay,
+            alpha: 0,
+            duration: 300,
+            ease: 'Quad.easeOut'
+        });
+
+        /*
         introTimeline.add({
             targets: startBtnGlow,
             alpha: 1,
@@ -103,6 +117,7 @@ export default class extends Phaser.Scene {
             yoyo: true,
             ease: 'Sine.easeInOut'
         });
+        */
 
         introTimeline.play();
     }
