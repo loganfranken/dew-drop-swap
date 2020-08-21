@@ -65,7 +65,7 @@ export default class extends Phaser.Scene {
 
         this.selectedTiles = [];
         this.tileGrid = new TileGrid(6, 6, 80, 325, -265, this.onTileSelect, this.onTileMatch, tileGenerationBehavior, this.queue);
-        this.scoreDisplay = new ScoreDisplay(100, 580);
+        this.scoreDisplay = new ScoreDisplay(110, 585);
 
         const timerSeconds = LevelManifest[this.level].timer;
         this.timer = (timerSeconds > 0) ? new Timer(5, 570, timerSeconds) : null;
