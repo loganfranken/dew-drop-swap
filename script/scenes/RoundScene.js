@@ -99,7 +99,7 @@ export default class extends Phaser.Scene {
         {
             if(!this.guide.isBlockingGameplay)
             {
-                this.scene.start('RoundTransitionScene', { nextLevel: (this.level + 1) });
+                this.nextLevel();
             }
 
             return;
@@ -123,7 +123,7 @@ export default class extends Phaser.Scene {
 
         if(this.isLevelComplete())
         {
-            this.scene.start('RoundTransitionScene', { nextLevel: (this.level + 1) });
+            this.nextLevel();
             return;
         }
 
@@ -248,6 +248,11 @@ export default class extends Phaser.Scene {
             score: this.score,
             level: this.level
         });
+    }
+
+    nextLevel()
+    {
+        this.scene.restart({ level: (this.level + 1) });
     }
     
 }

@@ -81,7 +81,9 @@ export default class extends Phaser.Scene {
             });
         });
 
-        startBtn.on('pointerdown', () => { self.scene.start('RoundScene', { level: 0 }); });
+        startBtn.on('pointerdown', () => {
+            self.scene.transition({ target: 'RoundScene', data: { level: 0 }, remove: true });
+        });
 
         // Intro Timeline
         const introTimeline = this.tweens.createTimeline();
