@@ -8,6 +8,8 @@ export default class {
 
     constructor(tileGridWidth, tileGridHeight, tileSize, offsetX, offsetY, onTileSelect, onTileMatch, tileGenerationBehavior, queue)
     {
+        this.isBlocked = false;
+
         this.offsetX = offsetX;
         this.offsetY = offsetY;
         this.tileSize = tileSize;
@@ -383,5 +385,17 @@ export default class {
             (aboveTile === null || t.name !== aboveTile.tileType.name) &&
             (leftTile === null || t.name !== leftTile.tileType.name)
         ));
+    }
+
+    block(context)
+    {
+        this.isBlocked = true;
+        this.forEachTile(tile => tile && tile.block(context));
+    }
+
+    unblock(context)
+    {
+        this.isBlocked = false;
+        this.forEachTile(tile => tile && tile.unblock(context));
     }
 }

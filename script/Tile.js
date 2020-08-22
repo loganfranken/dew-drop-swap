@@ -151,4 +151,26 @@ export default class {
 
         });
     }
+
+    block(context)
+    {
+        this.isBlocked = true;
+
+        context.tweens.add({
+            targets: this.image,
+            alpha: 0.5,
+            duration: 100
+        });
+    }
+
+    unblock(context)
+    {
+        this.isBlocked = false;
+
+        context.tweens.add({
+            targets: this.image,
+            alpha: 1,
+            duration: 100
+        });
+    }
 }

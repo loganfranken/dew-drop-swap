@@ -64,7 +64,6 @@ export default class extends Phaser.Scene {
         const tileGenerationBehavior = LevelManifest[this.level].behavior;
 
         this.selectedTiles = [];
-        this.tileGrid = null;
         this.tileGrid = new TileGrid(6, 6, 80, 325, -265, this.onTileSelect, this.onTileMatch, tileGenerationBehavior, this.queue);
         this.scoreDisplay = new ScoreDisplay(110, 585);
 
@@ -86,6 +85,16 @@ export default class extends Phaser.Scene {
 
     update()
     {
+        // If gameplay is currently blocked, make sure the tile grid reflects that
+        if(this.guide.isBlockingGameplay && !this.tileGrid.isBlocked)
+        {
+            this.tileGrid.block(this);
+        }
+        else if(!this.guide.isBlockingGameplay && this.tileGrid.isBlocked)
+        {
+            this.tileGrid.unblock(this);
+        }
+
         if(this.isAwaitingRoundTransition)
         {
             if(!this.guide.isBlockingGameplay)
