@@ -80,10 +80,42 @@ export default class {
         this.speechBubbleTextTyping.on('complete', () => { self.onMessageComplete.call(self) });
 
         // Character
-        context.add.image(this.x + (characterWidth/2), this.y + speechBubbleHeight + 230, 'guide_character');
+        const characterImage = context.add.image(this.x - characterWidth, this.y + speechBubbleHeight + 230, 'guide_character');
+
+        // this.x + (characterWidth/2)
+
+        // Intro Timeline
+        const introTimeline = context.tweens.createTimeline();
+
+        // Slide in the character
+        introTimeline.add({
+            delay: 200,
+            targets: characterImage,
+            x: (this.x + characterWidth/2),
+            duration: 400,
+            angle: 15,
+            ease: 'Power1'
+        });
+
+        // Sway backwards
+        introTimeline.add({
+            targets: characterImage,
+            duration: 400,
+            angle: -7,
+            ease: 'Power1'
+        });
+
+        // Sway into position
+        introTimeline.add({
+            targets: characterImage,
+            duration: 400,
+            angle: 0,
+            ease: 'Power1'
+        });
 
         // Speech Bubble Intro Animation
-        context.tweens.add({
+        introTimeline.add({
+            offset: '-=300',
             targets: speechBubbleGraphics,
             props: {
                 y: { value: `+=${speechBubbleIntroOffset}`, duration: 500, ease: 'Bounce.easeOut' },
@@ -93,6 +125,8 @@ export default class {
                 self.queueMessages(context, this.script.introMessages);
             }
         });
+
+        introTimeline.play();
 
     }
 

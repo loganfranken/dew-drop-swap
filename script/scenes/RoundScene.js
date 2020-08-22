@@ -46,7 +46,7 @@ export default class extends Phaser.Scene {
 
     init(data)
     {
-        this.level = data.level;
+        this.level = data.level || 0;
     }
 
     create()
@@ -64,6 +64,7 @@ export default class extends Phaser.Scene {
         const tileGenerationBehavior = LevelManifest[this.level].behavior;
 
         this.selectedTiles = [];
+        this.tileGrid = null;
         this.tileGrid = new TileGrid(6, 6, 80, 325, -265, this.onTileSelect, this.onTileMatch, tileGenerationBehavior, this.queue);
         this.scoreDisplay = new ScoreDisplay(110, 585);
 
