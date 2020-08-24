@@ -14,6 +14,7 @@ export default class extends Phaser.Scene {
         super('RoundScene');
 
         this.isAwaitingRoundTransition = false;
+        this.isReadyForRoundTransition = false;
 
         this.score = null;
         this.queue = null;
@@ -52,6 +53,7 @@ export default class extends Phaser.Scene {
     create()
     {
         this.isAwaitingRoundTransition = false;
+        this.isReadyForRoundTransition = false;
 
         this.score = 0;
         this.comboCount = 0;
@@ -97,7 +99,7 @@ export default class extends Phaser.Scene {
 
         if(this.isAwaitingRoundTransition)
         {
-            if(!this.guide.isBlockingGameplay)
+            if(this.isReadyForRoundTransition)
             {
                 this.nextLevel();
             }
@@ -123,7 +125,8 @@ export default class extends Phaser.Scene {
 
         if(this.isLevelComplete())
         {
-            this.nextLevel();
+            this.endLevel();
+            this.isAwaitingRoundTransition = true;
             return;
         }
 
@@ -248,6 +251,12 @@ export default class extends Phaser.Scene {
             score: this.score,
             level: this.level
         });
+    }
+
+    endLevel()
+    {
+        console.log('Level Complete!');
+        this.isReadyForRoundTransition = true;
     }
 
     nextLevel()
