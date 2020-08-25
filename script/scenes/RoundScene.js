@@ -15,6 +15,7 @@ export default class extends Phaser.Scene {
 
         this.isAwaitingRoundTransition = false;
         this.isReadyForRoundTransition = false;
+        this.isTransitioningRounds = false;
 
         this.score = null;
         this.queue = null;
@@ -22,6 +23,7 @@ export default class extends Phaser.Scene {
         this.tileGrid = null;
         this.scoreDisplay = null;
         this.timer = null;
+        this.levelClearMessage = null;
  
         this.guide = null;
         this.level = null;
@@ -54,6 +56,7 @@ export default class extends Phaser.Scene {
     {
         this.isAwaitingRoundTransition = false;
         this.isReadyForRoundTransition = false;
+        this.isTransitioningRounds = false;
 
         this.score = 0;
         this.comboCount = 0;
@@ -68,6 +71,8 @@ export default class extends Phaser.Scene {
         this.selectedTiles = [];
         this.tileGrid = new TileGrid(6, 6, 80, 325, -265, this.onTileSelect, this.onTileMatch, tileGenerationBehavior, this.queue);
         this.scoreDisplay = new ScoreDisplay(110, 585);
+
+        this.levelClearMessage = this.add.text(400, 0, "Round Clear");
 
         const timerSeconds = LevelManifest[this.level].timer;
         this.timer = (timerSeconds > 0) ? new Timer(5, 570, timerSeconds) : null;
@@ -99,7 +104,7 @@ export default class extends Phaser.Scene {
 
         if(this.isAwaitingRoundTransition)
         {
-            if(this.isReadyForRoundTransition)
+            if(this.isReadyForRoundTransition && !this.isTransitioningRounds)
             {
                 this.nextLevel();
             }
@@ -255,8 +260,18 @@ export default class extends Phaser.Scene {
 
     endLevel()
     {
-        console.log('Level Complete!');
-        this.isReadyForRoundTransition = true;
+        const self = this;
+
+        self.isTransitioningRounds = true;
+        self.tweens.add({
+            targets: this.levelClearMessage,
+            y: 800,
+            duration: 1000,
+            onComplete: () => {
+                self.isReadyForRoundTransition = true;
+                self.isTransitioningRounds = false; 
+            }
+        });
     }
 
     nextLevel()
