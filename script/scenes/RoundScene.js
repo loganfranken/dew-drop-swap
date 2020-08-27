@@ -45,6 +45,9 @@ export default class extends Phaser.Scene {
 
         // Images: Background
         this.load.image('background', 'assets/background.png');
+
+        // Images: Round Clear
+        this.load.image('round_clear', 'assets/round_clear.png')
     }
 
     init(data)
@@ -72,8 +75,6 @@ export default class extends Phaser.Scene {
         this.tileGrid = new TileGrid(6, 6, 80, 325, -265, this.onTileSelect, this.onTileMatch, tileGenerationBehavior, this.queue);
         this.scoreDisplay = new ScoreDisplay(110, 585);
 
-        this.levelClearMessage = this.add.text(400, 0, "Round Clear");
-
         const timerSeconds = LevelManifest[this.level].timer;
         this.timer = (timerSeconds > 0) ? new Timer(5, 570, timerSeconds) : null;
 
@@ -85,6 +86,9 @@ export default class extends Phaser.Scene {
         this.scoreDisplay.create(this);
         this.timer && this.timer.create(this);
         this.guide.create(this);
+
+        this.levelClearMessage = this.add.image(400, 400, 'round_clear')
+        this.levelClearMessage.setAlpha(0);
 
         const self = this;
         this.input.on('pointerdown', () => { self.guide.progressDialogue(); });
@@ -265,8 +269,9 @@ export default class extends Phaser.Scene {
         self.isTransitioningRounds = true;
         self.tweens.add({
             targets: this.levelClearMessage,
-            y: 800,
+            alpha: 1,
             duration: 1000,
+            completeDelay: 2000,
             onComplete: () => {
                 self.isReadyForRoundTransition = true;
                 self.isTransitioningRounds = false; 
