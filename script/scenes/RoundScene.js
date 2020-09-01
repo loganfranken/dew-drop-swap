@@ -23,7 +23,9 @@ export default class extends Phaser.Scene {
         this.tileGrid = null;
         this.scoreDisplay = null;
         this.timer = null;
+
         this.levelClearMessage = null;
+        this.levelClearMessageHighlight = null;
  
         this.guide = null;
         this.level = null;
@@ -87,8 +89,12 @@ export default class extends Phaser.Scene {
         this.timer && this.timer.create(this);
         this.guide.create(this);
 
-        this.levelClearMessage = this.add.image(400, 400, 'round_clear')
+        this.levelClearMessage = this.add.image(400, 400, 'round_clear');
         this.levelClearMessage.setAlpha(0);
+
+        this.levelClearMessageHighlight = this.add.image(400, 400, 'round_clear');
+        this.levelClearMessageHighlight.setAlpha(0);
+        this.levelClearMessageHighlight.setTintFill(0xffffff);
 
         const self = this;
         this.input.on('pointerdown', () => { self.guide.progressDialogue(); });
@@ -267,6 +273,14 @@ export default class extends Phaser.Scene {
         const self = this;
 
         self.isTransitioningRounds = true;
+
+        this.levelClearMessageHighlight.setAlpha(1);
+        self.tweens.add({
+            targets: this.levelClearMessageHighlight,
+            alpha: 0,
+            duration: 1000
+        });
+
         self.tweens.add({
             targets: this.levelClearMessage,
             alpha: 1,
