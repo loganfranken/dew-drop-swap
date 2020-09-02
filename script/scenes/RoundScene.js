@@ -30,7 +30,6 @@ export default class extends Phaser.Scene {
         this.guide = null;
         this.level = null;
 
-        this.comboCount = null;
         this.totalMatches = null;
     }
 
@@ -64,7 +63,6 @@ export default class extends Phaser.Scene {
         this.isTransitioningRounds = false;
 
         this.score = 0;
-        this.comboCount = 0;
         this.totalMatches = 0;
 
         this.queue = new ActionQueue();
@@ -229,28 +227,16 @@ export default class extends Phaser.Scene {
     
                 context.selectedTiles.forEach((tile) => { tile.deactivate(); });
                 context.selectedTiles = [];
-                
-                context.comboCount = 0;
             }
         }
     }
 
     onTileMatch(context, matchedTiles)
     {
-        context.comboCount++;
         context.totalMatches++;
 
-        context.score += (matchedTiles.length * context.comboCount);
+        context.score += matchedTiles.length;
         context.scoreDisplay.updateScore(context.score);
-
-        if(context.comboCount > 1)
-        {
-            context.scoreDisplay.updateCombo(`${context.comboCount}x multiplier!`);
-        }
-        else
-        {
-            context.scoreDisplay.updateCombo('');
-        }
     }
 
     isLevelComplete()

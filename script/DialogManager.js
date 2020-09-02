@@ -26,7 +26,6 @@ export default class {
                     {
                         return [
                             "You got it! That's it!",
-                            "You collect extra dew drops when you chain together matches in a combo!",
                             "See if you can collect 100 dew drops!"
                         ];
                     }

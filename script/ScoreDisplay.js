@@ -5,7 +5,6 @@ export default class {
         this.x = x;
         this.y = y;
         this.scoreText = null;
-        this.comboText = null;
         this.score = 0;
     }
 
@@ -23,18 +22,11 @@ export default class {
 
         this.scoreText = context.add.text(this.x, this.y, this.score, scoreTextStyle);
         this.updateScore(this.score);
-
-        this.comboText = context.add.text(this.x, this.y + 20, '');
     }
 
     updateScore(score)
     {
         this.score = score;
         this.scoreText.setText(score + ' drops');
-    }
-
-    updateCombo(text)
-    {
-        this.comboText.setText(text);
     }
 }
