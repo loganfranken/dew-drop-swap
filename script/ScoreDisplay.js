@@ -17,7 +17,7 @@ export default class {
         scoreBackgroundGraphics.fillRoundedRect(this.x - 150, this.y - 10, 300, 90, 10);
 
         // Icon
-        context.add.image(this.x + 15, this.y + 15, 'icon_tile');
+        context.add.image(this.x + 15, this.y + 15, 'icon_tile').setAlpha(0.7);
 
         // Text
         this.scoreText = context.add.text(this.x + 40, this.y, this.score, FontStyleManifest.Default);

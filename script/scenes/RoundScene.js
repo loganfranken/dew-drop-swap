@@ -38,7 +38,7 @@ export default class extends Phaser.Scene {
     {
         WebFontLoader.load({
             google: {
-                families: [FontStyleManifest.Default.fontFamily]
+                families: [FontStyleManifest.Default.googleFontName]
             }
         });
 

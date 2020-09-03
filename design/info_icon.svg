@@ -23,16 +23,16 @@
      id="defs2" />
   <sodipodi:namedview
      id="base"
-     pagecolor="#ffffff"
+     pagecolor="#000000"
      bordercolor="#666666"
      borderopacity="1.0"
-     inkscape:pageopacity="0.0"
+     inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="425.11736"
+     inkscape:cx="260.96757"
      inkscape:cy="491.31903"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer13"
+     inkscape:current-layer="layer9"
      showgrid="false"
      inkscape:window-width="1920"
      inkscape:window-height="1027"
@@ -47,7 +47,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -55,37 +55,26 @@
      inkscape:groupmode="layer"
      id="layer8"
      inkscape:label="Timer"
-     style="display:none">
+     style="display:inline">
     <g
        inkscape:groupmode="layer"
        id="layer9"
        inkscape:label="Circle Base"
        style="display:inline">
-      <circle
-         style="opacity:1;fill:#53d04f;fill-opacity:1;stroke:#1fa71d;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+      <path
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#1fa71d;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="M 199.54492 483.625 A 94.488189 94.488189 0 0 0 105.05664 578.11328 A 94.488189 94.488189 0 0 0 199.54492 672.60156 A 94.488189 94.488189 0 0 0 294.0332 578.11328 A 94.488189 94.488189 0 0 0 199.54492 483.625 z M 244.07422 522.24805 C 246.5065 522.30944 248.87561 523.19684 250.74219 524.93945 C 255.00866 528.92258 254.99174 535.82441 250.70508 540.41602 L 205.73828 588.58398 C 201.45162 593.17559 194.5653 593.66476 190.29883 589.68164 C 186.03235 585.69852 186.04928 578.79473 190.33594 574.20312 L 235.30273 526.03711 C 237.71398 523.45433 240.947 522.16912 244.07422 522.24805 z "
+         transform="scale(0.26458333)"
          id="path1027"
-         cx="52.796032"
-         cy="152.95918"
-         r="25"
-         inkscape:transform-center-x="-57.730218"
-         inkscape:transform-center-y="-84.99171" />
+         inkscape:export-filename="F:\git\match-three\assets\icon_timer.png"
+         inkscape:export-xdpi="15.24"
+         inkscape:export-ydpi="15.24" />
     </g>
     <g
        style="display:inline"
        inkscape:label="Hands"
        id="g1079"
-       inkscape:groupmode="layer">
-      <rect
-         style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:7.00199986;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
-         id="rect890"
-         width="23.434523"
-         height="5.5751486"
-         x="-79.685089"
-         y="140.48705"
-         rx="3.0000045"
-         ry="3.0000045"
-         transform="rotate(-46.967175)" />
-    </g>
+       inkscape:groupmode="layer" />
   </g>
   <g
      inkscape:groupmode="layer"
