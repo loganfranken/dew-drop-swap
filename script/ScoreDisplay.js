@@ -1,3 +1,5 @@
+import FontStyleManifest from './FontStyleManifest';
+
 export default class {
 
     constructor(x, y)
@@ -10,23 +12,21 @@ export default class {
 
     create(context)
     {
+        // Background
         const scoreBackgroundGraphics = context.add.graphics({ fillStyle: { color: 0xdbf0ff } }).setAlpha(0.5);
-        scoreBackgroundGraphics.fillRoundedRect(this.x - 150, this.y - 10, 300, 80, 10);
+        scoreBackgroundGraphics.fillRoundedRect(this.x - 150, this.y - 10, 300, 90, 10);
 
-        const scoreTextStyle = {
-            color: '#000',
-            fontFamily: '"Baloo Thambi 2"',
-            fontStyle: 'bold',
-            fontSize: '30px'
-        };
+        // Icon
+        context.add.image(this.x + 15, this.y + 15, 'icon_tile');
 
-        this.scoreText = context.add.text(this.x, this.y, this.score, scoreTextStyle);
+        // Text
+        this.scoreText = context.add.text(this.x + 40, this.y, this.score, FontStyleManifest.Default);
         this.updateScore(this.score);
     }
 
     updateScore(score)
     {
         this.score = score;
-        this.scoreText.setText(score + ' drops');
+        this.scoreText.setText(score);
     }
 }

@@ -1,11 +1,12 @@
 import ActionQueue from '../ActionQueue';
 import DialogManager from '../DialogManager';
+import FontStyleManifest from '../FontStyleManifest';
 import Guide from '../Guide';
 import LevelManifest from '../LevelManifest';
 import ScoreDisplay from '../ScoreDisplay';
 import TileGrid from '../TileGrid';
 import Timer from '../Timer';
-import TileGenerationBehavior from '../TileGenerationBehavior';
+import WebFontLoader from 'webfontloader';
 
 export default class extends Phaser.Scene {
 
@@ -35,6 +36,12 @@ export default class extends Phaser.Scene {
 
     preload()
     {
+        WebFontLoader.load({
+            google: {
+                families: [FontStyleManifest.Default.fontFamily]
+            }
+        });
+
         // Images: Tiles
         this.load.image('tile_01', 'assets/tile_01.png');
         this.load.image('tile_02', 'assets/tile_02.png');
@@ -48,7 +55,11 @@ export default class extends Phaser.Scene {
         this.load.image('background', 'assets/background.png');
 
         // Images: Round Clear
-        this.load.image('round_clear', 'assets/round_clear.png')
+        this.load.image('round_clear', 'assets/round_clear.png');
+
+        // Images: Icons
+        this.load.image('icon_tile', 'assets/icon_tile.png');
+        this.load.image('icon_timer', 'assets/icon_timer.png');
     }
 
     init(data)
@@ -76,7 +87,7 @@ export default class extends Phaser.Scene {
         this.scoreDisplay = new ScoreDisplay(110, 585);
 
         const timerSeconds = LevelManifest[this.level].timer;
-        this.timer = (timerSeconds > 0) ? new Timer(5, 570, timerSeconds) : null;
+        this.timer = (timerSeconds > 0) ? new Timer(110, 625, timerSeconds) : null;
 
         const dialogManager = new DialogManager();
         const script = dialogManager.getScript(this.level);

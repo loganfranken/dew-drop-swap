@@ -1,5 +1,6 @@
 import TagText from 'phaser3-rex-plugins/plugins/tagtext.js';
 import TextTyping from 'phaser3-rex-plugins/plugins/texttyping.js';
+import FontStyleManifest from './FontStyleManifest';
 
 export default class {
 
@@ -57,18 +58,14 @@ export default class {
         });
 
         // Speech Bubble Text
-        const speechBubbleTextStyle = {
-            color: '#000',
-            fontFamily: '"Baloo Thambi 2"',
-            fontSize: '30px',
-            wrap: {
-                mode: 'word',
-                width: speechBubbleWidth
-            },
-            tags: {
-                exclamation: {
-                    fontStyle: 'bold'
-                }
+        const speechBubbleTextStyle = FontStyleManifest.Default;
+        speechBubbleTextStyle.wrap = {
+            mode: 'word',
+            width: speechBubbleWidth
+        };
+        speechBubbleTextStyle.tags = {
+            exclamation: {
+                fontStyle: 'bold'
             }
         };
         
@@ -81,8 +78,6 @@ export default class {
 
         // Character
         const characterImage = context.add.image(this.x - characterWidth, this.y + speechBubbleHeight + 230, 'guide_character');
-
-        // this.x + (characterWidth/2)
 
         // Intro Timeline
         const introTimeline = context.tweens.createTimeline();

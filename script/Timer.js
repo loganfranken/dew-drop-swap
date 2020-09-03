@@ -1,3 +1,5 @@
+import FontStyleManifest from './FontStyleManifest';
+
 export default class {
 
     constructor(x, y, seconds)
@@ -11,7 +13,11 @@ export default class {
 
     create(context)
     {
-        this.text = context.add.text(this.x, this.y, this.score);
+        // Icon
+        context.add.image(this.x + 15, this.y + 15, 'icon_timer').setAlpha(0.7);
+
+        // Text
+        this.text = context.add.text(this.x + 40, this.y, this.score, FontStyleManifest.Default);
         
         this.tick();
         context.time.addEvent({ delay: 1000, callback: this.tick, callbackScope: this, loop: true })
