@@ -8,7 +8,8 @@ export default class {
 
     constructor(tileGridWidth, tileGridHeight, tileSize, offsetX, offsetY, onTileSelect, onTileMatch, tileGenerationBehavior, queue)
     {
-        this.isBlocked = false;
+        this.isInitialized = false;
+        this.isBlocked = true;
 
         this.offsetX = offsetX;
         this.offsetY = offsetY;
@@ -34,13 +35,7 @@ export default class {
             this.tileGrid[y] = [];
             for(let x = 0; x < tileGridWidth; x++)
             {
-                this.tileGrid[y][x] = (y < tileGridHeight)
-                    ? null
-                    : this.createTile(this.getTileType(x, y, TileGenerationBehavior.None), x, y);
-
-                // When we're generating the grid, we start with the default tile generation
-                // behavior since the "Easy Win" behavior will create a grid with identical
-                // tiles
+                this.tileGrid[y][x] = null;
             }
         }
     }
@@ -48,19 +43,6 @@ export default class {
     create(context)
     {
         this.tileImageContainer = context.add.container();
-
-        // Create all of the tiles
-        this.forEachTile(tile => {
-
-            if(tile === null)
-            {
-                return;
-            }
-
-            tile.create(context);
-            this.tileImageContainer.add(tile.image);
-
-        });
 
         // Create a mask to only show the play area
         const maskShape = context.make.graphics();
@@ -73,6 +55,11 @@ export default class {
     update(context)
     {
         const self = this;
+
+        if(!self.isInitialized)
+        {
+            return;
+        }
 
         if(self.queue.length > 0)
         {
@@ -397,5 +384,18 @@ export default class {
     {
         this.isBlocked = false;
         this.forEachTile(tile => tile && tile.unblock(context));
+    }
+
+    fill()
+    {
+        for(let y = this.tileGridHeight; y < this.tileGridHeight * 2; y++)
+        {
+            for(let x = 0; x < this.tileGridWidth; x++)
+            {
+                this.createTile(this.getTileType(x, y, TileGenerationBehavior.None), x, y);
+            }
+        }
+
+        this.isInitialized = true;
     }
 }

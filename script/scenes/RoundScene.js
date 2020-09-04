@@ -111,12 +111,17 @@ export default class extends Phaser.Scene {
 
     update()
     {
+        if(!this.tileGrid.isInitialized)
+        {
+            this.tileGrid.fill();
+        }
+
         // If gameplay is currently blocked, make sure the tile grid reflects that
         if(this.guide.isBlockingGameplay && !this.tileGrid.isBlocked)
         {
             this.tileGrid.block(this);
         }
-        else if(!this.guide.isBlockingGameplay && this.tileGrid.isBlocked)
+        else if(!this.guide.isBlockingGameplay && this.tileGrid.isBlocked && this.tileGrid.isInitialized)
         {
             this.tileGrid.unblock(this);
         }
