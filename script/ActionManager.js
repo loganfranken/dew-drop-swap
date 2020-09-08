@@ -1,39 +1,37 @@
-import DialogScript from "./DialogScript";
+import ActionScript from "./ActionScript";
 
 export default class {
 
     getScript(level)
     {
-        const script = new DialogScript();
-
         switch(level)
         {
             // Level 0 (Intro)
             case 0:
+                
+                return new ActionScript([
 
-                script.introMessages = [
+                    // Script
                     `*Oh, doozle, you made it!* You're here! (Click or tap anywhere!)`,
                     `The Dew Drop Kingdom is in trouble!`,
                     `We lost all of our dew drops and now we'll starve!`,
                     `But you can help us by collecting as many dew drops as you can!`,
+                    { do: 'dropTiles' },
                     "If you match three or more dew drops of the same color, we can collect them!",
-                    "To make a match, select two dew drops and swap their places!"
-                ];
+                    "To make a match, select two dew drops and swap their places!",
 
-                script.getDisplayTileMatchMessages = (data) => {
-
-                    if(data.totalMatches === 1)
+                    // Events
                     {
-                        return [
+                        on: 'firstMatch',
+                        messages: [
                             "You got it! That's it!",
                             "See if you can collect 100 dew drops!"
-                        ];
-                    }
+                        ]
+                    },
 
-                };
+                ]);
 
-                break;
-
+            /*
             // Level 1 (Timer Intro)
             case 1:
 
@@ -194,10 +192,9 @@ export default class {
                 ];
 
                 break;
+                */
 
         }
-
-        return script;
     }
 
 }
