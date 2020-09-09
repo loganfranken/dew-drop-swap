@@ -117,7 +117,7 @@ export default class {
                 alpha: { value: 1, duration: 300, ease: 'Linear' }
             },
             onComplete: () => {
-                self.queueMessages(context, this.script.introMessages);
+                self.queueMessages(context, this.script.introScript);
             }
         });
 
@@ -158,23 +158,6 @@ export default class {
             this.isBlockingGameplay = false;
             return;
         }
-    }
-
-    displayTileMatchMessage(context, data)
-    {
-        const messages = this.script.getDisplayTileMatchMessages(data);
-        this.queueMessages(context, messages);
-    }
-
-    displayGameOverMessage(context)
-    {
-        const messages = this.script.getGameOverMessages();
-
-        // Push in a placeholder message to force players to confirm the last
-        // message in the "Game Over" queue
-        messages.push(' ');
-
-        this.queueMessages(context, messages);
     }
 
     progressDialogue()

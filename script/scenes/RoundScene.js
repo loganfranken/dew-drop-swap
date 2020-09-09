@@ -1,5 +1,5 @@
+import ActionScriptManager from '../ActionScriptManager';
 import ActionQueue from '../ActionQueue';
-import DialogManager from '../DialogManager';
 import FontStyleManifest from '../FontStyleManifest';
 import Guide from '../Guide';
 import LevelManifest from '../LevelManifest';
@@ -89,9 +89,9 @@ export default class extends Phaser.Scene {
         const timerSeconds = LevelManifest[this.level].timer;
         this.timer = (timerSeconds > 0) ? new Timer(110, 625, timerSeconds) : null;
 
-        const dialogManager = new DialogManager();
-        const script = dialogManager.getScript(this.level);
-        this.guide = new Guide(20, 20, script);
+        const actionScriptManager = new ActionScriptManager();
+        const actionScript = actionScriptManager.getScript(this.level);
+        this.guide = new Guide(20, 20, actionScript);
 
         this.tileGrid.create(this);
         this.scoreDisplay.create(this);
@@ -111,11 +111,6 @@ export default class extends Phaser.Scene {
 
     update()
     {
-        if(!this.tileGrid.isInitialized)
-        {
-            this.tileGrid.fill();
-        }
-
         // If gameplay is currently blocked, make sure the tile grid reflects that
         if(this.guide.isBlockingGameplay && !this.tileGrid.isBlocked)
         {

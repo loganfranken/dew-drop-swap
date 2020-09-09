@@ -27,7 +27,7 @@ export default class {
                             "You got it! That's it!",
                             "See if you can collect 100 dew drops!"
                         ]
-                    },
+                    }
 
                 ]);
 

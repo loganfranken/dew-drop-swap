@@ -1,8 +1,22 @@
 export default class {
 
-    constructor()
+    constructor(script)
     {
-        this.introMessages = [];
-        this.getDisplayTileMatchMessages = () => {};
+        this.introScript = [];
+        this.triggers = {};
+
+        script.forEach(element => {
+            
+            if(element.hasOwnProperty('on'))
+            {
+                this.triggers[element.on] = element.messages;
+            }
+            else
+            {
+                this.introScript.push(element);
+            }
+
+        });
     }
+
 }
