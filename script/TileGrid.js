@@ -1,13 +1,16 @@
+import EventEmitter from './EventEmitter';
 import { getRandomItem } from './Utility';
 import Tile from './Tile';
 import TileGenerationBehavior from './TileGenerationBehavior';
 import TileState from './TileState';
 import TileType from './TileType';
 
-export default class {
+export default class extends EventEmitter {
 
     constructor(tileGridWidth, tileGridHeight, tileSize, offsetX, offsetY, onTileSelect, onTileMatch, tileGenerationBehavior, queue)
     {
+        super();
+
         this.isInitialized = false;
         this.isBlocked = true;
 
@@ -72,6 +75,7 @@ export default class {
         if(matchedTiles.length > 0)
         {
             self.onTileMatch(context, matchedTiles);
+            self.emit('match');
         }
 
         let destroys = [];
@@ -386,13 +390,16 @@ export default class {
         this.forEachTile(tile => tile && tile.unblock(context));
     }
 
-    fill()
+    fill(context)
     {
-        for(let y = this.tileGridHeight; y < this.tileGridHeight * 2; y++)
+        for(let y = 0; y < this.tileGridHeight; y++)
         {
             for(let x = 0; x < this.tileGridWidth; x++)
             {
-                this.createTile(this.getTileType(x, y, TileGenerationBehavior.None), x, y);
+                let tile = this.createTile(this.getTileType(x, y, TileGenerationBehavior.None), x, y);
+                tile.create(context);
+                
+                this.tileGrid[y][x] = tile;
             }
         }
 

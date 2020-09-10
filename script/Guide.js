@@ -1,20 +1,25 @@
+import EventEmitter from './EventEmitter';
+import FontStyleManifest from './FontStyleManifest';
 import TagText from 'phaser3-rex-plugins/plugins/tagtext.js';
 import TextTyping from 'phaser3-rex-plugins/plugins/texttyping.js';
-import FontStyleManifest from './FontStyleManifest';
 
-export default class {
+export default class extends EventEmitter {
 
-    constructor(x, y, script)
+    constructor(x, y)
     {
+        super();
+
         this.x = x;
         this.y = y;
-        this.script = script;
 
-        this.queuedMessages = null;
+        this.queuedActions = null;
         this.isPaused = false;
         this.isBlockingGameplay = false;
 
         this.endDialogueMarkerGraphics = null;
+
+        this.onReady = null;
+        this.onMessageComplete = null;
     }
 
     create(context)
@@ -74,7 +79,7 @@ export default class {
 
         // Speech Bubble Text Typing
         this.speechBubbleTextTyping = new TextTyping(this.speechBubbleText, { speed: 30 }); 
-        this.speechBubbleTextTyping.on('complete', () => { self.onMessageComplete.call(self) });
+        this.speechBubbleTextTyping.on('complete', () => { self.messageCompleted.call(self) });
 
         // Character
         const characterImage = context.add.image(this.x - characterWidth, this.y + speechBubbleHeight + 230, 'guide_character');
@@ -117,7 +122,7 @@ export default class {
                 alpha: { value: 1, duration: 300, ease: 'Linear' }
             },
             onComplete: () => {
-                self.queueMessages(context, this.script.introScript);
+                this.emit('ready');
             }
         });
 
@@ -125,49 +130,17 @@ export default class {
 
     }
 
-    queueMessages(context, messages)
-    {
-        if(!messages)
-        {
-            return;
-        }
-
-        const self = this;
-
-        if(self.queuedMessages === null)
-        {
-            self.queuedMessages = [];
-        }
-
-        self.queuedMessages.push(...messages);
-
-        if(self.speechBubbleTextTyping.isTyping)
-        {
-            return;
-        }
-
-        self.isBlockingGameplay = true;
-        self.progressDialogue();
-    }
-
-    onMessageComplete()
-    {
-        this.showEndDialogueMarker();
-        if(this.queuedMessages.length === 0)
-        {
-            this.isBlockingGameplay = false;
-            return;
-        }
-    }
-
-    progressDialogue()
+    displayMessage(message)
     {
         this.hideEndDialogueMarker();
-        if(this.queuedMessages.length > 0)
-        {
-            const message = this.convertDialogToTagText(this.queuedMessages.shift());
-            this.speechBubbleTextTyping.start(message);
-        }
+        const convMessage = this.convertDialogToTagText(message);
+        this.speechBubbleTextTyping.start(convMessage);
+    }
+
+    messageCompleted()
+    {
+        this.showEndDialogueMarker();
+        this.onMessageComplete && this.onMessageComplete();
     }
 
     showEndDialogueMarker()

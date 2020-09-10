@@ -1,6 +1,5 @@
 import LevelManifest from "./LevelManifest";
 import TileGenerationBehavior from "./TileGenerationBehavior";
-import Tile from "./Tile";
 
 export default [
 

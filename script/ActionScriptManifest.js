@@ -1,6 +1,4 @@
-import ActionScript from "./ActionScript";
-
-export default class {
+export default {
 
     getScript(level)
     {
@@ -9,7 +7,7 @@ export default class {
             // Level 0 (Intro)
             case 0:
                 
-                return new ActionScript([
+                return [
 
                     // Script
                     `*Oh, doozle, you made it!* You're here! (Click or tap anywhere!)`,
@@ -29,7 +27,7 @@ export default class {
                         ]
                     }
 
-                ]);
+                ];
 
             /*
             // Level 1 (Timer Intro)

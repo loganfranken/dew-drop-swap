@@ -1,5 +1,6 @@
-import ActionScriptManager from '../ActionScriptManager';
+import ActionScriptManifest from '../ActionScriptManifest';
 import ActionQueue from '../ActionQueue';
+import Director from '../Director';
 import FontStyleManifest from '../FontStyleManifest';
 import Guide from '../Guide';
 import LevelManifest from '../LevelManifest';
@@ -28,6 +29,7 @@ export default class extends Phaser.Scene {
         this.levelClearMessage = null;
         this.levelClearMessageHighlight = null;
  
+        this.director = null;
         this.guide = null;
         this.level = null;
 
@@ -89,9 +91,7 @@ export default class extends Phaser.Scene {
         const timerSeconds = LevelManifest[this.level].timer;
         this.timer = (timerSeconds > 0) ? new Timer(110, 625, timerSeconds) : null;
 
-        const actionScriptManager = new ActionScriptManager();
-        const actionScript = actionScriptManager.getScript(this.level);
-        this.guide = new Guide(20, 20, actionScript);
+        this.guide = new Guide(20, 20);
 
         this.tileGrid.create(this);
         this.scoreDisplay.create(this);
@@ -105,32 +105,15 @@ export default class extends Phaser.Scene {
         this.levelClearMessageHighlight.setAlpha(0);
         this.levelClearMessageHighlight.setTintFill(0xffffff);
 
+        const actionScript = ActionScriptManifest.getScript(this.level);
+        this.director = new Director(actionScript, this.guide, this.tileGrid);
+
         const self = this;
-        this.input.on('pointerdown', () => { self.guide.progressDialogue(); });
+        this.input.on('pointerdown', () => { self.director.next(self); });
     }
 
     update()
     {
-        // If gameplay is currently blocked, make sure the tile grid reflects that
-        if(this.guide.isBlockingGameplay && !this.tileGrid.isBlocked)
-        {
-            this.tileGrid.block(this);
-        }
-        else if(!this.guide.isBlockingGameplay && this.tileGrid.isBlocked && this.tileGrid.isInitialized)
-        {
-            this.tileGrid.unblock(this);
-        }
-
-        if(this.isAwaitingRoundTransition)
-        {
-            if(this.isReadyForRoundTransition && !this.isTransitioningRounds)
-            {
-                this.nextLevel();
-            }
-
-            return;
-        }
-
         this.handleSpecialLevelBehavior();
         
         // Start the timer if the guide has stopped talking
