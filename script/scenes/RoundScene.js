@@ -62,6 +62,10 @@ export default class extends Phaser.Scene {
         // Images: Icons
         this.load.image('icon_tile', 'assets/icon_tile.png');
         this.load.image('icon_timer', 'assets/icon_timer.png');
+
+        // Images: Expressions
+        this.load.image('expression_default', 'assets/expression_default.png');
+        this.load.image('expression_surprise', 'assets/expression_surprise.png');
     }
 
     init(data)

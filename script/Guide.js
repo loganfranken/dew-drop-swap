@@ -17,9 +17,7 @@ export default class extends EventEmitter {
         this.isBlockingGameplay = false;
 
         this.endDialogueMarkerGraphics = null;
-
-        this.onReady = null;
-        this.onMessageComplete = null;
+        this.characterExpression = null;
     }
 
     create(context)
@@ -84,8 +82,15 @@ export default class extends EventEmitter {
         this.speechBubbleTextTyping = new TextTyping(this.speechBubbleText, { speed: 30 }); 
         this.speechBubbleTextTyping.on('complete', () => { self.messageCompleted.call(self) });
 
+        const character = context.add.container(this.x - characterWidth, this.y + speechBubbleHeight + 230);
+
         // Character
-        const characterImage = context.add.image(this.x - characterWidth, this.y + speechBubbleHeight + 230, 'guide_character');
+        const characterImage = context.add.image(0, 0, 'guide_character');
+        character.add(characterImage);
+
+        // Expression
+        this.characterExpression = context.add.sprite(-10, -70, 'expression_surprise');
+        character.add(this.characterExpression);
 
         // Intro Timeline
         const introTimeline = context.tweens.createTimeline();
@@ -93,7 +98,7 @@ export default class extends EventEmitter {
         // Slide in the character
         introTimeline.add({
             delay: 200,
-            targets: characterImage,
+            targets: character,
             x: (this.x + characterWidth/2),
             duration: 400,
             angle: 15,
@@ -102,7 +107,7 @@ export default class extends EventEmitter {
 
         // Sway backwards
         introTimeline.add({
-            targets: characterImage,
+            targets: character,
             duration: 400,
             angle: -7,
             ease: 'Power1'
@@ -110,7 +115,7 @@ export default class extends EventEmitter {
 
         // Sway into position
         introTimeline.add({
-            targets: characterImage,
+            targets: character,
             duration: 400,
             angle: 0,
             ease: 'Power1'
@@ -143,7 +148,6 @@ export default class extends EventEmitter {
     messageCompleted()
     {
         this.showEndDialogueMarker();
-        this.onMessageComplete && this.onMessageComplete();
     }
 
     showEndDialogueMarker()
@@ -154,6 +158,11 @@ export default class extends EventEmitter {
     hideEndDialogueMarker()
     {
         this.endDialogueMarkerGraphics.setVisible(false);
+    }
+
+    updateExpression(key)
+    {
+        this.characterExpression.setTexture('expression_' + key);
     }
 
     convertDialogToTagText(input)

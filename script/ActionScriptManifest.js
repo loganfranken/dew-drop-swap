@@ -13,8 +13,9 @@ export default {
                     `*Oh, doozle, you made it!* You're here! (Click or tap anywhere!)`,
                     `The Dew Drop Kingdom is in trouble!`,
                     `We lost all of our dew drops and now we'll starve!`,
-                    `But you can help us by collecting as many dew drops as you can!`,
+                    { do: 'updateGuideExpression', value: 'default' },
                     { do: 'dropTiles' },
+                    `But you can help us by collecting as many dew drops as you can!`,
                     "If you match three or more dew drops of the same color, we can collect them!",
                     "To make a match, select two dew drops and swap their places!",
 

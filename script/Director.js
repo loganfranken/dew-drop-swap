@@ -56,13 +56,15 @@ export default class {
         // Game action
         else if(action.hasOwnProperty('do'))
         {
-            this.handleAction(action.do, context);
+            this.handleAction(action.do, action.value, context);
+            this.next(context);
         }
 
         // Event
         else if(action.hasOwnProperty('on'))
         {
             this.handleEvent(action.on, action.messages);
+            this.next(context);
         }
     }
 
@@ -71,12 +73,16 @@ export default class {
         this.guide.displayMessage(action);
     }
 
-    handleAction(action, context)
+    handleAction(action, value, context)
     {
         switch(action)
         {
             case 'dropTiles':
                 this.tileGrid.fill(context);
+                break;
+
+            case 'updateGuideExpression':
+                this.guide.updateExpression(value);
                 break;
         }
     }
