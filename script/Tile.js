@@ -2,7 +2,7 @@ import TileState from './TileState';
 
 export default class {
 
-    constructor(tileType, x, y, tileGridX, tileGridY, onTileSelect)
+    constructor(tileType, x, y, tileGridX, tileGridY, isBlocked, onTileSelect)
     {
         this.tileType = tileType;
         this.x = x;
@@ -12,8 +12,10 @@ export default class {
         this.onTileSelect = onTileSelect;
         this.image = null;
         this.state = TileState.Active;
+
         this.isActivated = false;
         this.isDestroying = false;
+        this.isBlocked = isBlocked;
     }
 
     create(context)
@@ -21,6 +23,11 @@ export default class {
         this.image = context.add.image(this.x, this.y, this.tileType.imageKey);
         this.image.setInteractive();
         this.image.on('pointerdown', () => { this.onTileSelect(context, this); });
+
+        if(this.isBlocked)
+        {
+            this.image.setAlpha(0.5);
+        }
     }
 
     activate()

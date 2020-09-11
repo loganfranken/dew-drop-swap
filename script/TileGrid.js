@@ -138,7 +138,7 @@ export default class extends EventEmitter {
             {
                 const adjustedY = y - self.tileGridHeight;
 
-                const tile = self.createTile(self.getTileType(x, y, self.tileGenerationBehavior), x, adjustedY);
+                const tile = self.createTile(self.getTileType(x, y, self.tileGenerationBehavior), x, adjustedY, false);
                 self.tileGrid[adjustedY][x] = tile;
                 tile.create(context);
                 self.tileImageContainer.add(tile.image);
@@ -320,9 +320,9 @@ export default class extends EventEmitter {
         }
     }
 
-    createTile(tileType, x, y)
+    createTile(tileType, x, y, isBlocked)
     {
-        return new Tile(tileType, this.getTileX(x), this.getTileY(y), x, y, this.onTileSelect);
+        return new Tile(tileType, this.getTileX(x), this.getTileY(y), x, y, isBlocked, this.onTileSelect);
     }
 
     getTileDrop(context, tile, x, y)
@@ -342,7 +342,7 @@ export default class extends EventEmitter {
 
     canSelect(tile)
     {
-        return this.isPlayable(tile);
+        return !this.isBlocked && this.isPlayable(tile);
     }
 
     isPlayable(tile)
@@ -396,13 +396,14 @@ export default class extends EventEmitter {
         {
             for(let x = 0; x < this.tileGridWidth; x++)
             {
-                let tile = this.createTile(this.getTileType(x, y, TileGenerationBehavior.None), x, y);
+                let tile = this.createTile(this.getTileType(x, y, TileGenerationBehavior.None), x, y, true);
                 tile.create(context);
                 
                 this.tileGrid[y][x] = tile;
             }
         }
 
+        this.isBlocked = true;
         this.isInitialized = true;
     }
 }

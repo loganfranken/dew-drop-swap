@@ -38,6 +38,7 @@ export default class extends EventEmitter {
 
         // Speech Bubble
         const speechBubbleGraphics = context.add.graphics({ fillStyle: { color: 0xffffff } }).setAlpha(0);
+        speechBubbleGraphics.setDepth(1);
         speechBubbleGraphics.fillRoundedRect(this.x, this.y - speechBubbleIntroOffset, speechBubbleWidth, speechBubbleHeight, 10);
         speechBubbleGraphics.fillTriangle(
             this.x + 120, this.y + speechBubbleHeight + 20 - speechBubbleIntroOffset,
@@ -47,6 +48,7 @@ export default class extends EventEmitter {
 
         // End Dialogue Marker
         this.endDialogueMarkerGraphics = context.add.graphics({ fillStyle: { color: 0xcccccc } });
+        this.endDialogueMarkerGraphics.setDepth(1);
         this.hideEndDialogueMarker();
         const endDialogueMarker = new Phaser.Geom.Circle(
             this.x + speechBubbleWidth - endDialogueMarkerRadius - 15,
@@ -75,6 +77,7 @@ export default class extends EventEmitter {
         };
         
         this.speechBubbleText = new TagText(context, this.x + 15, this.y + 15, '', speechBubbleTextStyle);
+        this.speechBubbleText.setDepth(1);
         context.add.existing(this.speechBubbleText);
 
         // Speech Bubble Text Typing
