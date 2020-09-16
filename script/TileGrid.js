@@ -64,11 +64,6 @@ export default class extends EventEmitter {
             return;
         }
 
-        if(self.queue.length > 0)
-        {
-            return;
-        }
-
         // Detect and destroy any matches
         const matchedTiles = self.getMatches();
 
@@ -100,6 +95,13 @@ export default class extends EventEmitter {
             }
 
         });
+
+        // If we destroyed tiles, return early to allow the destroyed tiles and their associated
+        // animations clear before figuring out the drop animations
+        if(destroys.length > 0)
+        {
+            return;
+        }
 
         // Shift all of the tiles downward to fill empty spots
         let drops = [];

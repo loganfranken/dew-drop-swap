@@ -84,6 +84,10 @@ export default class {
             case 'updateGuideExpression':
                 this.guide.updateExpression(value);
                 break;
+
+            case 'unblockTileGrid':
+                this.tileGrid.unblock(context);
+                break;
         }
     }
 

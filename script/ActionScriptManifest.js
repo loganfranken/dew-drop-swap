@@ -17,6 +17,7 @@ export default {
                     { do: 'dropTiles' },
                     `But you can help us by collecting as many dew drops as you can!`,
                     "If you match three or more dew drops of the same color, we can collect them!",
+                    { do: 'unblockTileGrid' },
                     "To make a match, select two dew drops and swap their places!",
 
                     // Events
