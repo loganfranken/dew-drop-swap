@@ -84,7 +84,7 @@ export default class extends Phaser.Scene {
 
         this.queue = new ActionQueue();
 
-        this.add.image(400, 400, 'background');
+        this.add.image(400, 330, 'background');
 
         const tileGenerationBehavior = LevelManifest[this.level].behavior;
 

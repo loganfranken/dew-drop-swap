@@ -22,7 +22,7 @@ export default class extends Phaser.Scene {
         const self = this;
 
         // Background
-        this.add.image(400, 400, 'background');
+        this.add.image(400, 330, 'background');
 
         // Flash Backdrop
         const flashBackdropGraphics = this.add.graphics({ fillStyle: { color: 0xffffff } });

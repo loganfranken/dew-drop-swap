@@ -18,6 +18,10 @@ export default class extends EventEmitter {
 
         this.endDialogueMarkerGraphics = null;
         this.characterExpression = null;
+
+        this.expressions = {};
+        this.expressions.default = { y: -90 };
+        this.expressions.surprise = { y: -105 };
     }
 
     create(context)
@@ -89,7 +93,7 @@ export default class extends EventEmitter {
         character.add(characterImage);
 
         // Expression
-        this.characterExpression = context.add.sprite(-10, -70, 'expression_surprise');
+        this.characterExpression = context.add.sprite(-10, this.expressions.surprise.y, 'expression_surprise');
         character.add(this.characterExpression);
 
         // Intro Timeline
@@ -160,9 +164,17 @@ export default class extends EventEmitter {
         this.endDialogueMarkerGraphics.setVisible(false);
     }
 
-    updateExpression(key)
+    updateExpression(key, context)
     {
         this.characterExpression.setTexture('expression_' + key);
+
+        const expressionInfo = this.expressions[key];
+
+        context.tweens.add({
+            targets: this.characterExpression,
+            y: expressionInfo.y,
+            duration: 300
+        });
     }
 
     convertDialogToTagText(input)

@@ -82,7 +82,7 @@ export default class {
                 break;
 
             case 'updateGuideExpression':
-                this.guide.updateExpression(value);
+                this.guide.updateExpression(value, context);
                 break;
 
             case 'unblockTileGrid':
