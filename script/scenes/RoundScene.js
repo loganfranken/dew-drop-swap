@@ -45,27 +45,32 @@ export default class extends Phaser.Scene {
         });
 
         // Images: Tiles
-        this.load.image('tile_01', 'assets/tile_01.png');
-        this.load.image('tile_02', 'assets/tile_02.png');
-        this.load.image('tile_03', 'assets/tile_03.png');
-        this.load.image('tile_04', 'assets/tile_04.png');
+        this.load.image('tile_01', 'assets/images/tile_01.png');
+        this.load.image('tile_02', 'assets/images/tile_02.png');
+        this.load.image('tile_03', 'assets/images/tile_03.png');
+        this.load.image('tile_04', 'assets/images/tile_04.png');
 
         // Images: Guide
-        this.load.image('guide_character', 'assets/guide.png');
+        this.load.image('guide_character', 'assets/images/guide.png');
 
         // Images: Background
-        this.load.image('background', 'assets/background.png');
+        this.load.image('background', 'assets/images/background.png');
 
         // Images: Round Clear
-        this.load.image('round_clear', 'assets/round_clear.png');
+        this.load.image('round_clear', 'assets/images/round_clear.png');
 
         // Images: Icons
-        this.load.image('icon_tile', 'assets/icon_tile.png');
-        this.load.image('icon_timer', 'assets/icon_timer.png');
+        this.load.image('icon_tile', 'assets/images/icon_tile.png');
+        this.load.image('icon_timer', 'assets/images/icon_timer.png');
 
         // Images: Expressions
-        this.load.image('expression_default', 'assets/expression_default.png');
-        this.load.image('expression_surprise', 'assets/expression_surprise.png');
+        this.load.image('expression_default', 'assets/images/expression_default.png');
+        this.load.image('expression_surprise', 'assets/images/expression_surprise.png');
+        this.load.image('expression_sadness', 'assets/images/expression_sadness.png');
+        this.load.image('expression_despair', 'assets/images/expression_despair.png');
+
+        // Sound Effects
+        this.load.audio('match', 'assets/sounds/match.wav');
     }
 
     init(data)

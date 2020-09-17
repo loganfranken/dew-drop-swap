@@ -7,14 +7,14 @@ export default class extends Phaser.Scene {
 
     preload()
     {
-        this.load.image('background', 'assets/background.png');
-        this.load.image('title', 'assets/title.png');
-        this.load.image('start', 'assets/start.png');
-        this.load.image('start-active', 'assets/start_active.png');
-        this.load.image('tile_01', 'assets/tile_01.png');
-        this.load.image('tile_02', 'assets/tile_02.png');
-        this.load.image('tile_03', 'assets/tile_03.png');
-        this.load.image('tile_04', 'assets/tile_04.png');
+        this.load.image('background', 'assets/images/background.png');
+        this.load.image('title', 'assets/images/title.png');
+        this.load.image('start', 'assets/images/start.png');
+        this.load.image('start-active', 'assets/images/start_active.png');
+        this.load.image('tile_01', 'assets/images/tile_01.png');
+        this.load.image('tile_02', 'assets/images/tile_02.png');
+        this.load.image('tile_03', 'assets/images/tile_03.png');
+        this.load.image('tile_04', 'assets/images/tile_04.png');
     }
 
     create()

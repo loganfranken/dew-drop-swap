@@ -5,8 +5,8 @@ export default [
 
     // 0
     {
-        score: 1000000,
-        behavior: TileGenerationBehavior.EasyWin
+        score: 100,
+        behavior: TileGenerationBehavior.None
     },
 
     // 1

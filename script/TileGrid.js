@@ -28,6 +28,8 @@ export default class extends EventEmitter {
 
         this.tileGenerationBehavior = tileGenerationBehavior;
 
+        this.matchSound = null;
+
         this.queue = queue;
 
         // We're going to generate a grid that's twice the height of
@@ -53,6 +55,8 @@ export default class extends EventEmitter {
         maskShape.fillRect(this.offsetX - (this.tileSize/2), this.offsetY + (this.tileGridHeight * this.tileSize) - (this.tileSize/2), this.tileGridWidth * this.tileSize, this.tileGridHeight * this.tileSize);
         
         this.tileImageContainer.mask = new Phaser.Display.Masks.GeometryMask(context, maskShape);
+
+        this.matchSound = context.sound.add('match');
     }
 
     update(context)
@@ -78,6 +82,7 @@ export default class extends EventEmitter {
 
         if(destroys.length > 0)
         {
+            self.matchSound.play();
             self.queue.push(() => { return Promise.all(destroys); });
         }
 
