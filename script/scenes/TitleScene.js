@@ -7,6 +7,7 @@ export default class extends Phaser.Scene {
 
     preload()
     {
+        // Images
         this.load.image('background', 'assets/images/background.png');
         this.load.image('title', 'assets/images/title.png');
         this.load.image('start', 'assets/images/start.png');
@@ -15,6 +16,9 @@ export default class extends Phaser.Scene {
         this.load.image('tile_02', 'assets/images/tile_02.png');
         this.load.image('tile_03', 'assets/images/tile_03.png');
         this.load.image('tile_04', 'assets/images/tile_04.png');
+
+        // Sound Effects
+        this.load.audio('select', 'assets/sounds/select.wav');
     }
 
     create()
@@ -81,7 +85,9 @@ export default class extends Phaser.Scene {
             });
         });
 
+        this.selectSound = this.sound.add('select');
         startBtn.on('pointerdown', () => {
+            this.selectSound.play();
             self.scene.transition({ target: 'RoundScene', data: { level: 0 }, remove: true });
         });
 

@@ -1,8 +1,9 @@
 export default class {
 
-    constructor(script, guide, tileGrid)
+    constructor(script, guide, timer, tileGrid)
     {
         this.guide = guide;
+        this.timer = timer;
         this.tileGrid = tileGrid;
         this.queuedActions = null;
 
@@ -87,6 +88,10 @@ export default class {
 
             case 'unblockTileGrid':
                 this.tileGrid.unblock(context);
+                break;
+
+            case 'startTimer':
+                this.timer.start();
                 break;
         }
     }

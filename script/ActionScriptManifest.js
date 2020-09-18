@@ -34,19 +34,22 @@ export default {
 
                 ];
 
-            /*
             // Level 1 (Timer Intro)
             case 1:
 
-                script.introMessages = [
-                    "*Oh, doozle!* You're so good at this!",
-                    "But, we'll have to hurry this time!",
-                    "We only have two minutes before the sun dries up all the dew drops!",
-                    "Collect at least 200 dew drops in two minutes!"
+                return [
+                    `*Oh, doozle!* You're so good at this!`,
+                    `But, we'll have to hurry this time!`,
+                    { do: 'dropTiles' },
+                    `We only have two minutes before the sun dries up all the dew drops!`,
+                    `Collect at least 200 dew drops in two minutes!`,
+                    { do: 'unblockTileGrid' },
+                    { do: 'startTimer' }
                 ];
 
                 break;
 
+            /*
             // Level 2 (Breaking the Fourth Wall)
             case 2:
 

@@ -72,7 +72,7 @@ export default class extends EventEmitter {
         const speechBubbleTextStyle = FontStyleManifest.Default;
         speechBubbleTextStyle.wrap = {
             mode: 'word',
-            width: speechBubbleWidth
+            width: speechBubbleWidth - 30
         };
         speechBubbleTextStyle.tags = {
             exclamation: {

@@ -80,9 +80,8 @@ export default class extends Phaser.Scene {
 
     create()
     {
-        this.isAwaitingRoundTransition = false;
-        this.isReadyForRoundTransition = false;
         this.isTransitioningRounds = false;
+        this.isRoundTransitionComplete = false;
 
         this.score = 0;
         this.totalMatches = 0;
@@ -109,13 +108,15 @@ export default class extends Phaser.Scene {
 
         this.levelClearMessage = this.add.image(400, 400, 'round_clear');
         this.levelClearMessage.setAlpha(0);
+        this.levelClearMessage.setDepth(1);
 
         this.levelClearMessageHighlight = this.add.image(400, 400, 'round_clear');
         this.levelClearMessageHighlight.setAlpha(0);
+        this.levelClearMessageHighlight.setDepth(1);
         this.levelClearMessageHighlight.setTintFill(0xffffff);
 
         const actionScript = ActionScriptManifest.getScript(this.level);
-        this.director = new Director(actionScript, this.guide, this.tileGrid);
+        this.director = new Director(actionScript, this.guide, this.timer, this.tileGrid);
 
         const self = this;
         this.input.on('pointerdown', () => { self.director.next(self); });
@@ -123,26 +124,29 @@ export default class extends Phaser.Scene {
 
     update()
     {
-        this.handleSpecialLevelBehavior();
-        
-        // Start the timer if the guide has stopped talking
-        if(!this.guide.isBlockingGameplay && this.timer && this.timer.isPaused)
+        if(this.isTransitioningRounds)
         {
-            this.timer.start();
+            return;
         }
+
+        if(this.isRoundTransitionComplete)
+        {
+            this.nextLevel();
+            return;
+        }
+
+        this.handleSpecialLevelBehavior();
 
         // Have we run out of time?
         if(this.timer != null && this.timer.seconds <= 0)
         {
             this.guide.displayGameOverMessage();
-            this.isAwaitingRoundTransition = true;
             return;
         }
 
         if(this.isLevelComplete())
         {
             this.endLevel();
-            this.isAwaitingRoundTransition = true;
             return;
         }
 
@@ -263,20 +267,20 @@ export default class extends Phaser.Scene {
 
         self.isTransitioningRounds = true;
 
-        this.levelClearMessageHighlight.setAlpha(1);
+        self.levelClearMessageHighlight.setAlpha(1);
         self.tweens.add({
-            targets: this.levelClearMessageHighlight,
+            targets: self.levelClearMessageHighlight,
             alpha: 0,
             duration: 1000
         });
 
         self.tweens.add({
-            targets: this.levelClearMessage,
+            targets: self.levelClearMessage,
             alpha: 1,
             duration: 1000,
             completeDelay: 2000,
             onComplete: () => {
-                self.isReadyForRoundTransition = true;
+                self.isRoundTransitionComplete = true;
                 self.isTransitioningRounds = false; 
             }
         });
