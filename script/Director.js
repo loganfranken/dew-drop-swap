@@ -64,7 +64,7 @@ export default class {
         // Event
         else if(action.hasOwnProperty('on'))
         {
-            this.handleEvent(action.on, action.messages);
+            this.handleEvent(action.on, action.actions);
             this.next(context);
         }
     }
@@ -96,15 +96,18 @@ export default class {
         }
     }
 
-    handleEvent(event, messages)
+    handleEvent(event, actions)
     {
         const self = this;
 
         switch(event)
         {
             case 'firstMatch':
-                this.tileGrid.on('match', () => self.queueActions(messages));
+                this.tileGrid.on('match', () => self.queueActions(actions));
                 break;
+
+            case 'gameOver':
+                this.tileGrid.on('gameOver', () => self.queueActions(actions));
         }
     }
 }

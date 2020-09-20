@@ -26,7 +26,7 @@ export default {
                     // Events
                     {
                         on: 'firstMatch',
-                        messages: [
+                        actions: [
                             "You got it! That's it!",
                             "See if you can collect 100 dew drops!"
                         ]
@@ -49,27 +49,29 @@ export default {
 
                 break;
 
-            /*
             // Level 2 (Breaking the Fourth Wall)
             case 2:
 
-                script.introMessages = [
-                    "Wow, we're so proud of you!",
-                    "This round you'll only have 30 seconds to collect at least 300 dew drops!"
-                ];
+                return [
+                    `Wow, we're so proud of you!`,
+                    `This round you'll only have 30 seconds to collect at least 300 dew drops!`,
 
-                script.getGameOverMessages = () => {
-                    return [
-                        "Wait, wait, sorry, hold on.",
-                        "It's too early for the *\"Lose in a Panic\"* scenario.",
-                        "So sorry about that.",
-                        "You've been really great so far, honestly.",
-                        "You know, what, let's just go to the next round and we'll take it from the top."
-                    ];
-                };
+                    // Events
+                    {
+                        on: 'gameOver',
+                        actions: [
+                            `Wait, wait, sorry, hold on.`,
+                            `It's too early for the *\"Lose in a Panic\"* scenario.`,
+                            `So sorry about that.`,
+                            `You've been really great so far, honestly.`,
+                            `You know, what, let's just go to the next round and we'll take it from the top.`
+                        ]
+                    }
+                ];
 
                 break;
 
+                /*
             // Level 3 (Easy Win)
             case 3:
 

@@ -21,9 +21,9 @@ export default class extends EventEmitter {
 
         this.expressions = {};
         this.expressions.default = { y: -90 };
-        this.expressions.surprise = { y: -105 };
-        this.expressions.sadness = { y: -70 };
-        this.expressions.despair = { y: -60 };
+        this.expressions.surprise = { y: -100 };
+        this.expressions.sadness = { y: -80 };
+        this.expressions.despair = { y: -70 };
     }
 
     create(context)
@@ -175,7 +175,8 @@ export default class extends EventEmitter {
         context.tweens.add({
             targets: this.characterExpression,
             y: expressionInfo.y,
-            duration: 300
+            duration: 200,
+            ease: 'Power1'
         });
     }
 
