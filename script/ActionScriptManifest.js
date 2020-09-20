@@ -15,7 +15,7 @@ export default {
                     `The Dew Drop Kingdom is in trouble!`,
                     { do: 'updateGuideExpression', value: 'despair' },
                     `We lost all of our dew drops and now we'll starve!`,
-                    { do: 'updateGuideExpression', value: 'surprise' },
+                    { do: 'updateGuideExpression', value: 'glee' },
                     { do: 'dropTiles' },
                     `But you can help us by collecting as many dew drops as you can!`,
                     { do: 'updateGuideExpression', value: 'default' },
@@ -27,8 +27,10 @@ export default {
                     {
                         on: 'firstMatch',
                         actions: [
+                            { do: 'updateGuideExpression', value: 'glee' },
                             "You got it! That's it!",
-                            "See if you can collect 100 dew drops!"
+                            { do: 'updateGuideExpression', value: 'default' },
+                            "See if you can collect *100 dew drops*!"
                         ]
                     }
 
@@ -38,10 +40,13 @@ export default {
             case 1:
 
                 return [
+                    { do: 'updateGuideExpression', value: 'glee' },
                     `*Oh, doozle!* You're so good at this!`,
+                    { do: 'updateGuideExpression', value: 'nervous' },
                     `But, we'll have to hurry this time!`,
                     { do: 'dropTiles' },
                     `We only have two minutes before the sun dries up all the dew drops!`,
+                    { do: 'updateGuideExpression', value: 'default' },
                     `Collect at least 200 dew drops in two minutes!`,
                     { do: 'unblockTileGrid' },
                     { do: 'startTimer' }

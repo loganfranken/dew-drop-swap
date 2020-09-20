@@ -17,9 +17,9 @@
    id="svg8"
    inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
    sodipodi:docname="guide.svg"
-   inkscape:export-filename="F:\git\match-three\assets\expression_surprise.png"
-   inkscape:export-xdpi="39.581867"
-   inkscape:export-ydpi="39.581867">
+   inkscape:export-filename="F:\git\match-three\assets\images\expression_glee.png"
+   inkscape:export-xdpi="39.581902"
+   inkscape:export-ydpi="39.581902">
   <defs
      id="defs2">
     <inkscape:path-effect
@@ -66,11 +66,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7"
-     inkscape:cx="-380.17009"
-     inkscape:cy="677.63145"
+     inkscape:zoom="1.4"
+     inkscape:cx="239.97402"
+     inkscape:cy="617.77827"
      inkscape:document-units="mm"
-     inkscape:current-layer="svg8"
+     inkscape:current-layer="g965"
      showgrid="false"
      inkscape:window-width="1920"
      inkscape:window-height="1027"
@@ -89,42 +89,6 @@
       </cc:Work>
     </rdf:RDF>
   </metadata>
-  <g
-     inkscape:groupmode="layer"
-     id="layer7"
-     inkscape:label="Past Expression"
-     style="display:none">
-    <g
-       inkscape:groupmode="layer"
-       id="layer4"
-       inkscape:label="Smile">
-      <path
-         style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="m 89.958333,109.14583 c 0,0 6.425594,15.11905 12.095237,10.96131 5.66964,-4.15773 6.04762,-12.47321 6.04762,-12.47321"
-         id="path3778"
-         inkscape:connector-curvature="0" />
-    </g>
-    <g
-       inkscape:groupmode="layer"
-       id="layer5"
-       inkscape:label="Eye"
-       style="display:none">
-      <ellipse
-         id="path3783"
-         cx="87.833611"
-         cy="97.695847"
-         rx="1.4106953"
-         ry="2.0519204"
-         style="stroke-width:0.17954302" />
-      <ellipse
-         id="path3785"
-         cx="108.34946"
-         cy="97.050598"
-         rx="1.198779"
-         ry="1.997965"
-         style="stroke-width:0.13985755" />
-    </g>
-  </g>
   <g
      inkscape:groupmode="layer"
      id="layer11"
@@ -386,7 +350,8 @@
   <g
      inkscape:label="Despair"
      id="g896"
-     inkscape:groupmode="layer">
+     inkscape:groupmode="layer"
+     style="display:none">
     <g
        style="display:inline"
        inkscape:label="Smile"
@@ -455,6 +420,152 @@
          cx="112.67819"
          id="circle892"
          style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#542f17;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+  </g>
+  <g
+     style="display:none"
+     inkscape:label="Nervous"
+     id="g891"
+     inkscape:groupmode="layer">
+    <g
+       style="display:inline"
+       inkscape:label="Mouth"
+       id="g876"
+       inkscape:groupmode="layer">
+      <rect
+         style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2.56103611;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+         id="rect947"
+         width="37.797619"
+         height="2.0788691"
+         x="70.828033"
+         y="125.31145"
+         transform="rotate(-3.9769203)" />
+    </g>
+    <g
+       style="display:inline"
+       inkscape:label="Eyes"
+       id="g883"
+       inkscape:groupmode="layer">
+      <ellipse
+         inkscape:export-ydpi="39.581867"
+         inkscape:export-xdpi="39.581867"
+         inkscape:export-filename="F:\git\match-three\assets\images\expression_sadness.png"
+         ry="3.5907736"
+         rx="3.6852677"
+         cy="112.69881"
+         cx="83.438248"
+         id="ellipse878"
+         style="opacity:1;fill:#000000;fill-opacity:1;stroke:#542f17;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <ellipse
+         inkscape:export-ydpi="39.581867"
+         inkscape:export-xdpi="39.581867"
+         inkscape:export-filename="F:\git\match-three\assets\images\expression_sadness.png"
+         ry="3.5907738"
+         rx="3.6852677"
+         cy="110.80894"
+         cx="111.69196"
+         id="ellipse880"
+         style="opacity:1;fill:#000000;fill-opacity:1;stroke:#542f17;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <g
+       style="display:inline"
+       inkscape:label="Eye Shine"
+       id="g889"
+       inkscape:groupmode="layer">
+      <ellipse
+         inkscape:export-ydpi="39.581867"
+         inkscape:export-xdpi="39.581867"
+         inkscape:export-filename="F:\git\match-three\assets\images\expression_sadness.png"
+         ry="0.74999952"
+         rx="0.74999964"
+         cy="111.57085"
+         cx="84.197701"
+         id="ellipse885"
+         style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#542f17;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <circle
+         inkscape:export-ydpi="39.581867"
+         inkscape:export-xdpi="39.581867"
+         inkscape:export-filename="F:\git\match-three\assets\images\expression_sadness.png"
+         r="0.74999958"
+         cy="109.34074"
+         cx="112.67819"
+         id="circle887"
+         style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#542f17;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="g965"
+     inkscape:label="Glee"
+     style="display:inline">
+    <g
+       inkscape:groupmode="layer"
+       id="g951"
+       inkscape:label="Mouth"
+       style="display:inline">
+      <path
+         style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.92794895;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+         id="path971"
+         sodipodi:type="arc"
+         sodipodi:cx="91.993721"
+         sodipodi:cy="124.99393"
+         sodipodi:rx="11.532986"
+         sodipodi:ry="11.146127"
+         sodipodi:start="0"
+         sodipodi:end="3.1803041"
+         d="m 103.52671,124.99393 a 11.532986,11.146127 0 0 1 -5.895854,9.72393 11.532986,11.146127 0 0 1 -11.659442,-0.21813 11.532986,11.146127 0 0 1 -5.502038,-9.93718 l 11.524345,0.43138 z"
+         transform="matrix(0.99809558,-0.06168636,0.04775704,0.99885898,0,0)" />
+    </g>
+    <g
+       inkscape:groupmode="layer"
+       id="g957"
+       inkscape:label="Eyes"
+       style="display:inline">
+      <ellipse
+         style="opacity:1;fill:#000000;fill-opacity:1;stroke:#542f17;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="ellipse953"
+         cx="83.438248"
+         cy="112.69881"
+         rx="3.6852677"
+         ry="3.5907736"
+         inkscape:export-filename="F:\git\match-three\assets\images\expression_sadness.png"
+         inkscape:export-xdpi="39.581867"
+         inkscape:export-ydpi="39.581867" />
+      <ellipse
+         style="opacity:1;fill:#000000;fill-opacity:1;stroke:#542f17;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="ellipse955"
+         cx="111.69196"
+         cy="110.80894"
+         rx="3.6852677"
+         ry="3.5907738"
+         inkscape:export-filename="F:\git\match-three\assets\images\expression_sadness.png"
+         inkscape:export-xdpi="39.581867"
+         inkscape:export-ydpi="39.581867" />
+    </g>
+    <g
+       inkscape:groupmode="layer"
+       id="g963"
+       inkscape:label="Eye Shine"
+       style="display:inline">
+      <ellipse
+         style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#542f17;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="ellipse959"
+         cx="84.197701"
+         cy="111.57085"
+         rx="0.74999964"
+         ry="0.74999952"
+         inkscape:export-filename="F:\git\match-three\assets\images\expression_sadness.png"
+         inkscape:export-xdpi="39.581867"
+         inkscape:export-ydpi="39.581867" />
+      <circle
+         style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#542f17;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="circle961"
+         cx="112.67819"
+         cy="109.34074"
+         r="0.74999958"
+         inkscape:export-filename="F:\git\match-three\assets\images\expression_sadness.png"
+         inkscape:export-xdpi="39.581867"
+         inkscape:export-ydpi="39.581867" />
     </g>
   </g>
 </svg>

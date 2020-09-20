@@ -68,6 +68,8 @@ export default class extends Phaser.Scene {
         this.load.image('expression_surprise', 'assets/images/expression_surprise.png');
         this.load.image('expression_sadness', 'assets/images/expression_sadness.png');
         this.load.image('expression_despair', 'assets/images/expression_despair.png');
+        this.load.image('expression_glee', 'assets/images/expression_glee.png');
+        this.load.image('expression_nervous', 'assets/images/expression_nervous.png');
 
         // Sound Effects
         this.load.audio('match', 'assets/sounds/match.wav');
