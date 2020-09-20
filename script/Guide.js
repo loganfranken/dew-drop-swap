@@ -5,12 +5,13 @@ import TextTyping from 'phaser3-rex-plugins/plugins/texttyping.js';
 
 export default class extends EventEmitter {
 
-    constructor(x, y)
+    constructor(x, y, isIntro)
     {
         super();
 
         this.x = x;
         this.y = y;
+        this.isIntro = isIntro;
 
         this.queuedActions = null;
         this.isPaused = false;
@@ -41,13 +42,23 @@ export default class extends EventEmitter {
         const speechBubbleIntroOffset = 40;
 
         // Speech Bubble
-        const speechBubbleGraphics = context.add.graphics({ fillStyle: { color: 0xffffff } }).setAlpha(0);
+        const speechBubbleGraphics = context.add.graphics({ fillStyle: { color: 0xffffff } })
+        
+        if(this.isIntro)
+        {
+            speechBubbleGraphics.setAlpha(0);
+        }
+        
+        const speechBubbleGraphicsY = this.isIntro ? this.y - speechBubbleIntroOffset : this.y;
+        const speechBubbleGraphicsTriangleY1 = this.isIntro ? this.y + speechBubbleHeight + 20 - speechBubbleIntroOffset : this.y + speechBubbleHeight + 20;
+        const speechBubbleGraphicsTriangleY2 = this.isIntro ? this.y + speechBubbleHeight - speechBubbleIntroOffset : this.y + speechBubbleHeight;
+
         speechBubbleGraphics.setDepth(1);
-        speechBubbleGraphics.fillRoundedRect(this.x, this.y - speechBubbleIntroOffset, speechBubbleWidth, speechBubbleHeight, 10);
+        speechBubbleGraphics.fillRoundedRect(this.x, speechBubbleGraphicsY, speechBubbleWidth, speechBubbleHeight, 10);
         speechBubbleGraphics.fillTriangle(
-            this.x + 120, this.y + speechBubbleHeight + 20 - speechBubbleIntroOffset,
-            this.x + 105, this.y + speechBubbleHeight - speechBubbleIntroOffset,
-            this.x + 135, this.y + speechBubbleHeight - speechBubbleIntroOffset
+            this.x + 120, speechBubbleGraphicsTriangleY1,
+            this.x + 105, speechBubbleGraphicsTriangleY2,
+            this.x + 135, speechBubbleGraphicsTriangleY2
         );
 
         // End Dialogue Marker
@@ -88,60 +99,75 @@ export default class extends EventEmitter {
         this.speechBubbleTextTyping = new TextTyping(this.speechBubbleText, { speed: 30 }); 
         this.speechBubbleTextTyping.on('complete', () => { self.messageCompleted.call(self) });
 
-        const character = context.add.container(this.x - characterWidth, this.y + speechBubbleHeight + 230);
+        const characterX = (this.isIntro) ? (this.x - characterWidth) : (this.x + characterWidth/2);
+        const character = context.add.container(characterX, this.y + speechBubbleHeight + 230);
 
         // Character
         const characterImage = context.add.image(0, 0, 'guide_character');
         character.add(characterImage);
 
         // Expression
-        this.characterExpression = context.add.sprite(-10, this.expressions.surprise.y, 'expression_surprise');
+        const startingExpression = this.isIntro ? 'expression_surprise' : 'expression_default';
+        const characterExpressionY = this.isIntro ? this.expressions.surprise.y : this.expressions.default.y;
+        this.characterExpression = context.add.sprite(-10, characterExpressionY, startingExpression);
         character.add(this.characterExpression);
 
         // Intro Timeline
         const introTimeline = context.tweens.createTimeline();
 
-        // Slide in the character
-        introTimeline.add({
-            delay: 200,
-            targets: character,
-            x: (this.x + characterWidth/2),
-            duration: 400,
-            angle: 15,
-            ease: 'Power1'
-        });
+        if(this.isIntro)
+        {
+            // Slide in the character
+            introTimeline.add({
+                delay: 200,
+                targets: character,
+                x: (this.x + characterWidth/2),
+                duration: 400,
+                angle: 15,
+                ease: 'Power1'
+            });
 
-        // Sway backwards
-        introTimeline.add({
-            targets: character,
-            duration: 400,
-            angle: -7,
-            ease: 'Power1'
-        });
+            // Sway backwards
+            introTimeline.add({
+                targets: character,
+                duration: 400,
+                angle: -7,
+                ease: 'Power1'
+            });
 
-        // Sway into position
-        introTimeline.add({
-            targets: character,
-            duration: 400,
-            angle: 0,
-            ease: 'Power1'
-        });
+            // Sway into position
+            introTimeline.add({
+                targets: character,
+                duration: 400,
+                angle: 0,
+                ease: 'Power1'
+            });
 
-        // Speech Bubble Intro Animation
-        introTimeline.add({
-            offset: '-=300',
-            targets: speechBubbleGraphics,
-            props: {
-                y: { value: `+=${speechBubbleIntroOffset}`, duration: 500, ease: 'Bounce.easeOut' },
-                alpha: { value: 1, duration: 300, ease: 'Linear' }
-            },
-            onComplete: () => {
-                this.emit('ready');
-            }
-        });
+            // Speech Bubble Intro Animation
+            introTimeline.add({
+                offset: '-=300',
+                targets: speechBubbleGraphics,
+                props: {
+                    y: { value: `+=${speechBubbleIntroOffset}`, duration: 500, ease: 'Bounce.easeOut' },
+                    alpha: { value: 1, duration: 300, ease: 'Linear' }
+                },
+                onComplete: () => {
+                    this.emit('ready');
+                }
+            }); 
+        }
+        else
+        {
+            introTimeline.add({
+                targets: speechBubbleGraphics,
+                duration: 100,
+                onComplete: () => {
+                    this.emit('ready');
+                }
+            }); 
+        }
 
         introTimeline.play();
-
     }
 
     displayMessage(message)

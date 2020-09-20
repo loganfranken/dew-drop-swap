@@ -99,7 +99,7 @@ export default class extends Phaser.Scene {
         const timerSeconds = LevelManifest[this.level].timer;
         this.timer = (timerSeconds > 0) ? new Timer(110, 625, timerSeconds) : null;
 
-        this.guide = new Guide(20, 20);
+        this.guide = new Guide(20, 20, (this.level === 0));
 
         this.tileGrid.create(this);
         this.scoreDisplay.create(this);
