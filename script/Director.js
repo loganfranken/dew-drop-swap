@@ -1,6 +1,6 @@
 export default class {
 
-    constructor(script, guide, timer, tileGrid)
+    constructor(script, guide, timer, tileGrid, context)
     {
         this.guide = guide;
         this.timer = timer;
@@ -10,7 +10,7 @@ export default class {
         this.isGuideReady = false;
 
         const self = this;
-        this.guide.on('ready', () => { self.isGuideReady = true; self.next(); });
+        this.guide.on('ready', () => { self.isGuideReady = true; self.next(context); });
 
         this.queueActions(script);
     }

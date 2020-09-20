@@ -118,7 +118,7 @@ export default class extends Phaser.Scene {
         this.levelClearMessageHighlight.setTintFill(0xffffff);
 
         const actionScript = ActionScriptManifest.getScript(this.level);
-        this.director = new Director(actionScript, this.guide, this.timer, this.tileGrid);
+        this.director = new Director(actionScript, this.guide, this.timer, this.tileGrid, this);
 
         const self = this;
         this.input.on('pointerdown', () => { self.director.next(self); });
