@@ -83,7 +83,7 @@ export default class {
 
         // Create particles for "explosion" effect
         const particleGraphics = [];
-        for(let i=0; i<4; i++)
+        for(let i=0; i<8; i++)
         {
             const explodeParticleGraphics = context.add.graphics({ fillStyle: { color: 0xffffff }, alpha: 0 });
             const explodeParticle = new Phaser.Geom.Circle(this.x, this.y, Phaser.Math.Between(0, 10));
@@ -93,15 +93,19 @@ export default class {
 
         return new Promise((resolve, reject) => {
 
+            // Remove the tile image
+            container.remove(self.image);
+            self.image.destroy();
+
+            fadeOutCover.setAlpha(1);
            context.tweens.add({
                targets: fadeOutCover,
-               alpha: 1,
-               duration: 200,
+               alpha: 0,
+               duration: 250,
+               ease: 'Cubic.easeOut',
                onComplete: () => {
 
                     // Remove the tile image
-                    container.remove(self.image);
-                    self.image.destroy();
                     self.state = TileState.Destroyed;
 
                     // Remove the fade out cover
@@ -120,40 +124,65 @@ export default class {
 
            particleGraphics.forEach((graphics, index) => {
 
-                let xSign = '';
-                let ySign = '';
+                graphics.setAlpha(1);
+                let xSign = null;
+                let ySign = null;
                
                 switch(index)
                 {
+                    case 0:
+                        ySign = '-';
+
                     case 1:
-                        xSign = '-';
+                        xSign = '+';
                         ySign = '-';
                         break;
 
                     case 2:
                         xSign = '+';
-                        ySign = '+';
                         break;
 
                     case 3:
                         xSign = '+';
-                        ySign = '-';
+                        ySign = '+';
                         break;
 
                     case 4:
-                        xSign = '-';
                         ySign = '+';
+                        break;
+
+                    case 5:
+                        ySign = '+';
+                        xSign = '-'
+
+                    case 6:
+                        xSign = '-';
+                        break;
+
+                    case 7:
+                        ySign = '-';
+                        xSign = '-';
                         break;
                 }
 
-                context.tweens.add({
+                const tween = {
                     targets: graphics,
-                    x: xSign + '=35',
-                    y: ySign + '=35',
-                    alpha: 1,
-                    duration: 200,
+                    alpha: 0,
+                    duration: 250,
                     ease: 'Cubic.easeOut'
-                });
+                };
+
+                if(xSign != null)
+                {
+                    tween.x = (xSign + '=45');
+                }
+
+                if(ySign != null)
+                {
+                    tween.y = (ySign + '=45');
+                }
+
+                context.tweens.add(tween);
            });
 
         });
