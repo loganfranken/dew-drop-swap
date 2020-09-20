@@ -42,9 +42,10 @@ export default class {
         this.image.clearTint();
     }
 
-    updatePosition(context, x, y, tileGridX, tileGridY)
+    updatePosition(context, x, y, tileGridX, tileGridY, isDrop)
     {
-        let self = this;
+        const self = this;
+        const yDiff = Math.abs(self.y - y);
 
         return new Promise((resolve, reject) => {
 
@@ -57,8 +58,8 @@ export default class {
                 targets: self.image,
                 x: x,
                 y: y,
-                ease: 'Power1',
-                duration: 500,
+                ease: isDrop ? 'Linear': 'Power1',
+                duration: isDrop ? Math.max(yDiff, 150) : 500,
                 onComplete: () => { resolve() }
             });
 

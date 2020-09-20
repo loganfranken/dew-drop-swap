@@ -334,7 +334,7 @@ export default class extends EventEmitter {
 
     getTileDrop(context, tile, x, y)
     {
-        return tile.updatePosition(context, this.getTileX(x), this.getTileY(y), x, y);
+        return tile.updatePosition(context, this.getTileX(x), this.getTileY(y), x, y, true);
     }
 
     getTileX(x)
