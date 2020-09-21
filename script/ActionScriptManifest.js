@@ -47,7 +47,7 @@ export default {
                     { do: 'dropTiles' },
                     `We only have two minutes before the sun dries up all the dew drops!`,
                     { do: 'updateGuideExpression', value: 'default' },
-                    `Collect at least 200 dew drops in two minutes!`,
+                    `Collect at least *200 dew drops* in *two minutes*!`,
                     { do: 'unblockTileGrid' },
                     { do: 'startTimer' }
                 ];
@@ -58,18 +58,36 @@ export default {
             case 2:
 
                 return [
+                    { do: 'updateGuideExpression', value: 'glee' },
                     `Wow, we're so proud of you!`,
-                    `This round you'll only have 30 seconds to collect at least 300 dew drops!`,
+                    `How did you get so goo...`,
+                    { do: 'updateGuideExpression', value: 'nervous' },
+                    `...`,
+                    { do: 'updateGuideExpression', value: 'surprise' },
+                    `*Eezle!* That sun is hot!`,
+                    `You're going to have to move even quicker this time!`,
+                    { do: 'dropTiles' },
+                    { do: 'updateGuideExpression', value: 'default' },
+                    `But we know you can do it!`,
+                    `This round you'll only have *30 seconds* to collect at least *300 dew drops*!`,
+                    { do: 'unblockTileGrid' },
+                    { do: 'startTimer' },
 
                     // Events
                     {
                         on: 'gameOver',
                         actions: [
+                            { do: 'blockTileGrid' },
+                            { do: 'updateGuideExpression', value: 'confused' },
                             `Wait, wait, sorry, hold on.`,
-                            `It's too early for the *\"Lose in a Panic\"* scenario.`,
+                            `We're not doing the *\"Lose in a Panic\"* scenario today.`,
+                            { do: 'updateGuideExpression', value: 'neutral' },
                             `So sorry about that.`,
+                            { do: 'updateGuideExpression', value: 'amused' },
                             `You've been really great so far, honestly.`,
-                            `You know, what, let's just go to the next round and we'll take it from the top.`
+                            { do: 'updateGuideExpression', value: 'neutral' },
+                            `Let's just go ahead and take it from the top.`,
+                            { do: 'endLevel' }
                         ]
                     }
                 ];

@@ -70,6 +70,9 @@ export default class extends Phaser.Scene {
         this.load.image('expression_despair', 'assets/images/expression_despair.png');
         this.load.image('expression_glee', 'assets/images/expression_glee.png');
         this.load.image('expression_nervous', 'assets/images/expression_nervous.png');
+        this.load.image('expression_confused', 'assets/images/expression_confused.png');
+        this.load.image('expression_neutral', 'assets/images/expression_neutral.png');
+        this.load.image('expression_amused', 'assets/images/expression_amused.png');
 
         // Sound Effects
         this.load.audio('match', 'assets/sounds/match.wav');
@@ -118,7 +121,7 @@ export default class extends Phaser.Scene {
         this.levelClearMessageHighlight.setTintFill(0xffffff);
 
         const actionScript = ActionScriptManifest.getScript(this.level);
-        this.director = new Director(actionScript, this.guide, this.timer, this.tileGrid, this);
+        this.director = new Director(actionScript, this.guide, this.timer, this.tileGrid, this, this);
 
         const self = this;
         this.input.on('pointerdown', () => { self.director.next(self); });
@@ -140,9 +143,10 @@ export default class extends Phaser.Scene {
         this.handleSpecialLevelBehavior();
 
         // Have we run out of time?
-        if(this.timer != null && this.timer.seconds <= 0)
+        if(this.timer != null && this.timer.ticks <= 0)
         {
-            this.guide.displayGameOverMessage();
+            this.isTransitioningRounds = true;
+            this.director.gameOver();
             return;
         }
 

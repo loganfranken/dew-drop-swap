@@ -27,6 +27,9 @@ export default class extends EventEmitter {
         this.expressions.despair = { y: -70 };
         this.expressions.glee = { y: -100 };
         this.expressions.nervous = { y: -80 };
+        this.expressions.confused = { y: -100 };
+        this.expressions.neutral = { y: -90 };
+        this.expressions.amused = { y: -100 };
     }
 
     create(context)

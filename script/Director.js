@@ -1,10 +1,13 @@
 export default class {
 
-    constructor(script, guide, timer, tileGrid, context)
+    constructor(script, guide, timer, tileGrid, scene, context)
     {
         this.guide = guide;
         this.timer = timer;
         this.tileGrid = tileGrid;
+        this.scene = scene;
+
+        this.gameOverSubscriptions = [];
         this.queuedActions = null;
 
         this.isGuideReady = false;
@@ -90,8 +93,16 @@ export default class {
                 this.tileGrid.unblock(context);
                 break;
 
+            case 'blockTileGrid':
+                this.tileGrid.block(context);
+                break;
+
             case 'startTimer':
                 this.timer.start();
+                break;
+
+            case 'endLevel':
+                this.scene.endLevel();
                 break;
         }
     }
@@ -107,7 +118,15 @@ export default class {
                 break;
 
             case 'gameOver':
-                this.tileGrid.on('gameOver', () => self.queueActions(actions, context));
+                self.gameOverSubscriptions.push(() => self.queueActions(actions, context));
+                break;
         }
+    }
+
+    gameOver()
+    {
+        this.gameOverSubscriptions.forEach(subscription => {
+            subscription();
+        });
     }
 }

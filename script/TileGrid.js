@@ -360,10 +360,10 @@ export default class extends EventEmitter {
     getTileType(x, y, behavior)
     {
         const aboveTile = (y < 1) ? null : this.tileGrid[y - 1][x];
-        const belowTile = (y > self.tileGridHeight - 1 || !this.tileGrid[y + 1]) ? null : this.tileGrid[y + 1][x];
+        const belowTile = (y >= this.tileGridHeight - 1 || !this.tileGrid[y + 1]) ? null : this.tileGrid[y + 1][x];
 
         const leftTile = (x < 1) ? null : this.tileGrid[y][x - 1];
-        const rightTile = (x > self.tileGridWidth - 1) ? null : this.tileGrid[y][x + 1];
+        const rightTile = (x >= this.tileGridWidth - 1 || !this.tileGrid[y]) ? null : this.tileGrid[y][x + 1];
 
         if(behavior === TileGenerationBehavior.EasyWin && (aboveTile != null || belowTile != null || leftTile != null || rightTile != null))
         {
