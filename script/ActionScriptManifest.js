@@ -94,28 +94,45 @@ export default {
 
                 break;
 
-                /*
             // Level 3 (Easy Win)
             case 3:
 
-                script.introMessages = [
-                    "Alright, I think we've got everything figured out.",
-                    "Okay, for this next round, let me set you up:",
+                return [
+                    { do: 'updateGuideExpression', value: 'neutral' },
+                    `Alright, I think we've got everything figured out.`,
+                    { do: 'updateGuideExpression', value: 'amused' },
+                    `Okay, for this next round, let me set you up:`,
+                    { do: 'updateGuideExpression', value: 'neutral' },
                     "Remember, you've been winning the last few rounds and you're gaining confidence.",
+                    { do: 'updateGuideExpression', value: 'amused' },
                     "In this round, it's going to be easy for you to get combos.",
                     "So the idea here is that you're going to get a little *too* confident, right?",
+                    { do: 'updateGuideExpression', value: 'confused' },
                     "Like a little full of yourself, alright?",
+                    { do: 'updateGuideExpression', value: 'amused' },
                     "Okay, great! Let's do this:",
+                    { do: 'updateGuideExpression', value: 'neutral' },
                     "...",
+                    "...",
+                    "...",
+                    { do: 'updateGuideExpression', value: 'default' },
                     "*Oh doozle woozle!*",
+                    { do: 'updateGuideExpression', value: 'surprise' },
                     "You're so amazing!",
-                    "You have two minutes again, but this time you'll have to collect 300 dew drops.",
+                    { do: 'updateGuideExpression', value: 'default' },
+                    { do: 'dropTiles' },
+                    "You have *two minutes* again, but this time you'll have to collect *300 dew drops*.",
+                    { do: 'updateGuideExpression', value: 'confused' },
                     "Can you do it?",
+                    { do: 'updateGuideExpression', value: 'default' },
+                    { do: 'unblockTileGrid' },
+                    { do: 'startTimer' },
                     "Who am I kidding? Of course you can!"
                 ];
 
                 break;
 
+                /*
             // Level 4 (Losing Confidence)
             case 4:
 

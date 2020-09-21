@@ -22,14 +22,14 @@ export default class extends EventEmitter {
 
         this.expressions = {};
         this.expressions.default = { y: -90 };
-        this.expressions.surprise = { y: -100 };
+        this.expressions.surprise = { y: -105 };
         this.expressions.sadness = { y: -80 };
         this.expressions.despair = { y: -70 };
         this.expressions.glee = { y: -100 };
-        this.expressions.nervous = { y: -80 };
+        this.expressions.nervous = { y: -85 };
         this.expressions.confused = { y: -100 };
         this.expressions.neutral = { y: -90 };
-        this.expressions.amused = { y: -100 };
+        this.expressions.amused = { y: -95 };
     }
 
     create(context)
