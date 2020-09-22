@@ -1,3 +1,5 @@
+import TileGenerationBehavior from './TileGenerationBehavior';
+
 export default {
 
     getScript(level)
@@ -132,31 +134,54 @@ export default {
 
                 break;
 
-                /*
             // Level 4 (Losing Confidence)
             case 4:
 
-                script.introMessages = [
-                    "Okay, okay, great stuff.",
-                    "For this round, you're bringing all of that pride, all of that hubris.",
-                    "And, when the round starts, things are still going your way.",
-                    "But guess what?",
-                    "Halfway through this round, things start getting a little harder.",
-                    "So this is where we begin to chip away at your pride as the player.",
-                    "Alright, that's your set up: now let me get into the right headspace.",
-                    "...oh doozle woo-",
-                    "...no, no, it's doozy-woozy here...",
-                    "...yeah, doozy-woozy, you're our hero, blah, blah...",
-                    "Alright! Got it!",
-                    "...",
+                return [
+                    { do: 'updateGuideExpression', value: 'amused' },
+                    `Okay, okay, great stuff.`,
+                    { do: 'updateGuideExpression', value: 'neutral' },
+                    `For this round, you're bringing all of that pride, all of that hubris.`,
+                    `And, when the round starts, things are still going your way.`,
+                    { do: 'updateGuideExpression', value: 'confused' },
+                    `But guess what?`,
+                    { do: 'updateGuideExpression', value: 'neutral' },
+                    `Halfway through this round, things start getting a little harder.`,
+                    `So this is where we begin to chip away at your pride as the player.`,
+                    { do: 'updateGuideExpression', value: 'amused' },
+                    `Alright, that's your set up: now let me get into the right headspace.`,
+                    { do: 'updateGuideExpression', value: 'thoughtful' },
+                    `...oh doozle woo-`,
+                    `...no, no, it's doozy-woozy here...`,
+                    `...yeah, doozy-woozy, you're our hero, blah, blah...`,
+                    { do: 'updateGuideExpression', value: 'amused' },
+                    `Alright! Got it!`,
+                    { do: 'updateGuideExpression', value: 'neutral' },
+                    `...`,
+                    `...`,
+                    `...`,
+                    { do: 'updateGuideExpression', value: 'surprise' },
                     "*Doozy-woozy!*",
+                    { do: 'updateGuideExpression', value: 'default' },
                     "You're our hero!",
+                    { do: 'dropTiles' },
                     "You've done so much for us, but we still need your help!",
-                    "We need you to collect 500 dew drops in five minutes!" 
+                    { do: 'unblockTileGrid' },
+                    { do: 'startTimer' },
+                    "We need you to collect *500 dew drops* in *five minutes*!",
+
+                    // Events
+                    {
+                        on: 'halfComplete',
+                        actions: [
+                            { do: 'updateTileGenerationBehavior', value: TileGenerationBehavior.Hard }
+                        ]
+                    }
                 ];
 
                 break;
 
+                /*
             // Level 5 (Fall From Grace)
             case 5:
 

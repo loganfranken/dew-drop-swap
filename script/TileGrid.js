@@ -413,4 +413,9 @@ export default class extends EventEmitter {
         this.isBlocked = true;
         this.isInitialized = true;
     }
+
+    updateTileGenerationBehavior(behavior)
+    {
+        this.tileGenerationBehavior = behavior;
+    }
 }

@@ -104,6 +104,10 @@ export default class {
             case 'endLevel':
                 this.scene.endLevel();
                 break;
+
+            case 'updateTileGenerationBehavior':
+                this.tileGrid.updateTileGenerationBehavior(value);
+                break;
         }
     }
 
@@ -118,15 +122,13 @@ export default class {
                 break;
 
             case 'gameOver':
-                self.gameOverSubscriptions.push(() => self.queueActions(actions, context));
+                this.scene.emitter.on('gameOver', () => self.queueActions(actions, context));
                 break;
-        }
-    }
 
-    gameOver()
-    {
-        this.gameOverSubscriptions.forEach(subscription => {
-            subscription();
-        });
+            case 'halfComplete':
+                this.scene.emitter.on('halfComplete', () => self.queueActions(actions, context));
+                break;
+                
+        }
     }
 }

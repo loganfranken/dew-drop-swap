@@ -34,13 +34,7 @@ export default [
     {
         score: 400,
         timer: 300,
-        behavior: TileGenerationBehavior.EasyWin,
-        handler: (state) => {
-            if(state.tileGrid.TileGenerationBehavior !== TileGenerationBehavior.Hard && state.score > (LevelManifest[state.level]/2))
-            {
-                state.tileGrid.tileGenerationBehavior = TileGenerationBehavior.Hard;
-            }
-        }
+        behavior: TileGenerationBehavior.EasyWin
     },
 
     // 5

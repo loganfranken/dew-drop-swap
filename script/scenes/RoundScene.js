@@ -8,6 +8,7 @@ import ScoreDisplay from '../ScoreDisplay';
 import TileGrid from '../TileGrid';
 import Timer from '../Timer';
 import WebFontLoader from 'webfontloader';
+import EventEmitter from '../EventEmitter';
 
 export default class extends Phaser.Scene {
 
@@ -32,6 +33,8 @@ export default class extends Phaser.Scene {
         this.director = null;
         this.guide = null;
         this.level = null;
+
+        this.emitter = new EventEmitter();
 
         this.totalMatches = null;
     }
@@ -73,6 +76,7 @@ export default class extends Phaser.Scene {
         this.load.image('expression_confused', 'assets/images/expression_confused.png');
         this.load.image('expression_neutral', 'assets/images/expression_neutral.png');
         this.load.image('expression_amused', 'assets/images/expression_amused.png');
+        this.load.image('expression_thoughtful', 'assets/images/expression_thoughtful.png');
 
         // Sound Effects
         this.load.audio('match', 'assets/sounds/match.wav');
@@ -140,14 +144,17 @@ export default class extends Phaser.Scene {
             return;
         }
 
-        this.handleSpecialLevelBehavior();
-
         // Have we run out of time?
         if(this.timer != null && this.timer.ticks <= 0)
         {
             this.isTransitioningRounds = true;
-            this.director.gameOver();
+            this.emitter.emit('gameOver');
             return;
+        }
+
+        if(this.isLevelHalfwayComplete())
+        {
+            this.emitter.emit('halfComplete');
         }
 
         if(this.isLevelComplete())
@@ -252,19 +259,14 @@ export default class extends Phaser.Scene {
         context.scoreDisplay.updateScore(context.score);
     }
 
+    isLevelHalfwayComplete()
+    {
+        return this.score >= (LevelManifest[this.level].score/2);
+    }
+
     isLevelComplete()
     {
         return this.score >= LevelManifest[this.level].score;
-    }
-
-    handleSpecialLevelBehavior()
-    {
-        const handler = LevelManifest[this.level].handler;
-        handler && handler({
-            tileGrid: this.tileGrid,
-            score: this.score,
-            level: this.level
-        });
     }
 
     endLevel()

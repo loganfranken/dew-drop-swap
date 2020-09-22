@@ -30,6 +30,7 @@ export default class extends EventEmitter {
         this.expressions.confused = { y: -100 };
         this.expressions.neutral = { y: -90 };
         this.expressions.amused = { y: -95 };
+        this.expressions.thoughtful = { y: -70 };
     }
 
     create(context)
