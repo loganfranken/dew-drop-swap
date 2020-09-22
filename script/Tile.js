@@ -14,7 +14,6 @@ export default class {
         this.state = TileState.Active;
 
         this.isActivated = false;
-        this.isDestroying = false;
         this.isBlocked = isBlocked;
     }
 
@@ -70,12 +69,12 @@ export default class {
     {
         let self = this;
         
-        if(self.isDestroying)
+        if(self.state === TileState.Destroyed)
         {
             return;
         }
 
-        self.isDestroying = true;
+        self.state = TileState.Destroyed;
 
         // Create cover for fading the shape to white
         const fadeOutCover = context.add.image(self.x, self.y, self.tileType.imageKey);
@@ -105,9 +104,6 @@ export default class {
                duration: 250,
                ease: 'Cubic.easeOut',
                onComplete: () => {
-
-                    // Remove the tile image
-                    self.state = TileState.Destroyed;
 
                     // Remove the fade out cover
                     container.remove(fadeOutCover);
