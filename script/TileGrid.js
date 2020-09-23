@@ -29,6 +29,7 @@ export default class extends EventEmitter {
         this.tileGenerationBehavior = tileGenerationBehavior;
 
         this.matchSound = null;
+        this.swapSound = null;
 
         this.queue = queue;
 
@@ -57,6 +58,7 @@ export default class extends EventEmitter {
         this.tileImageContainer.mask = new Phaser.Display.Masks.GeometryMask(context, maskShape);
 
         this.matchSound = context.sound.add('match');
+        this.swapSound = context.sound.add('swap');
     }
 
     update(context)
@@ -161,6 +163,7 @@ export default class extends EventEmitter {
     swapTiles(context, firstTile, secondTile)
     {
         let self = this;
+        self.swapSound.play();
 
         self.queue.push(() => {
             

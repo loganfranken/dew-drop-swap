@@ -80,6 +80,7 @@ export default class extends Phaser.Scene {
 
         // Sound Effects
         this.load.audio('match', 'assets/sounds/match.wav');
+        this.load.audio('swap', 'assets/sounds/swap.wav');
     }
 
     init(data)
