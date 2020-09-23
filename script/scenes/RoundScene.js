@@ -274,6 +274,7 @@ export default class extends Phaser.Scene {
         const self = this;
 
         self.isTransitioningRounds = true;
+        self.tileGrid.block(this);
 
         self.levelClearMessageHighlight.setAlpha(1);
         self.tweens.add({
