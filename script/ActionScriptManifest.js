@@ -54,8 +54,6 @@ export default {
                     { do: 'startTimer' }
                 ];
 
-                break;
-
             // Level 2 (Breaking the Fourth Wall)
             case 2:
 
@@ -94,8 +92,6 @@ export default {
                     }
                 ];
 
-                break;
-
             // Level 3 (Easy Win)
             case 3:
 
@@ -132,8 +128,6 @@ export default {
                     "Who am I kidding? Of course you can!"
                 ];
 
-                break;
-
             // Level 4 (Losing Confidence)
             case 4:
 
@@ -168,7 +162,7 @@ export default {
                     "You've done so much for us, but we still need your help!",
                     { do: 'unblockTileGrid' },
                     { do: 'startTimer' },
-                    "We need you to collect *500 dew drops* in *five minutes*!",
+                    "We need you to collect *400 dew drops* in *two minutes*!",
 
                     // Events
                     {
@@ -179,31 +173,41 @@ export default {
                     }
                 ];
 
-                break;
-
-                /*
             // Level 5 (Fall From Grace)
             case 5:
 
-                script.introMessages = [
-                    "Wow, such moving work.",
-                    "It really feels so authentic.",
-                    "It's been a joy working with you.",
-                    "Okay, here we go, this is a pivotal scene:",
-                    "This round will not go your way at all. At all.",
-                    "This is your fall from grace.",
-                    "(Ahem)",
-                    "...",
-                    "*Doozle!*",
-                    "*Woozle!*",
-                    "I can't believe you did it!",
-                    "We've got a bigger challenge ahead, but I know you can do it!",
-                    "You can do anything!",
-                    "We need you to collect 1000 dew drops in five minutes!"
+                return [
+                    { do: 'updateGuideExpression', value: 'amused' },
+                    `Wow, great stuff.`,
+                    `I know this is cliche, but it really feels so authentic.`,
+                    `It's been great working with you. You really sell it.`,
+                    { do: 'updateGuideExpression', value: 'neutral' },
+                    `Okay, here we go, this is a pivotal scene:`,
+                    `This round will not go your way at all. At all.`,
+                    { do: 'updateGuideExpression', value: 'amused' },
+                    `This is your fall from grace.`,
+                    { do: 'updateGuideExpression', value: 'neutral' },
+                    `(Ahem)`,
+                    { do: 'updateGuideExpression', value: 'thoughtful' },
+                    `...`,
+                    `...`,
+                    `...`,
+                    { do: 'updateGuideExpression', value: 'glee' },
+                    `*Doozle!*`,
+                    `*Woozle!*`,
+                    `I can't believe you did it!`,
+                    { do: 'updateGuideExpression', value: 'default' },
+                    `We've got a bigger challenge ahead, but I know you can do it!`,
+                    { do: 'dropTiles' },
+                    { do: 'updateGuideExpression', value: 'glee' },
+                    `You can do anything!`,
+                    { do: 'updateGuideExpression', value: 'default' },
+                    { do: 'unblockTileGrid' },
+                    { do: 'startTimer' },
+                    `We need you to collect *500 dew drops* in *two minutes*!`
                 ];
 
-                break;
-
+                /*
             // Level 6 (Wallowing)
             case 6:
 
