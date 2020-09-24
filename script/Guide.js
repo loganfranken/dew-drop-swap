@@ -13,7 +13,8 @@ export default class extends EventEmitter {
         this.y = y;
         this.isIntro = isIntro;
 
-        this.queuedActions = null;
+        this.hideEndDialogueMarkerOnMessageComplete = false;
+
         this.isPaused = false;
         this.isBlockingGameplay = false;
 
@@ -176,16 +177,20 @@ export default class extends EventEmitter {
         introTimeline.play();
     }
 
-    displayMessage(message)
+    displayMessage(message, hideEndDialogueMarkerOnMessageComplete)
     {
         this.hideEndDialogueMarker();
         const convMessage = this.convertDialogToTagText(message);
         this.speechBubbleTextTyping.start(convMessage);
+        this.hideEndDialogueMarkerOnMessageComplete = hideEndDialogueMarkerOnMessageComplete;
     }
 
     messageCompleted()
     {
-        this.showEndDialogueMarker();
+        if(!this.hideEndDialogueMarkerOnMessageComplete)
+        {
+            this.showEndDialogueMarker();
+        }
     }
 
     showEndDialogueMarker()

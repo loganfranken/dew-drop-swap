@@ -54,7 +54,10 @@ export default class {
         // Simple dialog message
         if(typeof action === "string")
         {
-            this.handleMessage(action);
+            // Are there any more messages after this one?
+            const isLastMessage = this.queuedActions.every(a => typeof a !== "string");
+
+            this.handleMessage(action, isLastMessage);
         }
 
         // Game action
@@ -72,9 +75,9 @@ export default class {
         }
     }
 
-    handleMessage(action)
+    handleMessage(action, hideEndDialogMarker)
     {
-        this.guide.displayMessage(action);
+        this.guide.displayMessage(action, hideEndDialogMarker);
     }
 
     handleAction(action, value, context)
