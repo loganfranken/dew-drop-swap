@@ -119,6 +119,20 @@ export default class extends EventEmitter {
         this.characterExpression = context.add.sprite(-10, characterExpressionY, startingExpression);
         character.add(this.characterExpression);
 
+        const blinkOffset = 15;
+        context.tweens.addCounter({
+            duration: 100,
+            yoyo: true,
+            loop: -1,
+            loopDelay: 2000,
+            from: 0,
+            to: 1,
+            onUpdate: (tween) => {
+                const currOffset = blinkOffset * tween.getValue();
+                this.characterExpression.setCrop(0, currOffset, self.characterExpression.width, self.characterExpression.height);
+            }
+        });
+
         // Intro Timeline
         const introTimeline = context.tweens.createTimeline();
 
@@ -206,6 +220,7 @@ export default class extends EventEmitter {
     updateExpression(key, context)
     {
         this.characterExpression.setTexture('expression_' + key);
+        this.characterExpression.isCropped = false;
 
         const expressionInfo = this.expressions[key];
 
