@@ -12,7 +12,7 @@ export default [
     // 1
     {
         score: 200,
-        timer: 10,
+        timer: 120,
         behavior: TileGenerationBehavior.None
     },
 

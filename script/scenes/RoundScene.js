@@ -34,7 +34,7 @@ export default class extends Phaser.Scene {
         this.guide = null;
         this.level = null;
 
-        this.emitter = new EventEmitter();
+        this.emitter = null;
 
         this.totalMatches = null;
     }
@@ -115,6 +115,7 @@ export default class extends Phaser.Scene {
         this.scoreDisplay.create(this);
         this.timer && this.timer.create(this);
         this.guide.create(this);
+        this.emitter = new EventEmitter();
 
         this.levelClearMessage = this.add.image(400, 400, 'round_clear');
         this.levelClearMessage.setAlpha(0);
