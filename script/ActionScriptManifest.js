@@ -51,7 +51,26 @@ export default {
                     { do: 'updateGuideExpression', value: 'default' },
                     `Collect at least *200 dew drops* in *two minutes*!`,
                     { do: 'unblockTileGrid' },
-                    { do: 'startTimer' }
+                    { do: 'startTimer' },
+
+                    // Events
+                    {
+                        on: 'gameOver',
+                        actions: [
+                            { do: 'blockTileGrid' },
+                            { do: 'updateGuideExpression', value: 'confused' },
+                            `Uhh?`,
+                            { do: 'updateGuideExpression', value: 'neutral' },
+                            `I think there's been a mix-up.`,
+                            { do: 'updateGuideExpression', value: 'confused' },
+                            `Did you get the wrong script?`,
+                            { do: 'updateGuideExpression', value: 'neutral' },
+                            `You're supposed to win this time.`,
+                            `Well, whatever, I'm sure we can just fix it up in post.`,
+                            `Let's just move onto the next round.`,
+                            { do: 'endLevel' }
+                        ]
+                    }
                 ];
 
             // Level 2 (Breaking the Fourth Wall)
