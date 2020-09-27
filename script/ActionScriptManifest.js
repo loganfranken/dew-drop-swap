@@ -144,7 +144,9 @@ export default {
                     { do: 'updateGuideExpression', value: 'default' },
                     { do: 'unblockTileGrid' },
                     { do: 'startTimer' },
-                    "Who am I kidding? Of course you can!"
+                    { do: 'updateGuideExpression', value: 'glee' },
+                    `Who am I kidding? Of course you can!`,
+                    { do: 'updateGuideExpression', value: 'default' }
                 ];
 
             // Level 4 (Losing Confidence)
@@ -166,7 +168,7 @@ export default {
                     { do: 'updateGuideExpression', value: 'thoughtful' },
                     `...oh doozle woo-`,
                     `...no, no, it's doozy-woozy here...`,
-                    `...yeah, doozy-woozy, you're our hero, blah, blah...`,
+                    `...yeah, doozy-woozy, you're our hero...`,
                     { do: 'updateGuideExpression', value: 'amused' },
                     `Alright! Got it!`,
                     { do: 'updateGuideExpression', value: 'neutral' },
@@ -175,9 +177,10 @@ export default {
                     `...`,
                     { do: 'updateGuideExpression', value: 'surprise' },
                     "*Doozy-woozy!*",
-                    { do: 'updateGuideExpression', value: 'default' },
+                    { do: 'updateGuideExpression', value: 'glee' },
                     "You're our hero!",
                     { do: 'dropTiles' },
+                    { do: 'updateGuideExpression', value: 'default' },
                     "You've done so much for us, but we still need your help!",
                     { do: 'unblockTileGrid' },
                     { do: 'startTimer' },
@@ -223,7 +226,27 @@ export default {
                     { do: 'updateGuideExpression', value: 'default' },
                     { do: 'unblockTileGrid' },
                     { do: 'startTimer' },
-                    `We need you to collect *500 dew drops* in *two minutes*!`
+                    `We need you to collect *500 dew drops* in *two minutes*!`,
+
+                    // Events
+                    {
+                        on: 'gameOver',
+                        actions: [
+                            { do: 'blockTileGrid' },
+                            { do: 'updateGuideExpression', value: 'surprise' },
+                            `Oh no!`,
+                            { do: 'updateGuideExpression', value: 'sadness' },
+                            `*Whoopsie whoozle!*`,
+                            { do: 'updateGuideExpression', value: 'despair' },
+                            `You didn't make it in time!`,
+                            { do: 'updateGuideExpression', value: 'sadness' },
+                            `It's okay, though!`,
+                            `It's okay!`,
+                            { do: 'updateGuideExpression', value: 'default' },
+                            `You can try again!`,
+                            { do: 'endLevel' }
+                        ]
+                    }
                 ];
 
                 /*
