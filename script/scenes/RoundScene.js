@@ -19,6 +19,7 @@ export default class extends Phaser.Scene {
         this.isAwaitingRoundTransition = false;
         this.isReadyForRoundTransition = false;
         this.isTransitioningRounds = false;
+        this.isBlockingMatches = false;
 
         this.score = null;
         this.queue = null;
@@ -92,6 +93,7 @@ export default class extends Phaser.Scene {
     {
         this.isTransitioningRounds = false;
         this.isRoundTransitionComplete = false;
+        this.isBlockingMatches = LevelManifest[this.level].blockMatching;
 
         this.score = 0;
         this.totalMatches = 0;
@@ -231,13 +233,15 @@ export default class extends Phaser.Scene {
                 let secondSelectedTile = context.selectedTiles[1];
     
                 context.tileGrid.swapTiles(context, firstSelectedTile, secondSelectedTile);
+                context.emitter.emit('swap');
     
                 context.queue.push(() => {
     
-                    // If there are no matches, swap the tiles back
+                    // If there are no matches (or we're in a round where matches are blocked), swap the tiles back
                     if(
-                        !context.tileGrid.hasMatches(firstSelectedTile.tileGridX, firstSelectedTile.tileGridY) &&
-                        !context.tileGrid.hasMatches(secondSelectedTile.tileGridX, secondSelectedTile.tileGridY)
+                        context.isBlockingMatches ||
+                        (!context.tileGrid.hasMatches(firstSelectedTile.tileGridX, firstSelectedTile.tileGridY) &&
+                        !context.tileGrid.hasMatches(secondSelectedTile.tileGridX, secondSelectedTile.tileGridY))
                     )
                     {
                         context.tileGrid.swapTiles(context, firstSelectedTile, secondSelectedTile);

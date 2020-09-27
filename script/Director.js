@@ -131,7 +131,10 @@ export default class {
             case 'halfComplete':
                 this.scene.emitter.on('halfComplete', () => self.queueActions(actions, context));
                 break;
-                
+
+            case 'firstSwap':
+                this.scene.emitter.on('swap', () => self.queueActions(actions, context));
+                break;
         }
     }
 }

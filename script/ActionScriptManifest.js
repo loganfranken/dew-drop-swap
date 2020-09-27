@@ -241,6 +241,7 @@ export default {
                             `You didn't make it in time!`,
                             { do: 'updateGuideExpression', value: 'sadness' },
                             `It's okay, though!`,
+                            { do: 'updateGuideExpression', value: 'nervous' },
                             `It's okay!`,
                             { do: 'updateGuideExpression', value: 'default' },
                             `You can try again!`,
@@ -249,38 +250,68 @@ export default {
                     }
                 ];
 
-                /*
             // Level 6 (Wallowing)
             case 6:
 
-                script.introMessages = [
-                    "Okay, let's move right into the next scene:",
-                    "Here, you are wallowing, right?",
-                    "You are in the pit of despair and you can't see a way out.",
-                    "This round won't be particularly hard, but you can't seem to find any matches.",
-                    "Got it?",
-                    "Alright, great: let me find my place here...",
-                    "Yes, okay, I believed in you, but now my faith is faltering...",
-                    "I'm keeping a brave face, but I'm really starting to lose confidence...",
-                    "Okay, I'm ready!",
-                    "...",
-                    "Oh no!",
-                    "*Whoopsie whoozle!*",
-                    "Don't worry, that was a tough one!",
-                    "Let's try again! I know you can do it!",
-                    "We need you to collect 1000 dew drops in five minutes!"
+                return [
+                    { do: 'updateGuideExpression', value: 'neutral' },
+                    `Okay, let's move right into the next scene:`,
+                    `Here, you are wallowing, right?`,
+                    `You are in the pit of despair and you can't see a way out.`,
+                    `This round won't be particularly hard, but you can't seem to find any matches.`,
+                    { do: 'updateGuideExpression', value: 'amused' },
+                    `Got it?`,
+                    { do: 'updateGuideExpression', value: 'neutral' },
+                    `Alright, great: let me find my place here...`,
+                    { do: 'updateGuideExpression', value: 'thoughtful' },
+                    `...I believed in you, but my faith is faltering...`,
+                    `...I'm keeping a brave face, but I'm losing confidence...`,
+                    { do: 'updateGuideExpression', value: 'amused' },
+                    `Okay, I'm ready!`,
+                    `...`,
+                    `...`,
+                    `...`,
+                    { do: 'updateGuideExpression', value: 'default' },
+                    `Don't worry, that was a tough one!`,
+                    { do: 'dropTiles' },
+                    `Let's try again! We believe in you!`,
+                    { do: 'updateGuideExpression', value: 'glee' },
+                    `We know you can do it!`,
+                    { do: 'updateGuideExpression', value: 'default' },
+                    { do: 'unblockTileGrid' },
+                    { do: 'startTimer' },
+                    `This time, you just need to get *100 dew drops* in *one minute!*`,
+
+                    // Events
+                    {
+                        on: 'firstSwap',
+                        actions: [
+                            { do: 'updateGuideExpression', value: 'neutral' },
+                            `Hey, remember: you don't get any matches this round.`,
+                            { do: 'updateGuideExpression', value: 'default' }
+                        ]
+                    },
+
+                    {
+                        on: 'gameOver',
+                        actions: [
+                            { do: 'blockTileGrid' },
+                            { do: 'updateGuideExpression', value: 'surprise' },
+                            `Oh no!`,
+                            { do: 'updateGuideExpression', value: 'despair' },
+                            `*Eezle weezle!*`,
+                            { do: 'updateGuideExpression', value: 'sadness' },
+                            `You didn't collect any dew drops!`,
+                            { do: 'updateGuideExpression', value: 'despair' },
+                            `We'll starve!`,
+                            { do: 'updateGuideExpression', value: 'sadness' },
+                            `*Please!* You have to save us!`,
+                            { do: 'endLevel' }
+                        ]
+                    }
                 ];
 
-                script.getDisplayTileMatchMessages = (data) => {
-
-                    return [
-                        "(Oh, hey: remember, you're not going to find any matches this round)"
-                    ];
-
-                };
-
-                break;
-
+                /*
             // Level 7 (Pheonix Rises)
             case 7:
 

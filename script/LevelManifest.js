@@ -46,9 +46,10 @@ export default [
 
     // 6
     {
-        score: 1000,
-        timer: 300,
-        behavior: TileGenerationBehavior.Hard
+        score: 100,
+        timer: 60,
+        behavior: TileGenerationBehavior.None,
+        blockMatching: true
     },
 
     // 7
