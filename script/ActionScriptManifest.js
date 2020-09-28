@@ -358,6 +358,20 @@ export default {
                             `You can try again!`,
                             { do: 'endLevel' }
                         ]
+                    },
+
+                    {
+                        on: 'win',
+                        actions: [
+                            { do: 'blockTileGrid' },
+                            { do: 'updateGuideExpression', value: 'confused' },
+                            `Oh?`,
+                            `A win?`,
+                            { do: 'updateGuideExpression', value: 'neutral' },
+                            `We had a loss planned, but...`,
+                            `But, yeah, I think a win can work too.`,
+                            { do: 'endLevel' }
+                        ]
                     }
                 ];
 

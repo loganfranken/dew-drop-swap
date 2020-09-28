@@ -3,6 +3,8 @@ export default class extends Phaser.Scene {
     constructor()
     {
         super('TitleScene');
+
+        this.startingLevel = 5;
     }
 
     preload()
@@ -88,7 +90,7 @@ export default class extends Phaser.Scene {
         this.selectSound = this.sound.add('select');
         startBtn.on('pointerdown', () => {
             this.selectSound.play();
-            self.scene.transition({ target: 'RoundScene', data: { level: 7 }, remove: true });
+            self.scene.transition({ target: 'RoundScene', data: { level: this.startingLevel }, remove: true });
         });
 
         // Intro Timeline
