@@ -161,11 +161,6 @@ export default class extends Phaser.Scene {
             return;
         }
 
-        if(this.isLevelHalfwayComplete())
-        {
-            this.emitter.emit('halfComplete');
-        }
-
         if(this.isLevelComplete())
         {
             this.isTransitioningRounds = true;
@@ -272,12 +267,7 @@ export default class extends Phaser.Scene {
         context.score += matchedTiles.length;
         context.scoreDisplay.updateScore(context.score);
     }
-
-    isLevelHalfwayComplete()
-    {
-        return this.score >= (LevelManifest[this.level].score/2);
-    }
-
+    
     isLevelComplete()
     {
         return this.score >= LevelManifest[this.level].score;

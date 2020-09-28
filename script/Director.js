@@ -151,10 +151,6 @@ export default class {
                 this.scene.emitter.on('gameOver', () => self.queueActions(actions, context));
                 break;
 
-            case 'halfComplete':
-                this.scene.emitter.on('halfComplete', () => self.queueActions(actions, context));
-                break;
-
             case 'firstSwap':
                 this.scene.emitter.on('swap', () => self.queueActions(actions, context));
                 break;

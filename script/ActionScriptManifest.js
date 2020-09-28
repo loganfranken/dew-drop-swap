@@ -259,21 +259,49 @@ export default {
                     `...`,
                     `...`,
                     { do: 'updateGuideExpression', value: 'surprise' },
-                    "*Doozy-woozy!*",
+                    `*Doozy-woozy!*`,
                     { do: 'updateGuideExpression', value: 'glee' },
-                    "You're our hero!",
+                    `You're our hero!`,
                     { do: 'dropTiles' },
                     { do: 'updateGuideExpression', value: 'default' },
-                    "You've done so much for us, but we still need your help!",
+                    `You've done so much for us, but we still need your help!`,
                     { do: 'unblockTileGrid' },
                     { do: 'startTimer' },
-                    "We need you to collect *400 dew drops* in *two minutes*!",
+                    `We need you to collect *400 dew drops* in *two minutes*!`,
 
                     // Events
                     {
-                        on: 'halfComplete',
+                        on: 'match',
+                        filter: (state) => { return state.score > (LevelManifest[0].score * 0.5) },
                         actions: [
                             { do: 'updateTileGenerationBehavior', value: TileGenerationBehavior.Hard }
+                        ]
+                    },
+
+                    {
+                        on: 'gameOver',
+                        actions: [
+                            { do: 'blockTileGrid' },
+                            { do: 'updateGuideExpression', value: 'confused' },
+                            `Oh, a game over?`,
+                            { do: 'updateGuideExpression', value: 'neutral' },
+                            `We had a win penciled in here.`,
+                            { do: 'updateGuideExpression', value: 'thoughtful' },
+                            `Maybe a game over could work?`,
+                            { do: 'updateGuideExpression', value: 'neutral' },
+                            `No, you know what:`,
+                            { do: 'revokeLevelTransition' },
+                            { do: 'updateTimer', value: 1 },
+                            { do: 'stopTimer' },
+                            { do: 'unblockTileGrid' },
+                            `Just go ahead and finish this off as a win.`
+                        ]
+                    },
+
+                    {
+                        on: 'win',
+                        actions: [
+                            { do: 'endLevel' }
                         ]
                     }
                 ];

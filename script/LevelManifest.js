@@ -1,4 +1,3 @@
-import LevelManifest from "./LevelManifest";
 import TileGenerationBehavior from "./TileGenerationBehavior";
 
 export default [
@@ -33,7 +32,7 @@ export default [
     // 4
     {
         score: 400,
-        timer: 120,
+        timer: 10,
         behavior: TileGenerationBehavior.EasyWin
     },
 
