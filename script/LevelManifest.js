@@ -18,7 +18,7 @@ export default [
 
     // 2
     {
-        score: 300,
+        score: 30,
         timer: 30,
         behavior: TileGenerationBehavior.Hard
     },

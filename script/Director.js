@@ -135,6 +135,9 @@ export default class {
             case 'firstSwap':
                 this.scene.emitter.on('swap', () => self.queueActions(actions, context));
                 break;
+
+            case 'win':
+                this.scene.emitter.on('win', () => self.queueActions(actions, context));
         }
     }
 

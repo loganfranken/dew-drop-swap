@@ -45,6 +45,13 @@ export default {
                             "*Wow!* Look at you go!",
                             { do: 'updateGuideExpression', value: 'default' }
                         ]
+                    },
+
+                    {
+                        on: 'win',
+                        actions: [
+                            { do: 'endLevel' }
+                        ]
                     }
 
                 ];
@@ -79,6 +86,13 @@ export default {
                             `You're supposed to win this time.`,
                             `Well, whatever, I'm sure we can just fix it up in post.`,
                             `Let's just move onto the next round.`,
+                            { do: 'endLevel' }
+                        ]
+                    },
+
+                    {
+                        on: 'win',
+                        actions: [
                             { do: 'endLevel' }
                         ]
                     }
@@ -117,6 +131,25 @@ export default {
                             `You've been really great so far, honestly.`,
                             { do: 'updateGuideExpression', value: 'neutral' },
                             `Let's just go ahead and take it from the top.`,
+                            { do: 'endLevel' }
+                        ]
+                    },
+
+                    {
+                        on: 'win',
+                        actions: [
+                            { do: 'updateGuideExpression', value: 'confused' },
+                            `Wait, is that...`,
+                            { do: 'updateGuideExpression', value: 'neutral' },
+                            `No, I think you were supposed to lose here.`,
+                            { do: 'updateGuideExpression', value: 'thoughtful' },
+                            `Yeah, hmm. This was the *\"Lose in a Panic\"* scenario.`,
+                            { do: 'updateGuideExpression', value: 'neutral' },
+                            `You know what, that's fine.`,
+                            { do: 'updateGuideExpression', value: 'amused' },
+                            `Let's roll with it.`,
+                            { do: 'updateGuideExpression', value: 'neutral' },
+                            `We'll just move to the next round.`,
                             { do: 'endLevel' }
                         ]
                     }

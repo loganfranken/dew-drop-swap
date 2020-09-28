@@ -168,7 +168,9 @@ export default class extends Phaser.Scene {
 
         if(this.isLevelComplete())
         {
-            this.endLevel();
+            this.isTransitioningRounds = true;
+            this.tileGrid.block(this);
+            this.emitter.emit('win');
             return;
         }
 
@@ -284,9 +286,6 @@ export default class extends Phaser.Scene {
     endLevel()
     {
         const self = this;
-
-        self.isTransitioningRounds = true;
-        self.tileGrid.block(this);
 
         self.levelClearMessageHighlight.setAlpha(1);
         self.tweens.add({
