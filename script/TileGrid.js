@@ -33,6 +33,8 @@ export default class extends EventEmitter {
 
         this.queue = queue;
 
+        this.matches = 0;
+
         // We're going to generate a grid that's twice the height of
         // the desired tile grid height since we'll use the hidden, upper
         // region to stage the bricks that will fall into the play area
@@ -75,6 +77,7 @@ export default class extends EventEmitter {
 
         if(matchedTiles.length > 0)
         {
+            self.matches++;
             self.onTileMatch(context, matchedTiles);
             self.emit('match');
         }

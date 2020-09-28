@@ -70,7 +70,7 @@ export default class {
         // Event
         else if(action.hasOwnProperty('on'))
         {
-            this.handleEvent(action.on, action.actions, context);
+            this.handleEvent(action.on, action.actions, action.filter, context);
             this.next(context);
         }
     }
@@ -114,14 +114,14 @@ export default class {
         }
     }
 
-    handleEvent(event, actions, context)
+    handleEvent(event, actions, filter, context)
     {
         const self = this;
 
         switch(event)
         {
-            case 'firstMatch':
-                this.tileGrid.on('match', () => self.queueActions(actions, context));
+            case 'match':
+                this.tileGrid.on('match', this.wrapFilter(filter), () => self.queueActions(actions, context));
                 break;
 
             case 'gameOver':
@@ -136,5 +136,18 @@ export default class {
                 this.scene.emitter.on('swap', () => self.queueActions(actions, context));
                 break;
         }
+    }
+
+    wrapFilter(filter)
+    {
+        const self = this;
+        return () => { return filter(self.getCurrentState()); };
+    }
+
+    getCurrentState()
+    {
+        return {
+            matches: this.tileGrid.matches
+        };
     }
 }

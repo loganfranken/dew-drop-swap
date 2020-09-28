@@ -27,12 +27,23 @@ export default {
 
                     // Events
                     {
-                        on: 'firstMatch',
+                        on: 'match',
+                        filter: (state) => { return state.matches === 1; },
                         actions: [
                             { do: 'updateGuideExpression', value: 'glee' },
                             "You got it! That's it!",
                             { do: 'updateGuideExpression', value: 'default' },
                             "See if you can collect *100 dew drops*!"
+                        ]
+                    },
+
+                    {
+                        on: 'match',
+                        filter: (state) => { return state.matches === 5; },
+                        actions: [
+                            { do: 'updateGuideExpression', value: 'glee' },
+                            "*Wow!* Look at you go!",
+                            { do: 'updateGuideExpression', value: 'default' }
                         ]
                     }
 

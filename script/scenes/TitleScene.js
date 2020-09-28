@@ -88,7 +88,7 @@ export default class extends Phaser.Scene {
         this.selectSound = this.sound.add('select');
         startBtn.on('pointerdown', () => {
             this.selectSound.play();
-            self.scene.transition({ target: 'RoundScene', data: { level: 6 }, remove: true });
+            self.scene.transition({ target: 'RoundScene', data: { level: 0 }, remove: true });
         });
 
         // Intro Timeline
