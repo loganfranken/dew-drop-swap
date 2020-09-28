@@ -1,9 +1,12 @@
+import EventEmitter from './EventEmitter';
 import FontStyleManifest from './FontStyleManifest';
 
-export default class {
+export default class extends EventEmitter {
 
     constructor(x, y, ticks)
     {
+        super();
+
         this.x = x;
         this.y = y;
         this.text = null;
@@ -30,6 +33,7 @@ export default class {
             return;
         }
 
+        this.emit('tick');
         this.ticks--;
 
         this.text.setText(this.getTimeOutput(this.ticks));

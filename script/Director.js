@@ -44,6 +44,11 @@ export default class {
             return;
         }
 
+        if(this.guide.isTalking)
+        {
+            return;
+        }
+
         if(this.queuedActions.length === 0)
         {
             return;
@@ -134,35 +139,52 @@ export default class {
             case 'revokeLevelTransition':
                 this.scene.isTransitioningRounds = false;
                 break;
+
+            case 'revokeBlockMatching':
+                this.scene.isBlockingMatches = false;
+                break;
         }
     }
 
     handleEvent(event, actions, filter, context)
     {
-        const self = this;
+        let target = null;
 
         switch(event)
         {
             case 'match':
-                this.tileGrid.on('match', this.wrapFilter(filter), () => self.queueActions(actions, context));
+                target = this.tileGrid;
                 break;
 
-            case 'gameOver':
-                this.scene.emitter.on('gameOver', () => self.queueActions(actions, context));
-                break;
-
-            case 'firstSwap':
-                this.scene.emitter.on('swap', () => self.queueActions(actions, context));
-                break;
-
+            case 'swap':
             case 'win':
-                this.scene.emitter.on('win', () => self.queueActions(actions, context));
+            case 'gameOver':
+                target = this.scene.emitter;
+                break;
+
+            case 'tick':
+                target = this.timer;
+                break;
         }
+
+        this.setUpEvent(target, event, actions, filter, context);
+    }
+
+    setUpEvent(target, eventName, actions, filter, context)
+    {
+        const self = this;
+        target.on(eventName, this.wrapFilter(filter), () => self.queueActions(actions, context))
     }
 
     wrapFilter(filter)
     {
         const self = this;
+
+        if(typeof filter === 'undefined')
+        {
+            return null;
+        }
+
         return () => { return filter(self.getCurrentState()); };
     }
 
@@ -170,7 +192,8 @@ export default class {
     {
         return {
             matches: this.tileGrid.matches,
-            score: this.scene.score
+            score: this.scene.score,
+            ticks: this.timer.ticks
         };
     }
 }

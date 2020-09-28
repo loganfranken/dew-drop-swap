@@ -15,9 +15,6 @@ export default class extends EventEmitter {
 
         this.hideEndDialogueMarkerOnMessageComplete = false;
 
-        this.isPaused = false;
-        this.isBlockingGameplay = false;
-
         this.endDialogueMarkerGraphics = null;
         this.characterExpression = null;
 
@@ -32,6 +29,8 @@ export default class extends EventEmitter {
         this.expressions.neutral = { y: -90 };
         this.expressions.amused = { y: -95 };
         this.expressions.thoughtful = { y: -70 };
+
+        this.isTalking = false;
     }
 
     create(context)
@@ -193,6 +192,7 @@ export default class extends EventEmitter {
 
     displayMessage(message, hideEndDialogueMarkerOnMessageComplete)
     {
+        this.isTalking = true;
         this.hideEndDialogueMarker();
         const convMessage = this.convertDialogToTagText(message);
         this.speechBubbleTextTyping.start(convMessage);
@@ -201,6 +201,7 @@ export default class extends EventEmitter {
 
     messageCompleted()
     {
+        this.isTalking = false;
         if(!this.hideEndDialogueMarkerOnMessageComplete)
         {
             this.showEndDialogueMarker();

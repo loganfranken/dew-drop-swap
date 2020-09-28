@@ -312,7 +312,7 @@ export default {
                 return [
                     { do: 'updateGuideExpression', value: 'amused' },
                     `Wow, great stuff.`,
-                    `I know this is cliche, but it really feels so authentic.`,
+                    `I know this is cliché, but it really feels so authentic.`,
                     `It's been great working with you. You really sell it.`,
                     { do: 'updateGuideExpression', value: 'neutral' },
                     `Okay, here we go, this is a pivotal scene:`,
@@ -395,7 +395,7 @@ export default {
 
                     // Events
                     {
-                        on: 'firstSwap',
+                        on: 'swap',
                         actions: [
                             { do: 'updateGuideExpression', value: 'neutral' },
                             `Hey, remember: you don't get any matches this round.`,
@@ -441,7 +441,7 @@ export default {
                     { do: 'updateGuideExpression', value: 'thoughtful' },
                     `But you can't see it through the despair.`,
                     { do: 'updateGuideExpression', value: 'neutral' },
-                    `But then, in the last ten seconds of the round, you see it!`,
+                    `But then, in the last 30 seconds of the round, you see it!`,
                     { do: 'updateGuideExpression', value: 'amused' },
                     `The perfect match.`,
                     `And the pheonix rises once again!`,
@@ -461,6 +461,24 @@ export default {
                     `Please! Save our kingdom! Just get *30 dew drops* in *two minutes*!`,
                     { do: 'unblockTileGrid' },
                     { do: 'startTimer' },
+
+                    // Events
+                    {
+                        on: 'swap',
+                        actions: [
+                            { do: 'updateGuideExpression', value: 'neutral' },
+                            `Hold on, it's not time to swap yet.`,
+                            { do: 'updateGuideExpression', value: 'despair' }
+                        ]
+                    },
+
+                    {
+                        on: 'tick',
+                        filter: (state) => { console.log('Tick triggered!'); return state.ticks <= 30; },
+                        actions: [
+                            { do: 'revokeBlockMatching' }
+                        ]
+                    }
                 ];
 
                 

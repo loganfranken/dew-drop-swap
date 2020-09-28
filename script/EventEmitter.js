@@ -14,7 +14,7 @@ export default class {
     {
         this.subscriptions
             .filter(subscription => subscription.eventName === eventName)
-            .filter(subscription => typeof subscription.filter !== "undefined" && subscription.filter())
+            .filter(subscription => subscription.filter === null || subscription.filter())
             .forEach(subscription => {
                 subscription.callback && subscription.callback();
                 subscription.callback = null;
