@@ -54,8 +54,8 @@ export default [
 
     // 7
     {
-        score: 1000,
-        timer: 300,
+        score: 30,
+        timer: 120,
         behavior: TileGenerationBehavior.EasyWin
     },
 

@@ -394,23 +394,49 @@ export default {
                     }
                 ];
 
-                /*
             // Level 7 (Pheonix Rises)
             case 7:
 
-                script.introMessages = [
-                    "Now, you've been wallowing. You've feeling really low.",
-                    "You're in such despair, that in this round...",
-                    "There's an obvious combo.",
-                    "Right there, right in front of your face.",
-                    "But you can't see it through the despair.",
-                    "But then, in the last ten seconds of the round, you see it.",
-                    "Boom, it's the perfect match.",
-                    "And the pheonix rises once again!"
+                return [
+                    { do: 'updateGuideExpression', value: 'amused' },
+                    `Wow, I'm really feeling it.`,
+                    `How about you?`,
+                    { do: 'updateGuideExpression', value: 'neutral' },
+                    `Alright, next up:`,
+                    `You've been wallowing.`,
+                    `You're feeling really low.`,
+                    { do: 'updateGuideExpression', value: 'thoughtful' },
+                    `And, you're in such despair, that in this round...`,
+                    { do: 'updateGuideExpression', value: 'neutral' },
+                    `There's an obvious combo.`,
+                    `Right there, right in front of your face.`,
+                    { do: 'updateGuideExpression', value: 'thoughtful' },
+                    `But you can't see it through the despair.`,
+                    { do: 'updateGuideExpression', value: 'neutral' },
+                    `But then, in the last ten seconds of the round, you see it!`,
+                    { do: 'updateGuideExpression', value: 'amused' },
+                    `The perfect match.`,
+                    `And the pheonix rises once again!`,
+                    { do: 'updateGuideExpression', value: 'neutral' },
+                    `Alright! Here we go!`,
+                    `...`,
+                    `...`,
+                    `...`,
+                    { do: 'updateGuideExpression', value: 'despair' },
+                    `Oh, boozle...`,
+                    `What will we do?`,
+                    { do: 'updateGuideExpression', value: 'sadness' },
+                    `Please, you're our only hope!`,
+                    { do: 'updateGuideExpression', value: 'despair' },
+                    `We have one more chance...`,
+                    { do: 'dropTiles' },
+                    `Please! Save our kingdom! Just get *30 dew drops* in *two minutes*!`,
+                    { do: 'unblockTileGrid' },
+                    { do: 'startTimer' },
                 ];
 
-                break;
-
+                
+                /*
             // Level 8 (Victory Lap)
             case 8:
 
