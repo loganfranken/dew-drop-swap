@@ -84,12 +84,10 @@ export default class {
     {
         switch(action)
         {
+            // Tile Actions
+
             case 'dropTiles':
                 this.tileGrid.fill(context);
-                break;
-
-            case 'updateGuideExpression':
-                this.guide.updateExpression(value, context);
                 break;
 
             case 'unblockTileGrid':
@@ -100,16 +98,41 @@ export default class {
                 this.tileGrid.block(context);
                 break;
 
+            case 'updateTileGenerationBehavior':
+                this.tileGrid.updateTileGenerationBehavior(value);
+                break;
+
+
+            // Guide Actions
+
+            case 'updateGuideExpression':
+                this.guide.updateExpression(value, context);
+                break;
+
+
+            // Timer Actions
+
             case 'startTimer':
                 this.timer.start();
                 break;
+
+            case 'updateTimer':
+                this.timer.ticks = value;
+                break;
+
+            case 'stopTimer':
+                this.timer.stop();
+                break;
+
+            
+            // Level Actions
 
             case 'endLevel':
                 this.scene.endLevel();
                 break;
 
-            case 'updateTileGenerationBehavior':
-                this.tileGrid.updateTileGenerationBehavior(value);
+            case 'revokeLevelTransition':
+                this.scene.isTransitioningRounds = false;
                 break;
         }
     }

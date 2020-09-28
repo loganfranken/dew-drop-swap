@@ -201,7 +201,35 @@ export default {
                     { do: 'startTimer' },
                     { do: 'updateGuideExpression', value: 'glee' },
                     `Who am I kidding? Of course you can!`,
-                    { do: 'updateGuideExpression', value: 'default' }
+                    { do: 'updateGuideExpression', value: 'default' },
+
+                    // Events
+                    {
+                        on: 'gameOver',
+                        actions: [
+                            { do: 'blockTileGrid' },
+                            { do: 'updateGuideExpression', value: 'confused' },
+                            `Oh, uhh?`,
+                            { do: 'updateGuideExpression', value: 'neutral' },
+                            `No, you win this round too.`,
+                            { do: 'updateGuideExpression', value: 'thoughtful' },
+                            `Uhh, hmm...`,
+                            { do: 'updateGuideExpression', value: 'amused' },
+                            `Okay, here's what we'll do:`,
+                            { do: 'revokeLevelTransition' },
+                            { do: 'updateTimer', value: 1 },
+                            { do: 'stopTimer' },
+                            { do: 'unblockTileGrid' },
+                            `Go ahead and finish out the round and we'll edit it together later.`
+                        ]
+                    },
+
+                    {
+                        on: 'win',
+                        actions: [
+                            { do: 'endLevel' }
+                        ]
+                    }
                 ];
 
             // Level 4 (Losing Confidence)

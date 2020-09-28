@@ -40,6 +40,11 @@ export default class {
         this.isPaused = false;
     }
 
+    stop()
+    {
+        this.isPaused = true;
+    }
+
     getTimeOutput(input)
     {
         const minutes = Math.floor(input / 60);
