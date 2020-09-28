@@ -1,3 +1,4 @@
+import LevelManifest from './LevelManifest';
 import TileGenerationBehavior from './TileGenerationBehavior';
 
 export default {
@@ -42,7 +43,17 @@ export default {
                         filter: (state) => { return state.matches === 5; },
                         actions: [
                             { do: 'updateGuideExpression', value: 'glee' },
-                            "*Wow!* Look at you go!",
+                            `*Wow!* Look at you go!`,
+                            { do: 'updateGuideExpression', value: 'default' }
+                        ]
+                    },
+
+                    {
+                        on: 'match',
+                        filter: (state) => { return state.score > (LevelManifest[0].score * 0.5) },
+                        actions: [
+                            { do: 'updateGuideExpression', value: 'glee' },
+                            `*Doozle!* You're almost there!`,
                             { do: 'updateGuideExpression', value: 'default' }
                         ]
                     },

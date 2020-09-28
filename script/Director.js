@@ -150,7 +150,8 @@ export default class {
     getCurrentState()
     {
         return {
-            matches: this.tileGrid.matches
+            matches: this.tileGrid.matches,
+            score: this.scene.score
         };
     }
 }
