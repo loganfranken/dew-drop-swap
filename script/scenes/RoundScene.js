@@ -38,6 +38,8 @@ export default class extends Phaser.Scene {
         this.emitter = null;
 
         this.totalMatches = null;
+
+        this.tileSelectSound = null;
     }
 
     preload()
@@ -82,6 +84,7 @@ export default class extends Phaser.Scene {
         // Sound Effects
         this.load.audio('match', 'assets/sounds/match.wav');
         this.load.audio('swap', 'assets/sounds/swap.wav');
+        this.load.audio('tile_select', 'assets/sounds/tile_select.wav');
     }
 
     init(data)
@@ -133,6 +136,8 @@ export default class extends Phaser.Scene {
 
         const self = this;
         this.input.on('pointerdown', () => { self.director.next(self); });
+
+        this.tileSelectSound = this.sound.add('tile_select');
     }
 
     update()
@@ -214,6 +219,7 @@ export default class extends Phaser.Scene {
     
         if(context.selectedTiles.length === 0)
         {
+            context.tileSelectSound.play();
             context.selectedTiles.push(tile);
             tile.activate();
             return;
