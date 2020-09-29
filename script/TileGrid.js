@@ -35,6 +35,15 @@ export default class extends EventEmitter {
 
         this.matches = 0;
 
+        this.preSetTileGrid = [
+            [ 0, 0, 2, 3, 0, 0 ],
+            [ 3, 2, 2, 3, 3, 2 ],
+            [ 3, 2, 1, 0, 3, 2 ],
+            [ 1, 1, 0, 1, 0, 0 ],
+            [ 3, 2, 1, 0, 3, 2 ],
+            [ 3, 2, 2, 3, 3, 2 ]
+        ]
+
         // We're going to generate a grid that's twice the height of
         // the desired tile grid height since we'll use the hidden, upper
         // region to stage the bricks that will fall into the play area
@@ -67,7 +76,7 @@ export default class extends EventEmitter {
     {
         const self = this;
 
-        if(!self.isInitialized)
+        if(!self.isInitialized || self.isBlocked)
         {
             return;
         }
@@ -409,7 +418,11 @@ export default class extends EventEmitter {
         {
             for(let x = 0; x < this.tileGridWidth; x++)
             {
-                let tile = this.createTile(this.getTileType(x, y, TileGenerationBehavior.None), x, y, true);
+                const tileType = this.tileGenerationBehavior === TileGenerationBehavior.PreSet
+                    ? this.getPreSetTileType(x, y)
+                    : this.getTileType(x, y, TileGenerationBehavior.None);
+
+                const tile = this.createTile(tileType, x, y, true);
                 tile.create(context);
                 
                 this.tileGrid[y][x] = tile;
@@ -423,5 +436,10 @@ export default class extends EventEmitter {
     updateTileGenerationBehavior(behavior)
     {
         this.tileGenerationBehavior = behavior;
+    }
+
+    getPreSetTileType(x, y)
+    {
+        return TileType[this.preSetTileGrid[y][x]];
     }
 }

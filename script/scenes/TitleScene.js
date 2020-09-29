@@ -4,7 +4,7 @@ export default class extends Phaser.Scene {
     {
         super('TitleScene');
 
-        this.startingLevel = 5;
+        this.startingLevel = 7;
     }
 
     preload()

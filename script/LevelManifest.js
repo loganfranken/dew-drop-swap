@@ -55,7 +55,7 @@ export default [
     {
         score: 30,
         timer: 120,
-        behavior: TileGenerationBehavior.EasyWin,
+        behavior: TileGenerationBehavior.PreSet,
         blockMatching: true
     },
 
