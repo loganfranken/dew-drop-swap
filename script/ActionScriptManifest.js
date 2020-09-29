@@ -482,14 +482,24 @@ export default {
                         actions: [
                             { do: 'updateGuideExpression', value: 'neutral' },
                             `Hold on, it's not time to swap yet.`,
+                            `Wait until there's only *30 seconds* left.`,
                             { do: 'updateGuideExpression', value: 'despair' }
                         ]
                     },
 
                     {
                         on: 'tick',
-                        filter: (state) => { console.log('Tick triggered!'); return state.ticks <= 30; },
+                        filter: (state) => { return state.ticks <= 30; },
                         actions: [
+                            { do: 'updateGuideExpression', value: 'neutral' },
+                            { do: 'stopTimer' },
+                            `Alright, here we go.`,
+                            `Just to make sure we get this right, we'll stop the timer.`,
+                            { do: 'updateGuideExpression', value: 'thoughtful' },
+                            `And we'll highlight the match you'll want to make.`,
+                            { do: 'blockTileGrid', value: [ [3, 2], [3, 3] ] },
+                            { do: 'updateGuideExpression', value: 'amused' },
+                            `And the rest is up to you!`,
                             { do: 'revokeBlockMatching' }
                         ]
                     }

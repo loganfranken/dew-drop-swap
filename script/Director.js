@@ -100,7 +100,7 @@ export default class {
                 break;
 
             case 'blockTileGrid':
-                this.tileGrid.block(context);
+                this.tileGrid.block(context, value);
                 break;
 
             case 'updateTileGenerationBehavior':

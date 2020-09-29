@@ -76,7 +76,7 @@ export default class extends EventEmitter {
     {
         const self = this;
 
-        if(!self.isInitialized || self.isBlocked)
+        if(!self.isInitialized)
         {
             return;
         }
@@ -400,10 +400,12 @@ export default class extends EventEmitter {
         ));
     }
 
-    block(context)
+    block(context, exceptions)
     {
         this.isBlocked = true;
-        this.forEachTile(tile => tile && tile.block(context));
+        this.forEachTile((tile, x, y) => tile
+            && (typeof exceptions === 'undefined' || !exceptions.every(exception => exception[0] === x && exception[1] === y))
+            && tile.block(context));
     }
 
     unblock(context)
