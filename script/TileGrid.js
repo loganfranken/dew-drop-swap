@@ -404,8 +404,10 @@ export default class extends EventEmitter {
     {
         this.isBlocked = true;
         this.forEachTile((tile, x, y) => tile
-            && (typeof exceptions === 'undefined' || !exceptions.every(exception => exception[0] === x && exception[1] === y))
-            && tile.block(context));
+                && (typeof exceptions === 'undefined' || !exceptions.some(exception => exception[1] === x && exception[0] === y))
+                && tile.block(context)
+        );
+
     }
 
     unblock(context)

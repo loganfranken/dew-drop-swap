@@ -497,7 +497,7 @@ export default {
                             `Just to make sure we get this right, we'll stop the timer.`,
                             { do: 'updateGuideExpression', value: 'thoughtful' },
                             `And we'll highlight the match you'll want to make.`,
-                            { do: 'blockTileGrid', value: [ [3, 2], [3, 3] ] },
+                            { do: 'blockTileGrid', value: [ [9, 2], [9, 3] ] },
                             { do: 'updateGuideExpression', value: 'amused' },
                             `And the rest is up to you!`,
                             { do: 'revokeBlockMatching' }
