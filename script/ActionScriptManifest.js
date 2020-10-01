@@ -472,7 +472,7 @@ export default {
                     { do: 'updateGuideExpression', value: 'despair' },
                     `We have one more chance...`,
                     { do: 'dropTiles' },
-                    `Please! Save our kingdom! Just get *30 dew drops* in *two minutes*!`,
+                    `Please! Save our kingdom! Just get *50 dew drops* in *two minutes*!`,
                     { do: 'unblockTileGrid' },
                     { do: 'startTimer' },
 
@@ -489,7 +489,8 @@ export default {
                     },
 
                     {
-                        on: 'match',
+                        on: 'swap',
+                        filter: (state) => (state.ticks <= 30),
                         actions: [
                             { do: 'unblockTileGrid' }
                         ]
@@ -497,7 +498,7 @@ export default {
 
                     {
                         on: 'tick',
-                        filter: (state) => { return state.ticks <= 30; },
+                        filter: (state) => (state.ticks <= 30),
                         actions: [
                             { do: 'updateGuideExpression', value: 'neutral' },
                             { do: 'stopTimer' },
@@ -509,6 +510,13 @@ export default {
                             { do: 'updateGuideExpression', value: 'amused' },
                             `And the rest is up to you!`,
                             { do: 'revokeBlockMatching' }
+                        ]
+                    },
+
+                    {
+                        on: 'win',
+                        actions: [
+                            { do: 'endLevel' }
                         ]
                     }
                 ];

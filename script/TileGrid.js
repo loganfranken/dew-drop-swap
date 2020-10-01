@@ -289,7 +289,7 @@ export default class extends EventEmitter {
             {
                 const currTile = self.tileGrid[currY][x];
 
-                if(currTile != null && targetTileType === currTile.tileType)
+                if(currTile != null && targetTileType.name === currTile.tileType.name)
                 {
                     matchedYTiles.push(currTile);
                 }

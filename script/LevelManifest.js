@@ -53,8 +53,8 @@ export default [
 
     // 7
     {
-        score: 30,
-        timer: 40,
+        score: 50,
+        timer: 120,
         behavior: TileGenerationBehavior.PreSet,
         blockMatching: true
     },
