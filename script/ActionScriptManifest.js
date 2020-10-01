@@ -479,11 +479,19 @@ export default {
                     // Events
                     {
                         on: 'swap',
+                        filter: (state) => (state.ticks > 30),
                         actions: [
                             { do: 'updateGuideExpression', value: 'neutral' },
                             `Hold on, it's not time to swap yet.`,
                             `Wait until there's only *30 seconds* left.`,
                             { do: 'updateGuideExpression', value: 'despair' }
+                        ]
+                    },
+
+                    {
+                        on: 'match',
+                        actions: [
+                            { do: 'unblockTileGrid' }
                         ]
                     },
 

@@ -364,12 +364,12 @@ export default class extends EventEmitter {
 
     canSelect(tile)
     {
-        return !this.isBlocked && this.isPlayable(tile);
+        return this.isPlayable(tile);
     }
 
     isPlayable(tile)
     {
-        return (tile != null) && (tile.tileGridY > (this.tileGridHeight - 1));
+        return (tile != null) && !tile.isBlocked && (tile.tileGridY > (this.tileGridHeight - 1));
     }
 
     getTileType(x, y, behavior)
