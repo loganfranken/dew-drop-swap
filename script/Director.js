@@ -1,3 +1,5 @@
+import LevelManifest from "./LevelManifest";
+
 export default class {
 
     constructor(script, guide, timer, tileGrid, scene, context)
@@ -75,7 +77,7 @@ export default class {
         // Event
         else if(action.hasOwnProperty('on'))
         {
-            this.handleEvent(action.on, action.actions, action.filter, context);
+            this.handleEvent(action.on, action.actions, action.filter, context, action.persist);
             this.next(context);
         }
     }
@@ -129,6 +131,11 @@ export default class {
                 this.timer.stop();
                 break;
 
+            case 'updateTimerRelativeToScore':
+                const levelInfo = LevelManifest[this.scene.level];
+                this.timer.update(this.getScoreRelativeTicks(levelInfo.timer, this.scene.score, levelInfo.score));
+                break;
+
             
             // Level Actions
 
@@ -146,7 +153,7 @@ export default class {
         }
     }
 
-    handleEvent(event, actions, filter, context)
+    handleEvent(event, actions, filter, context, persist)
     {
         let target = null;
 
@@ -167,13 +174,13 @@ export default class {
                 break;
         }
 
-        this.setUpEvent(target, event, actions, filter, context);
+        this.setUpEvent(target, event, actions, filter, context, persist);
     }
 
-    setUpEvent(target, eventName, actions, filter, context)
+    setUpEvent(target, eventName, actions, filter, context, persist)
     {
         const self = this;
-        target.on(eventName, this.wrapFilter(filter), () => self.queueActions(actions, context))
+        target.on(eventName, this.wrapFilter(filter), () => self.queueActions(actions, context), persist);
     }
 
     wrapFilter(filter)
@@ -195,5 +202,10 @@ export default class {
             score: this.scene.score,
             ticks: this.timer.ticks
         };
+    }
+
+    getScoreRelativeTicks(targetTicks, currScore, targetScore)
+    {
+        return Math.max(Math.trunc(targetTicks - ((currScore / targetScore) * targetTicks)), 1);
     }
 }

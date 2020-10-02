@@ -36,7 +36,13 @@ export default class extends EventEmitter {
         this.emit('tick');
         this.ticks--;
 
-        this.text.setText(this.getTimeOutput(this.ticks));
+        this.output();
+    }
+
+    update(ticks)
+    {
+        this.ticks = ticks;
+        this.output();
     }
 
     start()
@@ -60,5 +66,10 @@ export default class extends EventEmitter {
         }
 
         return `${minutes}:${seconds}`;
+    }
+
+    output()
+    {
+        this.text.setText(this.getTimeOutput(this.ticks));
     }
 }

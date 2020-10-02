@@ -5,9 +5,9 @@ export default class {
         this.subscriptions = [];
     }
 
-    on(eventName, filter, callback)
+    on(eventName, filter, callback, persist)
     {
-        this.subscriptions.push({ eventName, filter, callback });
+        this.subscriptions.push({ eventName, filter, callback, persist });
     }
 
     emit(eventName)
@@ -17,6 +17,12 @@ export default class {
             .filter(subscription => subscription.filter === null || subscription.filter())
             .forEach(subscription => {
                 subscription.callback && subscription.callback();
+
+                if(subscription.persist)
+                {
+                    return;
+                }
+
                 subscription.callback = null;
             });
     }

@@ -521,24 +521,70 @@ export default {
                     }
                 ];
 
-                
-                /*
+            
             // Level 8 (Victory Lap)
             case 8:
 
-                script.introMessages = [
-                    "Our hero is back!",
-                    "This final scene is our victory lap.",
-                    "However, we don't want too many combos in this round, right?",
-                    "This is a round the player wins on their own.",
-                    "No assistance from the game.",
-                    "A true hero's victory!",
-                    "Alright, let's do this: I've got an appointment after this."
+                return [
+                    { do: 'updateGuideExpression', value: 'amused' },
+                    `Hey, our hero is back!`,
+                    `Very moving work.`,
+                    { do: 'updateGuideExpression', value: 'neutral' },
+                    `Okay: this next scene is the last one.`,
+                    { do: 'updateGuideExpression', value: 'thoughtful' },
+                    `It's your victory lap.`,
+                    { do: 'updateGuideExpression', value: 'neutral' },
+                    `To sell this one, we really need to get the pacing right.`,
+                    { do: 'updateGuideExpression', value: 'thoughtful' },
+                    `We want you getting a steady flow of matches the whole time.`,
+                    { do: 'updateGuideExpression', value: 'neutral' },
+                    `If you win too early, it's no fun to watch, you know?`,
+                    { do: 'updateGuideExpression', value: 'amused' },
+                    `But don't worry, we got your back.`,
+                    { do: 'updateGuideExpression', value: 'neutral' },
+                    `We'll just advance the timer as you get matches, yeah?`,
+                    `And then we can edit it all together later.`,
+                    { do: 'updateGuideExpression', value: 'amused' },
+                    `Alright! Let's wrap this up!`,
+                    { do: 'updateGuideExpression', value: 'thoughtful' },
+                    `...`,
+                    `...`,
+                    `...`,
+                    { do: 'updateGuideExpression', value: 'glee' },
+                    `*Oh doozie woozie!*`,
+                    { do: 'updateGuideExpression', value: 'amused' },
+                    `I knew you could do it!`,
+                    `You're our hero!`,
+                    { do: 'updateGuideExpression', value: 'confused' },
+                    `...`,
+                    { do: 'updateGuideExpression', value: 'surprise' },
+                    `*Oozle!*`,
+                    { do: 'dropTiles' },
+                    { do: 'updateGuideExpression', value: 'glee' },
+                    `Look at all of those dew drops!`,
+                    { do: 'updateGuideExpression', value: 'amused' },
+                    `Now's our chance!`,
+                    `If you can gather up a big haul, we can save the kingdom!`,
+                    `I know it's a lot to ask, but please help us one more time!`,
+                    `*300 dew drops* in *3 minutes!*`,
+                    { do: 'unblockTileGrid' },
+
+                    {
+                        on: 'match',
+                        actions: [
+                            { do: 'updateTimerRelativeToScore' }
+                        ],
+                        persist: true
+                    },
+
+                    {
+                        on: 'win',
+                        actions: [
+                            { do: 'blockTileGrid' },
+                            { do: 'endLevel' }
+                        ]
+                    }
                 ];
-
-                break;
-                */
-
         }
     }
 
