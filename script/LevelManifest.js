@@ -64,5 +64,11 @@ export default [
         score: 300,
         timer: 180,
         behavior: TileGenerationBehavior.None
+    },
+
+    // 9
+    {
+        score: Math.Infinity,
+        behavior: TileGenerationBehavior.None
     }
 ];

@@ -2,10 +2,11 @@ import LevelManifest from "./LevelManifest";
 
 export default class {
 
-    constructor(script, guide, timer, tileGrid, scene, context)
+    constructor(script, guide, timer, scoreDisplay, tileGrid, scene, context)
     {
         this.guide = guide;
         this.timer = timer;
+        this.scoreDisplay = scoreDisplay;
         this.tileGrid = tileGrid;
         this.scene = scene;
 
@@ -134,6 +135,13 @@ export default class {
             case 'updateTimerRelativeToScore':
                 const levelInfo = LevelManifest[this.scene.level];
                 this.timer.update(this.getScoreRelativeTicks(levelInfo.timer, this.scene.score, levelInfo.score));
+                break;
+
+
+            // Score Actions
+
+            case 'hideScoreDisplay':
+                this.scoreDisplay.hide(context);
                 break;
 
             

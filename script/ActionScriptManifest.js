@@ -552,7 +552,7 @@ export default {
                     `...`,
                     { do: 'updateGuideExpression', value: 'glee' },
                     `*Oh doozie woozie!*`,
-                    { do: 'updateGuideExpression', value: 'amused' },
+                    { do: 'updateGuideExpression', value: 'default' },
                     `I knew you could do it!`,
                     `You're our hero!`,
                     { do: 'updateGuideExpression', value: 'confused' },
@@ -584,6 +584,27 @@ export default {
                             { do: 'endLevel' }
                         ]
                     }
+                ];
+
+            // Epilogue
+            case 9:
+
+                return [
+                    { do: 'updateGuideExpression', value: 'amused' },
+                    `And that's a wrap!`,
+                    { do: 'updateGuideExpression', value: 'neutral' },
+                    `I think it went pretty well today, right?`,
+                    { do: 'updateGuideExpression', value: 'confused' },
+                    `Huh?`,
+                    { do: 'hideScoreDisplay' },
+                    { do: 'updateGuideExpression', value: 'neutral' },
+                    `Oh, looks like they're shutting things down.`,
+                    { do: 'dropTiles' },
+                    `Well, I've gotta head out anyway.`,
+                    { do: 'updateGuideExpression', value: 'amused' },
+                    `Nice working with you today!`,
+                    { do: 'hideGuide' },
+                    { do: 'unblockTileGrid' }
                 ];
         }
     }
