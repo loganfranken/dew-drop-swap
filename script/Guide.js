@@ -16,7 +16,13 @@ export default class extends EventEmitter {
         this.hideEndDialogueMarkerOnMessageComplete = false;
 
         this.endDialogueMarkerGraphics = null;
+
+        this.character = null;
+        this.characterWidth = null;
         this.characterExpression = null;
+
+        this.speechBubbleGraphics = null;
+        this.speechBubbleText = null;
 
         this.expressions = {};
         this.expressions.default = { y: -90 };
@@ -42,13 +48,12 @@ export default class extends EventEmitter {
 
         const endDialogueMarkerRadius = 10;
         
-        const characterWidth = 250;
-        const characterHeight = 500;
+        this.characterWidth = 250;
 
         const speechBubbleIntroOffset = 40;
 
         // Speech Bubble
-        const speechBubbleGraphics = context.add.graphics({ fillStyle: { color: 0xffffff } })
+        this.speechBubbleGraphics = context.add.graphics({ fillStyle: { color: 0xffffff } })
         
         if(this.isIntro)
         {
@@ -59,9 +64,9 @@ export default class extends EventEmitter {
         const speechBubbleGraphicsTriangleY1 = this.isIntro ? this.y + speechBubbleHeight + 20 - speechBubbleIntroOffset : this.y + speechBubbleHeight + 20;
         const speechBubbleGraphicsTriangleY2 = this.isIntro ? this.y + speechBubbleHeight - speechBubbleIntroOffset : this.y + speechBubbleHeight;
 
-        speechBubbleGraphics.setDepth(1);
-        speechBubbleGraphics.fillRoundedRect(this.x, speechBubbleGraphicsY, speechBubbleWidth, speechBubbleHeight, 10);
-        speechBubbleGraphics.fillTriangle(
+        this.speechBubbleGraphics.setDepth(1);
+        this.speechBubbleGraphics.fillRoundedRect(this.x, speechBubbleGraphicsY, speechBubbleWidth, speechBubbleHeight, 10);
+        this.speechBubbleGraphics.fillTriangle(
             this.x + 120, speechBubbleGraphicsTriangleY1,
             this.x + 105, speechBubbleGraphicsTriangleY2,
             this.x + 135, speechBubbleGraphicsTriangleY2
@@ -105,18 +110,18 @@ export default class extends EventEmitter {
         this.speechBubbleTextTyping = new TextTyping(this.speechBubbleText, { speed: 30 }); 
         this.speechBubbleTextTyping.on('complete', () => { self.messageCompleted.call(self) });
 
-        const characterX = (this.isIntro) ? (this.x - characterWidth) : (this.x + characterWidth/2);
-        const character = context.add.container(characterX, this.y + speechBubbleHeight + 230);
+        const characterX = (this.isIntro) ? (this.x - this.characterWidth) : (this.x + this.characterWidth/2);
+        this.character = context.add.container(characterX, this.y + speechBubbleHeight + 230);
 
         // Character
         const characterImage = context.add.image(0, 0, 'guide_character');
-        character.add(characterImage);
+        this.character.add(characterImage);
 
         // Expression
         const startingExpression = this.isIntro ? 'expression_surprise' : 'expression_default';
         const characterExpressionY = this.isIntro ? this.expressions.surprise.y : this.expressions.default.y;
         this.characterExpression = context.add.sprite(-10, characterExpressionY, startingExpression);
-        character.add(this.characterExpression);
+        this.character.add(this.characterExpression);
 
         const blinkOffset = 15;
         context.tweens.addCounter({
@@ -140,8 +145,8 @@ export default class extends EventEmitter {
             // Slide in the character
             introTimeline.add({
                 delay: 200,
-                targets: character,
-                x: (this.x + characterWidth/2),
+                targets: this.character,
+                x: (this.x + this.characterWidth/2),
                 duration: 400,
                 angle: 15,
                 ease: 'Power1'
@@ -149,7 +154,7 @@ export default class extends EventEmitter {
 
             // Sway backwards
             introTimeline.add({
-                targets: character,
+                targets: this.character,
                 duration: 400,
                 angle: -7,
                 ease: 'Power1'
@@ -157,7 +162,7 @@ export default class extends EventEmitter {
 
             // Sway into position
             introTimeline.add({
-                targets: character,
+                targets: this.character,
                 duration: 400,
                 angle: 0,
                 ease: 'Power1'
@@ -166,7 +171,7 @@ export default class extends EventEmitter {
             // Speech Bubble Intro Animation
             introTimeline.add({
                 offset: '-=300',
-                targets: speechBubbleGraphics,
+                targets: this.speechBubbleGraphics,
                 props: {
                     y: { value: `+=${speechBubbleIntroOffset}`, duration: 500, ease: 'Bounce.easeOut' },
                     alpha: { value: 1, duration: 300, ease: 'Linear' }
@@ -179,7 +184,7 @@ export default class extends EventEmitter {
         else
         {
             introTimeline.add({
-                targets: speechBubbleGraphics,
+                targets: this.speechBubbleGraphics,
                 duration: 100,
                 onComplete: () => {
                     this.emit('ready');
@@ -231,6 +236,23 @@ export default class extends EventEmitter {
             duration: 200,
             ease: 'Power1'
         });
+    }
+
+    hide(context)
+    {
+        context.tweens.add({
+            targets: this.character,
+            x: (this.x - this.characterWidth),
+            duration: 800,
+            angle: -15,
+            ease: 'Power1'
+        });
+
+        context.tweens.add({
+            targets: [ this.speechBubbleGraphics, this.speechBubbleText ],
+            alpha: 0,
+            duration: 200
+        }); 
     }
 
     convertDialogToTagText(input)

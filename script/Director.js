@@ -117,6 +117,10 @@ export default class {
                 this.guide.updateExpression(value, context);
                 break;
 
+            case 'hideGuide':
+                this.guide.hide(context);
+                break;
+
 
             // Timer Actions
 
