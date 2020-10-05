@@ -212,7 +212,7 @@ export default class {
         return {
             matches: this.tileGrid.matches,
             score: this.scene.score,
-            ticks: this.timer.ticks
+            ticks: this.timer ? this.timer.ticks : null
         };
     }
 

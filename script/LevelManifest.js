@@ -25,14 +25,14 @@ export default [
     // 3
     {
         score: 300,
-        timer: 10,
+        timer: 120,
         behavior: TileGenerationBehavior.EasyWin
     },
 
     // 4
     {
         score: 400,
-        timer: 10,
+        timer: 120,
         behavior: TileGenerationBehavior.EasyWin
     },
 

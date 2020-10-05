@@ -57,7 +57,7 @@ export default class extends EventEmitter {
         
         if(this.isIntro)
         {
-            speechBubbleGraphics.setAlpha(0);
+            this.speechBubbleGraphics.setAlpha(0);
         }
         
         const speechBubbleGraphicsY = this.isIntro ? this.y - speechBubbleIntroOffset : this.y;
