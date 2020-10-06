@@ -17,7 +17,7 @@ export default class {
         this.isBlocked = isBlocked;
 
         this.initialDrag = (typeof initialDrag === "undefined") ? 1 : initialDrag;
-        this.hasDragged = false;
+        this.hasDragged = (typeof initialDrag === "undefined");
     }
 
     create(context)

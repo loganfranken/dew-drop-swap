@@ -351,7 +351,7 @@ export default class extends EventEmitter {
         }
     }
 
-    createTile(tileType, x, y, initialDrag, isBlocked)
+    createTile(tileType, x, y, isBlocked, initialDrag)
     {
         return new Tile(tileType, this.getTileX(x), this.getTileY(y), x, y, initialDrag, isBlocked, this.onTileSelect);
     }
@@ -435,7 +435,7 @@ export default class extends EventEmitter {
                     ? this.getPreSetTileType(x, y)
                     : this.getTileType(x, y, TileGenerationBehavior.None);
 
-                const tile = this.createTile(tileType, x, y, ((this.tileGridWidth - x) / this.tileGridWidth), true);
+                const tile = this.createTile(tileType, x, y, true, ((this.tileGridWidth - x) / this.tileGridWidth));
                 tile.create(context);
                 
                 this.tileGrid[y][x] = tile;

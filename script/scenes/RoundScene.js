@@ -214,6 +214,7 @@ export default class extends Phaser.Scene {
 
         // If the user is selecting a tile, reset the combo count
         context.comboCount = 0;
+        context.tileGrid.updateMatchSound(context.comboCount);
 
         // Is this tile already selected?
         if(tile.isActivated)
@@ -272,7 +273,7 @@ export default class extends Phaser.Scene {
     onTileMatch(context, matchedTiles)
     {
         context.totalMatches++;
-        
+
         context.comboCount++;
         context.tileGrid.updateMatchSound(context.comboCount);
 
