@@ -2,7 +2,7 @@ import TileState from './TileState';
 
 export default class {
 
-    constructor(tileType, x, y, tileGridX, tileGridY, isBlocked, onTileSelect)
+    constructor(tileType, x, y, tileGridX, tileGridY, initialDrag, isBlocked, onTileSelect)
     {
         this.tileType = tileType;
         this.x = x;
@@ -15,6 +15,9 @@ export default class {
 
         this.isActivated = false;
         this.isBlocked = isBlocked;
+
+        this.initialDrag = (typeof initialDrag === "undefined") ? 1 : initialDrag;
+        this.hasDragged = false;
     }
 
     create(context)
@@ -25,7 +28,7 @@ export default class {
 
         if(this.isBlocked)
         {
-            this.image.setAlpha(0.5);
+            this.image.setAlpha(0);
         }
     }
 
@@ -53,14 +56,24 @@ export default class {
             self.tileGridX = tileGridX;
             self.tileGridY = tileGridY;
 
-            context.tweens.add({
+            const tweenInfo = {
                 targets: self.image,
                 x: x,
                 y: y,
                 ease: isDrop ? 'Linear': 'Power1',
-                duration: isDrop ? Math.max(yDiff, 150) : 500,
+                duration: (isDrop ? Math.max(yDiff, 150) : 500),
                 onComplete: () => { resolve() }
-            });
+            };
+
+            // Handle special behavior for initial "dragged" drop
+            if(!this.hasDragged)
+            {
+                tweenInfo.delay = (200 - (200 * self.initialDrag));
+                tweenInfo.alpha = 0.5;
+                tweenInfo.ease = 'Sine';
+            }
+
+            context.tweens.add(tweenInfo);
 
         });
     }
