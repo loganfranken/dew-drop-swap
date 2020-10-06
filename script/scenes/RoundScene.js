@@ -22,6 +22,7 @@ export default class extends Phaser.Scene {
         this.isBlockingMatches = false;
 
         this.score = null;
+        this.comboCount = null;
         this.queue = null;
         this.selectedTiles = null;
         this.tileGrid = null;
@@ -83,6 +84,11 @@ export default class extends Phaser.Scene {
 
         // Sound Effects
         this.load.audio('match', 'assets/sounds/match.wav');
+        this.load.audio('match_combo_01', 'assets/sounds/match_combo_01.wav');
+        this.load.audio('match_combo_02', 'assets/sounds/match_combo_02.wav');
+        this.load.audio('match_combo_03', 'assets/sounds/match_combo_03.wav');
+        this.load.audio('match_combo_04', 'assets/sounds/match_combo_04.wav');
+        this.load.audio('match_combo_05', 'assets/sounds/match_combo_05.wav');
         this.load.audio('swap', 'assets/sounds/swap.wav');
         this.load.audio('tile_select', 'assets/sounds/tile_select.wav');
     }
@@ -206,6 +212,9 @@ export default class extends Phaser.Scene {
             return;
         }
 
+        // If the user is selecting a tile, reset the combo count
+        context.comboCount = 0;
+
         // Is this tile already selected?
         if(tile.isActivated)
         {
@@ -263,6 +272,9 @@ export default class extends Phaser.Scene {
     onTileMatch(context, matchedTiles)
     {
         context.totalMatches++;
+        
+        context.comboCount++;
+        context.tileGrid.updateMatchSound(context.comboCount);
 
         context.score += matchedTiles.length;
         context.scoreDisplay.updateScore(context.score);

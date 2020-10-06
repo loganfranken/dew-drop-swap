@@ -71,6 +71,7 @@ export default class {
                 tweenInfo.delay = (200 - (200 * self.initialDrag));
                 tweenInfo.alpha = 0.5;
                 tweenInfo.ease = 'Sine';
+                this.hasDragged = true;
             }
 
             context.tweens.add(tweenInfo);

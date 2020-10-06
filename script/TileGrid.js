@@ -68,7 +68,16 @@ export default class extends EventEmitter {
         
         this.tileImageContainer.mask = new Phaser.Display.Masks.GeometryMask(context, maskShape);
 
-        this.matchSound = context.sound.add('match');
+        this.matchSounds = [
+            context.sound.add('match'),
+            context.sound.add('match_combo_01'),
+            context.sound.add('match_combo_02'),
+            context.sound.add('match_combo_03'),
+            context.sound.add('match_combo_04'),
+            context.sound.add('match_combo_05'),
+        ];
+        this.matchSound = this.matchSounds[0];
+
         this.swapSound = context.sound.add('swap');
     }
 
@@ -445,5 +454,11 @@ export default class extends EventEmitter {
     getPreSetTileType(x, y)
     {
         return TileType[this.preSetTileGrid[y][x]];
+    }
+
+    updateMatchSound(intensity)
+    {
+        const index = (intensity >= this.matchSounds.length) ? (this.matchSounds.length - 1) : intensity;
+        this.matchSound = this.matchSounds[index];
     }
 }
