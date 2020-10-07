@@ -69,6 +69,7 @@ export default class extends Phaser.Scene {
         // Images: Icons
         this.load.image('icon_tile', 'assets/images/icon_tile.png');
         this.load.image('icon_timer', 'assets/images/icon_timer.png');
+        this.load.image('icon_timer_warning', 'assets/images/icon_timer_warning.png');
 
         // Images: Expressions
         this.load.image('expression_default', 'assets/images/expression_default.png');
@@ -91,6 +92,8 @@ export default class extends Phaser.Scene {
         this.load.audio('match_combo_05', 'assets/sounds/match_combo_05.wav');
         this.load.audio('swap', 'assets/sounds/swap.wav');
         this.load.audio('tile_select', 'assets/sounds/tile_select.wav');
+        this.load.audio('warning_tick', 'assets/sounds/warning_tick.wav');
+        this.load.audio('timer_run_out', 'assets/sounds/timer_run_out.wav');
     }
 
     init(data)
