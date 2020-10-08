@@ -19,8 +19,12 @@ export default class extends Phaser.Scene {
         this.load.image('tile_03', 'assets/images/tile_03.png');
         this.load.image('tile_04', 'assets/images/tile_04.png');
 
+        // Music
+        this.load.audio('background_music', 'assets/sounds/background_music.wav');
+
         // Sound Effects
         this.load.audio('select', 'assets/sounds/select.wav');
+        this.load.audio('intro_slide', 'assets/sounds/intro_slide.wav');
     }
 
     create()
@@ -98,7 +102,7 @@ export default class extends Phaser.Scene {
 
         // Slam in the title
         introTimeline.add({
-            delay: 400,
+            delay: 800,
             targets: title,
             alpha: 1,
             scaleX: 1,
@@ -126,11 +130,18 @@ export default class extends Phaser.Scene {
         });
 
         // Display the flash from the title slam
+        const introSlideSound = this.sound.add('intro_slide');
+        const backgroundMusic = this.sound.add('background_music');
+        backgroundMusic.play();
+
         introTimeline.add({
             targets: flashBackdropGraphics,
             alpha: 1,
             duration: 30,
-            offset: '-=300'
+            offset: '-=300',
+            onComplete: () => {
+                introSlideSound.play();
+            }
         });
 
         // Fade out the flash from the title slam
