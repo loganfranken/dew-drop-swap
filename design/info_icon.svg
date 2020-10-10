@@ -28,17 +28,17 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="260.96757"
-     inkscape:cy="491.31903"
+     inkscape:zoom="1.4"
+     inkscape:cx="465.95855"
+     inkscape:cy="483.76838"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer9"
+     inkscape:current-layer="layer7"
      showgrid="false"
-     inkscape:window-width="1920"
+     inkscape:window-width="960"
      inkscape:window-height="1027"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="0" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -47,7 +47,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -94,6 +94,57 @@
          inkscape:export-filename="F:\git\match-three\assets\icon_tile.png"
          inkscape:export-xdpi="14.97"
          inkscape:export-ydpi="14.97" />
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer1"
+     inkscape:label="Mute Button">
+    <g
+       inkscape:groupmode="layer"
+       id="layer4"
+       inkscape:label="Mute Icon"
+       style="display:none">
+      <path
+         style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:3.00361776;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         d="m 132.11074,140.98803 -14.90503,9.21796 v 0 h -10.45576 v 24.56351 h 10.45576 v 0 l 14.90503,8.94046 z"
+         id="rect4619"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccccccc"
+         inkscape:export-filename="F:\git\match-three\assets\images\icon_audio.png"
+         inkscape:export-xdpi="17.909767"
+         inkscape:export-ydpi="17.909767" />
+    </g>
+    <g
+       inkscape:groupmode="layer"
+       id="layer6"
+       inkscape:label="Cancel"
+       style="display:inline">
+      <circle
+         style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#ff2029;stroke-width:7;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         id="path4645"
+         cx="119.72396"
+         cy="162.45937"
+         r="21.267857"
+         inkscape:export-filename="F:\git\match-three\assets\images\icon_audio_mute.png"
+         inkscape:export-xdpi="17.946648"
+         inkscape:export-ydpi="17.946648" />
+    </g>
+    <g
+       inkscape:groupmode="layer"
+       id="layer7"
+       inkscape:label="Cancel 1">
+      <rect
+         style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#ff2029;stroke-width:7.19351339;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         id="rect4664"
+         width="1.553701"
+         height="34.958271"
+         x="-32.281761"
+         y="181.69528"
+         transform="rotate(-45)"
+         inkscape:export-filename="F:\git\match-three\assets\images\icon_audio_mute.png"
+         inkscape:export-xdpi="17.946648"
+         inkscape:export-ydpi="17.946648" />
     </g>
   </g>
 </svg>

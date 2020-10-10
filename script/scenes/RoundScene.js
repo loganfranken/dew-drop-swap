@@ -4,6 +4,7 @@ import Director from '../Director';
 import FontStyleManifest from '../FontStyleManifest';
 import Guide from '../Guide';
 import LevelManifest from '../LevelManifest';
+import MuteControl from '../MuteControl';
 import ScoreDisplay from '../ScoreDisplay';
 import TileGrid from '../TileGrid';
 import Timer from '../Timer';
@@ -70,6 +71,8 @@ export default class extends Phaser.Scene {
         this.load.image('icon_tile', 'assets/images/icon_tile.png');
         this.load.image('icon_timer', 'assets/images/icon_timer.png');
         this.load.image('icon_timer_warning', 'assets/images/icon_timer_warning.png');
+        this.load.image('icon_audio', 'assets/images/icon_audio.png');
+        this.load.image('icon_audio_mute', 'assets/images/icon_audio_mute.png');
 
         // Images: Expressions
         this.load.image('expression_default', 'assets/images/expression_default.png');
@@ -147,6 +150,10 @@ export default class extends Phaser.Scene {
         this.input.on('pointerdown', () => { self.director.next(self); });
 
         this.tileSelectSound = this.sound.add('tile_select');
+
+        // Mute Button
+        const muteControl = new MuteControl(40, 640);
+        muteControl.create(this);
     }
 
     update()

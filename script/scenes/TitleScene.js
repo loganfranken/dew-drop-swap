@@ -1,3 +1,5 @@
+import MuteControl from "../MuteControl";
+
 export default class extends Phaser.Scene {
 
     constructor()
@@ -18,6 +20,8 @@ export default class extends Phaser.Scene {
         this.load.image('tile_02', 'assets/images/tile_02.png');
         this.load.image('tile_03', 'assets/images/tile_03.png');
         this.load.image('tile_04', 'assets/images/tile_04.png');
+        this.load.image('icon_audio', 'assets/images/icon_audio.png');
+        this.load.image('icon_audio_mute', 'assets/images/icon_audio_mute.png');
 
         // Music
         this.load.audio('background_music', 'assets/sounds/background_music.wav');
@@ -72,6 +76,10 @@ export default class extends Phaser.Scene {
 
         const startBtnOverlay = this.add.image(400, 550, 'start-active');
         startBtnOverlay.setAlpha(0);
+
+        // Mute Button
+        const muteControl = new MuteControl(40, 640);
+        muteControl.create(this);
 
         startBtn.on('pointerover', () => {
             self.tweens.add({
