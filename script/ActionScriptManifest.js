@@ -440,6 +440,7 @@ export default {
             case 7:
 
                 return [
+
                     { do: 'updateGuideExpression', value: 'amused' },
                     `Wow, I'm really feeling it.`,
                     `How about you?`,
@@ -479,20 +480,12 @@ export default {
                     // Events
                     {
                         on: 'swap',
-                        filter: (state) => (state.ticks > 30),
+                        filter: (state) => (state.ticks > 30 && state.isBlockingMatches),
                         actions: [
                             { do: 'updateGuideExpression', value: 'neutral' },
                             `Hold on, it's not time to swap yet.`,
                             `Wait until there's only *30 seconds* left.`,
                             { do: 'updateGuideExpression', value: 'despair' }
-                        ]
-                    },
-
-                    {
-                        on: 'swap',
-                        filter: (state) => (state.ticks <= 30),
-                        actions: [
-                            { do: 'unblockTileGrid' }
                         ]
                     },
 
@@ -510,6 +503,14 @@ export default {
                             { do: 'updateGuideExpression', value: 'amused' },
                             `And the rest is up to you!`,
                             { do: 'revokeBlockMatching' }
+                        ]
+                    },
+
+                    {
+                        on: 'swap',
+                        filter: (state) => (!state.isBlockingMatches),
+                        actions: [
+                            { do: 'unblockTileGrid' }
                         ]
                     },
 

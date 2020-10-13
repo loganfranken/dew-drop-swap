@@ -221,7 +221,8 @@ export default class {
         return {
             matches: this.tileGrid.matches,
             score: this.scene.score,
-            ticks: this.timer ? this.timer.ticks : null
+            ticks: this.timer ? this.timer.ticks : null,
+            isBlockingMatches: this.scene.isBlockingMatches
         };
     }
 
