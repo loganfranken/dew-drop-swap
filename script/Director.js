@@ -192,7 +192,16 @@ export default class {
     setUpEvent(target, eventName, actions, filter, context, persist)
     {
         const self = this;
-        target.on(eventName, this.wrapFilter(filter), () => self.queueActions(actions, context), persist);
+
+        target.on(
+            eventName,
+            this.wrapFilter(filter),
+            () => {
+                self.queuedActions = [];
+                self.queueActions(actions, context);
+            },
+            persist
+        );
     }
 
     wrapFilter(filter)
