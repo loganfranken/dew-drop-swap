@@ -205,7 +205,7 @@ export default class extends Phaser.Scene {
     onTileSelect(context, tile)
     {
         // Are we currently executing a queued action?
-        if(context.queue.isActionRunning())
+        if(context.queue.isActionRunning() || context.queue.hasActions())
         {
             return;
         }
@@ -274,14 +274,27 @@ export default class extends Phaser.Scene {
     
                 });
     
-                context.selectedTiles.forEach((tile) => { tile.deactivate(); });
-                context.selectedTiles = [];
+                context.clearSelectedTiles(context);
             }
         }
     }
 
+    clearSelectedTiles(context)
+    {
+        context.selectedTiles.forEach((tile) => { tile.deactivate(); });
+        context.selectedTiles = [];
+    }
+
     onTileMatch(context, matchedTiles)
     {
+        // If any of the tiles are selected, let's clear
+        // the selected tiles to prevent a bug where the game
+        // tries to swap a tile that has already been cleared
+        if(matchedTiles.some(tile => tile.isActivated))
+        {
+            context.clearSelectedTiles(context);
+        }
+
         context.totalMatches++;
 
         context.comboCount++;

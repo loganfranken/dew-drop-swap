@@ -187,7 +187,7 @@ export default class extends EventEmitter {
         self.swapSound.play();
 
         self.queue.push(() => {
-            
+
             let firstTileX = firstTile.x;
             let firstTileY = firstTile.y;
             let firstTileGridX = firstTile.tileGridX;
