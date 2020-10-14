@@ -25,16 +25,16 @@ export default class extends EventEmitter {
         this.speechBubbleText = null;
 
         this.expressions = {};
-        this.expressions.default = { y: -90 };
-        this.expressions.surprise = { y: -105 };
-        this.expressions.sadness = { y: -80 };
-        this.expressions.despair = { y: -70 };
-        this.expressions.glee = { y: -100 };
-        this.expressions.nervous = { y: -85 };
-        this.expressions.confused = { y: -100 };
-        this.expressions.neutral = { y: -90 };
-        this.expressions.amused = { y: -95 };
-        this.expressions.thoughtful = { y: -70 };
+        this.expressions.default = { faceY: -90, bodyAngle: 0 };
+        this.expressions.surprise = { faceY: -105, bodyAngle: -4 };
+        this.expressions.sadness = { faceY: -80, bodyAngle: 5 };
+        this.expressions.despair = { faceY: -70, bodyAngle: 7 };
+        this.expressions.glee = { faceY: -100, bodyAngle: -4 };
+        this.expressions.nervous = { faceY: -85, bodyAngle: 0 };
+        this.expressions.confused = { faceY: -100, bodyAngle: -2 };
+        this.expressions.neutral = { faceY: -90, bodyAngle: 0 };
+        this.expressions.amused = { faceY: -95, bodyAngle: 0 };
+        this.expressions.thoughtful = { faceY: -70, bodyAngle: 0 };
 
         this.isTalking = false;
     }
@@ -119,7 +119,7 @@ export default class extends EventEmitter {
 
         // Expression
         const startingExpression = this.isIntro ? 'expression_surprise' : 'expression_default';
-        const characterExpressionY = this.isIntro ? this.expressions.surprise.y : this.expressions.default.y;
+        const characterExpressionY = this.isIntro ? this.expressions.surprise.faceY : this.expressions.default.faceY;
         this.characterExpression = context.add.sprite(-10, characterExpressionY, startingExpression);
         this.character.add(this.characterExpression);
 
@@ -232,9 +232,16 @@ export default class extends EventEmitter {
 
         context.tweens.add({
             targets: this.characterExpression,
-            y: expressionInfo.y,
+            y: expressionInfo.faceY,
             duration: 200,
             ease: 'Power1'
+        });
+
+        context.tweens.add({
+            targets: this.character,
+            angle: expressionInfo.bodyAngle,
+            duration: 600,
+            ease: 'Power2'
         });
     }
 
