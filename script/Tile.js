@@ -199,6 +199,19 @@ export default class {
         });
     }
 
+    disappear(context)
+    {
+        context.tweens.add({
+            targets: this.image,
+            duration: 500,
+            y: '-=50',
+            angle: Phaser.Math.Between(-15, 15),
+            alpha: 0,
+            delay: Phaser.Math.Between(0, 500),
+            ease: 'Power1'
+        });
+    }
+
     block(context)
     {
         this.isBlocked = true;

@@ -67,6 +67,7 @@ export default class extends Phaser.Scene {
 
         // Images: Round Clear
         this.load.image('round_clear', 'assets/images/round_clear.png');
+        this.load.image('round_clear_backdrop', 'assets/images/round_clear_backdrop.png');
 
         // Images: Icons
         this.load.image('icon_tile', 'assets/images/icon_tile.png');
@@ -134,15 +135,6 @@ export default class extends Phaser.Scene {
         this.timer && this.timer.create(this);
         this.guide.create(this);
         this.emitter = new EventEmitter();
-
-        this.levelClearMessage = this.add.image(400, 400, 'round_clear');
-        this.levelClearMessage.setAlpha(0);
-        this.levelClearMessage.setDepth(1);
-
-        this.levelClearMessageHighlight = this.add.image(400, 400, 'round_clear');
-        this.levelClearMessageHighlight.setAlpha(0);
-        this.levelClearMessageHighlight.setDepth(1);
-        this.levelClearMessageHighlight.setTintFill(0xffffff);
 
         const actionScript = ActionScriptManifest.getScript(this.level);
         this.director = new Director(actionScript, this.guide, this.timer, this.scoreDisplay, this.tileGrid, this, this);
@@ -313,24 +305,80 @@ export default class extends Phaser.Scene {
     endLevel()
     {
         const self = this;
+        const endLevelTimeline = this.tweens.createTimeline();
 
-        self.levelClearMessageHighlight.setAlpha(1);
-        self.tweens.add({
-            targets: self.levelClearMessageHighlight,
-            alpha: 0,
-            duration: 1000
+        // Level Clear Message
+        const levelClearMessage = this.add.image(400, 400, 'round_clear');
+        levelClearMessage.setAlpha(0);
+        levelClearMessage.setDepth(1);
+        levelClearMessage.setScale(0.75, 0.75);
+
+        // Flash Backdrop
+        const flashBackdropGraphics = this.add.graphics({ fillStyle: { color: 0xffffff } });
+        flashBackdropGraphics.setAlpha(0);
+        const flashBackdrop = new Phaser.Geom.Rectangle(0, 0, 800, 700);
+        flashBackdropGraphics.fillRectShape(flashBackdrop);
+
+        // Level Clear Backdrop
+        const levelClearBackdrop = this.add.image(400, 400, 'round_clear_backdrop');
+        levelClearBackdrop.setAlpha(0);
+
+        endLevelTimeline.add({
+            targets: [ levelClearBackdrop, flashBackdropGraphics ],
+            alpha: 1,
+            duration: 30
         });
 
-        self.tweens.add({
-            targets: self.levelClearMessage,
-            alpha: 1,
+        endLevelTimeline.add({
+            targets: levelClearBackdrop,
+            alpha: 0.7,
             duration: 1000,
-            completeDelay: 2000,
+            ease: 'Quad.easeIn'
+        });
+
+        endLevelTimeline.add({
+            targets: flashBackdropGraphics,
+            alpha: 0,
+            duration: 1000,
+            offset: '-=1000'
+        });
+
+        endLevelTimeline.add({
+            targets: levelClearMessage,
+            alpha: 1,
+            duration: 500,
+            scaleX: 1,
+            scaleY: 1,
+            offset: '-=2000',
+            ease: 'Back',
+            completeDelay: 100,
+            onComplete: () => {
+                this.tileGrid.forEachPlayableTile((tile) => tile && tile.disappear(self));
+            }
+        });
+
+        endLevelTimeline.add({
+            targets: levelClearMessage,
+            alpha: 0,
+            duration: 500,
+            scaleX: 0.75,
+            scaleY: 0.75,
+            ease: 'Quad.easeOut'
+        });
+
+        endLevelTimeline.add({
+            targets: levelClearBackdrop,
+            alpha: 0,
+            duration: 500,
+            offset: '-=500',
+            ease: 'Quad.easeOut',
             onComplete: () => {
                 self.isRoundTransitionComplete = true;
                 self.isTransitioningRounds = false; 
             }
         });
+
+        endLevelTimeline.play();
     }
 
     nextLevel()
