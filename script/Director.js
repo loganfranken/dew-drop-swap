@@ -14,6 +14,7 @@ export default class {
         this.queuedActions = null;
 
         this.isGuideReady = false;
+        this.isWaiting = false;
 
         const self = this;
         this.guide.on('ready', () => { self.isGuideReady = true; self.next(context); });
@@ -52,6 +53,11 @@ export default class {
             return;
         }
 
+        if(this.isWaiting)
+        {
+            return;
+        }
+
         if(this.queuedActions.length === 0)
         {
             return;
@@ -80,6 +86,13 @@ export default class {
         {
             this.handleEvent(action.on, action.actions, action.filter, context, action.persist);
             this.next(context);
+        }
+
+        // Wait
+        else if(action.hasOwnProperty('wait'))
+        {
+            this.isWaiting = true;
+            context.time.addEvent({ delay: action.wait, callback: () => { this.isWaiting = false; this.next(context); }, callbackScope: this, loop: false })
         }
     }
 
@@ -161,6 +174,17 @@ export default class {
 
             case 'revokeBlockMatching':
                 this.scene.isBlockingMatches = false;
+                break;
+
+            
+            // Scene Actions
+
+            case 'turnOffLights':
+                this.scene.turnOffLights();
+                break;
+
+            case 'turnOffBackgroundMusic':
+                this.scene.turnOffBackgroundMusic();
                 break;
         }
     }

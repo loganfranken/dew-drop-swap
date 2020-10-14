@@ -29,6 +29,7 @@ export default class extends Phaser.Scene {
         this.tileGrid = null;
         this.scoreDisplay = null;
         this.timer = null;
+        this.background = null;
 
         this.levelClearMessage = null;
         this.levelClearMessageHighlight = null;
@@ -62,7 +63,7 @@ export default class extends Phaser.Scene {
         this.load.image('guide_character', 'assets/images/guide.png');
 
         // Images: Background
-        this.load.image('background', 'assets/images/background.png');
+        this.load.image('background', [ 'assets/images/background.png', 'assets/images/background_n.png' ]);
 
         // Images: Round Clear
         this.load.image('round_clear', 'assets/images/round_clear.png');
@@ -115,7 +116,7 @@ export default class extends Phaser.Scene {
 
         this.queue = new ActionQueue();
 
-        this.add.image(400, 330, 'background');
+        this.background = this.add.image(400, 330, 'background');
 
         const tileGenerationBehavior = LevelManifest[this.level].behavior;
 
@@ -337,4 +338,15 @@ export default class extends Phaser.Scene {
         this.scene.restart({ level: (this.level + 1) });
     }
     
+    turnOffLights()
+    {
+        this.lights.enable().setAmbientColor(0x555555);
+        this.background.setPipeline('Light2D');
+        this.lights.addLight(550, 900, 500).setColor(0xffffff).setIntensity(2);
+    }
+
+    turnOffBackgroundMusic()
+    {
+        this.game.backgroundMusic.pause();
+    }
 }

@@ -6,13 +6,13 @@ export default class extends Phaser.Scene {
     {
         super('TitleScene');
 
-        this.startingLevel = 0;
+        this.startingLevel = 9;
     }
 
     preload()
     {
         // Images
-        this.load.image('background', 'assets/images/background.png');
+        this.load.image('background', [ 'assets/images/background.png', 'assets/images/background_n.png' ]);
         this.load.image('title', 'assets/images/title.png');
         this.load.image('start', 'assets/images/start.png');
         this.load.image('start-active', 'assets/images/start_active.png');
@@ -139,8 +139,8 @@ export default class extends Phaser.Scene {
 
         // Display the flash from the title slam
         const introSlideSound = this.sound.add('intro_slide');
-        const backgroundMusic = this.sound.add('background_music');
-        backgroundMusic.play();
+        this.game.backgroundMusic = this.sound.add('background_music');
+        this.game.backgroundMusic.play();
 
         introTimeline.add({
             targets: flashBackdropGraphics,

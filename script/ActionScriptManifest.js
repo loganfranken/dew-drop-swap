@@ -617,7 +617,10 @@ export default {
                     { do: 'updateGuideExpression', value: 'neutral' },
                     `...`,
                     { do: 'hideGuide' },
-                    { do: 'unblockTileGrid' }
+                    { do: 'unblockTileGrid' },
+                    { wait: 30000 },
+                    { do: 'turnOffBackgroundMusic' },
+                    { do: 'turnOffLights' }
                 ];
         }
     }
