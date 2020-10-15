@@ -122,7 +122,7 @@ export default class extends Phaser.Scene {
         const tileGenerationBehavior = LevelManifest[this.level].behavior;
 
         this.selectedTiles = [];
-        this.tileGrid = new TileGrid(6, 6, 80, 325, -265, this.onTileSelect, this.onTileMatch, tileGenerationBehavior, this.queue);
+        this.tileGrid = new TileGrid(6, 6, 80, 335, -260, this.onTileSelect, this.onTileMatch, tileGenerationBehavior, this.queue);
         this.scoreDisplay = new ScoreDisplay(110, 585, this.level === 0);
 
         const timerSeconds = LevelManifest[this.level].timer;
@@ -354,6 +354,12 @@ export default class extends Phaser.Scene {
             completeDelay: 100,
             onComplete: () => {
                 this.tileGrid.forEachPlayableTile((tile) => tile && tile.disappear(self));
+
+                self.tweens.add({
+                    targets: this.tileGrid.gridBackground,
+                    alpha: 0,
+                    duration: 200
+                });
             }
         });
 

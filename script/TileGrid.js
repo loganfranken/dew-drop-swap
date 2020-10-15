@@ -23,6 +23,8 @@ export default class extends EventEmitter {
         this.tileImageContainer = null;
         this.playAreaOffset = (this.tileGridHeight * this.tileSize);
 
+        this.gridBackground = null;
+
         this.onTileSelect = onTileSelect;
         this.onTileMatch = onTileMatch;
 
@@ -60,13 +62,20 @@ export default class extends EventEmitter {
     create(context)
     {
         this.tileImageContainer = context.add.container();
+        this.tileImageContainer.setDepth(1);
 
         // Create a mask to only show the play area
         const maskShape = context.make.graphics();
         maskShape.fillStyle(0xffffff, 1);
         maskShape.fillRect(this.offsetX - (this.tileSize/2), this.offsetY + (this.tileGridHeight * this.tileSize) - (this.tileSize/2), this.tileGridWidth * this.tileSize, this.tileGridHeight * this.tileSize);
-        
+    
         this.tileImageContainer.mask = new Phaser.Display.Masks.GeometryMask(context, maskShape);
+
+        // Tile grid background
+        this.gridBackground = context.add.graphics({ fillStyle: { color: 0x012400 } }).setAlpha(0.4);
+        this.gridBackground.fillRoundedRect(this.offsetX - (this.tileSize/2) - 5, this.offsetY + (this.tileGridHeight * this.tileSize) - (this.tileSize/2) - 5, this.tileGridWidth * this.tileSize + 10, this.tileGridHeight * this.tileSize + 10, 6);
+        this.gridBackground.setAlpha(0);
+        this.gridBackground.setDepth(0);
 
         this.matchSounds = [
             context.sound.add('match'),
@@ -444,6 +453,12 @@ export default class extends EventEmitter {
 
         this.isBlocked = true;
         this.isInitialized = true;
+
+        context.tweens.add({
+            targets: this.gridBackground,
+            alpha: 0.5,
+            duration: 200
+        });
     }
 
     updateTileGenerationBehavior(behavior)
