@@ -2,10 +2,11 @@ import FontStyleManifest from './FontStyleManifest';
 
 export default class {
 
-    constructor(x, y)
+    constructor(x, y, isIntro)
     {
         this.x = x;
         this.y = y;
+        this.isIntro = isIntro;
 
         this.scoreBackground = null;
         this.scoreIcon = null;
@@ -17,14 +18,23 @@ export default class {
     create(context)
     {
         // Background
-        this.scoreBackground = context.add.graphics({ fillStyle: { color: 0xdbf0ff } }).setAlpha(0.5);
+        this.scoreBackground = context.add.graphics({ fillStyle: { color: 0x85ff7d } });
+        this.scoreBackground.setAlpha(this.isIntro ? 0 : 0.25);
+
         this.scoreBackground.fillRoundedRect(this.x - 150, this.y - 10, 300, 90, 10);
 
         // Icon
-        this.scoreIcon = context.add.image(this.x + 15, this.y + 15, 'icon_tile').setAlpha(0.7);
+        this.scoreIcon = context.add.image(this.x + 15, this.y + 15, 'icon_tile');
+        this.scoreIcon.setAlpha(this.isIntro ? 0 : 0.7);
 
         // Text
         this.scoreText = context.add.text(this.x + 40, this.y, this.score, FontStyleManifest.Default);
+
+        if(this.isIntro)
+        {
+            this.scoreText.setAlpha(0);
+        }
+
         this.updateScore(this.score);
     }
 
@@ -32,6 +42,27 @@ export default class {
     {
         this.score = score;
         this.scoreText.setText(score);
+    }
+
+    show(context)
+    {
+        context.tweens.add({
+            targets: this.scoreBackground,
+            duration: 250,
+            alpha: 0.25
+        });
+
+        context.tweens.add({
+            targets: this.scoreIcon,
+            duration: 250,
+            alpha: 0.7
+        });
+
+        context.tweens.add({
+            targets: this.scoreText,
+            duration: 250,
+            alpha: 1
+        });
     }
 
     hide(context)

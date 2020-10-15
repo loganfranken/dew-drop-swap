@@ -154,11 +154,19 @@ export default class {
                 this.timer.update(this.getScoreRelativeTicks(levelInfo.timer, this.scene.score, levelInfo.score));
                 break;
 
+            case 'showTimerDisplay':
+                this.timer.show(context);
+                break;
+
 
             // Score Actions
 
             case 'hideScoreDisplay':
                 this.scoreDisplay.hide(context);
+                break;
+
+            case 'showScoreDisplay':
+                this.scoreDisplay.show(context);
                 break;
 
             

@@ -34,6 +34,7 @@ export default {
                             { do: 'updateGuideExpression', value: 'glee' },
                             "You got it! That's it!",
                             { do: 'updateGuideExpression', value: 'default' },
+                            { do: 'showScoreDisplay' },
                             "See if you can collect *100 dew drops*!"
                         ]
                     },
@@ -77,6 +78,7 @@ export default {
                     `But, we'll have to hurry this time!`,
                     { do: 'dropTiles' },
                     `We only have two minutes before the sun dries up all the dew drops!`,
+                    { do: 'showTimerDisplay' },
                     { do: 'updateGuideExpression', value: 'default' },
                     `Collect at least *200 dew drops* in *two minutes*!`,
                     { do: 'unblockTileGrid' },

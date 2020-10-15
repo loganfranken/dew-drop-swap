@@ -3,12 +3,13 @@ import FontStyleManifest from './FontStyleManifest';
 
 export default class extends EventEmitter {
 
-    constructor(x, y, ticks)
+    constructor(x, y, ticks, isIntro)
     {
         super();
 
         this.x = x;
         this.y = y;
+        this.isIntro = isIntro;
 
         this.text = null;
         this.icon = null;
@@ -26,7 +27,8 @@ export default class extends EventEmitter {
     create(context)
     {
         // Icon
-        this.icon = context.add.image(this.x + 15, this.y + 15, 'icon_timer').setAlpha(0.7);
+        this.icon = context.add.image(this.x + 15, this.y + 15, 'icon_timer');
+        this.icon.setAlpha(this.isIntro ? 0 : 0.7);
 
         // Warning Icon
         this.warningIcon = context.add.image(this.x + 15, this.y + 15, 'icon_timer_warning').setAlpha(0);
@@ -39,11 +41,31 @@ export default class extends EventEmitter {
 
         // Text
         this.text = context.add.text(this.x + 40, this.y, this.getTimeOutput(this.ticks), FontStyleManifest.Default);
+
+        if(this.isIntro)
+        {
+            this.text.setAlpha(0);
+        }
         
         this.tick(context);
         
         const self = this;
         context.time.addEvent({ delay: 1000, callback: () => { self.tick(context); }, callbackScope: this, loop: true })
+    }
+
+    show(context)
+    {
+        context.tweens.add({
+            targets: this.icon,
+            duration: 250,
+            alpha: 0.7
+        });
+
+        context.tweens.add({
+            targets: this.text,
+            duration: 250,
+            alpha: 1
+        });
     }
 
     tick(context)
