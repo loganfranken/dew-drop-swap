@@ -8,6 +8,13 @@ export default class extends Phaser.Scene {
         super('TitleScene');
 
         this.startingLevel = 0;
+
+        this.isExiting = false;
+
+        this.tileInfos = [];
+        this.title = null;
+        this.startBtn = null;
+        this.startBtnOverlay = null;
     }
 
     preload()
@@ -46,17 +53,17 @@ export default class extends Phaser.Scene {
         flashBackdropGraphics.fillRectShape(flashBackdrop);
 
         // Tile
-        const tileInfos = [];
-        tileInfos.push({ imageKey: 'tile_01', xChange: '+=180', yChange: '+=180', angle: 15, scale: 0.8 });
-        tileInfos.push({ imageKey: 'tile_02', xChange: '+=200', yChange: '-=180', angle: 15, scale: 1 });
-        tileInfos.push({ imageKey: 'tile_03', xChange: '-=180', yChange: '+=180', angle: -15, scale: 0.9 });
-        tileInfos.push({ imageKey: 'tile_04', xChange: '-=200', yChange: '-=180', angle: -5, scale: 0.8 });
-        tileInfos.push({ imageKey: 'tile_01', xChange: '+=0', yChange: '-=180', angle: -15, scale: 0.7 });
-        tileInfos.push({ imageKey: 'tile_02', xChange: '+=0', yChange: '+=180', angle: -15, scale: 1 });
-        tileInfos.push({ imageKey: 'tile_03', xChange: '+=290', yChange: '+=30', angle: 15, scale: 0.8 });
-        tileInfos.push({ imageKey: 'tile_01', xChange: '-=290', yChange: '+=40', angle: -15, scale: 0.9 });
+        this.tileInfos = [];
+        this.tileInfos.push({ imageKey: 'tile_01', xChange: '+=180', yChange: '+=180', angle: 15, scale: 0.8 });
+        this.tileInfos.push({ imageKey: 'tile_03', xChange: '-=180', yChange: '+=180', angle: -15, scale: 0.9 });
+        this.tileInfos.push({ imageKey: 'tile_04', xChange: '-=200', yChange: '-=180', angle: -5, scale: 0.8 });
+        this.tileInfos.push({ imageKey: 'tile_01', xChange: '+=0', yChange: '-=180', angle: -15, scale: 0.7 });
+        this.tileInfos.push({ imageKey: 'tile_02', xChange: '+=200', yChange: '-=180', angle: 15, scale: 1 });
+        this.tileInfos.push({ imageKey: 'tile_02', xChange: '+=0', yChange: '+=180', angle: -15, scale: 1 });
+        this.tileInfos.push({ imageKey: 'tile_03', xChange: '+=290', yChange: '+=30', angle: 15, scale: 0.8 });
+        this.tileInfos.push({ imageKey: 'tile_01', xChange: '-=290', yChange: '+=40', angle: -15, scale: 0.9 });
 
-        tileInfos.forEach(tileInfo => {
+        this.tileInfos.forEach(tileInfo => {
             tileInfo.tile = self.add.image(400, 230, tileInfo.imageKey);
             tileInfo.tile.setAlpha(0);
             tileInfo.tile.setScale(0.5, 0.5);
@@ -67,37 +74,37 @@ export default class extends Phaser.Scene {
         });
 
         // Title
-        const title = this.add.image(400, 230, 'title');
-        title.setAlpha(0);
-        title.setScale(2, 2);
+        this.title = this.add.image(400, 230, 'title');
+        this.title.setAlpha(0);
+        this.title.setScale(2, 2);
 
-        const startBtn = this.add.image(400, 540, 'start');
-        startBtn.setInteractive({ cursor: 'pointer' });
-        startBtn.setAlpha(0);
+        this.startBtn = this.add.image(400, 540, 'start');
+        this.startBtn.setInteractive({ cursor: 'pointer' });
+        this.startBtn.setAlpha(0);
 
         const startBtnFlash = this.add.image(400, 540, 'start');
         startBtnFlash.setAlpha(0);
         startBtnFlash.setTintFill(0xffffff);
 
-        const startBtnOverlay = this.add.image(400, 540, 'start-active');
-        startBtnOverlay.setAlpha(0);
+        this.startBtnOverlay = this.add.image(400, 540, 'start-active');
+        this.startBtnOverlay.setAlpha(0);
 
         // Mute Button
         const muteControl = new MuteControl(40, 640);
         muteControl.create(this);
 
-        startBtn.on('pointerover', () => {
+        this.startBtn.on('pointerover', () => {
             self.tweens.add({
-                targets: startBtnOverlay,
+                targets: self.startBtnOverlay,
                 alpha: 1,
                 duration: 100,
                 ease: 'Sine.easeInOut'
             });
         });
 
-        startBtn.on('pointerout', () => {
+        this.startBtn.on('pointerout', () => {
             self.tweens.add({
-                targets: startBtnOverlay,
+                targets: self.startBtnOverlay,
                 alpha: 0,
                 duration: 100,
                 ease: 'Sine.easeInOut'
@@ -105,9 +112,8 @@ export default class extends Phaser.Scene {
         });
 
         this.selectSound = this.sound.add('select');
-        startBtn.on('pointerdown', () => {
-            this.selectSound.play();
-            self.scene.transition({ target: 'RoundScene', data: { level: this.startingLevel }, remove: true });
+        this.startBtn.on('pointerdown', () => {
+            self.transitionToNextScene();
         });
 
         // Intro Timeline
@@ -116,7 +122,7 @@ export default class extends Phaser.Scene {
         // Slam in the title
         introTimeline.add({
             delay: 800,
-            targets: title,
+            targets: this.title,
             alpha: 1,
             scaleX: 1,
             scaleY: 1,
@@ -125,7 +131,7 @@ export default class extends Phaser.Scene {
         });
 
         // Fling the tiles from the impact of the title slam
-        tileInfos.forEach((tileInfo, i) => {
+        this.tileInfos.forEach((tileInfo, i) => {
             introTimeline.add({
                 targets: tileInfo.tile,
                 x: tileInfo.xChange,
@@ -168,7 +174,7 @@ export default class extends Phaser.Scene {
 
         // Flash in the start button
         introTimeline.add({
-            targets: [ startBtn, startBtnFlash ],
+            targets: [ this.startBtn, startBtnFlash ],
             alpha: 1,
             offset: 2200,
             duration: 100
@@ -181,52 +187,11 @@ export default class extends Phaser.Scene {
             duration: 300,
             offset: 2300,
             ease: 'Quad.easeOut',
-            onComplete: () => {
-
-                // Start randomly flashing tiles
-                self.time.addEvent({
-                    delay: 2000,
-                    callback: () => {
-                        const tileInfo = getRandomItem(tileInfos);
-
-                        tileInfo.tileFlash.x = tileInfo.tile.x;
-                        tileInfo.tileFlash.y = tileInfo.tile.y;
-                        tileInfo.tileFlash.angle = tileInfo.tile.angle;
-                        tileInfo.tileFlash.scaleX = tileInfo.tile.scaleX;
-                        tileInfo.tileFlash.scaleY = tileInfo.tile.scaleY;
-
-                        self.tweens.add({
-                            targets: tileInfo.tileFlash,
-                            alpha: 1,
-                            duration: 10
-                        });
-
-                        self.tweens.add({
-                            targets: tileInfo.tileFlash,
-                            alpha: 0,
-                            duration: 1000,
-                            ease: 'Power1',
-                            delay: 10
-                        });
-
-                        self.tweens.add({
-                            targets: [ tileInfo.tile, tileInfo.tileFlash ],
-                            scaleX: '*=1.1',
-                            scaleY: '*=1.1',
-                            duration: 500,
-                            yoyo: true,
-                            ease: 'Power1'
-                        });
-                    },
-                    callbackScope: this,
-                    loop: true
-                })
-
-            }
+            onComplete: this.flashTiles.apply(self)
         });
 
         introTimeline.add({
-            targets: title,
+            targets: this.title,
             scaleX: 1.02,
             scaleY: 1.02,
             yoyo: true,
@@ -238,5 +203,101 @@ export default class extends Phaser.Scene {
 
         introTimeline.play();
     }
-    
+
+    flashTiles()
+    {
+        const self = this;
+
+        // Start randomly flashing tiles
+        self.time.addEvent({
+            delay: 3000,
+            callback: () => {
+                if(self.isExiting)
+                {
+                    return;
+                }
+
+                const tileInfo = getRandomItem(self.tileInfos);
+
+                tileInfo.tileFlash.x = tileInfo.tile.x;
+                tileInfo.tileFlash.y = tileInfo.tile.y;
+                tileInfo.tileFlash.angle = tileInfo.tile.angle;
+                tileInfo.tileFlash.scaleX = tileInfo.tile.scaleX;
+                tileInfo.tileFlash.scaleY = tileInfo.tile.scaleY;
+
+                self.tweens.add({
+                    targets: tileInfo.tileFlash,
+                    alpha: 1,
+                    duration: 10
+                });
+
+                self.tweens.add({
+                    targets: tileInfo.tileFlash,
+                    alpha: 0,
+                    duration: 1000,
+                    ease: 'Power1',
+                    delay: 10
+                });
+
+                self.tweens.add({
+                    targets: [ tileInfo.tile, tileInfo.tileFlash ],
+                    scaleX: '*=1.1',
+                    scaleY: '*=1.1',
+                    duration: 500,
+                    yoyo: true,
+                    ease: 'Power1'
+                });
+            },
+            callbackScope: this,
+            loop: true
+        });
+    }
+
+    transitionToNextScene()
+    {
+        const self = this;
+
+        this.isExiting = true;
+
+        this.selectSound.play();
+        this.startBtn.setAlpha(0);
+
+        const exitTimeline = this.tweens.createTimeline();
+
+        this.tileInfos.forEach((tileInfo, i) => {
+            exitTimeline.add({
+                targets: [ tileInfo.tile, tileInfo.tileFlash ],
+                x: tileInfo.xChange,
+                y: tileInfo.yChange,
+                alpha: 0,
+                duration: 500,
+                offset: (i === 0) ? '-=0' : '-=1000',
+                ease: 'Quad.easeOut'
+            });
+        });
+
+        exitTimeline.add({
+            targets: this.title,
+            scaleX: 1.1,
+            scaleY: 1.1,
+            duration: 700,
+            offset: '-=1000',
+            alpha: 0,
+            ease: 'Quad.easeOut'
+        });
+
+        exitTimeline.add({
+            targets: this.startBtnOverlay,
+            y: '+=300',
+            duration: 500,
+            offset: '-=1000',
+            ease: 'Quad.easeOut',
+            completeDelay: 300,
+            onComplete: () => {
+                self.scene.transition({ target: 'RoundScene', data: { level: self.startingLevel }, remove: true });
+            }
+        });
+
+        exitTimeline.play();
+    }
 }
