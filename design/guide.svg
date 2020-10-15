@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -15,7 +13,7 @@
    viewBox="0 0 210 297"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
    sodipodi:docname="guide.svg"
    inkscape:export-filename="F:\git\match-three\assets\images\expression_thoughtful.png"
    inkscape:export-xdpi="39.581867"
@@ -61,22 +59,23 @@
   </defs>
   <sodipodi:namedview
      id="base"
-     pagecolor="#ffffff"
+     pagecolor="#018b00"
      bordercolor="#666666"
      borderopacity="1.0"
-     inkscape:pageopacity="0.0"
+     inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="-188.63517"
-     inkscape:cy="630.93195"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="244.28061"
+     inkscape:cy="747.68615"
      inkscape:document-units="mm"
-     inkscape:current-layer="g912"
+     inkscape:current-layer="g947"
      showgrid="false"
      inkscape:window-width="1920"
-     inkscape:window-height="1027"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1" />
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:document-rotation="0" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -85,7 +84,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -93,7 +92,7 @@
      inkscape:groupmode="layer"
      id="layer11"
      inkscape:label="Body"
-     style="display:none">
+     style="display:inline">
     <g
        inkscape:label="Reference Picture"
        inkscape:groupmode="layer"
@@ -110,15 +109,36 @@
     </g>
     <g
        inkscape:groupmode="layer"
+       id="g947"
+       inkscape:label="Branch Outline"
+       style="display:inline;opacity:1">
+      <path
+         id="path945"
+         style="opacity:0.996;fill:#085106;fill-opacity:1;stroke:#b1ff97;stroke-width:12;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="M 102.43561,41.073977 C 82.01702,41.349522 54.857867,76.518238 66.750448,123.58471 28.780917,85.977168 39.643023,150.25269 53.899551,168.56387 c -62.7032885,-25.17069 -6.997123,57.85332 46.494319,57.08644 -2.085309,16.79314 4.98482,27.66499 9.6728,38.46587 l 13.60692,-3.77962 c -12.2785,-12.43381 -13.56063,-29.71821 -13.63069,-35.45778 55.20097,-9.82905 108.13386,-111.1123 44.39832,-58.58299 17.95409,-46.32299 -3.28735,-44.97705 -18.8991,-12.09538 0,0 -10.58341,-83.532523 -16.63103,-100.919426 -3.61237,-8.513894 -9.66928,-12.298854 -16.47548,-12.207007 z"
+         inkscape:export-filename="C:\git\match-three\assets\images\guide.png"
+         inkscape:export-xdpi="39.581867"
+         inkscape:export-ydpi="39.581867" />
+    </g>
+    <g
+       inkscape:groupmode="layer"
+       id="g939"
+       inkscape:label="Leaf Outline"
+       style="display:inline;opacity:0.1" />
+    <g
+       inkscape:groupmode="layer"
        id="layer3"
        inkscape:label="Branch"
        style="display:inline">
       <path
-         style="fill:#784421;stroke:#542f17;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         style="fill:#784421;stroke:#542f17;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;opacity:1"
          d="m 101.67559,224.05059 c -2.755812,17.71027 4.61418,28.92534 9.44941,40.06548 l 13.60714,-3.77976 C 109.81268,245.22813 111.125,222.91666 111.125,222.91666 Z"
          id="path3760"
          inkscape:connector-curvature="0"
-         sodipodi:nodetypes="ccccc" />
+         sodipodi:nodetypes="ccccc"
+         inkscape:export-filename="C:\git\match-three\assets\images\guide.png"
+         inkscape:export-xdpi="39.581867"
+         inkscape:export-ydpi="39.581867" />
     </g>
     <g
        style="display:inline"
@@ -130,8 +150,11 @@
          inkscape:connector-curvature="0"
          id="path5033"
          d="m 94.79641,225.19215 c -2.755803,19.01011 4.614156,31.0483 9.44938,43.00607 l 13.60714,-4.05717 C 102.93347,247.92401 104.24579,223.975 104.24579,223.975 Z"
-         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         mask="url(#mask5045)" />
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;opacity:1"
+         mask="url(#mask5045)"
+         inkscape:export-filename="C:\git\match-three\assets\images\guide.png"
+         inkscape:export-xdpi="39.581867"
+         inkscape:export-ydpi="39.581867" />
     </g>
     <g
        inkscape:groupmode="layer"
@@ -139,12 +162,15 @@
        inkscape:label="Leaf"
        style="display:inline;opacity:1">
       <path
-         style="fill:#1cb81a;fill-opacity:1;stroke:#1cb81a;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         style="fill:#1cb81a;fill-opacity:1;stroke:#1cb81a;stroke-width:3.6;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;opacity:1"
          d="M 101.67559,224.05059 C 47.956831,225.61491 -8.5687653,141.68746 54.428572,166.97619 40.172042,148.66501 29.310233,84.389493 67.279762,121.99702 51.422989,59.24174 104.99099,17.637874 119.44047,51.693452 c 6.04762,17.386903 16.63096,100.919638 16.63096,100.919638 15.61175,-32.88167 36.85289,-34.22776 18.8988,12.09524 67.1589,-55.35076 4.7803,60.0835 -53.29464,59.34226 z"
          id="path3755"
          inkscape:connector-curvature="0"
          sodipodi:nodetypes="ccccccc"
-         clip-path="none" />
+         clip-path="none"
+         inkscape:export-filename="C:\git\match-three\assets\images\guide.png"
+         inkscape:export-xdpi="39.581867"
+         inkscape:export-ydpi="39.581867" />
     </g>
     <g
        style="display:inline;opacity:1"
@@ -156,7 +182,10 @@
          clip-path="url(#clipPath4603)"
          transform="matrix(1.0473938,0,0,1,-6.5801849,-1.6630953)"
          mask="url(#mask4681)"
-         style="opacity:0.98000004">
+         style="opacity:1"
+         inkscape:export-filename="C:\git\match-three\assets\images\guide.png"
+         inkscape:export-xdpi="39.581867"
+         inkscape:export-ydpi="39.581867">
         <g
            inkscape:label="Clip"
            id="g4599">
@@ -772,7 +801,7 @@
      inkscape:groupmode="layer"
      id="g926"
      inkscape:label="Thoughtful"
-     style="display:inline">
+     style="display:none">
     <g
        inkscape:groupmode="layer"
        id="g912"
