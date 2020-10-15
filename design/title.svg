@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -15,17 +13,57 @@
    viewBox="0 0 510 297"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
-   sodipodi:docname="title.svg"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
+   sodipodi:docname="title_work.svg"
    enable-background="new"
-   inkscape:export-filename="F:\git\match-three\design\title.png"
-   inkscape:export-xdpi="29.483271"
-   inkscape:export-ydpi="29.483271">
+   inkscape:export-filename="C:\git\match-three\assets\images\title.png"
+   inkscape:export-xdpi="29.893984"
+   inkscape:export-ydpi="29.893984">
   <defs
      id="defs2">
     <linearGradient
        inkscape:collect="always"
+       id="linearGradient1318">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0"
+         id="stop1314" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1"
+         id="stop1320" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0"
+         offset="1"
+         id="stop1316" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient1292">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0"
+         id="stop1288" />
+      <stop
+         style="stop-color:#abff40;stop-opacity:1"
+         offset="1"
+         id="stop1290" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
        id="linearGradient852">
+      <stop
+         style="stop-color:#f8ff00;stop-opacity:1;"
+         offset="0"
+         id="stop1103" />
+      <stop
+         style="stop-color:#00e068;stop-opacity:1"
+         offset="1"
+         id="stop1105" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient852-6">
       <stop
          style="stop-color:#f8ff00;stop-opacity:1;"
          offset="0"
@@ -47,29 +85,7 @@
        gradientTransform="translate(2.6726953,6.9490077)" />
     <linearGradient
        inkscape:collect="always"
-       xlink:href="#linearGradient896"
-       id="linearGradient898"
-       x1="259.25143"
-       y1="180.2032"
-       x2="258.18237"
-       y2="26.790493"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1.4255319,0,0,1.1955556,-84.087584,-22.335957)" />
-    <linearGradient
-       inkscape:collect="always"
-       id="linearGradient896">
-      <stop
-         style="stop-color:#f2faf6;stop-opacity:1;"
-         offset="0"
-         id="stop892" />
-      <stop
-         style="stop-color:#f2faf6;stop-opacity:0;"
-         offset="1"
-         id="stop894" />
-    </linearGradient>
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient852"
+       xlink:href="#linearGradient852-6"
        id="linearGradient952"
        gradientUnits="userSpaceOnUse"
        gradientTransform="translate(2.6726954,6.9490077)"
@@ -97,16 +113,37 @@
            x="268.98074"
            sodipodi:role="line">SWAP</tspan></text>
     </mask>
-    <filter
+    <linearGradient
        inkscape:collect="always"
-       style="color-interpolation-filters:sRGB"
-       id="filter998">
-      <feBlend
-         inkscape:collect="always"
-         mode="overlay"
-         in2="BackgroundImage"
-         id="feBlend1000" />
-    </filter>
+       xlink:href="#linearGradient852"
+       id="linearGradient1278"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(2.6726953,6.9490077)"
+       x1="280.42776"
+       y1="78.380569"
+       x2="276.52893"
+       y2="207.20448" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1292"
+       id="linearGradient1286"
+       x1="283.10046"
+       y1="85.329575"
+       x2="279.20163"
+       y2="214.15349"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0,1.0583333)" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1318"
+       id="radialGradient1312"
+       cx="290.72305"
+       cy="-92.629295"
+       fx="290.72305"
+       fy="-92.629295"
+       r="152.18755"
+       gradientTransform="matrix(0.00619658,0.6978663,-3.117451,0.02742803,-29.765207,-119.08028)"
+       gradientUnits="userSpaceOnUse" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -116,16 +153,17 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.49497475"
-     inkscape:cx="587.05351"
-     inkscape:cy="576.21717"
+     inkscape:cx="1273.2615"
+     inkscape:cy="765.31718"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g1276"
      showgrid="false"
      inkscape:window-width="1920"
-     inkscape:window-height="1027"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1" />
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:document-rotation="0" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -139,40 +177,132 @@
     </rdf:RDF>
   </metadata>
   <g
-     inkscape:label="Title"
+     inkscape:label="Outline"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="g1276"
+     style="display:inline">
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0.94999999;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:url(#linearGradient854);fill-opacity:1;fill-rule:nonzero;stroke:#1f4e00;stroke-width:7;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill;"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:0.95;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:-0.00264583px;text-anchor:middle;opacity:0.75;fill:#e6e6e6;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:13;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+       x="268.98077"
+       y="139.21008"
+       id="text1274"
+       inkscape:export-xdpi="57.48"
+       inkscape:export-ydpi="57.48"
+       inkscape:export-filename="C:\git\match-three\assets\images\title.png"><tspan
+         sodipodi:role="line"
+         id="tspan1268"
+         x="268.98077"
+         y="139.21008"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:57.8556px;line-height:0.95;font-family:'Fredoka One';-inkscape-font-specification:'Fredoka One';text-align:center;text-anchor:middle;fill:#e6e6e6;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:13;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill">DEW DROP</tspan><tspan
+         sodipodi:role="line"
+         x="268.98077"
+         y="204.07838"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:70.5556px;line-height:0.95;font-family:'Fredoka One';-inkscape-font-specification:'Fredoka One';text-align:center;text-anchor:middle;fill:#e6e6e6;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:13;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+         id="tspan1272"
+         dx="0 0 0">S<tspan
+   style="letter-spacing:-0.0211665px;word-spacing:0px;fill:#e6e6e6;fill-opacity:1;stroke:#ffffff;stroke-width:13;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+   id="tspan1270">WA</tspan>P</tspan></text>
+  </g>
+  <g
+     inkscape:label="Title"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:0.95;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:-0.00264583px;text-anchor:middle;fill:url(#linearGradient854);fill-opacity:1;fill-rule:nonzero;stroke:#1f4e00;stroke-width:7;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
        x="268.98077"
        y="138.15176"
        id="text817"
-       inkscape:export-xdpi="57.176189"
-       inkscape:export-ydpi="57.176189"><tspan
+       inkscape:export-xdpi="57.48"
+       inkscape:export-ydpi="57.48"
+       inkscape:export-filename="C:\git\match-three\assets\images\title.png"><tspan
          sodipodi:role="line"
          id="tspan815"
          x="268.98077"
          y="138.15176"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:57.85555649px;line-height:0.94999999;font-family:'Fredoka One';-inkscape-font-specification:'Fredoka One';text-align:center;text-anchor:middle;fill:url(#linearGradient854);fill-opacity:1;fill-rule:nonzero;stroke:#1f4e00;stroke-width:7;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill;">DEW DROP</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:57.8556px;line-height:0.95;font-family:'Fredoka One';-inkscape-font-specification:'Fredoka One';text-align:center;text-anchor:middle;fill:url(#linearGradient854);fill-opacity:1;fill-rule:nonzero;stroke:#1f4e00;stroke-width:7;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill">DEW DROP</tspan><tspan
          sodipodi:role="line"
          x="268.98077"
-         y="203.02002"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:70.55555725px;line-height:0.94999999;font-family:'Fredoka One';-inkscape-font-specification:'Fredoka One';text-align:center;text-anchor:middle;fill:url(#linearGradient854);fill-opacity:1;fill-rule:nonzero;stroke:#1f4e00;stroke-width:7;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill;"
-         id="tspan819">SWAP</tspan></text>
+         y="203.02007"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:70.5556px;line-height:0.95;font-family:'Fredoka One';-inkscape-font-specification:'Fredoka One';text-align:center;text-anchor:middle;fill:url(#linearGradient854);fill-opacity:1;fill-rule:nonzero;stroke:#1f4e00;stroke-width:7;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+         id="tspan819"
+         dx="0 0 0">S<tspan
+   style="letter-spacing:-0.0211665px;word-spacing:0px"
+   id="tspan1180">WA</tspan>P</tspan></text>
+  </g>
+  <g
+     inkscape:label="Shine"
+     inkscape:groupmode="layer"
+     id="g1308"
+     style="display:inline;opacity:0.25;mix-blend-mode:overlay">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:0.95;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:-0.00264583px;text-anchor:middle;opacity:1;fill:url(#radialGradient1312);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:7;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+       x="268.98077"
+       y="138.15176"
+       id="text1306"
+       inkscape:export-xdpi="57.48"
+       inkscape:export-ydpi="57.48"
+       inkscape:export-filename="C:\git\match-three\assets\images\title.png"><tspan
+         sodipodi:role="line"
+         id="tspan1300"
+         x="268.98077"
+         y="138.15176"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:57.8556px;line-height:0.95;font-family:'Fredoka One';-inkscape-font-specification:'Fredoka One';text-align:center;text-anchor:middle;fill:url(#radialGradient1312);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:7;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill">DEW DROP</tspan><tspan
+         sodipodi:role="line"
+         x="268.98077"
+         y="203.02007"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:70.5556px;line-height:0.95;font-family:'Fredoka One';-inkscape-font-specification:'Fredoka One';text-align:center;text-anchor:middle;fill:url(#radialGradient1312);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:7;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+         id="tspan1304"
+         dx="0 0 0">S<tspan
+   style="letter-spacing:-0.0211665px;word-spacing:0px;fill:url(#radialGradient1312);fill-opacity:1;stroke:none"
+   id="tspan1302">WA</tspan>P</tspan></text>
   </g>
   <g
      inkscape:groupmode="layer"
-     id="layer3"
-     inkscape:label="Shine"
-     style="display:inline;opacity:0.328;filter:url(#filter998)">
+     id="layer2"
+     inkscape:label="Spots">
     <ellipse
-       style="opacity:1;fill:url(#linearGradient898);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:9.13842583;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
-       id="path890"
-       cx="268.33859"
-       cy="112.58403"
-       rx="268.6059"
-       ry="71.8955"
-       mask="url(#mask944)" />
+       style="opacity:0.642;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:1.53621;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path922"
+       cx="362.3345"
+       cy="159.81494"
+       rx="1.7318981"
+       ry="1.7318962"
+       inkscape:export-filename="C:\git\match-three\assets\images\title.png"
+       inkscape:export-xdpi="57.48"
+       inkscape:export-ydpi="57.48" />
+    <ellipse
+       style="opacity:0.642;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:0.768104;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path922-7"
+       cx="365.76492"
+       cy="164.53044"
+       rx="0.86594772"
+       ry="0.86594802"
+       inkscape:export-filename="C:\git\match-three\assets\images\title.png"
+       inkscape:export-xdpi="57.48"
+       inkscape:export-ydpi="57.48" />
+    <ellipse
+       style="opacity:0.642;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:1.53621;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path922-5"
+       cx="123.14466"
+       cy="99.558907"
+       rx="1.7318981"
+       ry="1.7318962"
+       inkscape:export-filename="C:\git\match-three\assets\images\title.png"
+       inkscape:export-xdpi="57.48"
+       inkscape:export-ydpi="57.48" />
+    <ellipse
+       style="opacity:0.642;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:0.768104;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path922-5-4"
+       cx="121.13866"
+       cy="104.58331"
+       rx="0.86594772"
+       ry="0.86594802"
+       inkscape:export-filename="C:\git\match-three\assets\images\title.png"
+       inkscape:export-xdpi="57.48"
+       inkscape:export-ydpi="57.48" />
   </g>
 </svg>

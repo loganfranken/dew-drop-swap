@@ -1,3 +1,4 @@
+import { getRandomItem } from "../Utility";
 import MuteControl from "../MuteControl";
 
 export default class extends Phaser.Scene {
@@ -59,6 +60,10 @@ export default class extends Phaser.Scene {
             tileInfo.tile = self.add.image(400, 230, tileInfo.imageKey);
             tileInfo.tile.setAlpha(0);
             tileInfo.tile.setScale(0.5, 0.5);
+
+            tileInfo.tileFlash = self.add.image(400, 230, tileInfo.imageKey);
+            tileInfo.tileFlash.setTintFill(0xffffff);
+            tileInfo.tileFlash.setAlpha(0);
         });
 
         // Title
@@ -66,15 +71,15 @@ export default class extends Phaser.Scene {
         title.setAlpha(0);
         title.setScale(2, 2);
 
-        const startBtn = this.add.image(400, 550, 'start');
+        const startBtn = this.add.image(400, 540, 'start');
         startBtn.setInteractive({ cursor: 'pointer' });
         startBtn.setAlpha(0);
 
-        const startBtnFlash = this.add.image(400, 550, 'start');
+        const startBtnFlash = this.add.image(400, 540, 'start');
         startBtnFlash.setAlpha(0);
         startBtnFlash.setTintFill(0xffffff);
 
-        const startBtnOverlay = this.add.image(400, 550, 'start-active');
+        const startBtnOverlay = this.add.image(400, 540, 'start-active');
         startBtnOverlay.setAlpha(0);
 
         // Mute Button
@@ -175,7 +180,60 @@ export default class extends Phaser.Scene {
             alpha: 0,
             duration: 300,
             offset: 2300,
-            ease: 'Quad.easeOut'
+            ease: 'Quad.easeOut',
+            onComplete: () => {
+
+                // Start randomly flashing tiles
+                self.time.addEvent({
+                    delay: 2000,
+                    callback: () => {
+                        const tileInfo = getRandomItem(tileInfos);
+
+                        tileInfo.tileFlash.x = tileInfo.tile.x;
+                        tileInfo.tileFlash.y = tileInfo.tile.y;
+                        tileInfo.tileFlash.angle = tileInfo.tile.angle;
+                        tileInfo.tileFlash.scaleX = tileInfo.tile.scaleX;
+                        tileInfo.tileFlash.scaleY = tileInfo.tile.scaleY;
+
+                        self.tweens.add({
+                            targets: tileInfo.tileFlash,
+                            alpha: 1,
+                            duration: 10
+                        });
+
+                        self.tweens.add({
+                            targets: tileInfo.tileFlash,
+                            alpha: 0,
+                            duration: 1000,
+                            ease: 'Power1',
+                            delay: 10
+                        });
+
+                        self.tweens.add({
+                            targets: [ tileInfo.tile, tileInfo.tileFlash ],
+                            scaleX: '*=1.1',
+                            scaleY: '*=1.1',
+                            duration: 500,
+                            yoyo: true,
+                            ease: 'Power1'
+                        });
+                    },
+                    callbackScope: this,
+                    loop: true
+                })
+
+            }
+        });
+
+        introTimeline.add({
+            targets: title,
+            scaleX: 1.02,
+            scaleY: 1.02,
+            yoyo: true,
+            repeat: -1,
+            duration: 500,
+            offset: 2600,
+            ease: 'Quad'
         });
 
         introTimeline.play();

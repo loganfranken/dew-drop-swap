@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -14,9 +12,9 @@
    viewBox="0 0 211.66666 211.66667"
    version="1.1"
    id="svg821"
-   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
    sodipodi:docname="background.svg"
-   inkscape:export-filename="F:\git\match-three\assets\background.png"
+   inkscape:export-filename="C:\git\match-three\assets\images\background.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96">
   <defs
@@ -32,14 +30,15 @@
      inkscape:cx="-29.982947"
      inkscape:cy="375.59413"
      inkscape:document-units="mm"
-     inkscape:current-layer="g2024"
+     inkscape:current-layer="layer4"
      showgrid="false"
      units="px"
      inkscape:window-width="1920"
-     inkscape:window-height="1027"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1" />
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:document-rotation="0" />
   <metadata
      id="metadata818">
     <rdf:RDF>
@@ -72,8 +71,7 @@
   <g
      inkscape:groupmode="layer"
      id="layer5"
-     inkscape:label="Middle Hill"
-     sodipodi:insensitive="true">
+     inkscape:label="Middle Hill">
     <g
        inkscape:label="Base"
        id="g1407"
@@ -84,7 +82,7 @@
          inkscape:connector-curvature="0"
          id="path1405"
          d="m 223.38393,98.355785 c 0,0 -55.26405,-48.81038 -123.598222,-23.056533 C 17.376359,106.35777 -22.678575,55.64449 -22.678575,55.64449 l -1.133927,126.24403 246.818452,0.37798 z"
-         style="fill:#088704;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+         style="fill:#088704;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
     </g>
     <g
        inkscape:groupmode="layer"
@@ -92,13 +90,13 @@
        inkscape:label="Accents"
        style="display:inline">
       <path
-         style="fill:#53d04f;fill-opacity:1;stroke:none;stroke-width:0.20448606px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="fill:#26b61d;fill-opacity:1;stroke:none;stroke-width:0.204486px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          d="m 135.82971,177.58122 c 5.92281,-12.22963 13.99068,-15.76201 20.25924,-16.3838 5.54441,-0.54996 9.68122,1.17702 9.68122,1.17702 0,0 -6.83366,24.43962 -29.94046,15.20678 z"
          id="path1969"
          inkscape:connector-curvature="0"
          sodipodi:nodetypes="cscc" />
       <path
-         style="fill:#53d04f;fill-opacity:1;stroke:none;stroke-width:0.15343864px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="fill:#26b61d;fill-opacity:1;stroke:none;stroke-width:0.153439px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          d="m 128.34837,179.58686 c -0.25086,-10.94718 3.62141,-16.46331 7.31155,-19.22974 3.26386,-2.44686 6.38523,-2.74264 6.38523,-2.74264 0,0 3.60541,20.02427 -13.69678,21.97238 z"
          id="path1969-7"
          inkscape:connector-curvature="0"
@@ -117,7 +115,7 @@
        transform="translate(0,-85.333307)"
        style="display:inline">
       <path
-         style="fill:#53d04f;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="fill:#26b61d;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          d="m -23.056547,258.82437 c 0,0 67.639886,-37.19074 130.401787,-8.69345 69.9256,31.75 117.17262,-0.75595 117.17262,-0.75595 l 1.88988,59.34226 -246.818454,0.37798 z"
          id="path1372"
          inkscape:connector-curvature="0"

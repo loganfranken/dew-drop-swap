@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -15,7 +13,7 @@
    viewBox="0 0 510 297"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
    sodipodi:docname="start_game.svg"
    enable-background="new"
    inkscape:export-filename="F:\git\match-three\design\title.png"
@@ -74,15 +72,15 @@
          id="text950"
          y="138.15176"
          x="268.98074"
-         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0.94999999;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:url(#linearGradient952);fill-opacity:1;fill-rule:nonzero;stroke:#1f4e00;stroke-width:7;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+         style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:0.95;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:url(#linearGradient952);fill-opacity:1;fill-rule:nonzero;stroke:#1f4e00;stroke-width:7;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
          xml:space="preserve"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:57.85555649px;line-height:0.94999999;font-family:'Fredoka One';-inkscape-font-specification:'Fredoka One';text-align:center;text-anchor:middle;fill:url(#linearGradient952);fill-opacity:1;fill-rule:nonzero;stroke:#1f4e00;stroke-width:7;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:57.8556px;line-height:0.95;font-family:'Fredoka One';-inkscape-font-specification:'Fredoka One';text-align:center;text-anchor:middle;fill:url(#linearGradient952);fill-opacity:1;fill-rule:nonzero;stroke:#1f4e00;stroke-width:7;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
            y="138.15176"
            x="268.98074"
            id="tspan946"
            sodipodi:role="line">DEW DROP</tspan><tspan
            id="tspan948"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:70.55555725px;line-height:0.94999999;font-family:'Fredoka One';-inkscape-font-specification:'Fredoka One';text-align:center;text-anchor:middle;fill:url(#linearGradient952);fill-opacity:1;fill-rule:nonzero;stroke:#1f4e00;stroke-width:7;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:70.5556px;line-height:0.95;font-family:'Fredoka One';-inkscape-font-specification:'Fredoka One';text-align:center;text-anchor:middle;fill:url(#linearGradient952);fill-opacity:1;fill-rule:nonzero;stroke:#1f4e00;stroke-width:7;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
            y="203.02002"
            x="268.98074"
            sodipodi:role="line">SWAP</tspan></text>
@@ -113,6 +111,16 @@
          stdDeviation="3.3999179"
          id="feGaussianBlur1599" />
     </filter>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient852"
+       id="linearGradient948"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.0002564,0,0,1.0002564,-72.401172,43.797488)"
+       x1="280.42776"
+       y1="78.380569"
+       x2="280.27069"
+       y2="137.7144" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -121,17 +129,18 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7"
-     inkscape:cx="1021.8307"
-     inkscape:cy="583.98056"
+     inkscape:zoom="1.4"
+     inkscape:cx="759.59198"
+     inkscape:cy="584.27351"
      inkscape:document-units="mm"
      inkscape:current-layer="g1831"
      showgrid="false"
      inkscape:window-width="1920"
-     inkscape:window-height="1027"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1" />
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:document-rotation="0" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -156,7 +165,7 @@
        style="display:inline">
       <text
          xml:space="preserve"
-         style="font-style:normal;font-weight:normal;font-size:10.58604908px;line-height:0.94999999;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:7.00179577;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill;filter:url(#filter1597)"
+         style="font-style:normal;font-weight:normal;font-size:10.586px;line-height:0.95;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:7.0018;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill;filter:url(#filter1597)"
          x="194.16422"
          y="175.03394"
          id="text1566"
@@ -166,7 +175,7 @@
            sodipodi:role="line"
            x="194.16422"
            y="175.03394"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:57.87040329px;line-height:0.94999999;font-family:'Fredoka One';-inkscape-font-specification:'Fredoka One';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:7.00179577;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:57.8704px;line-height:0.95;font-family:'Fredoka One';-inkscape-font-specification:'Fredoka One';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:7.0018;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
            id="tspan1564">START</tspan></text>
     </g>
     <g
@@ -181,14 +190,46 @@
          id="text1434"
          y="175.03394"
          x="194.16422"
-         style="font-style:normal;font-weight:normal;font-size:10.58604908px;line-height:0.94999999;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:7.00179577;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill;filter:url(#filter1593)"
+         style="font-style:normal;font-weight:normal;font-size:10.586px;line-height:0.95;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:7.0018;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill;filter:url(#filter1593)"
          xml:space="preserve"><tspan
            id="tspan1432"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:57.87040329px;line-height:0.94999999;font-family:'Fredoka One';-inkscape-font-specification:'Fredoka One';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:7.00179577;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:57.8704px;line-height:0.95;font-family:'Fredoka One';-inkscape-font-specification:'Fredoka One';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:7.0018;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
            y="175.03394"
            x="194.16422"
            sodipodi:role="line">START</tspan></text>
     </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Accents">
+    <path
+       sodipodi:nodetypes="cscc"
+       inkscape:connector-curvature="0"
+       id="path2022"
+       d="m 282.33656,133.82844 c -0.12912,-6.05094 1.86407,-9.09992 3.76352,-10.62903 1.68002,-1.35248 3.2867,-1.51597 3.2867,-1.51597 0,0 1.85584,11.0682 -7.05022,12.145 z"
+       style="display:inline;fill:#1f4e00;fill-opacity:1;stroke:none;stroke-width:0.0818441px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       inkscape:export-filename="C:\git\match-three\assets\images\start.png"
+       inkscape:export-xdpi="40.093971"
+       inkscape:export-ydpi="40.093971" />
+    <path
+       sodipodi:nodetypes="cscc"
+       inkscape:connector-curvature="0"
+       id="path2022-2"
+       d="m 107.47846,135.75485 c -4.75959,-1.46159 -6.6264,-3.80572 -7.33028,-5.68417 -0.622594,-1.66145 -0.335414,-2.95861 -0.335414,-2.95861 0,0 9.124304,1.40843 7.665694,8.64278 z"
+       style="display:inline;fill:#1f4e00;fill-opacity:1;stroke:none;stroke-width:0.0673291px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       inkscape:export-filename="C:\git\match-three\assets\images\start.png"
+       inkscape:export-xdpi="40.093971"
+       inkscape:export-ydpi="40.093971" />
+    <path
+       sodipodi:nodetypes="cscc"
+       inkscape:connector-curvature="0"
+       id="path2022-2-0"
+       d="m 105.89095,135.75485 c -3.57444,0.66346 -5.57518,-0.22236 -6.665854,-1.20002 -0.964683,-0.86471 -1.217441,-1.8013 -1.217441,-1.8013 0,0 6.381125,-2.17368 7.883295,3.00132 z"
+       style="display:inline;fill:#1f4e00;fill-opacity:1;stroke:none;stroke-width:0.0491617px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       inkscape:export-filename="C:\git\match-three\assets\images\start.png"
+       inkscape:export-xdpi="40.093971"
+       inkscape:export-ydpi="40.093971" />
   </g>
   <g
      inkscape:label="Title"
@@ -197,17 +238,17 @@
      style="display:inline">
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58604908px;line-height:0.94999999;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:url(#linearGradient854);fill-opacity:1;fill-rule:nonzero;stroke:#1f4e00;stroke-width:7.00179577;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+       style="font-style:normal;font-weight:normal;font-size:10.586px;line-height:0.95;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:url(#linearGradient854);fill-opacity:1;fill-rule:nonzero;stroke:#1f4e00;stroke-width:7.0018;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
        x="194.16422"
        y="175.03394"
        id="text817"
        inkscape:export-xdpi="40.093971"
        inkscape:export-ydpi="40.093971"
-       inkscape:export-filename="F:\git\match-three\assets\start.png"><tspan
+       inkscape:export-filename="C:\git\match-three\assets\images\start.png"><tspan
          sodipodi:role="line"
          x="194.16422"
          y="175.03394"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:57.87040329px;line-height:0.94999999;font-family:'Fredoka One';-inkscape-font-specification:'Fredoka One';text-align:center;text-anchor:middle;fill:url(#linearGradient854);fill-opacity:1;fill-rule:nonzero;stroke:#1f4e00;stroke-width:7.00179577;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:57.8704px;line-height:0.95;font-family:'Fredoka One';-inkscape-font-specification:'Fredoka One';text-align:center;text-anchor:middle;fill:url(#linearGradient854);fill-opacity:1;fill-rule:nonzero;stroke:#1f4e00;stroke-width:7.0018;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
          id="tspan819">START</tspan></text>
   </g>
   <g
@@ -216,18 +257,27 @@
      inkscape:groupmode="layer"
      inkscape:label="Title (Active)">
     <text
-       inkscape:export-filename="F:\git\match-three\assets\start_active.png"
+       inkscape:export-filename="C:\git\match-three\assets\images\start.png"
        inkscape:export-ydpi="40.093971"
        inkscape:export-xdpi="40.093971"
        id="text1829"
        y="175.03394"
-       x="194.16422"
-       style="font-style:normal;font-weight:normal;font-size:10.58604908px;line-height:0.94999999;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:url(#linearGradient854);fill-opacity:1;fill-rule:nonzero;stroke:#1f4e00;stroke-width:7.00179577;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+       x="193.97522"
+       style="font-style:normal;font-weight:normal;font-size:10.586px;line-height:0.95;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:url(#linearGradient948);fill-opacity:1.0;fill-rule:nonzero;stroke:#1f4e00;stroke-width:7.0018;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
        xml:space="preserve"><tspan
          id="tspan1827"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:57.87040329px;line-height:0.94999999;font-family:'Fredoka One';-inkscape-font-specification:'Fredoka One';text-align:center;text-anchor:middle;fill:url(#linearGradient854);fill-opacity:1;fill-rule:nonzero;stroke:#1f4e00;stroke-width:7.00179577;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:57.8704px;line-height:0.95;font-family:'Fredoka One';-inkscape-font-specification:'Fredoka One';text-align:center;text-anchor:middle;fill:url(#linearGradient948);fill-opacity:1.0;fill-rule:nonzero;stroke:#1f4e00;stroke-width:7.0018;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
          y="175.03394"
-         x="194.16422"
+         x="193.97522"
          sodipodi:role="line">START</tspan></text>
+    <path
+       sodipodi:nodetypes="cscc"
+       inkscape:connector-curvature="0"
+       id="path2022-3"
+       d="m 286.37024,132.5553 c 0.84645,-2.90537 2.25463,-4.06047 3.39004,-4.50474 1.00424,-0.39296 1.79508,-0.22983 1.79508,-0.22983 0,0 -0.77579,5.55747 -5.18512,4.73457 z"
+       style="display:inline;fill:#1f4e00;fill-opacity:1;stroke:none;stroke-width:0.040922px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       inkscape:export-filename="C:\git\match-three\assets\images\start.png"
+       inkscape:export-xdpi="40.093971"
+       inkscape:export-ydpi="40.093971" />
   </g>
 </svg>
