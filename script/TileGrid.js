@@ -340,8 +340,16 @@ export default class extends EventEmitter {
                 matchedTiles.push(tile);
             }
         });
+
+        const uniqueMatchedTiles = [];
+        matchedTiles.forEach(tile => {
+            if(!uniqueMatchedTiles.some(t => t.x === tile.x && t.y === tile.y))
+            {
+                uniqueMatchedTiles.push(tile);
+            }
+        });
         
-        return matchedTiles;
+        return uniqueMatchedTiles;
     }
 
     forEachTile(callback)

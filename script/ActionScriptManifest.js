@@ -41,6 +41,14 @@ export default {
 
                     {
                         on: 'match',
+                        filter: (state) => { return state.matches > 1; },
+                        actions: [
+                            { do: 'showScoreDisplay' }
+                        ]
+                    },
+
+                    {
+                        on: 'match',
                         filter: (state) => { return state.matches === 5; },
                         actions: [
                             { do: 'updateGuideExpression', value: 'glee' },
@@ -68,7 +76,6 @@ export default {
 
                 ];
 
-            /*
             // Level 1 (Timer Intro)
             case 1:
 
@@ -81,9 +88,9 @@ export default {
                     `We only have two minutes before the sun dries up all the dew drops!`,
                     { do: 'showTimerDisplay' },
                     { do: 'updateGuideExpression', value: 'default' },
-                    `Collect at least *200 dew drops* in *two minutes*!`,
                     { do: 'unblockTileGrid' },
                     { do: 'startTimer' },
+                    `Collect at least *200 dew drops* in *two minutes*!`,
 
                     // Events
                     {
@@ -112,6 +119,7 @@ export default {
                     }
                 ];
 
+            /*
             // Level 2 (Breaking the Fourth Wall)
             case 2:
 

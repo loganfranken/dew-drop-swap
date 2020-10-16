@@ -72,6 +72,7 @@ export default class {
             const isLastMessage = this.queuedActions.every(a => typeof a !== "string");
 
             this.handleMessage(action, isLastMessage);
+            this.next(context);
         }
 
         // Game action
