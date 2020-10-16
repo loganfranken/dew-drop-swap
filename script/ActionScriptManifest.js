@@ -22,9 +22,9 @@ export default {
                     { do: 'dropTiles' },
                     `But you can help us by collecting as many dew drops as you can!`,
                     { do: 'updateGuideExpression', value: 'default' },
-                    "If you match three or more dew drops of the same color, we can collect them!",
+                    `If you match three or more dew drops of the same color, we can collect them!`,
                     { do: 'unblockTileGrid' },
-                    "To make a match, select two dew drops and swap their places!",
+                    `To make a match, select two dew drops and swap their places!`,
 
                     // Events
                     {
@@ -32,10 +32,10 @@ export default {
                         filter: (state) => { return state.matches === 1; },
                         actions: [
                             { do: 'updateGuideExpression', value: 'glee' },
-                            "You got it! That's it!",
+                            `You got it! That's it!`,
                             { do: 'updateGuideExpression', value: 'default' },
                             { do: 'showScoreDisplay' },
-                            "See if you can collect *100 dew drops*!"
+                            `See if you can collect *100 dew drops*!`
                         ]
                     },
 
@@ -68,6 +68,7 @@ export default {
 
                 ];
 
+            /*
             // Level 1 (Timer Intro)
             case 1:
 
@@ -624,6 +625,7 @@ export default {
                     { do: 'turnOffBackgroundMusic' },
                     { do: 'turnOffLights' }
                 ];
+            */
         }
     }
 
