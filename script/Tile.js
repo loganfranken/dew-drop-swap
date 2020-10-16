@@ -15,6 +15,7 @@ export default class {
 
         this.isActivated = false;
         this.isBlocked = isBlocked;
+        this.hasMatched = false;
 
         this.initialDrag = (typeof initialDrag === "undefined") ? 1 : initialDrag;
         this.hasDragged = (typeof initialDrag === "undefined");

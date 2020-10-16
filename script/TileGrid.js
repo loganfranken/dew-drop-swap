@@ -106,6 +106,7 @@ export default class extends EventEmitter {
         {
             self.matches++;
             self.onTileMatch(context, matchedTiles);
+            matchedTiles.forEach(t => { t.hasMatched = true });
             self.emit('match');
         }
 
@@ -243,6 +244,11 @@ export default class extends EventEmitter {
                 return;
             }
 
+            if(tile.hasMatched)
+            {
+                return;
+            }
+
             const targetTileType = tile.tileType;
             const matchedXTiles = [];
             const matchedYTiles = [];
@@ -334,7 +340,7 @@ export default class extends EventEmitter {
                 matchedTiles.push(tile);
             }
         });
-
+        
         return matchedTiles;
     }
 
