@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="210mm"
@@ -14,31 +13,156 @@
    viewBox="0 0 210 297"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
    sodipodi:docname="tile.svg"
    inkscape:export-filename="F:\git\match-three\assets\tile_03.png"
    inkscape:export-xdpi="27.939905"
    inkscape:export-ydpi="27.939905">
   <defs
-     id="defs2" />
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient966">
+      <stop
+         style="stop-color:#f3eb20;stop-opacity:1"
+         offset="0"
+         id="stop962" />
+      <stop
+         style="stop-color:#f3c01b;stop-opacity:1"
+         offset="1"
+         id="stop964" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient958">
+      <stop
+         style="stop-color:#ff2029;stop-opacity:1;"
+         offset="0"
+         id="stop954" />
+      <stop
+         style="stop-color:#ff7d5b;stop-opacity:1"
+         offset="1"
+         id="stop956" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient941">
+      <stop
+         style="stop-color:#25b810;stop-opacity:1;"
+         offset="0"
+         id="stop937" />
+      <stop
+         style="stop-color:#25eb10;stop-opacity:1"
+         offset="1"
+         id="stop939" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient883">
+      <stop
+         style="stop-color:#0072ce;stop-opacity:1;"
+         offset="0"
+         id="stop879" />
+      <stop
+         style="stop-color:#00a7ce;stop-opacity:1"
+         offset="1"
+         id="stop881" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient883"
+       id="linearGradient887"
+       x1="53.5462"
+       y1="165.50616"
+       x2="62.561928"
+       y2="125.41574"
+       gradientUnits="userSpaceOnUse" />
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter925"
+       x="-1.9200081e-05"
+       width="1.0000384"
+       y="-1.9200081e-05"
+       height="1.0000384">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.00040000168"
+         id="feGaussianBlur927" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter929"
+       x="-1.9656554e-05"
+       width="1.0000393"
+       y="-2.3481282e-05"
+       height="1.000047">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.00040000168"
+         id="feGaussianBlur931" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter933"
+       x="-0.0001200005"
+       width="1.00024"
+       y="-0.0001200005"
+       height="1.00024">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.00040000168"
+         id="feGaussianBlur935" />
+    </filter>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient941"
+       id="linearGradient943"
+       x1="196.97974"
+       y1="398.00012"
+       x2="250.51784"
+       y2="241.42647"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient958"
+       id="linearGradient960"
+       x1="434.3656"
+       y1="394.96967"
+       x2="491.94431"
+       y2="240.41631"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient966"
+       id="linearGradient968"
+       x1="474.7717"
+       y1="490.93414"
+       x2="413.1524"
+       y2="601.04077"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
      bordercolor="#666666"
      borderopacity="1.0"
-     inkscape:pageopacity="0.0"
+     inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="-191.74346"
-     inkscape:cy="635.83857"
+     inkscape:cx="177.57686"
+     inkscape:cy="474.21416"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer12"
+     inkscape:current-layer="g1223"
      showgrid="false"
      inkscape:window-width="1920"
-     inkscape:window-height="1027"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1" />
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:document-rotation="0" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -47,7 +171,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -55,7 +179,7 @@
      inkscape:groupmode="layer"
      id="layer15"
      inkscape:label="Diamond"
-     style="display:none">
+     style="display:inline">
     <g
        inkscape:label="Diamond Base"
        inkscape:groupmode="layer"
@@ -70,19 +194,25 @@
          rx="4.2435856"
          ry="4.2982225"
          clip-path="none"
-         transform="matrix(0.69817857,-0.71592366,0.71591241,0.6981901,0,0)" />
+         transform="matrix(0.69817857,-0.71592366,0.71591241,0.6981901,0,0)"
+         inkscape:export-filename="C:\git\match-three\assets\images\tile_04.png"
+         inkscape:export-xdpi="30.48"
+         inkscape:export-ydpi="30.48" />
     </g>
     <g
        id="g1223"
        inkscape:groupmode="layer"
        inkscape:label="Diamond Accent">
       <path
-         style="opacity:1;fill:#f3c01b;fill-opacity:1;stroke:#1fa71d;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         style="opacity:1;fill:url(#linearGradient968);fill-opacity:1;stroke:#1fa71d;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          clip-path="none"
          d="m 433.58789,479.28516 c -4.12618,0.0254 -8.2224,1.62989 -11.32422,4.81054 l -77.49219,79.46289 c -6.20364,6.36132 -6.01147,16.5406 0.43164,22.82422 l 24.68165,24.07031 a 140.99866,99.190655 0 0 0 81.0664,18.10157 140.99866,99.190655 0 0 0 33.08594,-2.88281 l 40.65234,-41.68555 c 6.20365,-6.36132 6.01148,-16.5406 -0.43164,-22.82422 L 445.0918,483.95703 c -3.22156,-3.14181 -7.37773,-4.69722 -11.50391,-4.67187 z"
          transform="scale(0.26458333)"
          id="rect1221"
-         inkscape:connector-curvature="0" />
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="C:\git\match-three\assets\images\tile_04.png"
+         inkscape:export-xdpi="30.48"
+         inkscape:export-ydpi="30.48" />
     </g>
     <g
        inkscape:groupmode="layer"
@@ -93,7 +223,10 @@
          id="path1011"
          cx="119.46949"
          cy="140.9146"
-         r="4" />
+         r="4"
+         inkscape:export-filename="C:\git\match-three\assets\images\tile_04.png"
+         inkscape:export-xdpi="30.48"
+         inkscape:export-ydpi="30.48" />
     </g>
   </g>
   <g
@@ -115,19 +248,25 @@
          height="50"
          width="50"
          id="rect1206"
-         style="opacity:1;fill:#15a301;fill-opacity:1;stroke:#1fa71d;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         style="opacity:1;fill:#15a301;fill-opacity:1;stroke:#1fa71d;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         inkscape:export-filename="C:\git\match-three\assets\images\tile_03.png"
+         inkscape:export-xdpi="27.939905"
+         inkscape:export-ydpi="27.939905" />
     </g>
     <g
        id="g998"
        inkscape:groupmode="layer"
        inkscape:label="Square Accent">
       <path
-         style="opacity:1;fill:#25b810;fill-opacity:1;stroke:#1fa71d;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         style="opacity:1;fill:url(#linearGradient943);fill-opacity:1;stroke:#1fa71d;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          clip-path="none"
          d="m 128.01953,261.40039 c -11.73654,0 -21.18555,9.56938 -21.18555,21.45703 V 387.2207 a 143.92857,98.571427 0 0 0 111.09375,36.01368 143.92857,98.571427 0 0 0 77.88282,-15.6836 V 282.85742 c 0,-11.88765 -9.44901,-21.45703 -21.18555,-21.45703 z"
          transform="scale(0.26458333)"
          id="rect996"
-         inkscape:connector-curvature="0" />
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="C:\git\match-three\assets\images\tile_03.png"
+         inkscape:export-xdpi="27.939905"
+         inkscape:export-ydpi="27.939905" />
     </g>
     <g
        inkscape:label="Square Shine"
@@ -138,27 +277,33 @@
          cy="79.175339"
          cx="68.955544"
          id="circle1226"
-         style="opacity:0.4;fill:#ffffff;fill-opacity:1;stroke:#1fa71d;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         style="opacity:0.4;fill:#ffffff;fill-opacity:1;stroke:#1fa71d;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         inkscape:export-filename="C:\git\match-three\assets\images\tile_03.png"
+         inkscape:export-xdpi="27.939905"
+         inkscape:export-ydpi="27.939905" />
     </g>
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer8"
      inkscape:label="Circle"
-     style="display:none">
+     style="display:inline">
     <g
        inkscape:groupmode="layer"
        id="layer9"
        inkscape:label="Circle Base"
        style="display:inline">
       <circle
-         style="opacity:1;fill:#015ba3;fill-opacity:1;stroke:#1fa71d;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         style="opacity:1;fill:#015ba3;fill-opacity:1;stroke:#1fa71d;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter925)"
          id="path1027"
          cx="52.796032"
          cy="152.95918"
          r="25"
          inkscape:transform-center-x="-57.730218"
-         inkscape:transform-center-y="-84.99171" />
+         inkscape:transform-center-y="-84.99171"
+         inkscape:export-filename="C:\git\match-three\assets\images\tile_02.png"
+         inkscape:export-xdpi="30.479906"
+         inkscape:export-ydpi="30.479906" />
     </g>
     <g
        style="display:inline"
@@ -166,28 +311,34 @@
        id="g1079"
        inkscape:groupmode="layer">
       <path
-         style="opacity:1;fill:#0072ce;fill-opacity:1;stroke:#1fa71d;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         style="opacity:1;fill:url(#linearGradient887);fill-opacity:1;stroke:#1fa71d;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter929)"
          d="m 52.796259,127.95902 a 25,25 0 0 0 -23.838854,17.48834 27.500003,27.500003 0 0 0 27.1694,23.39546 27.500003,27.500003 0 0 0 20.824568,-9.56014 25,25 0 0 0 0.84491,-6.32364 25,25 0 0 0 -25.000024,-25.00002 z"
          id="circle1077"
-         inkscape:connector-curvature="0" />
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="C:\git\match-three\assets\images\tile_02.png"
+         inkscape:export-xdpi="30.479906"
+         inkscape:export-ydpi="30.479906" />
     </g>
     <g
        inkscape:label="Circle Shine"
        id="g1086"
        inkscape:groupmode="layer">
       <circle
-         r="4"
          cy="140.80872"
          cx="63.342884"
          id="circle1084"
-         style="opacity:0.4;fill:#ffffff;fill-opacity:1;stroke:#1fa71d;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         style="opacity:0.4;fill:#ffffff;fill-opacity:1;stroke:#1fa71d;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter933)"
+         r="4"
+         inkscape:export-filename="C:\git\match-three\assets\images\tile_02.png"
+         inkscape:export-xdpi="30.479906"
+         inkscape:export-ydpi="30.479906" />
     </g>
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer12"
      inkscape:label="Triangle"
-     style="display:none">
+     style="display:inline">
     <g
        inkscape:groupmode="layer"
        id="layer13"
@@ -209,18 +360,24 @@
          d="M 72.430039,46.568451 C 69.096984,49.234895 50.985296,42.158803 50.342615,37.93907 49.699934,33.719337 64.883854,21.572202 68.85959,23.12549 c 3.975736,1.553289 6.903504,20.776516 3.570449,23.442961 z"
          inkscape:transform-center-x="2.9936743"
          inkscape:transform-center-y="-11.502573"
-         transform="matrix(-1.6530258,-1.3975241,1.2838219,-1.7796831,175.14034,252.95396)" />
+         transform="matrix(-1.6530258,-1.3975241,1.2838219,-1.7796831,175.14034,252.95396)"
+         inkscape:export-filename="C:\git\match-three\assets\images\tile_01.png"
+         inkscape:export-xdpi="29.856422"
+         inkscape:export-ydpi="29.856422" />
     </g>
     <g
        inkscape:label="Triangle Accent"
        id="g1174"
        inkscape:groupmode="layer">
       <path
-         style="opacity:1;fill:#ff2029;fill-opacity:1;stroke:#1fa71d;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         style="opacity:1;fill:url(#linearGradient960);fill-opacity:1;stroke:#1fa71d;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          d="m 435.39062,260.23633 c -25.0053,0.24465 -72.61241,79.71008 -88.60156,133.69531 a 150.00766,115.15739 0 0 0 105.75977,33.60352 150.00766,115.15739 0 0 0 79.69922,-17.66211 C 522.13254,358.03478 463.33181,259.96295 435.39062,260.23633 Z"
          transform="scale(0.26458333)"
          id="path1172"
-         inkscape:connector-curvature="0" />
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="C:\git\match-three\assets\images\tile_01.png"
+         inkscape:export-xdpi="29.856422"
+         inkscape:export-ydpi="29.856422" />
     </g>
     <g
        inkscape:label="Triangle Shine"
@@ -232,7 +389,10 @@
          cy="81.84803"
          cx="118.13313"
          id="circle1190"
-         style="opacity:0.4;fill:#ffffff;fill-opacity:1;stroke:#1fa71d;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         style="opacity:0.4;fill:#ffffff;fill-opacity:1;stroke:#1fa71d;stroke-width:0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         inkscape:export-filename="C:\git\match-three\assets\images\tile_01.png"
+         inkscape:export-xdpi="29.856422"
+         inkscape:export-ydpi="29.856422" />
     </g>
   </g>
 </svg>
