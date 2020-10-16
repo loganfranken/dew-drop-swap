@@ -148,7 +148,6 @@ export default {
                     }
                 ];
 
-            /*
             // Level 2 (Breaking the Fourth Wall)
             case 2:
 
@@ -164,7 +163,7 @@ export default {
                     { do: 'dropTiles' },
                     { do: 'updateGuideExpression', value: 'default' },
                     `But we know you can do it!`,
-                    `This round you'll only have *30 seconds* to collect at least *300 dew drops*!`,
+                    `This round you'll only have *30 seconds* to collect *100 dew drops*!`,
                     { do: 'unblockTileGrid' },
                     { do: 'startTimer' },
 
@@ -206,6 +205,7 @@ export default {
                     }
                 ];
 
+            /*
             // Level 3 (Easy Win)
             case 3:
 
