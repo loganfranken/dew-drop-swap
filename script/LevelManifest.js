@@ -4,13 +4,13 @@ export default [
 
     // 0
     {
-        score: 100,
+        score: 50,
         behavior: TileGenerationBehavior.None
     },
 
     // 1
     {
-        score: 200,
+        score: 100,
         timer: 120,
         behavior: TileGenerationBehavior.None
     },

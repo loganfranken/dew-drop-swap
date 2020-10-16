@@ -1,5 +1,4 @@
 import LevelManifest from './LevelManifest';
-import TileGenerationBehavior from './TileGenerationBehavior';
 
 export default {
 
@@ -29,19 +28,19 @@ export default {
                     // Events
                     {
                         on: 'match',
-                        filter: (state) => { return state.matches === 1; },
+                        filter: (state) => (state.matches === 1),
                         actions: [
                             { do: 'updateGuideExpression', value: 'glee' },
                             `You got it! That's it!`,
                             { do: 'updateGuideExpression', value: 'default' },
                             { do: 'showScoreDisplay' },
-                            `See if you can collect *100 dew drops*!`
+                            `See if you can collect *50 dew drops*!`
                         ]
                     },
 
                     {
                         on: 'match',
-                        filter: (state) => { return state.matches > 1; },
+                        filter: (state) => (state.matches > 1),
                         actions: [
                             { do: 'showScoreDisplay' }
                         ]
@@ -49,7 +48,7 @@ export default {
 
                     {
                         on: 'match',
-                        filter: (state) => { return state.matches === 5; },
+                        filter: (state) => (state.matches === 5),
                         actions: [
                             { do: 'updateGuideExpression', value: 'glee' },
                             `*Wow!* Look at you go!`,
@@ -59,7 +58,7 @@ export default {
 
                     {
                         on: 'match',
-                        filter: (state) => { return state.score > (LevelManifest[0].score * 0.5) },
+                        filter: (state) => (state.score > (LevelManifest[0].score * 0.5)),
                         actions: [
                             { do: 'updateGuideExpression', value: 'glee' },
                             `*Doozle!* You're almost there!`,
@@ -90,9 +89,39 @@ export default {
                     { do: 'updateGuideExpression', value: 'default' },
                     { do: 'unblockTileGrid' },
                     { do: 'startTimer' },
-                    `Collect at least *200 dew drops* in *two minutes*!`,
+                    `Collect at least *100 dew drops* in *two minutes*!`,
 
                     // Events
+                    {
+                        on: 'match',
+                        filter: (state) => (state.matches === 5),
+                        actions: [
+                            { do: 'updateGuideExpression', value: 'glee' },
+                            `*Doozle!* What a match!`,
+                            { do: 'updateGuideExpression', value: 'default' }
+                        ]
+                    },
+
+                    {
+                        on: 'match',
+                        filter: (state) => (state.score > (LevelManifest[1].score * 0.5)),
+                        actions: [
+                            { do: 'updateGuideExpression', value: 'glee' },
+                            `You're halfway there! You can do it!`,
+                            { do: 'updateGuideExpression', value: 'default' }
+                        ]
+                    },
+
+                    {
+                        on: 'tick',
+                        filter: (state) => (state.ticks < 30),
+                        actions: [
+                            { do: 'updateGuideExpression', value: 'nervous' },
+                            `Only *30 seconds* left! You can do this!`,
+                            { do: 'updateGuideExpression', value: 'default' }
+                        ]
+                    },
+
                     {
                         on: 'gameOver',
                         actions: [
