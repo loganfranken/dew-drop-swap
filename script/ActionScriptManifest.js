@@ -205,7 +205,6 @@ export default {
                     }
                 ];
 
-            /*
             // Level 3 (Easy Win)
             case 3:
 
@@ -215,27 +214,27 @@ export default {
                     { do: 'updateGuideExpression', value: 'amused' },
                     `Okay, for this next round, let me set you up:`,
                     { do: 'updateGuideExpression', value: 'neutral' },
-                    "Remember, you've been winning the last few rounds and you're gaining confidence.",
+                    `Remember, you've been winning the last few rounds and you're gaining confidence.`,
                     { do: 'updateGuideExpression', value: 'amused' },
-                    "In this round, it's going to be easy for you to get combos.",
-                    "So the idea here is that you're going to get a little *too* confident, right?",
+                    `In this round, it's going to be easy for you to get combos.`,
+                    `So the idea here is that you're going to get a little *too* confident, right?`,
                     { do: 'updateGuideExpression', value: 'confused' },
-                    "Like a little full of yourself, alright?",
+                    `Like a little full of yourself, alright?`,
                     { do: 'updateGuideExpression', value: 'amused' },
-                    "Okay, great! Let's do this:",
+                    `Okay, great! Let's do this:`,
                     { do: 'updateGuideExpression', value: 'neutral' },
                     "...",
                     "...",
                     "...",
                     { do: 'updateGuideExpression', value: 'default' },
-                    "*Oh doozle woozle!*",
+                    `*Oh doozle woozle!*`,
                     { do: 'updateGuideExpression', value: 'surprise' },
-                    "You're so amazing!",
+                    `You're so amazing!`,
                     { do: 'updateGuideExpression', value: 'default' },
                     { do: 'dropTiles' },
-                    "You have *two minutes* again, but this time you'll have to collect *300 dew drops*.",
+                    `You have *two minutes* again, but this time you'll have to collect *200 dew drops*.`,
                     { do: 'updateGuideExpression', value: 'confused' },
-                    "Can you do it?",
+                    `Can you do it?`,
                     { do: 'updateGuideExpression', value: 'default' },
                     { do: 'unblockTileGrid' },
                     { do: 'startTimer' },
@@ -265,6 +264,39 @@ export default {
                     },
 
                     {
+                        on: 'match',
+                        filter: (state) => (state.score > (LevelManifest[1].score * 0.25)),
+                        actions: [
+                            { do: 'updateGuideExpression', value: 'glee' },
+                            `Look at you go! You're our hero!`,
+                            { do: 'updateGuideExpression', value: 'default' }
+                        ]
+                    },
+
+                    {
+                        on: 'match',
+                        filter: (state) => (state.score > (LevelManifest[1].score * 0.5)),
+                        actions: [
+                            { do: 'updateGuideExpression', value: 'surprise' },
+                            `*Wow!* You're unstoppable!`,
+                            { do: 'updateGuideExpression', value: 'default' }
+                        ]
+                    },
+
+                    {
+                        on: 'match',
+                        filter: (state) => (state.score > (LevelManifest[1].score * 0.75)),
+                        actions: [
+                            `*Oozle!*`,
+                            { do: 'updateGuideExpression', value: 'glee' },
+                            `*Woozle!*`,
+                            { do: 'updateGuideExpression', value: 'surprise' },
+                            `*Doozle!*`,
+                            { do: 'updateGuideExpression', value: 'default' }
+                        ]
+                    },
+
+                    {
                         on: 'win',
                         actions: [
                             { do: 'endLevel' }
@@ -272,6 +304,7 @@ export default {
                     }
                 ];
 
+            /*
             // Level 4 (Losing Confidence)
             case 4:
 

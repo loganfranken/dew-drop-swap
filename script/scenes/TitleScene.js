@@ -148,11 +148,13 @@ export default class extends Phaser.Scene {
             });
         });
 
-        // Display the flash from the title slam
-        const introSlideSound = this.sound.add('intro_slide');
         this.game.backgroundMusic = this.sound.add('background_music');
+        this.game.backgroundMusic.loop = true;
         this.game.backgroundMusic.play();
 
+        const introSlideSound = this.sound.add('intro_slide');
+
+        // Display the flash from the title slam
         introTimeline.add({
             targets: flashBackdropGraphics,
             alpha: 1,
