@@ -99,6 +99,7 @@ export default class extends Phaser.Scene {
         this.load.audio('tile_select', 'assets/sounds/tile_select.wav');
         this.load.audio('warning_tick', 'assets/sounds/warning_tick.wav');
         this.load.audio('timer_run_out', 'assets/sounds/timer_run_out.wav');
+        this.load.audio('lights_off', 'assets/sounds/lights_out.wav');
     }
 
     init(data)
@@ -143,6 +144,7 @@ export default class extends Phaser.Scene {
         this.input.on('pointerdown', () => { self.director.next(self); });
 
         this.tileSelectSound = this.sound.add('tile_select');
+        this.lightsOffSound = this.sound.add('lights_off');
 
         // Mute Button
         const muteControl = new MuteControl(40, 640);
@@ -394,6 +396,8 @@ export default class extends Phaser.Scene {
     
     turnOffLights()
     {
+        this.lightsOffSound.play();
+
         this.lights.enable().setAmbientColor(0x555555);
         this.background.setPipeline('Light2D');
         this.lights.addLight(550, 900, 500).setColor(0xffffff).setIntensity(2);

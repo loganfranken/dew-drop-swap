@@ -733,9 +733,10 @@ export default {
                     { do: 'unblockTileGrid' },
                     { wait: 30000 },
                     { do: 'turnOffBackgroundMusic' },
+                    { wait: 30000 },
                     { do: 'turnOffLights' }
                 ];
-            */
+                */
         }
     }
 
