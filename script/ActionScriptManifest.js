@@ -1,4 +1,5 @@
 import LevelManifest from './LevelManifest';
+import TileGenerationBehavior from './TileGenerationBehavior';
 
 export default {
 
@@ -287,9 +288,26 @@ export default {
                         on: 'match',
                         filter: (state) => (state.score > (LevelManifest[1].score * 0.75)),
                         actions: [
+                            { do: 'updateGuideExpression', value: 'glee' },
                             `*Oozle!*`,
+                            { do: 'updateGuideExpression', value: 'default' }
+                        ]
+                    },
+
+                    {
+                        on: 'match',
+                        filter: (state) => (state.score > (LevelManifest[1].score * 0.85)),
+                        actions: [
                             { do: 'updateGuideExpression', value: 'glee' },
                             `*Woozle!*`,
+                            { do: 'updateGuideExpression', value: 'default' }
+                        ]
+                    },
+
+                    {
+                        on: 'match',
+                        filter: (state) => (state.score > (LevelManifest[1].score * 0.95)),
+                        actions: [
                             { do: 'updateGuideExpression', value: 'surprise' },
                             `*Doozle!*`,
                             { do: 'updateGuideExpression', value: 'default' }
@@ -304,7 +322,6 @@ export default {
                     }
                 ];
 
-            /*
             // Level 4 (Losing Confidence)
             case 4:
 
@@ -323,7 +340,8 @@ export default {
                     `Alright, that's your set up: now let me get into the right headspace.`,
                     { do: 'updateGuideExpression', value: 'thoughtful' },
                     `...oh doozle woo-`,
-                    `...no, no, it's doozy-woozy here...`,
+                    `...oh wait...`,
+                    `...no, doozy-woozy...`,
                     `...yeah, doozy-woozy, you're our hero...`,
                     { do: 'updateGuideExpression', value: 'amused' },
                     `Alright! Got it!`,
@@ -340,14 +358,35 @@ export default {
                     `You've done so much for us, but we still need your help!`,
                     { do: 'unblockTileGrid' },
                     { do: 'startTimer' },
-                    `We need you to collect *400 dew drops* in *two minutes*!`,
+                    `We need you to collect *300 dew drops* in *two minutes*!`,
 
                     // Events
                     {
                         on: 'match',
-                        filter: (state) => { return state.score > (LevelManifest[0].score * 0.5) },
+                        filter: (state) => { return state.score > (LevelManifest[4].score * 0.25) },
                         actions: [
-                            { do: 'updateTileGenerationBehavior', value: TileGenerationBehavior.Hard }
+                            { do: 'updateGuideExpression', value: 'glee' },
+                            `Nothing can stop you!`,
+                            { do: 'updateGuideExpression', value: 'default' }
+                        ]
+                    },
+
+                    {
+                        on: 'match',
+                        filter: (state) => { return state.score > (LevelManifest[4].score * 0.5) },
+                        actions: [
+                            { do: 'updateGuideExpression', value: 'neutral' },
+                            { do: 'updateTileGenerationBehavior', value: TileGenerationBehavior.Hard },
+                            `Alright, we're going to crank up that difficulty now.`,
+                            { do: 'updateGuideExpression', value: 'default' }
+                        ]
+                    },
+
+                    {
+                        on: 'match',
+                        filter: (state) => { return state.score > (LevelManifest[4].score * 0.75) },
+                        actions: [
+                            `Come on! You can do it!`
                         ]
                     },
 
@@ -379,6 +418,7 @@ export default {
                     }
                 ];
 
+            /*
             // Level 5 (Fall From Grace)
             case 5:
 
