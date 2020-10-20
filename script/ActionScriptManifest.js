@@ -418,7 +418,6 @@ export default {
                     }
                 ];
 
-            /*
             // Level 5 (Fall From Grace)
             case 5:
 
@@ -450,7 +449,7 @@ export default {
                     { do: 'updateGuideExpression', value: 'default' },
                     { do: 'unblockTileGrid' },
                     { do: 'startTimer' },
-                    `We need you to collect *500 dew drops* in *two minutes*!`,
+                    `We need you to collect *400 dew drops* in *two minutes*!`,
 
                     // Events
                     {
@@ -474,20 +473,32 @@ export default {
                     },
 
                     {
-                        on: 'win',
+                        on: 'match',
+                        filter: (state) => { return state.score > (LevelManifest[4].score * 0.75) },
                         actions: [
-                            { do: 'blockTileGrid' },
-                            { do: 'updateGuideExpression', value: 'confused' },
-                            `Oh?`,
-                            `A win?`,
                             { do: 'updateGuideExpression', value: 'neutral' },
-                            `We had a loss planned, but...`,
-                            `But, yeah, I think a win can work too.`,
-                            { do: 'endLevel' }
+                            `Oh, wait, hold on: you're not supposed to be doing well this round, remember?`,
+                            { do: 'updateGuideExpression', value: 'amused' },
+                            `Hey, I know it can be tough when you get in the flow.`,
+                            { do: 'updateGuideExpression', value: 'neutral' },
+                            `Let's just lock the tiles until the end.`,
+                            { do: 'blockTileGrid' },
+                            { do: 'updateGuideExpression', value: 'default' },
+                        ]
+                    },
+
+                    {
+                        on: 'tick',
+                        filter: (state) => (state.ticks < 15),
+                        actions: [
+                            { do: 'updateGuideExpression', value: 'nervous' },
+                            `You're so close! Don't give up!`,
+                            { do: 'updateGuideExpression', value: 'default' }
                         ]
                     }
                 ];
 
+            /*
             // Level 6 (Wallowing)
             case 6:
 

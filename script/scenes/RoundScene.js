@@ -43,6 +43,8 @@ export default class extends Phaser.Scene {
         this.totalMatches = null;
 
         this.tileSelectSound = null;
+        this.lightsOffSound = null;
+        this.roundClearSound = null;
     }
 
     preload()
@@ -100,6 +102,7 @@ export default class extends Phaser.Scene {
         this.load.audio('warning_tick', 'assets/sounds/warning_tick.wav');
         this.load.audio('timer_run_out', 'assets/sounds/timer_run_out.wav');
         this.load.audio('lights_off', 'assets/sounds/lights_out.wav');
+        this.load.audio('round_clear', 'assets/sounds/intro_slide.wav');
     }
 
     init(data)
@@ -145,6 +148,7 @@ export default class extends Phaser.Scene {
 
         this.tileSelectSound = this.sound.add('tile_select');
         this.lightsOffSound = this.sound.add('lights_off');
+        this.roundClearSound = this.sound.add('round_clear');
 
         // Mute Button
         const muteControl = new MuteControl(40, 640);
@@ -386,6 +390,7 @@ export default class extends Phaser.Scene {
             }
         });
 
+        this.roundClearSound.play();
         endLevelTimeline.play();
     }
 
