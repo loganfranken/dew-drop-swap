@@ -498,7 +498,6 @@ export default {
                     }
                 ];
 
-            /*
             // Level 6 (Wallowing)
             case 6:
 
@@ -542,6 +541,34 @@ export default {
                     },
 
                     {
+                        on: 'tick',
+                        filter: (state) => (state.ticks < 45),
+                        actions: [
+                            { do: 'updateGuideExpression', value: 'nervous' },
+                            `Don't worry! You can do it!`,
+                            { do: 'updateGuideExpression', value: 'default' }
+                        ]
+                    },
+
+                    {
+                        on: 'tick',
+                        filter: (state) => (state.ticks < 30),
+                        actions: [
+                            { do: 'updateGuideExpression', value: 'nervous' },
+                            `You just need to get a few matches!`,
+                        ]
+                    },
+
+                    {
+                        on: 'tick',
+                        filter: (state) => (state.ticks < 15),
+                        actions: [
+                            { do: 'updateGuideExpression', value: 'sadness' },
+                            `Please, we're running out of time!`,
+                        ]
+                    },
+
+                    {
                         on: 'gameOver',
                         actions: [
                             { do: 'blockTileGrid' },
@@ -560,6 +587,7 @@ export default {
                     }
                 ];
 
+                /*
             // Level 7 (Pheonix Rises)
             case 7:
 

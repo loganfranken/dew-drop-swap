@@ -61,8 +61,8 @@ export default class {
                 targets: self.image,
                 x: x,
                 y: y,
-                ease: isDrop ? 'Linear': 'Power1',
-                duration: (isDrop ? Math.max(yDiff, 150) : 500),
+                ease: isDrop ? 'Sine' : 'Power1',
+                duration: (isDrop ? Math.max(150, yDiff) : 500),
                 onComplete: () => { resolve() }
             };
 
