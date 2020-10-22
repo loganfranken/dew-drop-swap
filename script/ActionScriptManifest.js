@@ -126,6 +126,7 @@ export default {
                     {
                         on: 'gameOver',
                         actions: [
+                            { do: 'pauseBackgroundMusic' },
                             { do: 'blockTileGrid' },
                             { do: 'updateGuideExpression', value: 'confused' },
                             `Uhh?`,
@@ -137,7 +138,8 @@ export default {
                             `You're supposed to win this time.`,
                             `Well, whatever, I'm sure we can just fix it up in post.`,
                             `Let's just move onto the next round.`,
-                            { do: 'endLevel' }
+                            { do: 'endLevel' },
+                            { do: 'resumeBackgroundMusic' }
                         ]
                     },
 
@@ -172,6 +174,7 @@ export default {
                     {
                         on: 'gameOver',
                         actions: [
+                            { do: 'pauseBackgroundMusic' },
                             { do: 'blockTileGrid' },
                             { do: 'updateGuideExpression', value: 'confused' },
                             `Wait, wait, sorry, hold on.`,
@@ -189,6 +192,7 @@ export default {
                     {
                         on: 'win',
                         actions: [
+                            { do: 'pauseBackgroundMusic' },
                             { do: 'updateGuideExpression', value: 'confused' },
                             `Wait, is that...`,
                             { do: 'updateGuideExpression', value: 'neutral' },
@@ -218,15 +222,16 @@ export default {
                     `Remember, you've been winning the last few rounds and you're gaining confidence.`,
                     { do: 'updateGuideExpression', value: 'amused' },
                     `In this round, it's going to be easy for you to get combos.`,
-                    `So the idea here is that you're going to get a little *too* confident, right?`,
+                    `So you're going to get a little *too* confident, right?`,
                     { do: 'updateGuideExpression', value: 'confused' },
-                    `Like a little full of yourself, alright?`,
+                    `Like a little full of yourself, yeah?`,
                     { do: 'updateGuideExpression', value: 'amused' },
                     `Okay, great! Let's do this:`,
                     { do: 'updateGuideExpression', value: 'neutral' },
                     "...",
                     "...",
                     "...",
+                    { do: 'resumeBackgroundMusic' },
                     { do: 'updateGuideExpression', value: 'default' },
                     `*Oh doozle woozle!*`,
                     { do: 'updateGuideExpression', value: 'surprise' },
@@ -247,6 +252,7 @@ export default {
                     {
                         on: 'gameOver',
                         actions: [
+                            { do: 'pauseBackgroundMusic' },
                             { do: 'blockTileGrid' },
                             { do: 'updateGuideExpression', value: 'confused' },
                             `Oh, uhh?`,
@@ -260,6 +266,7 @@ export default {
                             { do: 'updateTimer', value: 1 },
                             { do: 'stopTimer' },
                             { do: 'unblockTileGrid' },
+                            { do: 'resumeBackgroundMusic' },
                             `Go ahead and finish out the round and we'll edit it together later.`
                         ]
                     },
@@ -326,6 +333,7 @@ export default {
             case 4:
 
                 return [
+                    { do: 'pauseBackgroundMusic' },
                     { do: 'updateGuideExpression', value: 'amused' },
                     `Okay, okay, great stuff.`,
                     { do: 'updateGuideExpression', value: 'neutral' },
@@ -349,6 +357,7 @@ export default {
                     `...`,
                     `...`,
                     `...`,
+                    { do: 'resumeBackgroundMusic' },
                     { do: 'updateGuideExpression', value: 'surprise' },
                     `*Doozy-woozy!*`,
                     { do: 'updateGuideExpression', value: 'glee' },
@@ -358,7 +367,7 @@ export default {
                     `You've done so much for us, but we still need your help!`,
                     { do: 'unblockTileGrid' },
                     { do: 'startTimer' },
-                    `We need you to collect *300 dew drops* in *two minutes*!`,
+                    `We need you to collect *250 dew drops* in *two minutes*!`,
 
                     // Events
                     {
@@ -393,6 +402,7 @@ export default {
                     {
                         on: 'gameOver',
                         actions: [
+                            { do: 'pauseBackgroundMusic' },
                             { do: 'blockTileGrid' },
                             { do: 'updateGuideExpression', value: 'confused' },
                             `Oh, a game over?`,
@@ -406,6 +416,7 @@ export default {
                             { do: 'updateTimer', value: 1 },
                             { do: 'stopTimer' },
                             { do: 'unblockTileGrid' },
+                            { do: 'resumeBackgroundMusic' },
                             `Just go ahead and finish this off as a win.`
                         ]
                     },
@@ -422,6 +433,7 @@ export default {
             case 5:
 
                 return [
+                    { do: 'pauseBackgroundMusic' },
                     { do: 'updateGuideExpression', value: 'amused' },
                     `Wow, great stuff.`,
                     `I know this is cliché, but it really feels so authentic.`,
@@ -437,6 +449,7 @@ export default {
                     `...`,
                     `...`,
                     `...`,
+                    { do: 'resumeBackgroundMusic' },
                     { do: 'updateGuideExpression', value: 'glee' },
                     `*Doozle!*`,
                     `*Woozle!*`,
@@ -449,7 +462,7 @@ export default {
                     { do: 'updateGuideExpression', value: 'default' },
                     { do: 'unblockTileGrid' },
                     { do: 'startTimer' },
-                    `We need you to collect *400 dew drops* in *two minutes*!`,
+                    `We need you to collect *300 dew drops* in *two minutes*!`,
 
                     // Events
                     {
@@ -502,6 +515,7 @@ export default {
             case 6:
 
                 return [
+                    { do: 'pauseBackgroundMusic' },
                     { do: 'updateGuideExpression', value: 'neutral' },
                     `Okay, let's move right into the next scene:`,
                     `Here, you are wallowing, right?`,
@@ -512,13 +526,14 @@ export default {
                     { do: 'updateGuideExpression', value: 'neutral' },
                     `Alright, great: let me find my place here...`,
                     { do: 'updateGuideExpression', value: 'thoughtful' },
-                    `...I believed in you, but my faith is faltering...`,
-                    `...I'm keeping a brave face, but I'm losing confidence...`,
+                    `...yes, yes, my faith is faltering...`,
+                    `...keeping a brave face...`,
                     { do: 'updateGuideExpression', value: 'amused' },
                     `Okay, I'm ready!`,
                     `...`,
                     `...`,
                     `...`,
+                    { do: 'resumeBackgroundMusic' },
                     { do: 'updateGuideExpression', value: 'default' },
                     `Don't worry, that was a tough one!`,
                     { do: 'dropTiles' },
@@ -587,12 +602,11 @@ export default {
                     }
                 ];
 
-                /*
             // Level 7 (Pheonix Rises)
             case 7:
 
                 return [
-
+                    { do: 'pauseBackgroundMusic' },
                     { do: 'updateGuideExpression', value: 'amused' },
                     `Wow, I'm really feeling it.`,
                     `How about you?`,
@@ -617,6 +631,7 @@ export default {
                     `...`,
                     `...`,
                     `...`,
+                    { do: 'resumeBackgroundMusic' },
                     { do: 'updateGuideExpression', value: 'despair' },
                     `Oh, boozle...`,
                     `What will we do?`,
@@ -625,7 +640,7 @@ export default {
                     { do: 'updateGuideExpression', value: 'despair' },
                     `We have one more chance...`,
                     { do: 'dropTiles' },
-                    `Please! Save our kingdom! Just get *50 dew drops* in *two minutes*!`,
+                    `Please! Save our kingdom! Just get *30 dew drops* in *two minutes*!`,
                     { do: 'unblockTileGrid' },
                     { do: 'startTimer' },
 
@@ -674,11 +689,12 @@ export default {
                     }
                 ];
 
-            
+            /*
             // Level 8 (Victory Lap)
             case 8:
 
                 return [
+                    { do: 'pauseBackgroundMusic' },
                     { do: 'updateGuideExpression', value: 'amused' },
                     `Hey, our hero is back!`,
                     `Very moving work.`,
@@ -703,6 +719,7 @@ export default {
                     `...`,
                     `...`,
                     `...`,
+                    { do: 'resumeBackgroundMusic' },
                     { do: 'updateGuideExpression', value: 'glee' },
                     `*Oh doozie woozie!*`,
                     { do: 'updateGuideExpression', value: 'default' },
@@ -743,6 +760,7 @@ export default {
             case 9:
 
                 return [
+                    { do: 'pauseBackgroundMusic' },
                     { do: 'updateGuideExpression', value: 'amused' },
                     `And that's a wrap!`,
                     { do: 'updateGuideExpression', value: 'neutral' },
@@ -771,7 +789,7 @@ export default {
                     { do: 'hideGuide' },
                     { do: 'unblockTileGrid' },
                     { wait: 30000 },
-                    { do: 'turnOffBackgroundMusic' },
+                    { do: 'pauseBackgroundMusic' },
                     { wait: 30000 },
                     { do: 'turnOffLights' }
                 ];

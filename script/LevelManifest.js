@@ -31,14 +31,14 @@ export default [
 
     // 4
     {
-        score: 300,
+        score: 250,
         timer: 120,
         behavior: TileGenerationBehavior.EasyWin
     },
 
     // 5
     {
-        score: 400,
+        score: 300,
         timer: 120,
         behavior: TileGenerationBehavior.Hard
     },
@@ -53,7 +53,7 @@ export default [
 
     // 7
     {
-        score: 50,
+        score: 30,
         timer: 120,
         behavior: TileGenerationBehavior.PreSet,
         blockMatching: true

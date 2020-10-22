@@ -192,8 +192,12 @@ export default class {
                 this.scene.turnOffLights();
                 break;
 
-            case 'turnOffBackgroundMusic':
-                this.scene.turnOffBackgroundMusic();
+            case 'pauseBackgroundMusic':
+                this.scene.pauseBackgroundMusic();
+                break;
+
+            case 'resumeBackgroundMusic':
+                this.scene.resumeBackgroundMusic();
                 break;
         }
     }

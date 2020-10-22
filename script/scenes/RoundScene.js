@@ -408,8 +408,13 @@ export default class extends Phaser.Scene {
         this.lights.addLight(550, 900, 500).setColor(0xffffff).setIntensity(2);
     }
 
-    turnOffBackgroundMusic()
+    pauseBackgroundMusic()
     {
         this.game.backgroundMusic.pause();
+    }
+
+    resumeBackgroundMusic()
+    {
+        this.game.backgroundMusic.resume();
     }
 }
