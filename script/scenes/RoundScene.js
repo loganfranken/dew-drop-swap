@@ -91,18 +91,18 @@ export default class extends Phaser.Scene {
         this.load.image('expression_thoughtful', 'assets/images/expression_thoughtful.png');
 
         // Sound Effects
-        this.load.audio('match', 'assets/sounds/match.wav');
-        this.load.audio('match_combo_01', 'assets/sounds/match_combo_01.wav');
-        this.load.audio('match_combo_02', 'assets/sounds/match_combo_02.wav');
-        this.load.audio('match_combo_03', 'assets/sounds/match_combo_03.wav');
-        this.load.audio('match_combo_04', 'assets/sounds/match_combo_04.wav');
-        this.load.audio('match_combo_05', 'assets/sounds/match_combo_05.wav');
-        this.load.audio('swap', 'assets/sounds/swap.wav');
-        this.load.audio('tile_select', 'assets/sounds/tile_select.wav');
-        this.load.audio('warning_tick', 'assets/sounds/warning_tick.wav');
-        this.load.audio('timer_run_out', 'assets/sounds/timer_run_out.wav');
-        this.load.audio('lights_off', 'assets/sounds/lights_out.wav');
-        this.load.audio('round_clear', 'assets/sounds/intro_slide.wav');
+        this.load.audio('match', 'assets/sounds/match.mp3');
+        this.load.audio('match_combo_01', 'assets/sounds/match_combo_01.mp3');
+        this.load.audio('match_combo_02', 'assets/sounds/match_combo_02.mp3');
+        this.load.audio('match_combo_03', 'assets/sounds/match_combo_03.mp3');
+        this.load.audio('match_combo_04', 'assets/sounds/match_combo_04.mp3');
+        this.load.audio('match_combo_05', 'assets/sounds/match_combo_05.mp3');
+        this.load.audio('swap', 'assets/sounds/swap.mp3');
+        this.load.audio('tile_select', 'assets/sounds/tile_select.mp3');
+        this.load.audio('warning_tick', 'assets/sounds/warning_tick.mp3');
+        this.load.audio('timer_run_out', 'assets/sounds/timer_run_out.mp3');
+        this.load.audio('lights_off', 'assets/sounds/lights_out.mp3');
+        this.load.audio('round_clear', 'assets/sounds/intro_slide.mp3');
     }
 
     init(data)

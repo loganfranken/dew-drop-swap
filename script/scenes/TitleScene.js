@@ -32,11 +32,11 @@ export default class extends Phaser.Scene {
         this.load.image('icon_audio_mute', 'assets/images/icon_audio_mute.png');
 
         // Music
-        this.load.audio('background_music', 'assets/sounds/background_music.wav');
+        this.load.audio('background_music', 'assets/sounds/background_music.mp3');
 
         // Sound Effects
-        this.load.audio('select', 'assets/sounds/select.wav');
-        this.load.audio('intro_slide', 'assets/sounds/intro_slide.wav');
+        this.load.audio('select', 'assets/sounds/select.mp3');
+        this.load.audio('intro_slide', 'assets/sounds/intro_slide.mp3');
     }
 
     create()
