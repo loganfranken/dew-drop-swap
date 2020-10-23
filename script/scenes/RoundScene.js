@@ -1,14 +1,12 @@
 import ActionScriptManifest from '../ActionScriptManifest';
 import ActionQueue from '../ActionQueue';
 import Director from '../Director';
-import FontStyleManifest from '../FontStyleManifest';
 import Guide from '../Guide';
 import LevelManifest from '../LevelManifest';
 import MuteControl from '../MuteControl';
 import ScoreDisplay from '../ScoreDisplay';
 import TileGrid from '../TileGrid';
 import Timer from '../Timer';
-import WebFontLoader from 'webfontloader';
 import EventEmitter from '../EventEmitter';
 
 export default class extends Phaser.Scene {
@@ -45,64 +43,6 @@ export default class extends Phaser.Scene {
         this.tileSelectSound = null;
         this.lightsOffSound = null;
         this.roundClearSound = null;
-    }
-
-    preload()
-    {
-        WebFontLoader.load({
-            google: {
-                families: [FontStyleManifest.Default.googleFontName]
-            }
-        });
-
-        // Images: Tiles
-        this.load.image('tile_01', 'assets/images/tile_01.png');
-        this.load.image('tile_02', 'assets/images/tile_02.png');
-        this.load.image('tile_03', 'assets/images/tile_03.png');
-        this.load.image('tile_04', 'assets/images/tile_04.png');
-
-        // Images: Guide
-        this.load.image('guide_character', 'assets/images/guide.png');
-
-        // Images: Background
-        this.load.image('background', [ 'assets/images/background.png', 'assets/images/background_n.png' ]);
-
-        // Images: Round Clear
-        this.load.image('round_clear', 'assets/images/round_clear.png');
-        this.load.image('round_clear_backdrop', 'assets/images/round_clear_backdrop.png');
-
-        // Images: Icons
-        this.load.image('icon_tile', 'assets/images/icon_tile.png');
-        this.load.image('icon_timer', 'assets/images/icon_timer.png');
-        this.load.image('icon_timer_warning', 'assets/images/icon_timer_warning.png');
-        this.load.image('icon_audio', 'assets/images/icon_audio.png');
-        this.load.image('icon_audio_mute', 'assets/images/icon_audio_mute.png');
-
-        // Images: Expressions
-        this.load.image('expression_default', 'assets/images/expression_default.png');
-        this.load.image('expression_surprise', 'assets/images/expression_surprise.png');
-        this.load.image('expression_sadness', 'assets/images/expression_sadness.png');
-        this.load.image('expression_despair', 'assets/images/expression_despair.png');
-        this.load.image('expression_glee', 'assets/images/expression_glee.png');
-        this.load.image('expression_nervous', 'assets/images/expression_nervous.png');
-        this.load.image('expression_confused', 'assets/images/expression_confused.png');
-        this.load.image('expression_neutral', 'assets/images/expression_neutral.png');
-        this.load.image('expression_amused', 'assets/images/expression_amused.png');
-        this.load.image('expression_thoughtful', 'assets/images/expression_thoughtful.png');
-
-        // Sound Effects
-        this.load.audio('match', 'assets/sounds/match.mp3');
-        this.load.audio('match_combo_01', 'assets/sounds/match_combo_01.mp3');
-        this.load.audio('match_combo_02', 'assets/sounds/match_combo_02.mp3');
-        this.load.audio('match_combo_03', 'assets/sounds/match_combo_03.mp3');
-        this.load.audio('match_combo_04', 'assets/sounds/match_combo_04.mp3');
-        this.load.audio('match_combo_05', 'assets/sounds/match_combo_05.mp3');
-        this.load.audio('swap', 'assets/sounds/swap.mp3');
-        this.load.audio('tile_select', 'assets/sounds/tile_select.mp3');
-        this.load.audio('warning_tick', 'assets/sounds/warning_tick.mp3');
-        this.load.audio('timer_run_out', 'assets/sounds/timer_run_out.mp3');
-        this.load.audio('lights_off', 'assets/sounds/lights_out.mp3');
-        this.load.audio('round_clear', 'assets/sounds/intro_slide.mp3');
     }
 
     init(data)

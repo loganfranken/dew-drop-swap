@@ -17,28 +17,6 @@ export default class extends Phaser.Scene {
         this.startBtnOverlay = null;
     }
 
-    preload()
-    {
-        // Images
-        this.load.image('background', [ 'assets/images/background.png', 'assets/images/background_n.png' ]);
-        this.load.image('title', 'assets/images/title.png');
-        this.load.image('start', 'assets/images/start.png');
-        this.load.image('start-active', 'assets/images/start_active.png');
-        this.load.image('tile_01', 'assets/images/tile_01.png');
-        this.load.image('tile_02', 'assets/images/tile_02.png');
-        this.load.image('tile_03', 'assets/images/tile_03.png');
-        this.load.image('tile_04', 'assets/images/tile_04.png');
-        this.load.image('icon_audio', 'assets/images/icon_audio.png');
-        this.load.image('icon_audio_mute', 'assets/images/icon_audio_mute.png');
-
-        // Music
-        this.load.audio('background_music', 'assets/sounds/background_music.mp3');
-
-        // Sound Effects
-        this.load.audio('select', 'assets/sounds/select.mp3');
-        this.load.audio('intro_slide', 'assets/sounds/intro_slide.mp3');
-    }
-
     create()
     {
         const self = this;
