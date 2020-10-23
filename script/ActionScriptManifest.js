@@ -29,7 +29,7 @@ export default {
                     // Events
                     {
                         on: 'match',
-                        filter: (state) => (state.matches === 1),
+                        filter: (state) => (state.matches >= 1),
                         actions: [
                             { do: 'updateGuideExpression', value: 'glee' },
                             `You got it! That's it!`,
@@ -689,7 +689,6 @@ export default {
                     }
                 ];
 
-            /*
             // Level 8 (Victory Lap)
             case 8:
 
@@ -756,6 +755,7 @@ export default {
                     }
                 ];
 
+            /*
             // Epilogue
             case 9:
 
