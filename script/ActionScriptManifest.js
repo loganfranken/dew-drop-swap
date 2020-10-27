@@ -126,7 +126,7 @@ export default {
                     {
                         on: 'gameOver',
                         actions: [
-                            { do: 'pauseBackgroundMusic' },
+                            { do: 'pauseBackgroundMusic', value: false },
                             { do: 'blockTileGrid' },
                             { do: 'updateGuideExpression', value: 'confused' },
                             `Uhh?`,
@@ -174,7 +174,7 @@ export default {
                     {
                         on: 'gameOver',
                         actions: [
-                            { do: 'pauseBackgroundMusic' },
+                            { do: 'pauseBackgroundMusic', value: false },
                             { do: 'blockTileGrid' },
                             { do: 'updateGuideExpression', value: 'confused' },
                             `Wait, wait, sorry, hold on.`,
@@ -252,7 +252,7 @@ export default {
                     {
                         on: 'gameOver',
                         actions: [
-                            { do: 'pauseBackgroundMusic' },
+                            { do: 'pauseBackgroundMusic', value: false },
                             { do: 'blockTileGrid' },
                             { do: 'updateGuideExpression', value: 'confused' },
                             `Oh, uhh?`,
@@ -402,7 +402,7 @@ export default {
                     {
                         on: 'gameOver',
                         actions: [
-                            { do: 'pauseBackgroundMusic' },
+                            { do: 'pauseBackgroundMusic', value: false },
                             { do: 'blockTileGrid' },
                             { do: 'updateGuideExpression', value: 'confused' },
                             `Oh, a game over?`,
@@ -487,7 +487,7 @@ export default {
 
                     {
                         on: 'match',
-                        filter: (state) => { return state.score > (LevelManifest[4].score * 0.75) },
+                        filter: (state) => { return state.score > (LevelManifest[4].score * 0.5) },
                         actions: [
                             { do: 'updateGuideExpression', value: 'neutral' },
                             `Oh, wait, hold on: you're not supposed to be doing well this round, remember?`,
@@ -597,6 +597,7 @@ export default {
                             `We'll starve!`,
                             { do: 'updateGuideExpression', value: 'sadness' },
                             `*Please!* You have to save us!`,
+                            { do: 'updateGuideExpression', value: 'amused' },
                             { do: 'endLevel' }
                         ]
                     }
@@ -755,7 +756,6 @@ export default {
                     }
                 ];
 
-            /*
             // Epilogue
             case 9:
 
@@ -793,7 +793,6 @@ export default {
                     { wait: 30000 },
                     { do: 'turnOffLights' }
                 ];
-                */
         }
     }
 

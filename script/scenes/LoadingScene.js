@@ -78,6 +78,7 @@ export default class extends Phaser.Scene {
         this.load.audio('round_clear', 'assets/sounds/intro_slide.mp3');
         this.load.audio('select', 'assets/sounds/select.mp3');
         this.load.audio('intro_slide', 'assets/sounds/intro_slide.mp3');
+        this.load.audio('music_switch', 'assets/sounds/music_switch.mp3');
 
         // Loading Graphics
         // Based on: https://gamedevacademy.org/creating-a-preloading-screen-in-phaser-3/

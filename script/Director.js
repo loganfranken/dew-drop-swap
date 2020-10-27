@@ -117,6 +117,7 @@ export default class {
                 break;
 
             case 'blockTileGrid':
+                this.scene.clearSelectedTiles(this.scene);
                 this.tileGrid.block(context, value);
                 break;
 
@@ -193,11 +194,11 @@ export default class {
                 break;
 
             case 'pauseBackgroundMusic':
-                this.scene.pauseBackgroundMusic();
+                this.scene.pauseBackgroundMusic(typeof value == 'undefined' ? true : value);
                 break;
 
             case 'resumeBackgroundMusic':
-                this.scene.resumeBackgroundMusic();
+                this.scene.resumeBackgroundMusic(typeof value == 'undefined' ? true : value);
                 break;
         }
     }

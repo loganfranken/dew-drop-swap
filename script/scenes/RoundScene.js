@@ -88,6 +88,7 @@ export default class extends Phaser.Scene {
 
         this.tileSelectSound = this.sound.add('tile_select');
         this.lightsOffSound = this.sound.add('lights_off');
+        this.musicSwitchSound = this.sound.add('music_switch');
         this.roundClearSound = this.sound.add('round_clear');
 
         // Mute Button
@@ -168,8 +169,7 @@ export default class extends Phaser.Scene {
         // Is this tile already selected?
         if(tile.isActivated)
         {
-            context.selectedTiles = [];
-            tile.deactivate();
+            context.clearSelectedTiles(context);
             return;
         }
     
@@ -348,13 +348,29 @@ export default class extends Phaser.Scene {
         this.lights.addLight(550, 900, 500).setColor(0xffffff).setIntensity(2);
     }
 
-    pauseBackgroundMusic()
+    pauseBackgroundMusic(playMusicSwitch)
     {
-        this.game.backgroundMusic.pause();
+        if(playMusicSwitch)
+        {
+            this.musicSwitchSound.once('complete', () => { this.game.backgroundMusic.pause(); });
+            this.musicSwitchSound.play();
+        }
+        else
+        {
+            this.game.backgroundMusic.pause();
+        }
     }
 
-    resumeBackgroundMusic()
+    resumeBackgroundMusic(playMusicSwitch)
     {
-        this.game.backgroundMusic.resume();
+        if(playMusicSwitch)
+        {
+            this.musicSwitchSound.once('complete', () => { this.game.backgroundMusic.resume(); });
+            this.musicSwitchSound.play();
+        }
+        else
+        {
+            this.game.backgroundMusic.resume();
+        }
     }
 }
