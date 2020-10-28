@@ -273,7 +273,7 @@ export default {
 
                     {
                         on: 'match',
-                        filter: (state) => (state.score > (LevelManifest[1].score * 0.25)),
+                        filter: (state) => (state.score > (LevelManifest[3].score * 0.25)),
                         actions: [
                             { do: 'updateGuideExpression', value: 'glee' },
                             `Look at you go! You're our hero!`,
@@ -283,7 +283,7 @@ export default {
 
                     {
                         on: 'match',
-                        filter: (state) => (state.score > (LevelManifest[1].score * 0.5)),
+                        filter: (state) => (state.score > (LevelManifest[3].score * 0.5)),
                         actions: [
                             { do: 'updateGuideExpression', value: 'surprise' },
                             `*Wow!* You're unstoppable!`,
@@ -293,7 +293,7 @@ export default {
 
                     {
                         on: 'match',
-                        filter: (state) => (state.score > (LevelManifest[1].score * 0.75)),
+                        filter: (state) => (state.score > (LevelManifest[3].score * 0.75)),
                         actions: [
                             { do: 'updateGuideExpression', value: 'glee' },
                             `*Oozle!*`,
@@ -303,7 +303,7 @@ export default {
 
                     {
                         on: 'match',
-                        filter: (state) => (state.score > (LevelManifest[1].score * 0.85)),
+                        filter: (state) => (state.score > (LevelManifest[3].score * 0.85)),
                         actions: [
                             { do: 'updateGuideExpression', value: 'glee' },
                             `*Woozle!*`,
@@ -313,7 +313,7 @@ export default {
 
                     {
                         on: 'match',
-                        filter: (state) => (state.score > (LevelManifest[1].score * 0.95)),
+                        filter: (state) => (state.score > (LevelManifest[3].score * 0.95)),
                         actions: [
                             { do: 'updateGuideExpression', value: 'surprise' },
                             `*Doozle!*`,
@@ -348,7 +348,6 @@ export default {
                     `Alright, that's your set up: now let me get into the right headspace.`,
                     { do: 'updateGuideExpression', value: 'thoughtful' },
                     `...oh doozle woo-`,
-                    `...oh wait...`,
                     `...no, doozy-woozy...`,
                     `...yeah, doozy-woozy, you're our hero...`,
                     { do: 'updateGuideExpression', value: 'amused' },
@@ -487,7 +486,18 @@ export default {
 
                     {
                         on: 'match',
-                        filter: (state) => { return state.score > (LevelManifest[4].score * 0.5) },
+                        filter: (state) => { return state.score > (LevelManifest[5].score * 0.25) },
+                        actions: [
+                            { do: 'updateGuideExpression', value: 'glee' },
+                            `Look at you go!`,
+                            { do: 'updateGuideExpression', value: 'default' }
+                        ]
+                    },
+
+
+                    {
+                        on: 'match',
+                        filter: (state) => { return state.score > (LevelManifest[5].score * 0.5) },
                         actions: [
                             { do: 'updateGuideExpression', value: 'neutral' },
                             `Oh, wait, hold on: you're not supposed to be doing well this round, remember?`,
@@ -497,6 +507,16 @@ export default {
                             `Let's just lock the tiles until the end.`,
                             { do: 'blockTileGrid' },
                             { do: 'updateGuideExpression', value: 'default' },
+                        ]
+                    },
+
+                    {
+                        on: 'tick',
+                        filter: (state) => (state.ticks < 30),
+                        actions: [
+                            { do: 'updateGuideExpression', value: 'nervous' },
+                            `*Eezy-weezy!* Time is running short!`,
+                            { do: 'updateGuideExpression', value: 'default' }
                         ]
                     },
 
@@ -597,7 +617,6 @@ export default {
                             `We'll starve!`,
                             { do: 'updateGuideExpression', value: 'sadness' },
                             `*Please!* You have to save us!`,
-                            { do: 'updateGuideExpression', value: 'amused' },
                             { do: 'endLevel' }
                         ]
                     }
@@ -748,6 +767,36 @@ export default {
                     },
 
                     {
+                        on: 'match',
+                        filter: (state) => (state.score > (LevelManifest[8].score * 0.25)),
+                        actions: [
+                            { do: 'updateGuideExpression', value: 'glee' },
+                            `*Doozle!* What a match!`,
+                            { do: 'updateGuideExpression', value: 'default' }
+                        ]
+                    },
+
+                    {
+                        on: 'match',
+                        filter: (state) => (state.score > (LevelManifest[8].score * 0.5)),
+                        actions: [
+                            { do: 'updateGuideExpression', value: 'surprise' },
+                            `*Woozle!* No one can match like you!`,
+                            { do: 'updateGuideExpression', value: 'default' }
+                        ]
+                    },
+
+                    {
+                        on: 'match',
+                        filter: (state) => (state.score > (LevelManifest[8].score * 0.75)),
+                        actions: [
+                            { do: 'updateGuideExpression', value: 'glee' },
+                            `*Doozy-woozy!* Our kingdom is saved!`,
+                            { do: 'updateGuideExpression', value: 'default' }
+                        ]
+                    },
+
+                    {
                         on: 'win',
                         actions: [
                             { do: 'blockTileGrid' },
@@ -760,7 +809,6 @@ export default {
             case 9:
 
                 return [
-                    { do: 'pauseBackgroundMusic' },
                     { do: 'updateGuideExpression', value: 'amused' },
                     `And that's a wrap!`,
                     { do: 'updateGuideExpression', value: 'neutral' },
